@@ -171,7 +171,7 @@
 			),
 		),
 	)
-
+//Каломет
 /obj/item/mod/control/pre_equipped/inteq
 	theme = /datum/mod_theme/inteq
 	applied_cell = /obj/item/stock_parts/cell
