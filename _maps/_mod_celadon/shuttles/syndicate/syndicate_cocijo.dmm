@@ -196,10 +196,15 @@
 /area/ship/security/weapons_control)
 "ay" = (
 /obj/machinery/porta_turret/ship/syndicate/heavy{
-	dir = 4
+	dir = 4;
+	icon = 'mod_celadon/_storge_icons/icons/turret_96x96.dmi';
+	icon_state = "turret";
+	base_icon_state = "turret";
+	pixel_x = -16;
+	pixel_y = -32
 	},
 /obj/effect/decal/fakelattice{
-	icon_state = "catwalk-255";
+	icon_state = "catwalk";
 	icon = 'icons/obj/smooth_structures/more_catwalk.dmi';
 	layer = 2.455
 	},
@@ -310,10 +315,11 @@
 "aG" = (
 /obj/structure/sign/number/one{
 	color = "#5B0010";
-	dir = 1
+	dir = 1;
+	name = "zero"
 	},
 /obj/effect/decal/fakelattice{
-	icon_state = "catwalk-255";
+	icon_state = "catwalk";
 	icon = 'icons/obj/smooth_structures/more_catwalk.dmi';
 	layer = 2.455
 	},
@@ -568,7 +574,7 @@
 "bq" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/fakelattice{
-	icon_state = "catwalk-255";
+	icon_state = "catwalk";
 	icon = 'icons/obj/smooth_structures/more_catwalk.dmi';
 	layer = 2.455
 	},
@@ -850,10 +856,11 @@
 "cm" = (
 /obj/structure/sign/number{
 	color = "#5B0010";
-	dir = 1
+	dir = 1;
+	name = "zero-ichi"
 	},
 /obj/effect/decal/fakelattice{
-	icon_state = "catwalk-255";
+	icon_state = "catwalk";
 	icon = 'icons/obj/smooth_structures/more_catwalk.dmi';
 	layer = 2.455
 	},
@@ -861,13 +868,14 @@
 /area/ship/external/dark)
 "co" = (
 /obj/effect/decal/fakelattice{
-	icon_state = "catwalk-255";
+	icon_state = "catwalk";
 	icon = 'icons/obj/smooth_structures/more_catwalk.dmi';
 	layer = 2.455
 	},
 /obj/structure/sign/number{
 	color = "red";
-	icon_state = "s3,1"
+	icon_state = "s3,1";
+	name = "ichi"
 	},
 /turf/open/floor/engine/hull/reinforced,
 /area/ship/external/dark)
@@ -1706,15 +1714,15 @@
 /turf/closed/wall/r_wall/syndicate,
 /area/ship/general/command_crew/hos)
 "fE" = (
-/obj/effect/decal/fakelattice{
-	icon_state = "catwalk-255";
-	icon = 'icons/obj/smooth_structures/more_catwalk.dmi';
-	layer = 2.455
-	},
 /obj/structure/sign/number{
 	color = "red";
 	icon_state = "s1,1";
 	dir = 1
+	},
+/obj/effect/decal/fakelattice{
+	icon_state = "catwalk";
+	icon = 'icons/obj/smooth_structures/more_catwalk.dmi';
+	layer = 2.455
 	},
 /turf/open/floor/engine/hull/reinforced,
 /area/ship/external/dark)
@@ -1911,7 +1919,7 @@
 /area/ship/engineering/electrical)
 "gu" = (
 /obj/effect/decal/fakelattice{
-	icon_state = "catwalk-255";
+	icon_state = "catwalk";
 	icon = 'icons/obj/smooth_structures/more_catwalk.dmi';
 	layer = 2.455
 	},
@@ -2276,11 +2284,12 @@
 /area/ship/security/weapons_control)
 "hL" = (
 /obj/structure/sign/number{
-	color = "#5B0010"
+	color = "#5B0010";
+	name = "ichi"
 	},
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/fakelattice{
-	icon_state = "catwalk-255";
+	icon_state = "catwalk";
 	icon = 'icons/obj/smooth_structures/more_catwalk.dmi';
 	layer = 2.455
 	},
@@ -2559,7 +2568,7 @@
 /area/ship/hallway/fore)
 "iu" = (
 /obj/effect/decal/fakelattice{
-	icon_state = "catwalk-255";
+	icon_state = "catwalk";
 	icon = 'icons/obj/smooth_structures/more_catwalk.dmi';
 	layer = 2.455
 	},
@@ -2836,7 +2845,7 @@
 /area/ship/cargo)
 "ji" = (
 /obj/effect/decal/fakelattice{
-	icon_state = "catwalk-255";
+	icon_state = "catwalk";
 	icon = 'icons/obj/smooth_structures/more_catwalk.dmi';
 	layer = 2.455
 	},
@@ -4128,10 +4137,11 @@
 "oq" = (
 /obj/structure/sign/number/five{
 	color = "#5B0010";
-	dir = 1
+	dir = 1;
+	name = "ichi"
 	},
 /obj/effect/decal/fakelattice{
-	icon_state = "catwalk-255";
+	icon_state = "catwalk";
 	icon = 'icons/obj/smooth_structures/more_catwalk.dmi';
 	layer = 2.455
 	},
@@ -4523,13 +4533,18 @@
 /turf/open/floor/plasteel/dark,
 /area/ship/medical/psych)
 "pr" = (
-/obj/machinery/porta_turret/ship/syndicate/heavy{
-	dir = 4
-	},
 /obj/effect/decal/fakelattice{
-	icon_state = "catwalk-255";
+	icon_state = "catwalk";
 	icon = 'icons/obj/smooth_structures/more_catwalk.dmi';
 	layer = 2.455
+	},
+/obj/machinery/porta_turret/ship/syndicate/heavy{
+	dir = 4;
+	icon = 'mod_celadon/_storge_icons/icons/turret_96x96.dmi';
+	icon_state = "turret";
+	base_icon_state = "turret";
+	pixel_x = -16;
+	pixel_y = -32
 	},
 /turf/open/floor/engine/hull/reinforced,
 /area/ship/general/command_crew/hos)
@@ -4554,7 +4569,7 @@
 /area/ship/engineering/engines/port)
 "pv" = (
 /obj/effect/decal/fakelattice{
-	icon_state = "catwalk-255";
+	icon_state = "catwalk";
 	icon = 'icons/obj/smooth_structures/more_catwalk.dmi';
 	layer = 2.455
 	},
@@ -4615,7 +4630,7 @@
 /area/ship/hallway/fore)
 "pE" = (
 /obj/effect/decal/fakelattice{
-	icon_state = "catwalk-255";
+	icon_state = "catwalk";
 	icon = 'icons/obj/smooth_structures/more_catwalk.dmi';
 	layer = 2.455
 	},
@@ -4931,7 +4946,7 @@
 /area/ship/external/dark)
 "qM" = (
 /obj/effect/decal/fakelattice{
-	icon_state = "catwalk-255";
+	icon_state = "catwalk";
 	icon = 'icons/obj/smooth_structures/more_catwalk.dmi';
 	layer = 2.455
 	},
@@ -5134,7 +5149,7 @@
 /area/ship/crew/canteen)
 "rx" = (
 /obj/effect/decal/fakelattice{
-	icon_state = "catwalk-255";
+	icon_state = "catwalk";
 	icon = 'icons/obj/smooth_structures/more_catwalk.dmi';
 	layer = 2.455
 	},
@@ -5514,11 +5529,12 @@
 /area/ship/crew/ccommons)
 "sI" = (
 /obj/structure/sign/number/one{
-	color = "#5B0010"
+	color = "#5B0010";
+	name = "zero"
 	},
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/fakelattice{
-	icon_state = "catwalk-255";
+	icon_state = "catwalk";
 	icon = 'icons/obj/smooth_structures/more_catwalk.dmi';
 	layer = 2.455
 	},
@@ -5914,14 +5930,15 @@
 /area/ship/crew/canteen/kitchen)
 "tT" = (
 /obj/effect/decal/fakelattice{
-	icon_state = "catwalk-255";
+	icon_state = "catwalk";
 	icon = 'icons/obj/smooth_structures/more_catwalk.dmi';
 	layer = 2.455
 	},
 /obj/structure/sign/number{
 	color = "red";
 	icon_state = "s3,2";
-	dir = 1
+	dir = 1;
+	name = "ichi"
 	},
 /turf/open/floor/engine/hull/reinforced,
 /area/ship/external/dark)
@@ -6255,7 +6272,7 @@
 /area/ship/crew/canteen)
 "vm" = (
 /obj/effect/decal/fakelattice{
-	icon_state = "catwalk-255";
+	icon_state = "catwalk";
 	icon = 'icons/obj/smooth_structures/more_catwalk.dmi';
 	layer = 2.455
 	},
@@ -7735,11 +7752,12 @@
 /area/ship/security)
 "Be" = (
 /obj/structure/sign/number/five{
-	color = "#5B0010"
+	color = "#5B0010";
+	name = "ichi"
 	},
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/fakelattice{
-	icon_state = "catwalk-255";
+	icon_state = "catwalk";
 	icon = 'icons/obj/smooth_structures/more_catwalk.dmi';
 	layer = 2.455
 	},
@@ -8349,14 +8367,15 @@
 /area/ship/engineering/engines/starboard)
 "Dw" = (
 /obj/effect/decal/fakelattice{
-	icon_state = "catwalk-255";
+	icon_state = "catwalk";
 	icon = 'icons/obj/smooth_structures/more_catwalk.dmi';
 	layer = 2.455
 	},
 /obj/structure/sign/number{
 	color = "red";
 	icon_state = "s1,3";
-	dir = 1
+	dir = 1;
+	name = "ichi"
 	},
 /turf/open/floor/engine/hull/reinforced,
 /area/ship/external/dark)
@@ -8539,13 +8558,14 @@
 /area/ship/crew/ccommons)
 "Ed" = (
 /obj/effect/decal/fakelattice{
-	icon_state = "catwalk-255";
+	icon_state = "catwalk";
 	icon = 'icons/obj/smooth_structures/more_catwalk.dmi';
 	layer = 2.455
 	},
 /obj/structure/sign/number{
 	color = "red";
-	icon_state = "s1,3"
+	icon_state = "s1,3";
+	name = "zero-zero"
 	},
 /turf/open/floor/engine/hull/reinforced,
 /area/ship/external/dark)
@@ -9772,14 +9792,15 @@
 /area/ship/hallway/aft)
 "HK" = (
 /obj/effect/decal/fakelattice{
-	icon_state = "catwalk-255";
+	icon_state = "catwalk";
 	icon = 'icons/obj/smooth_structures/more_catwalk.dmi';
 	layer = 2.455
 	},
 /obj/structure/sign/number{
 	color = "red";
 	icon_state = "s3,1";
-	dir = 1
+	dir = 1;
+	name = "ichi"
 	},
 /turf/open/floor/engine/hull/reinforced,
 /area/ship/external/dark)
@@ -10055,13 +10076,14 @@
 /area/ship/general/engineering/engineering_1)
 "IN" = (
 /obj/effect/decal/fakelattice{
-	icon_state = "catwalk-255";
+	icon_state = "catwalk";
 	icon = 'icons/obj/smooth_structures/more_catwalk.dmi';
 	layer = 2.455
 	},
 /obj/structure/sign/number{
 	color = "red";
-	icon_state = "s2,1"
+	icon_state = "s2,1";
+	name = "ichi"
 	},
 /turf/open/floor/engine/hull/reinforced,
 /area/ship/external/dark)
@@ -10838,14 +10860,15 @@
 /area/ship/crew/ccommons)
 "Lv" = (
 /obj/effect/decal/fakelattice{
-	icon_state = "catwalk-255";
+	icon_state = "catwalk";
 	icon = 'icons/obj/smooth_structures/more_catwalk.dmi';
 	layer = 2.455
 	},
 /obj/structure/sign/number{
 	color = "red";
 	icon_state = "s2,3";
-	dir = 1
+	dir = 1;
+	name = "ichi"
 	},
 /turf/open/floor/engine/hull/reinforced,
 /area/ship/external/dark)
@@ -11082,7 +11105,7 @@
 /area/ship/crew/ccommons)
 "Mp" = (
 /obj/effect/decal/fakelattice{
-	icon_state = "catwalk-255";
+	icon_state = "catwalk";
 	icon = 'icons/obj/smooth_structures/more_catwalk.dmi';
 	layer = 2.455
 	},
@@ -11454,11 +11477,12 @@
 /area/ship/bridge)
 "NJ" = (
 /obj/structure/sign/number/two{
-	color = "#5B0010"
+	color = "#5B0010";
+	name = "ichi"
 	},
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/fakelattice{
-	icon_state = "catwalk-255";
+	icon_state = "catwalk";
 	icon = 'icons/obj/smooth_structures/more_catwalk.dmi';
 	layer = 2.455
 	},
@@ -12418,15 +12442,15 @@
 /turf/open/floor/wood/mahogany,
 /area/ship/crew/dorm/captain)
 "Rr" = (
-/obj/effect/turf_decal/syndicateemblem/top/right{
-	layer = 2.456;
-	color = "red";
-	dir = 1
-	},
 /obj/effect/decal/fakelattice{
-	icon_state = "catwalk-255";
+	icon_state = "catwalk";
 	icon = 'icons/obj/smooth_structures/more_catwalk.dmi';
 	layer = 2.455
+	},
+/obj/structure/sign/number{
+	color = "red";
+	icon_state = "s3,3";
+	dir = 1
 	},
 /turf/open/floor/engine/hull/reinforced,
 /area/ship/external/dark)
@@ -12653,14 +12677,15 @@
 /area/ship/crew/dorm)
 "Sj" = (
 /obj/effect/decal/fakelattice{
-	icon_state = "catwalk-255";
+	icon_state = "catwalk";
 	icon = 'icons/obj/smooth_structures/more_catwalk.dmi';
 	layer = 2.455
 	},
 /obj/structure/sign/number{
 	color = "red";
 	icon_state = "s1,2";
-	dir = 1
+	dir = 1;
+	name = "ichi"
 	},
 /turf/open/floor/engine/hull/reinforced,
 /area/ship/external/dark)
@@ -12790,13 +12815,14 @@
 /area/ship/engineering/engines/starboard)
 "SK" = (
 /obj/effect/decal/fakelattice{
-	icon_state = "catwalk-255";
+	icon_state = "catwalk";
 	icon = 'icons/obj/smooth_structures/more_catwalk.dmi';
 	layer = 2.455
 	},
 /obj/structure/sign/number{
 	color = "red";
-	icon_state = "s2,2"
+	icon_state = "s2,2";
+	name = "ichi"
 	},
 /turf/open/floor/engine/hull/reinforced,
 /area/ship/external/dark)
@@ -13231,10 +13257,11 @@
 "TV" = (
 /obj/structure/sign/number/two{
 	color = "#5B0010";
-	dir = 1
+	dir = 1;
+	name = "zero"
 	},
 /obj/effect/decal/fakelattice{
-	icon_state = "catwalk-255";
+	icon_state = "catwalk";
 	icon = 'icons/obj/smooth_structures/more_catwalk.dmi';
 	layer = 2.455
 	},
@@ -14458,13 +14485,14 @@
 /area/ship/general/science)
 "XL" = (
 /obj/effect/decal/fakelattice{
-	icon_state = "catwalk-255";
+	icon_state = "catwalk";
 	icon = 'icons/obj/smooth_structures/more_catwalk.dmi';
 	layer = 2.455
 	},
 /obj/structure/sign/number{
 	color = "red";
-	icon_state = "s2,3"
+	icon_state = "s2,3";
+	name = "ichi"
 	},
 /turf/open/floor/engine/hull/reinforced,
 /area/ship/external/dark)
@@ -14762,7 +14790,7 @@
 /area/ship/crew/dorm/captain)
 "YC" = (
 /obj/effect/decal/fakelattice{
-	icon_state = "catwalk-255";
+	icon_state = "catwalk";
 	icon = 'icons/obj/smooth_structures/more_catwalk.dmi';
 	layer = 2.455
 	},
