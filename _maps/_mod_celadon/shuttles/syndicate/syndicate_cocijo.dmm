@@ -3163,6 +3163,10 @@
 	},
 /turf/open/floor/engine,
 /area/ship/engineering/electrical)
+"ku" = (
+/obj/machinery/power/shuttle/engine/electric/huge,
+/turf/open/floor/plating/airless,
+/area/ship/engineering/engines/starboard)
 "ky" = (
 /obj/structure/closet/radiation,
 /obj/item/picket_sign{
@@ -5190,9 +5194,7 @@
 /obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
-/obj/machinery/power/smes/shuttle/precharged{
-	dir = 4
-	},
+/obj/machinery/power/smes/shuttle/precharged/massive,
 /obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
@@ -5685,9 +5687,7 @@
 /obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
-/obj/machinery/power/smes/shuttle/precharged{
-	dir = 4
-	},
+/obj/machinery/power/smes/shuttle/precharged/massive,
 /obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
@@ -6671,6 +6671,12 @@
 	},
 /turf/open/floor/plasteel/tech,
 /area/ship/engineering/engines/starboard)
+"wY" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/open/floor/plating/airless,
+/area/ship/engineering/engines/port)
 "wZ" = (
 /obj/structure/table/reinforced,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
@@ -7415,17 +7421,12 @@
 /turf/open/floor/mineral/plastitanium,
 /area/ship/security/weapons_control)
 "zK" = (
-/obj/machinery/power/shuttle/engine/void{
-	icon = 'icons/obj/3x3.dmi';
-	icon_state = "huge_engine";
-	dir = 8;
-	thrust = 40;
-	icon_state_closed = "huge_engine";
-	icon_state_off = "huge_engine";
-	icon_state_open = "huge_engine"
+/obj/machinery/power/shuttle/engine/electric/huge,
+/obj/structure/cable{
+	icon_state = "0-4"
 	},
 /turf/open/floor/plating/airless,
-/area/ship/engineering/engines/starboard)
+/area/ship/engineering/engines/port)
 "zO" = (
 /obj/effect/turf_decal/corner/opaque/cybersunteal/diagonal,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4,
@@ -9073,6 +9074,13 @@
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/ship/hallway/aft)
+"FB" = (
+/obj/machinery/power/shuttle/engine/electric/huge,
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
+/turf/open/floor/plating/airless,
+/area/ship/engineering/engines/starboard)
 "FE" = (
 /obj/machinery/power/emitter/welded{
 	dir = 1
@@ -10383,9 +10391,7 @@
 /obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
-/obj/machinery/power/smes/shuttle/precharged{
-	dir = 4
-	},
+/obj/machinery/power/smes/shuttle/precharged/massive,
 /obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
@@ -12251,17 +12257,11 @@
 /turf/open/floor/plasteel/telecomms_floor,
 /area/ship/engineering)
 "QD" = (
-/obj/machinery/power/shuttle/engine/void{
-	icon = 'icons/obj/3x3.dmi';
-	icon_state = "huge_engine";
-	dir = 8;
-	thrust = 40;
-	icon_state_closed = "huge_engine";
-	icon_state_off = "huge_engine";
-	icon_state_open = "huge_engine"
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
 /turf/open/floor/plating/airless,
-/area/ship/engineering/engines/port)
+/area/ship/engineering/engines/starboard)
 "QE" = (
 /obj/structure/chair/sofa/brown/right/directional/south,
 /turf/open/floor/plasteel/grimy,
@@ -14503,9 +14503,7 @@
 /obj/effect/turf_decal/industrial/warning{
 	dir = 4
 	},
-/obj/machinery/power/smes/shuttle/precharged{
-	dir = 4
-	},
+/obj/machinery/power/smes/shuttle/precharged/massive,
 /obj/effect/turf_decal/techfloor{
 	dir = 8
 	},
@@ -15123,7 +15121,7 @@ mp
 Pz
 DH
 DH
-QD
+DH
 ms
 ae
 mp
@@ -15143,7 +15141,7 @@ ae
 GF
 pQ
 pQ
-zK
+pQ
 DQ
 mp
 mp
@@ -15161,11 +15159,11 @@ mp
 ym
 Pz
 DH
+zK
 DH
 DH
 DH
 DH
-QD
 qL
 vf
 yB
@@ -15179,9 +15177,9 @@ CQ
 qL
 pQ
 pQ
-zK
 pQ
 pQ
+ku
 pQ
 DQ
 LX
@@ -15200,10 +15198,10 @@ mp
 PV
 Pz
 DH
+wY
 DH
 DH
-DH
-DH
+zK
 DH
 CQ
 CQ
@@ -15217,10 +15215,10 @@ RE
 CQ
 CQ
 pQ
+FB
 pQ
 pQ
-pQ
-pQ
+QD
 pQ
 DQ
 NO
@@ -15242,7 +15240,7 @@ xh
 XN
 eg
 DH
-DH
+wY
 DH
 CQ
 CQ
@@ -15256,7 +15254,7 @@ IU
 CQ
 CQ
 pQ
-pQ
+QD
 pQ
 zi
 Ke

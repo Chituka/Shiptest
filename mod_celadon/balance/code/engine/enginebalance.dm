@@ -43,22 +43,23 @@
 	thrust = 40
 	power_per_burn = 2500000
 	pixel_y = -32
-	pixel_x = -64
-	//bound_width = 32
-	//bound_x = -64
+	pixel_x = -32
+	bound_y = -32
+	bound_x = -32
 	bound_height = 96
 	bound_width = 96
-/*
-/obj/machinery/power/shuttle/engine/electric/huge/Initialize()
-	//Copy-paste from DNA vault... Yeah. I don't really remember other big machinery that works and doesn't have borken
-	var/list/occupied = list()
-	for(var/direct in list(EAST,WEST,SOUTHEAST,SOUTHWEST))
-		occupied += get_step(src,direct)
-	occupied += locate(x+1,y-2,z)
-	occupied += locate(x-1,y-2,z)
 
-	for(var/T in occupied)
-		var/obj/structure/filler/F = new(T)
-		F.parent = src
-		fillers += F
-*/
+/obj/machinery/power/smes/shuttle/precharged/massive
+	name = "massive precharger"
+	desc = "A high-capacity, high transfer superconducting magnetic energy storage unit specially made for use with shuttle engines."
+
+/obj/machinery/power/smes/shuttle/precharged/massive/Initialize()
+	. = ..()
+	component_parts = list()
+	component_parts += new /obj/item/stock_parts/capacitor/super(null)
+	component_parts += new /obj/item/stock_parts/cell/hyper(null)
+	component_parts += new /obj/item/stock_parts/cell/hyper(null)
+	component_parts += new /obj/item/stock_parts/cell/hyper(null)
+	component_parts += new /obj/item/stock_parts/cell/hyper(null)
+	RefreshParts()
+
