@@ -19,7 +19,8 @@
 		/datum/map_template/outpost/hangar/indie_space_40x20,
 		/datum/map_template/outpost/hangar/indie_space_40x40,
 		/datum/map_template/outpost/hangar/indie_space_56x20,
-		/datum/map_template/outpost/hangar/indie_space_56x40
+		/datum/map_template/outpost/hangar/indie_space_56x40,
+		/datum/map_template/outpost/hangar/indie_space_163x60
 	)
 	// NOTE: "planetary" outposts should use baseturf specification and possibly different ztrait sun type, for both hangars and main level.
 	var/list/main_level_ztraits = list(

@@ -7,7 +7,8 @@
 		/datum/map_template/outpost/hangar/elysium_asteroid_40x20,
 		/datum/map_template/outpost/hangar/elysium_asteroid_40x40,
 		/datum/map_template/outpost/hangar/elysium_asteroid_56x20,
-		/datum/map_template/outpost/hangar/elysium_asteroid_56x40
+		/datum/map_template/outpost/hangar/elysium_asteroid_56x40,
+		/datum/map_template/outpost/hangar/elysium_asteroid_163x60
 	)
 
 /*
@@ -42,6 +43,10 @@
 	dock_width = 56
 	dock_height = 40
 
+/datum/map_template/outpost/hangar/elysium_asteroid_163x60
+	name = "hangar/elysium_asteroid_163x60"
+	dock_width = 163
+	dock_height = 60
 /*
 	Elysium Ice
 */
@@ -73,6 +78,11 @@
 	dock_width = 56
 	dock_height = 40
 
+/datum/map_template/outpost/hangar/elysium_ice_163x60
+	name = "hangar/elysium_ice_163x60"
+	dock_width = 163
+	dock_height = 60
+
 /datum/overmap/outpost/elysium_ice
 	token_icon_state = "station_asteroid_0"
 	main_template = /datum/map_template/outpost/elysium_ice
@@ -82,5 +92,6 @@
 		/datum/map_template/outpost/hangar/elysium_ice_40x20,
 		/datum/map_template/outpost/hangar/elysium_ice_40x40,
 		/datum/map_template/outpost/hangar/elysium_ice_56x20,
-		/datum/map_template/outpost/hangar/elysium_ice_56x40
+		/datum/map_template/outpost/hangar/elysium_ice_56x40,
+		/datum/map_template/outpost/hangar/elysium_ice_163x60,
 	)

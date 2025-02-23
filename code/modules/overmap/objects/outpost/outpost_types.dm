@@ -61,6 +61,10 @@
 	dock_width = 56
 	dock_height = 40
 
+/datum/map_template/outpost/hangar/indie_space_163x60
+	name = "hangar/indie_space_163x60"
+	dock_width = 163
+	dock_height = 60
 /*
 	Nanotrasen Ice Planet
 */

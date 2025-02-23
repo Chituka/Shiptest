@@ -105,6 +105,11 @@
 	name = "Tadpole"
 	prefix = "sIQSV"
 
+/datum/map_template/shuttle/subshuttles/syndicate_tapkach
+	file_name = "syndicate_tapkach"
+	name = "TAP-K Administrative Combat Hauler"
+	prefix = "sASSV"
+
 //Субшатлы для руинок
 /datum/map_template/shuttle/ruin/ruin_jox
 	file_name = "syndicate_Jox"

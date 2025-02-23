@@ -1,0 +1,827 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aW" = (
+/obj/effect/turf_decal/trimline/opaque/solgovgold/arrow_cw,
+/obj/effect/turf_decal/trimline/opaque/solgovgold/warning{
+	dir = 4
+	},
+/obj/docking_port/mobile{
+	dir = 4;
+	name = "Tapok";
+	port_direction = 2;
+	preferred_direction = 4
+	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/components/unary/outlet_injector/on/layer4{
+	dir = 4
+	},
+/turf/open/floor/plasteel/tech/grid,
+/area/ship/bridge)
+"de" = (
+/obj/effect/turf_decal/industrial/warning{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 8
+	},
+/obj/structure/fans/tiny/invisible,
+/obj/effect/turf_decal/trimline/opaque/syndiered/arrow_ccw{
+	dir = 1
+	},
+/obj/machinery/door/poddoor/shutters/preopen{
+	dir = 4;
+	id = "pepegasandwich";
+	name = "Cargo Shutter"
+	},
+/turf/open/floor/plasteel/tech/grid,
+/area/ship/bridge)
+"du" = (
+/obj/effect/turf_decal/industrial/warning{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/structure/fans/tiny/invisible,
+/obj/machinery/door/poddoor/shutters/preopen{
+	dir = 4;
+	id = "pepegasandwich";
+	name = "Cargo Shutter"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/turf/open/floor/plasteel/tech/grid,
+/area/ship/bridge)
+"dE" = (
+/obj/machinery/button/door{
+	dir = 4;
+	id = "cocijo_subshuttle_engine";
+	name = "Двигательные задвижки";
+	pixel_x = -23
+	},
+/obj/machinery/light_switch{
+	pixel_x = -22;
+	dir = 4;
+	pixel_y = 9
+	},
+/obj/machinery/power/terminal{
+	dir = 1
+	},
+/obj/structure/cable/yellow{
+	icon_state = "0-2"
+	},
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 1
+	},
+/obj/item/stack/cable_coil/red,
+/obj/item/storage/toolbox/mechanical/old,
+/turf/open/floor/mineral/plastitanium,
+/area/ship/bridge)
+"ej" = (
+/obj/machinery/power/shuttle/engine/fueled/plasma{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ship/bridge)
+"ht" = (
+/obj/structure/fans/tiny/invisible,
+/obj/structure/window/plasma/reinforced,
+/obj/machinery/atmospherics/components/unary/shuttle/heater{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/machinery/door/poddoor{
+	id = "cocijo_subshuttle_engine";
+	name = "Engine Blast Door"
+	},
+/obj/machinery/door/window/northleft{
+	name = "Engine Access";
+	req_access_txt = "150"
+	},
+/turf/open/floor/plating/ship,
+/area/ship/bridge)
+"hW" = (
+/obj/effect/turf_decal/borderfloorwhite,
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
+/obj/machinery/power/apc/auto_name/directional/west,
+/turf/open/floor/mineral/plastitanium,
+/area/ship/bridge)
+"ij" = (
+/obj/structure/catwalk,
+/obj/structure/marker_beacon{
+	picked_color = "Burgundy"
+	},
+/turf/open/floor/plasteel/tech/grid,
+/area/ship/bridge)
+"it" = (
+/obj/machinery/turretid/ship{
+	dir = 8;
+	pixel_x = -9;
+	id = "cocijo_subshuttle_grid";
+	pixel_y = 25
+	},
+/obj/machinery/newscaster/directional/west{
+	pixel_y = 39;
+	pixel_x = 6;
+	dir = 1
+	},
+/obj/machinery/button/door{
+	id = "iron_maiden_bridge";
+	name = "Фронтальные задвижки";
+	pixel_x = 6;
+	pixel_y = 23
+	},
+/obj/effect/turf_decal/corner/opaque/syndiered{
+	dir = 1
+	},
+/obj/effect/turf_decal/corner/opaque/bar{
+	dir = 4
+	},
+/obj/structure/window/plasma/reinforced{
+	dir = 8
+	},
+/obj/structure/chair/comfy/shuttle{
+	dir = 4;
+	name = "Helm";
+	pixel_x = 8
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4,
+/turf/open/floor/plasteel/tech,
+/area/ship/bridge)
+"jV" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4,
+/obj/effect/turf_decal/siding/thinplating/dark{
+	color = "#730622";
+	dir = 1
+	},
+/obj/structure/chair/comfy/shuttle,
+/obj/machinery/atmospherics/pipe/simple/purple/hidden,
+/turf/open/floor/plasteel/mono/dark,
+/area/ship/bridge)
+"kt" = (
+/obj/machinery/door/window/brigdoor/westleft,
+/obj/machinery/holopad,
+/obj/machinery/door/firedoor/border_only{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2,
+/obj/machinery/holopad/emergency/command,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 9
+	},
+/obj/structure/catwalk/over/plated_catwalk/dark,
+/turf/open/floor/plating,
+/area/ship/bridge)
+"kK" = (
+/obj/structure/catwalk,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/porta_turret/ship/syndicate/ballistic/heavy{
+	dir = 5;
+	id = "cocijo_subshuttle_grid";
+	lethal_projectile = /obj/projectile/bullet/mm712x82
+	},
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/ship/bridge)
+"lx" = (
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/ship/bridge)
+"lU" = (
+/obj/structure/grille,
+/turf/open/floor/engine/hull/reinforced,
+/area/ship/bridge)
+"mz" = (
+/obj/machinery/light/directional/east,
+/obj/effect/turf_decal/corner/opaque/syndiered,
+/obj/effect/turf_decal/corner/opaque/bar{
+	dir = 4
+	},
+/obj/effect/turf_decal/corner/opaque/bar{
+	dir = 8
+	},
+/obj/effect/turf_decal/industrial/outline/red,
+/obj/machinery/computer/teleporter{
+	dir = 1
+	},
+/turf/open/floor/plasteel/tech,
+/area/ship/bridge)
+"nN" = (
+/obj/machinery/door/poddoor/shutters/preopen{
+	dir = 4;
+	id = "iron_maiden_bridge";
+	name = "Blast Shutters"
+	},
+/obj/structure/grille,
+/obj/structure/window/plasma/reinforced/plastitanium,
+/turf/open/floor/plating,
+/area/ship/bridge)
+"pM" = (
+/obj/effect/turf_decal/siding/thinplating/dark{
+	color = "#730622";
+	dir = 1
+	},
+/obj/machinery/airalarm/directional/west,
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
+/obj/effect/turf_decal/industrial/hatch/yellow,
+/obj/machinery/power/smes/engineering{
+	charge = 1e+006
+	},
+/turf/open/floor/plasteel/tech/grid,
+/area/ship/bridge)
+"qW" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 1
+	},
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/purple/hidden,
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 6
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ship/bridge)
+"tb" = (
+/obj/structure/catwalk/over/plated_catwalk/dark,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2,
+/obj/structure/window/plasma/reinforced{
+	dir = 8
+	},
+/obj/structure/chair/comfy/shuttle{
+	dir = 4;
+	name = "Helm";
+	pixel_x = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/turf/open/floor/plating,
+/area/ship/bridge)
+"uk" = (
+/turf/open/floor/mineral/plastitanium,
+/area/ship/bridge)
+"uZ" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/fans/tiny/invisible,
+/obj/structure/window/plasma/reinforced{
+	dir = 1;
+	rad_insulation = -1
+	},
+/obj/machinery/atmospherics/components/unary/shuttle/heater{
+	dir = 4
+	},
+/obj/machinery/door/poddoor{
+	id = "cocijo_subshuttle_engine";
+	name = "Engine Blast Door"
+	},
+/obj/machinery/door/window/southleft{
+	name = "Engine Access";
+	req_access_txt = "150"
+	},
+/turf/open/floor/plating,
+/area/ship/bridge)
+"vq" = (
+/obj/machinery/porta_turret/ship/syndicate/ballistic/heavy{
+	dir = 6;
+	id = "cocijo_subshuttle_grid";
+	lethal_projectile = /obj/projectile/bullet/mm712x82
+	},
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/ship/bridge)
+"vN" = (
+/obj/machinery/light/directional/east,
+/obj/effect/turf_decal/corner/opaque/syndiered,
+/obj/effect/turf_decal/corner/opaque/bar{
+	dir = 4
+	},
+/obj/effect/turf_decal/corner/opaque/syndiered{
+	dir = 1
+	},
+/obj/machinery/computer/cargo{
+	dir = 8;
+	icon_state = "computer-left";
+	pixel_x = 8
+	},
+/obj/item/radio/intercom/wideband/directional/north,
+/obj/item/radio/intercom/directional/north{
+	pixel_y = 40
+	},
+/turf/open/floor/plasteel/tech,
+/area/ship/bridge)
+"xq" = (
+/obj/effect/turf_decal/trimline/opaque/solgovgold/warning{
+	dir = 4
+	},
+/turf/open/floor/plasteel/tech/grid,
+/area/ship/bridge)
+"yi" = (
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2,
+/obj/effect/turf_decal/trimline/opaque/syndiered/arrow_ccw{
+	dir = 1
+	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/components/binary/pump/on/layer4{
+	dir = 8
+	},
+/turf/open/floor/plasteel/mono/dark,
+/area/ship/bridge)
+"zb" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/purple/hidden{
+	dir = 4
+	},
+/obj/structure/cable/yellow{
+	icon_state = "1-8"
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ship/bridge)
+"zW" = (
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/purple/hidden,
+/obj/structure/cable{
+	icon_state = "2-8"
+	},
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/thinplating/dark{
+	color = "#730622";
+	dir = 1
+	},
+/obj/machinery/power/ship_gravity,
+/obj/structure/cable{
+	icon_state = "0-2"
+	},
+/turf/open/floor/plasteel/tech/grid,
+/area/ship/bridge)
+"AK" = (
+/obj/effect/turf_decal/siding/thinplating/dark{
+	color = "#730622";
+	dir = 1
+	},
+/obj/structure/extinguisher_cabinet/directional/north{
+	pixel_x = 6
+	},
+/obj/machinery/firealarm/directional/north{
+	pixel_x = -7
+	},
+/obj/machinery/atmospherics/components/unary/portables_connector,
+/obj/structure/closet/secure_closet/wall{
+	icon_state = "generic_wall";
+	name = "equipment locker";
+	dir = 4;
+	pixel_x = 28
+	},
+/obj/item/reagent_containers/food/drinks/bottle/whiskey{
+	pixel_x = 6;
+	desc = "An equivalent to single-malt whiskey, commonly enjoyed and brewed in a brewery originally founded by Lyagushka. While different from traditionally used wheat, it can be safely enjoyed by every species. This one goes great with a sandwich.";
+	name = "Pega-Petka Reserve"
+	},
+/obj/item/tank/internals/emergency_oxygen/double,
+/obj/item/clothing/mask/gas/syndicate,
+/obj/machinery/portable_atmospherics/canister,
+/turf/open/floor/plasteel/mono/dark,
+/area/ship/bridge)
+"CG" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/thinplating/dark{
+	color = "#730622"
+	},
+/obj/machinery/atmospherics/pipe/simple/purple/hidden,
+/turf/open/floor/plasteel/mono/dark,
+/area/ship/bridge)
+"Du" = (
+/obj/machinery/porta_turret/ship/syndicate/ballistic/heavy{
+	dir = 10;
+	id = "cocijo_subshuttle_grid";
+	lethal_projectile = /obj/projectile/bullet/mm712x82
+	},
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/ship/bridge)
+"DR" = (
+/obj/machinery/power/shuttle/engine/fueled/plasma{
+	dir = 4
+	},
+/obj/machinery/door/poddoor{
+	id = "pepegasandwich";
+	name = "Airseal Blast Door"
+	},
+/turf/open/floor/plating,
+/area/ship/bridge)
+"Es" = (
+/obj/machinery/porta_turret/ship/syndicate/ballistic/heavy{
+	dir = 9;
+	id = "cocijo_subshuttle_grid";
+	lethal_projectile = /obj/projectile/bullet/mm712x82
+	},
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/ship/bridge)
+"Eu" = (
+/obj/effect/turf_decal/industrial/warning{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 8
+	},
+/obj/structure/fans/tiny/invisible,
+/obj/effect/turf_decal/trimline/opaque/syndiered/arrow_cw,
+/obj/machinery/door/poddoor/shutters/preopen{
+	dir = 4;
+	id = "pepegasandwich";
+	name = "Cargo Shutter"
+	},
+/turf/open/floor/plasteel/tech/grid,
+/area/ship/bridge)
+"Ez" = (
+/obj/effect/turf_decal/corner/opaque/syndiered,
+/obj/effect/turf_decal/corner/opaque/bar{
+	dir = 4
+	},
+/obj/structure/chair/comfy/shuttle{
+	dir = 8;
+	pixel_x = 7
+	},
+/obj/structure/window/plasma/reinforced{
+	dir = 1
+	},
+/turf/open/floor/plasteel/tech,
+/area/ship/bridge)
+"EE" = (
+/obj/structure/window/plasma/reinforced{
+	dir = 1;
+	rad_insulation = -1
+	},
+/obj/machinery/door/poddoor{
+	id = "cocijo_subshuttle_engine";
+	name = "Engine Blast Door"
+	},
+/obj/machinery/door/window/eastright{
+	name = "Engine Access";
+	dir = 2;
+	req_access_txt = "150"
+	},
+/obj/machinery/atmospherics/pipe/simple/purple/hidden{
+	dir = 10
+	},
+/turf/open/floor/plasteel/mono/dark,
+/area/ship/bridge)
+"FK" = (
+/obj/structure/catwalk,
+/turf/open/floor/plasteel/tech/grid,
+/area/ship/bridge)
+"JU" = (
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2,
+/obj/machinery/atmospherics/pipe/manifold/purple/hidden{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 4
+	},
+/turf/open/floor/mineral/plastitanium,
+/area/ship/bridge)
+"KH" = (
+/obj/effect/turf_decal/siding/thinplating/dark{
+	color = "#730622"
+	},
+/obj/machinery/atmospherics/pipe/simple/purple/hidden,
+/obj/effect/turf_decal/industrial/outline/red,
+/obj/machinery/teleport/hub,
+/turf/open/floor/plasteel/mono/dark,
+/area/ship/bridge)
+"MW" = (
+/obj/effect/turf_decal/corner/opaque/syndiered,
+/obj/effect/turf_decal/corner/opaque/bar{
+	dir = 8
+	},
+/obj/machinery/teleport/station,
+/turf/open/floor/plasteel/mono/dark,
+/area/ship/bridge)
+"OM" = (
+/obj/machinery/door/airlock/security/glass{
+	dir = 4;
+	name = "Шлюз";
+	req_access_txt = "12";
+	req_ship_access = 0
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 8
+	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/purple/hidden{
+	dir = 4
+	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/turf/open/floor/plasteel/mono/dark,
+/area/ship/bridge)
+"Ql" = (
+/obj/structure/catwalk/over/plated_catwalk/dark,
+/obj/structure/window/plasma/reinforced{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/ship/bridge)
+"QD" = (
+/obj/structure/marker_beacon{
+	picked_color = "Burgundy"
+	},
+/obj/structure/catwalk,
+/turf/open/floor/engine/hull/reinforced,
+/area/ship/bridge)
+"QF" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2,
+/obj/machinery/atmospherics/pipe/simple/purple/hidden,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/thinplating/dark/corner{
+	dir = 1
+	},
+/obj/structure/chair/comfy/shuttle,
+/turf/open/floor/mineral/plastitanium,
+/area/ship/bridge)
+"RH" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/thinplating/dark{
+	color = "#730622"
+	},
+/turf/open/floor/plasteel/mono/dark,
+/area/ship/bridge)
+"Sm" = (
+/obj/effect/turf_decal/corner/opaque/bar{
+	dir = 4
+	},
+/obj/effect/turf_decal/corner/opaque/syndiered,
+/obj/machinery/atmospherics/components/unary/portables_connector/layer2{
+	dir = 8;
+	name = "Air connector port"
+	},
+/obj/machinery/portable_atmospherics/canister/air,
+/turf/open/floor/plasteel/tech,
+/area/ship/bridge)
+"Tn" = (
+/obj/structure/chair/comfy/shuttle,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2,
+/obj/effect/turf_decal/siding/thinplating/dark{
+	color = "#730622";
+	dir = 1
+	},
+/turf/open/floor/plasteel/mono/dark,
+/area/ship/bridge)
+"Uj" = (
+/obj/effect/turf_decal/siding/thinplating/dark{
+	color = "#730622"
+	},
+/obj/machinery/button/door{
+	name = "Cargo Doors";
+	id = "pepegasandwich";
+	dir = 1;
+	req_access_txt = "12";
+	pixel_x = 0;
+	pixel_y = -21
+	},
+/obj/structure/chair/comfy/shuttle{
+	dir = 1
+	},
+/obj/machinery/light/directional/east,
+/turf/open/floor/plasteel/mono/dark,
+/area/ship/bridge)
+"Wr" = (
+/obj/effect/turf_decal/corner/opaque/bar{
+	dir = 4
+	},
+/obj/effect/turf_decal/corner/opaque/syndiered,
+/obj/machinery/computer/helm{
+	dir = 8;
+	icon_state = "computer-right";
+	pixel_x = 8
+	},
+/turf/open/floor/plasteel/tech,
+/area/ship/bridge)
+"WM" = (
+/obj/structure/table/optable,
+/obj/structure/curtain/cloth,
+/obj/effect/turf_decal/siding/thinplating/dark{
+	color = "#730622"
+	},
+/obj/structure/closet/secure_closet/wall{
+	icon_door = "med_wall";
+	name = "medical locker";
+	req_access_txt = "5";
+	dir = 8;
+	pixel_x = -28
+	},
+/obj/item/stack/medical/splint{
+	pixel_x = 6
+	},
+/obj/item/roller,
+/obj/item/clothing/glasses/hud/health,
+/obj/item/storage/pill_bottle/iron{
+	pixel_x = 6
+	},
+/obj/item/defibrillator/loaded,
+/obj/item/storage/case/surgery,
+/turf/open/floor/plasteel/mono/white,
+/area/ship/bridge)
+"WN" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/purple/hidden,
+/turf/open/floor/plasteel/tech/grid,
+/area/ship/bridge)
+"Zu" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/opaque/syndiered/arrow_ccw{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/manifold/purple/hidden{
+	dir = 8
+	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4,
+/turf/open/floor/plasteel/mono/dark,
+/area/ship/bridge)
+"ZZ" = (
+/obj/structure/fans/tiny/invisible,
+/obj/structure/window/plasma/reinforced,
+/obj/machinery/door/poddoor{
+	id = "cocijo_subshuttle_engine";
+	name = "Engine Blast Door"
+	},
+/obj/machinery/door/window/eastright{
+	name = "Engine Access";
+	dir = 1;
+	req_access_txt = "150"
+	},
+/obj/machinery/atmospherics/pipe/simple/purple/hidden{
+	dir = 9
+	},
+/turf/open/floor/plasteel/mono/dark,
+/area/ship/bridge)
+
+(1,1,1) = {"
+QD
+uk
+xq
+aW
+xq
+uk
+QD
+"}
+(2,1,1) = {"
+Es
+DR
+de
+du
+Eu
+DR
+Du
+"}
+(3,1,1) = {"
+lU
+uZ
+Tn
+yi
+RH
+ht
+lU
+"}
+(4,1,1) = {"
+ij
+EE
+jV
+Zu
+CG
+ZZ
+ij
+"}
+(5,1,1) = {"
+FK
+lx
+AK
+WN
+Uj
+lx
+FK
+"}
+(6,1,1) = {"
+ej
+lx
+lx
+OM
+lx
+lx
+ej
+"}
+(7,1,1) = {"
+uZ
+pM
+dE
+zb
+hW
+WM
+ht
+"}
+(8,1,1) = {"
+EE
+zW
+QF
+JU
+qW
+KH
+ZZ
+"}
+(9,1,1) = {"
+lx
+it
+tb
+kt
+Ql
+MW
+lx
+"}
+(10,1,1) = {"
+lx
+vN
+Wr
+Sm
+Ez
+mz
+lx
+"}
+(11,1,1) = {"
+kK
+lx
+nN
+nN
+lx
+lx
+vq
+"}

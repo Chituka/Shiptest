@@ -77,3 +77,8 @@ Name = "Brawler"
 Size = "9x7"
 Purpose = "Boarding dropship"
 File Path = "_maps\shuttles\subshuttles\pirate_brawler.dmm"
+
+Name = "Tapkach"
+Size = "11x7"
+Purpose = "A sturdy dropship for Cocijo-class Capital Ship."
+File Path = "_maps\shuttles\subshuttles\syndicate_tapkach.dmm

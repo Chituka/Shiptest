@@ -4,6 +4,7 @@
 	"map_short_name": "Cocijo",
 	"description": "Placeholder Desc",
 	"map_path": "_maps/_mod_celadon/shuttles/syndicate/syndicate_cocijo.dmm",
+	"sensor_range": 6,
 	"enabled" : true,
 	"limit": 1,
 	"space_spawn": true,

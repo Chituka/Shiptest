@@ -34,32 +34,37 @@
 /obj/machinery/power/shuttle/engine/electric/huge
 	name = "huge thruster"
 	desc = "A A thruster that uses insane amount of energy to expel super-accelerated charged particles to generate thrust."
-	circuit = /obj/item/circuitboard/machine/shuttle/engine/electric/tech3
+	circuit = /obj/item/circuitboard/machine/shuttle/engine/electric/huge
 	icon = 'mod_celadon/_storge_icons/icons/3x3.dmi'
 	icon_state = "huge_engine"
 	icon_state_off = "huge_engine"
 	icon_state_closed = "huge_engine"
 	icon_state_open = "huge_engine"
-	thrust = 40
-	power_per_burn = 2500000
+	thrust = 300 //they wouldn't never get its power without t4 components
+	//power_per_burn = 2400000
+	power_per_burn = 3200000
 	pixel_y = -32
 	pixel_x = -32
 	bound_y = -32
 	bound_x = -32
 	bound_height = 96
 	bound_width = 96
+/obj/machinery/power/shuttle/engine/electric/huge/default_deconstruction_crowbar(obj/item/crowbar/C)
+	//you can't crowbar it
+	return FALSE
 
-/obj/machinery/power/smes/shuttle/precharged/massive
+/obj/machinery/power/smes/shuttle/massive
 	name = "massive precharger"
 	desc = "A high-capacity, high transfer superconducting magnetic energy storage unit specially made for use with shuttle engines."
+	input_level = 200000
+	input_level_max = 200000
+	output_level = 200000
+	input_level_max = 400000
+	circuit = /obj/item/circuitboard/machine/shuttle/smes/massive
 
-/obj/machinery/power/smes/shuttle/precharged/massive/Initialize()
-	. = ..()
-	component_parts = list()
-	component_parts += new /obj/item/stock_parts/capacitor/super(null)
-	component_parts += new /obj/item/stock_parts/cell/hyper(null)
-	component_parts += new /obj/item/stock_parts/cell/hyper(null)
-	component_parts += new /obj/item/stock_parts/cell/hyper(null)
-	component_parts += new /obj/item/stock_parts/cell/hyper(null)
-	RefreshParts()
+/obj/machinery/power/smes/shuttle/massive/precharged
+	charge = 4e6
 
+//фикс движков
+/obj/machinery/power/shuttle/engine/electric/premium
+	circuit = /obj/item/circuitboard/machine/shuttle/engine/electric/premium
