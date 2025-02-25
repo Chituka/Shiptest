@@ -315,3 +315,67 @@
 	obj_flags = IMMUTABLE_SLOW
 	can_be_tied = FALSE
 	visor_flags_inv = HIDESHOES
+
+/datum/mod_theme/atmospheric/gec
+	name = "Modified Atmospheric"
+	desc = "Heavily-modified Atmospheric Modsuit made by Nakamura Engineering and changed by GEC. This modification requires a tremendous amount of energy to operate."
+	default_skin = "gecatmo"
+	armor = list("melee" = 40, "bullet" = 20, "laser" = 30, "energy" = 25, "bomb" = 90, "bio" = 100, "rad" = 90,"fire" = 100, "acid" = 100)
+	atom_flags = PREVENT_CONTENTS_EXPLOSION_1
+	max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT
+	resistance_flags = FIRE_PROOF | ACID_PROOF
+	complexity_max = DEFAULT_MAX_COMPLEXITY + 5
+	charge_drain = DEFAULT_CHARGE_DRAIN * 4
+	siemens_coefficient = 0
+	slowdown_inactive = 1.5
+	slowdown_active = 0.8
+	ui_theme = "syndicate"
+	allowed_suit_storage = list(
+		/obj/item/flashlight,
+		/obj/item/tank/internals,
+		/obj/item/ammo_box,
+		/obj/item/ammo_casing,
+		/obj/item/restraints/handcuffs,
+		/obj/item/assembly/flash,
+		/obj/item/melee/baton,
+		/obj/item/melee/energy/sword,
+		/obj/item/construction/rcd,
+		/obj/item/storage/bag/construction,
+		/obj/item/analyzer,
+		/obj/item/t_scanner,
+		/obj/item/pipe_dispenser,
+	)
+	skins = list(
+		"inteqelite" = list(
+			HELMET_FLAGS = list(
+				UNSEALED_LAYER = null,
+				UNSEALED_CLOTHING = SNUG_FIT,
+				SEALED_CLOTHING = THICKMATERIAL|STOPSPRESSUREDAMAGE,
+				UNSEALED_INVISIBILITY = HIDEFACIALHAIR|HIDEEARS|HIDEHAIR|HIDEHORNS,
+				SEALED_INVISIBILITY = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDESNOUT,
+				SEALED_COVER = HEADCOVERSMOUTH|HEADCOVERSEYES|PEPPERPROOF,
+			),
+			CHESTPLATE_FLAGS = list(
+				UNSEALED_CLOTHING = THICKMATERIAL,
+				SEALED_CLOTHING = STOPSPRESSUREDAMAGE,
+				SEALED_INVISIBILITY = HIDEJUMPSUIT|HIDETAIL,
+			),
+			GAUNTLETS_FLAGS = list(
+				UNSEALED_CLOTHING = THICKMATERIAL,
+				SEALED_CLOTHING = STOPSPRESSUREDAMAGE,
+				CAN_OVERSLOT = TRUE,
+			),
+			BOOTS_FLAGS = list(
+				UNSEALED_CLOTHING = THICKMATERIAL,
+				SEALED_CLOTHING = STOPSPRESSUREDAMAGE,
+				CAN_OVERSLOT = TRUE,
+			),
+		),
+	)
+
+/obj/item/mod/control/pre_equipped/atmospheric/gec
+	theme = /datum/mod_theme/atmospheric/gec
+	initial_modules = list(
+		/obj/item/mod/module/storage/large_capacity,
+		/obj/item/mod/module/magnetic_harness,
+	)
