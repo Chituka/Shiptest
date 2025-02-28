@@ -28,7 +28,7 @@
 	req_components = list(
 		/obj/item/stack/cable_coil = 5,
 		/obj/item/stock_parts/cell = 2,
-		/obj/item/stock_parts/capacitor = 4
+		/obj/item/stock_parts/capacitor = 2
 	)
 	def_components = list(/obj/item/stock_parts/cell = /obj/item/stock_parts/cell/high/empty)
 

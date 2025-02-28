@@ -2187,6 +2187,10 @@
 	},
 /turf/open/floor/plasteel/patterned/brushed,
 /area/ship/medical/psych)
+"he" = (
+/obj/machinery/light/floor,
+/turf/open/floor/plating/airless,
+/area/ship/engineering/engines/starboard)
 "hk" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4,
 /obj/structure/cable{
@@ -13932,6 +13936,10 @@
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/ship/bridge)
+"Wc" = (
+/obj/machinery/light/floor,
+/turf/open/floor/plating/airless,
+/area/ship/engineering/engines/port)
 "Wd" = (
 /turf/closed/wall/r_wall/syndicate/nodiagonal,
 /area/ship/crew/cryo)
@@ -15168,7 +15176,7 @@ mp
 mp
 Pz
 DH
-DH
+Wc
 DH
 ms
 ae
@@ -15188,7 +15196,7 @@ mp
 ae
 GF
 pQ
-pQ
+he
 pQ
 DQ
 mp
@@ -15210,7 +15218,7 @@ DH
 zK
 DH
 DH
-DH
+Wc
 DH
 qL
 vf
@@ -15224,7 +15232,7 @@ qQ
 CQ
 qL
 pQ
-pQ
+he
 pQ
 pQ
 FB
