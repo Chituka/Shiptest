@@ -1,0 +1,8 @@
+#ifndef MODPACK_CELADON_COCIJO_STUFF
+#define MODPACK_CELADON_COCIJO_STUFF
+
+#include "_cocijo_stuff.dm"
+
+#include "code/cocijo_stuff.dm"
+
+#endif
