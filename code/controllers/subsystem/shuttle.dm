@@ -121,7 +121,12 @@ SUBSYSTEM_DEF(shuttle)
 	var/list/union_coords = M.return_union_coords(M.get_all_towed_shuttles(), 0, 0, dock_dir)
 	transit_width += union_coords[3] - union_coords[1] + 1
 	transit_height += union_coords[4] - union_coords[2] + 1
-
+	// [CELADON-ADD] - CELADON_COCIJO-CAPITAL-CLASS-SHIP
+	// attempt at making transit levels bigger to allow for better ship to ship docking
+	if(transit_width > 64 || transit_height > 64)
+		transit_width = 120 //same as the planet. YEAH...
+		transit_height = 120
+	// [/CELADON-ADD]
 	var/transit_path = /turf/open/space/transit
 	switch(travel_dir)
 		if(NORTH)
@@ -132,7 +137,10 @@ SUBSYSTEM_DEF(shuttle)
 			transit_path = /turf/open/space/transit/east
 		if(WEST)
 			transit_path = /turf/open/space/transit/west
-
+	// [CELADON-ADD] - CELADON_COCIJO-CAPITAL-CLASS-SHIP
+	if(transit_width > 64 || transit_height > 64)
+		transit_path = /turf/open/space
+	// [/CELADON-ADD]
 	var/transit_name = "Transit Map Zone"
 	var/datum/map_zone/mapzone = SSmapping.create_map_zone(transit_name)
 	var/datum/virtual_level/vlevel = SSmapping.create_virtual_level(
@@ -165,9 +173,20 @@ SUBSYSTEM_DEF(shuttle)
 	// Then create a transit docking port in the middle
 	// union coords (1,2) points from the docking port to the bottom left corner of the bounding box
 	// So if we negate those coordinates, we get the vector pointing from the bottom left of the bounding box to the docking port
-	var/transit_x = bottomleft.x + SHUTTLE_TRANSIT_BORDER + abs(union_coords[1])
-	var/transit_y = bottomleft.y + SHUTTLE_TRANSIT_BORDER + abs(union_coords[2])
-
+	
+	// [CELADON-EDIT] - CELADON_COCIJO-CAPITAL-CLASS-SHIP
+	// transit_x = bottomleft.x + SHUTTLE_TRANSIT_BORDER + abs(union_coords[1]) // CELADON-EDIT - ORIGINAL
+	// transit_y = bottomleft.y + SHUTTLE_TRANSIT_BORDER + abs(union_coords[2]) // CELADON-EDIT - ORIGINAL
+	var/transit_x
+	var/transit_y
+	if(transit_width >64 || transit_height >64)
+		transit_x = bottomleft.x + (transit_height/4) + abs(union_coords[1]) //спавнит примерно в центре корабль
+		transit_y = bottomleft.y + (transit_width*2/5) + abs(union_coords[2]) //спавнит примерно в центре корабль
+	else
+		transit_x = bottomleft.x + SHUTTLE_TRANSIT_BORDER + abs(union_coords[1])
+		transit_y = bottomleft.y + SHUTTLE_TRANSIT_BORDER + abs(union_coords[2])
+	// [/CELADON-EDIT]
+	
 	var/turf/midpoint = locate(transit_x, transit_y, bottomleft.z)
 	if(!midpoint)
 		return FALSE
