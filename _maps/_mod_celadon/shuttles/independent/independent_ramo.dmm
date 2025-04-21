@@ -33,7 +33,6 @@
 	pixel_y = 21;
 	pixel_x = 13
 	},
-/obj/item/circuitboard/machine/selling_pad,
 /turf/open/floor/plasteel/showroomfloor,
 /area/ship/crew/toilet)
 "af" = (
@@ -150,6 +149,9 @@
 	},
 /obj/machinery/power/port_gen/pacman,
 /obj/item/stack/sheet/mineral/plasma/twenty,
+/obj/structure/cable{
+	icon_state = "0-8"
+	},
 /turf/open/floor/plasteel/mono/dark,
 /area/ship/engineering)
 "au" = (
@@ -200,9 +202,7 @@
 "ay" = (
 /obj/machinery/light/small/directional/north,
 /obj/effect/turf_decal/box,
-/obj/structure/frame{
-	anchored = 1
-	},
+/obj/structure/frame/machine,
 /turf/open/floor/plasteel/mono/dark,
 /area/ship/engineering)
 "az" = (
@@ -336,7 +336,7 @@
 "aJ" = (
 /obj/effect/turf_decal/box,
 /obj/machinery/newscaster/directional/north,
-/obj/machinery/computer/selling_pad_control,
+/obj/machinery/computer/arcade,
 /turf/open/floor/plasteel/dark,
 /area/ship/engineering)
 "aK" = (
@@ -1374,7 +1374,8 @@
 "cs" = (
 /obj/machinery/door/airlock/command{
 	icon_state = "closed";
-	dir = 4
+	dir = 4;
+	req_access_txt = list(19)
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	icon_state = "pipe11-2";
