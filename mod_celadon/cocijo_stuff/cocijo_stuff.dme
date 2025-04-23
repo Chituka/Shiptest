@@ -1,0 +1,11 @@
+#ifndef MODPACK_CELADON_COCIJO_STUFF
+#define MODPACK_CELADON_COCIJO_STUFF
+
+#include "cocijo_stuff.dm"
+
+#include "code/mech_stuff.dm"
+#include "code/landsknecht.dm"
+#include "code/weaponary.dm"
+#include "code/equipment.dm"
+
+#endif
