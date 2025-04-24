@@ -8,7 +8,7 @@
 	default_baseturf = /turf/open/floor/plating/asteroid/wasteplanet
 	weather_controller_type = /datum/weather_controller/desert
 	weight = 0
-	// [CELADON-EDIT] -- OVERMAP ICON -- вагагагагагагагагагагага
+	// [CELADON-EDIT] -- CELADON_OVERMAP_ICON -- вагагагагагагагагагагага
 	// icon_state = "globe"
 	icon_state = "sand"
 	// [/CELADON-EDIT]
@@ -18,28 +18,25 @@
 /datum/planet_type/plasma_giant
 	name = "plasma giant"
 	desc = "The backbone of interstellar travel, the mighty plasma giant allows fuel collection to take place."
+	ruin_type = RUINTYPE_PLASMA
+	gravity = STANDARD_GRAVITY
 	planet = DYNAMIC_WORLD_PLASMA_GIANT
-	// [CELADON-EDIT] -- OVERMAP ICON -- вагагагагагагагагагагага
-	//	color = COLOR_PURPLE
-	icon = 'mod_celadon/_storge_icons/icons/overmap/overmap_large.dmi'
 	pixel_w = -8
 	pixel_z = -8
-	// [/CELADON-EDIT]
-	mapgen = /datum/map_generator/planet_generator/plasma_gaint
-	gravity = STANDARD_GRAVITY
-	default_baseturf = /turf/open/floor/plating/asteroid/plasma_gaint
 	icon_state = "planet-plasma"
-	preserve_level = FALSE
-	weight = 20
-	ruin_type = RUINTYPE_PLASMA
+	icon = 'mod_celadon/_storge_icons/icons/overmap/overmap_large.dmi'
 	landing_sound = 'mod_celadon/_storge_sounds/sound/events/planet_landing_3.mp3'
-
+	mapgen = /datum/map_generator/planet_generator/plasma_gaint
+	default_baseturf = /turf/open/floor/plating/asteroid/plasma_gaint
+	preserve_level = FALSE
+	weight = 0
+	interference_power = 10
 
 /datum/planet_type/earthsand
 	name = "Sand Planet"
 	desc = "Great Quicksand"
 	planet = DYNAMIC_WORLD_EARTH_SAND
-	// [CELADON-EDIT] -- OVERMAP ICON -- вагагагагагагагагагагага
+	// [CELADON-EDIT] -- CELADON_OVERMAP_ICON -- вагагагагагагагагагагага
 	//	color = COLOR_LIGHT_ORANGE
 	icon_state = "sand"
 	// [/CELADON-EDIT]
@@ -52,6 +49,7 @@
 
 /datum/planet_type/asteroid
 	weight = 40
+	ruin_type = RUINTYPE_ASTEROID
 
 /datum/planet_type/ice_night // Мне очень не нравится, как я это сделал, но на другую реализацию у меня не хватает знаний
 	name = "frozen planet"
@@ -121,6 +119,3 @@
 	weight = 2
 	ruin_type = RUINTYPE_ANIMA
 
-//Оверрайд астероидов, что бы там были руины из списка космо руин
-/datum/planet_type/asteroid
-	ruin_type = RUINTYPE_SPACE

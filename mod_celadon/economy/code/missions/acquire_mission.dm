@@ -1,102 +1,71 @@
-//Код ниже по большей части нужен для ребаланса миссий оффов
-/*
-	Acquire: True Love
-*/
-
-/datum/mission/acquire/true_love
-	weight = 3
-	value = 700
-	duration = 40 MINUTES
-	num_wanted = 1
-
-/datum/mission/acquire/true_love/puce
-	weight = 1
-
-/datum/mission/acquire/true_love/fireblossom
-	weight = 1
-
-/datum/mission/acquire/true_love/icepepper
-	weight = 1
-
-/datum/mission/acquire/true_love/strange_crystal
-	value = 4000
-	weight = 1
+/datum/mission/outpost/acquire/New(...)
+	var/rand_val = 0
+	switch(type_mission)
+		if("extraction_plasma")
+			desc = "[pick("Factions", "Corporations", "Federations")] require large 	amounts of plasma sheets for [pick("base", "station", "ships")]. You are 	tasked with extracting them in large quantities in a short period of time."
+			num_wanted = rand(num_wanted - 200, num_wanted + 200)
+			value = (num_wanted * (value / 10))
+		if("capture_creature")
+			rand_val = rand(1, 10)
+			value = (rand_val * (value / 10) + 1000)
+		if("mission")
+			num_wanted = rand(num_wanted, num_wanted + 2)
+			value = (num_wanted * (value / 10) + 500)
+	return ..()
 
 /*
-Acquire: Anomaly
+/// MARK: 	The Creature
 */
 
-/datum/mission/acquire/anomaly
-	weight = 8
+/datum/mission/outpost/acquire/creature
+	type_mission = "capture_creature"
 	value = 2000
-	duration = 80 MINUTES
-	dur_mod_range = 0.2
-	num_wanted = 1
 
-/datum/mission/acquire/anomaly/New(...)
-	var/group = pick(list(
-		"Cybersun Industries",
-		"Elysium National Pseudosciences",
-		"Nanotrasen Anomalous Studies Division",
-		"The Naturalienwissenschaftlicher Studentenverbindungs-Verband",
-		"The Solarianische Anomalie-Forschungsagentur",
-		"DeForest Chemical Research Division",
-		"An unknown man in a cape with a red striped hat"
-	))
-
-	desc = "[group] has requested that a ship [pick(list("procure", "grab", "acquire", "find", "locate"))] \
-	an anomaly core for [pick(list("research", "analysis", "technical development", "closer inspection", "some reason"))]. \
-	They've offered to pay well, so we're relaying this mission to you"
-	. = ..()
-
-/*
-		Acquire: The Creature
-*/
-
-/datum/mission/acquire/creature
-	value = 1250
-	duration = 60 MINUTES
-	weight = 6
-	num_wanted = 1
-	count_stacks = FALSE
-
-/datum/mission/acquire/creature/legion
-	value = 750
-
-/datum/mission/acquire/creature/migo
-	value = 750
+/datum/mission/outpost/acquire/creature/ice_whelp
+	name = "Capture an ice whelp"
+	desc = "I require a live ice whelp for research purposes. Trap one within the given \
+			Lifeform Containment Unit and return it to me and you will be paid handsomely."
+	value = 2700
 	weight = 2
+	objective_type = /mob/living/simple_animal/hostile/asteroid/ice_whelp
+
+/datum/mission/outpost/acquire/creature/migo
+	value = 1000
+
+/datum/mission/outpost/acquire/creature/legion
+	value = 1700
+
+/datum/mission/outpost/acquire/creature/floorbot
+	name = "Detain a malfunctioning floorbot"
+	desc = "I require a functional abandoned floorbot for \"research\" purposes. Trap one within \
+			the given Lifeform Containment Unit and return it to me and you will be paid handsomely."
+	value = 2660
+	weight = 1
+	objective_type = /mob/living/simple_animal/bot/floorbot/rockplanet
+
+/datum/mission/outpost/acquire/creature/firebot
+	name = "Detain a malfunctioning firebot"
+	desc = "I require a functional abandoned firebot for \"research\" purposes. Trap one within \
+			the given Lifeform Containment Unit and return it to me and you will be paid handsomely."
+	value = 2600
+	weight = 1
+	objective_type = /mob/living/simple_animal/bot/firebot/rockplanet
 
 /*
-		Acquire: Salvage
+/// MARK: Plasma
 */
 
-/datum/mission/acquire/landmine
-	desc = "The Solar Federation and Vigilitas Interstellar have assigned us to offer a bounty to turn in disarmed ordnance for future ventures. We'll pay you well, but we're not responsible for any accidents."
-	weight = 6
-	value = 500
-	duration = 80 MINUTES
-	dur_mod_range = 0.4
-	num_wanted = 2
+/datum/mission/outpost/acquire/extraction_plasma
+	type_mission = "extraction_plasma"
+	name = "Plasma required"
+	duration = 70 MINUTES
+	value = 600
+	weight = 1
+	container_type = /obj/structure/closet/crate/extraction/plasma
+	objective_type = /obj/item/stack/sheet/mineral/plasma
+	num_wanted = 250
 
-/datum/mission/acquire/bounty
-	desc = "SolFed has posted several bounties for wanted members of both the Frontiersman and the Clique. Bring back their tags, we'll reward you well."
-	weight = 4
-	value = 4000
-	duration = 120 MINUTES
-	dur_mod_range = 0.1
-	num_wanted = 3
-
-/*
-		Acquire: Fishing
-*/
-
-/datum/mission/acquire/fish
-	weight = 2
-	duration = 60 MINUTES
-	val_mod_range = 0.2
-
-/datum/mission/acquire/fish/New(...)
-	num_wanted = rand(1,3)
-	value = (750*num_wanted)
-	. = ..()
+/obj/structure/closet/crate/extraction/plasma
+	name = "crate for plasma"
+	desc = "A plasma crate."
+	icon_state = "scicrate"

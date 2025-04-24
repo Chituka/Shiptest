@@ -20,9 +20,7 @@
 /turf/open/floor/plasteel/tech/grid,
 /area/ship/bridge)
 "ae" = (
-/obj/machinery/power/shuttle/engine/fueled/plasma{
-	dir = 4
-	},
+/obj/machinery/power/shuttle/engine/fueled/plasma,
 /turf/open/floor/plating/airless,
 /area/ship/external/dark)
 "ag" = (
@@ -87,7 +85,6 @@
 /area/ship/bridge)
 "aD" = (
 /obj/structure/sign/poster/contraband/m90{
-	icon_state = "poster-m90";
 	pixel_x = -32
 	},
 /obj/effect/turf_decal/spline/fancy/opaque/black{
@@ -151,9 +148,9 @@
 /turf/open/floor/carpet/red,
 /area/ship/crew/canteen)
 "aQ" = (
-/obj/machinery/porta_turret/ship/syndicate/heavy{
-	dir = 6;
-	id = "twinkle_turrets"
+/obj/machinery/porta_turret/ship/syndicate/ballistic/heavy{
+	id = "twinkle_turrets";
+	dir = 6
 	},
 /turf/closed/wall/r_wall/syndicate/nodiagonal,
 /area/ship/bridge)
@@ -225,9 +222,7 @@
 /obj/structure/window/reinforced/spawner{
 	dir = 1
 	},
-/obj/machinery/atmospherics/components/unary/shuttle/heater{
-	dir = 4
-	},
+/obj/machinery/atmospherics/components/unary/shuttle/heater,
 /obj/machinery/door/poddoor/shutters{
 	id = "twinkle_engines";
 	dir = 4
@@ -624,13 +619,13 @@
 /obj/structure/rack,
 /obj/machinery/light/directional/north,
 /obj/item/storage/toolbox/syndicate,
-/obj/item/melee/axe/sledgehammer{
+/obj/item/melee/sledgehammer/gorlex{
 	pixel_x = 7
 	},
-/obj/item/melee/axe/sledgehammer{
+/obj/item/melee/sledgehammer/gorlex{
 	pixel_x = -7
 	},
-/obj/item/melee/axe/sledgehammer,
+/obj/item/melee/sledgehammer/gorlex,
 /turf/open/floor/mineral/plastitanium,
 /area/ship/security/armory)
 "do" = (
@@ -1578,9 +1573,7 @@
 /turf/open/floor/plasteel/tech,
 /area/ship/engineering/atmospherics)
 "iJ" = (
-/obj/machinery/atmospherics/components/unary/shuttle/heater{
-	dir = 4
-	},
+/obj/machinery/atmospherics/components/unary/shuttle/heater,
 /obj/machinery/door/window/eastright{
 	name = "Engine Access"
 	},
@@ -2349,9 +2342,7 @@
 /turf/open/floor/plating,
 /area/ship/engineering/atmospherics)
 "mW" = (
-/obj/machinery/atmospherics/components/unary/shuttle/heater{
-	dir = 4
-	},
+/obj/machinery/atmospherics/components/unary/shuttle/heater,
 /obj/machinery/door/window/eastright{
 	name = "Engine Access"
 	},
@@ -3090,7 +3081,6 @@
 	req_access = list(150)
 	},
 /obj/docking_port/mobile{
-	can_move_docking_ports = 1;
 	name = "Twink Bay";
 	port_direction = 8;
 	preferred_direction = 4;
@@ -3131,6 +3121,7 @@
 /obj/item/storage/box/ingredients/vegetarian,
 /obj/item/reagent_containers/condiment/milk,
 /obj/item/reagent_containers/condiment/milk,
+/obj/effect/spawner/random/food_or_drink/donkpockets,
 /obj/effect/spawner/random/food_or_drink/donkpockets,
 /obj/effect/spawner/random/food_or_drink/donkpockets,
 /turf/open/floor/carpet/red,
@@ -3401,6 +3392,7 @@
 /obj/item/storage/toolbox/syndicate{
 	name = "syndicate toolbox"
 	},
+/obj/item/storage/box/stockparts/t2,
 /turf/open/floor/plasteel/dark,
 /area/ship/engineering)
 "sG" = (
@@ -3997,9 +3989,7 @@
 	dir = 8
 	},
 /obj/structure/window/reinforced/spawner,
-/obj/machinery/power/smes/shuttle/precharged{
-	dir = 4
-	},
+/obj/machinery/power/smes/shuttle/precharged,
 /obj/structure/cable/yellow{
 	icon_state = "0-8"
 	},
@@ -4857,7 +4847,14 @@
 /obj/machinery/camera/autoname{
 	dir = 6
 	},
-/obj/item/gun/ballistic/automatic/assault/hydra/dmr/empty,
+/obj/item/gun/ballistic/automatic/assault/hydra/dmr/empty{
+	pixel_x = -2;
+	pixel_y = -10
+	},
+/obj/item/gun/ballistic/automatic/assault/hydra/lmg/extended{
+	pixel_x = -2;
+	pixel_y = 1
+	},
 /turf/open/floor/mineral/plastitanium,
 /area/ship/security/armory)
 "Bs" = (
@@ -5407,9 +5404,9 @@
 /turf/closed/wall/r_wall/syndicate/nodiagonal,
 /area/ship/crew/office)
 "Es" = (
-/obj/machinery/porta_turret/ship/syndicate/heavy{
-	dir = 5;
-	id = "twinkle_turrets"
+/obj/machinery/porta_turret/ship/syndicate/ballistic/heavy{
+	id = "twinkle_turrets";
+	dir = 5
 	},
 /turf/closed/wall/r_wall/syndicate/nodiagonal,
 /area/ship/bridge)
@@ -5807,8 +5804,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /obj/machinery/light_switch{
 	dir = 8;
-	pixel_x = 20;
-	pixel_y = 0
+	pixel_x = 20
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/ship/security)
@@ -6252,8 +6248,10 @@
 /obj/effect/turf_decal/siding/wood{
 	dir = 4
 	},
-/obj/structure/frame/machine,
-/obj/item/circuitboard/machine/microwave,
+/obj/machinery/microwave{
+	pixel_x = -1;
+	pixel_y = 3
+	},
 /turf/open/floor/wood,
 /area/ship/crew/canteen)
 "Il" = (
@@ -6885,8 +6883,7 @@
 	pixel_x = -6
 	},
 /obj/structure/sign/poster/contraband/syndiemoth{
-	pixel_x = -32;
-	desc = "A Syndicate-commissioned poster that uses Syndie Moth(TM?) to tell the viewer to keep the nuclear authentication disk unsecured. It's signed by 'AspEv'."
+	pixel_x = -32
 	},
 /obj/item/toy/balloon/syndicate,
 /obj/effect/turf_decal/techfloor/orange{
@@ -6895,9 +6892,7 @@
 /turf/open/floor/plasteel/tech/grid,
 /area/ship/engineering/atmospherics)
 "LX" = (
-/obj/machinery/power/shuttle/engine/electric{
-	dir = 4
-	},
+/obj/machinery/power/shuttle/engine/electric,
 /obj/structure/cable/yellow{
 	icon_state = "0-4"
 	},
@@ -7114,6 +7109,11 @@
 /obj/item/storage/box/ammo/a556_42,
 /obj/item/storage/toolbox/ammo/c10mm,
 /obj/structure/closet/syndicate,
+/obj/item/storage/box/ammo/a556_42,
+/obj/item/storage/box/ammo/a556_42,
+/obj/item/storage/box/ammo/a556_42,
+/obj/item/storage/box/ammo/c10mm_ap,
+/obj/item/storage/box/ammo/c10mm_ap,
 /turf/open/floor/mineral/plastitanium,
 /area/ship/security/armory)
 "Nw" = (
@@ -7159,9 +7159,7 @@
 /obj/structure/window/reinforced/spawner{
 	dir = 1
 	},
-/obj/machinery/power/smes/shuttle/precharged{
-	dir = 4
-	},
+/obj/machinery/power/smes/shuttle/precharged,
 /obj/structure/cable/yellow{
 	icon_state = "0-8"
 	},
@@ -7552,18 +7550,19 @@
 /obj/effect/turf_decal/corner/opaque/orange{
 	dir = 5
 	},
-/obj/machinery/power/port_gen/pacman,
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
 /obj/structure/cable/yellow{
 	icon_state = "0-8"
 	},
-/obj/item/stack/sheet/mineral/plasma/twenty,
 /obj/machinery/airalarm/directional/north,
 /obj/structure/cable/yellow{
 	icon_state = "1-8"
 	},
+/obj/machinery/power/port_gen/pacman/super,
+/obj/item/stack/sheet/mineral/uranium/ten,
+/obj/item/stack/sheet/mineral/uranium/five,
 /turf/open/floor/plasteel/dark,
 /area/ship/engineering)
 "Qe" = (
@@ -7695,9 +7694,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "0-8"
 	},
-/obj/machinery/power/smes/shuttle/precharged{
-	dir = 4
-	},
+/obj/machinery/power/smes/shuttle/precharged,
 /obj/machinery/door/poddoor/shutters{
 	id = "twinkle_engines";
 	dir = 4
@@ -7826,11 +7823,17 @@
 /obj/structure/rack,
 /obj/machinery/light/directional/north,
 /obj/item/ammo_box/magazine/m556_42_hydra/small{
-	pixel_x = -7
+	pixel_x = -9
 	},
-/obj/item/ammo_box/magazine/m556_42_hydra/small,
 /obj/item/ammo_box/magazine/m556_42_hydra/small{
-	pixel_x = 7
+	pixel_x = -4
+	},
+/obj/item/ammo_box/magazine/m556_42_hydra/small{
+	pixel_x = 2
+	},
+/obj/item/ammo_box/magazine/m556_42_hydra/extended{
+	pixel_x = 9;
+	pixel_y = 3
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/ship/security/armory)
@@ -8862,6 +8865,7 @@
 /obj/structure/catwalk/over/plated_catwalk/dark,
 /obj/machinery/light/directional/east,
 /obj/effect/decal/cleanable/dirt/dust,
+/obj/item/storage/box/ammo/ferroslug,
 /turf/open/floor/plating,
 /area/ship/hallway/aft)
 "WR" = (

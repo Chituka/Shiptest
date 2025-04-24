@@ -1842,7 +1842,10 @@
 /turf/open/floor/wood/walnut,
 /area/ship/security/prison)
 "ov" = (
-/obj/structure/rack,
+/obj/structure/rack{
+	pixel_x = 0;
+	pixel_y = 0
+	},
 /obj/effect/turf_decal/box/red,
 /obj/structure/sign/poster/official/help_others{
 	pixel_y = 32
@@ -1855,21 +1858,21 @@
 	dir = 2;
 	req_one_access_txt = "2"
 	},
-/obj/item/gun/ballistic/automatic/assault/cm82{
-	pixel_x = -11;
-	pixel_y = 9
-	},
-/obj/item/gun/ballistic/automatic/assault/cm82{
-	pixel_x = 4;
-	pixel_y = -6
-	},
-/obj/item/gun/ballistic/automatic/assault/cm82{
+/obj/item/gun/ballistic/automatic/assault/cm82/solfed{
 	pixel_x = -2;
+	pixel_y = -5
+	},
+/obj/item/gun/ballistic/automatic/assault/cm82/solfed{
+	pixel_x = -4;
 	pixel_y = -1
 	},
-/obj/item/gun/ballistic/automatic/assault/cm82{
+/obj/item/gun/ballistic/automatic/assault/cm82/solfed{
+	pixel_x = -5;
+	pixel_y = 3
+	},
+/obj/item/gun/ballistic/automatic/assault/cm82/solfed{
 	pixel_x = -7;
-	pixel_y = 5
+	pixel_y = 7
 	},
 /turf/open/floor/wood/ebony,
 /area/ship/security/armory)
@@ -2279,7 +2282,7 @@
 /obj/item/reagent_containers/food/snacks/honeybar,
 /obj/item/reagent_containers/food/snacks/honeybar,
 /obj/item/reagent_containers/food/snacks/honeybar,
-/obj/item/reagent_containers/food/snacks/deadmouse,
+/obj/item/food/deadmouse,
 /obj/item/reagent_containers/food/snacks/grilledcheese,
 /obj/effect/turf_decal/siding/wood{
 	dir = 5
@@ -2918,6 +2921,9 @@
 /obj/machinery/suit_storage_unit/inherit/industrial{
 	req_one_access_txt = "2";
 	name = "Haris suit storage unit"
+	},
+/obj/structure/sign/poster/solfed/random{
+	pixel_x = -32
 	},
 /turf/open/floor/plasteel/mono/dark,
 /area/ship/storage/eva)
@@ -3813,9 +3819,6 @@
 	},
 /obj/structure/table/reinforced{
 	color = "#c1b6a5"
-	},
-/obj/structure/sign/poster/solfed/elysium{
-	pixel_x = -32
 	},
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/item/extinguisher{
@@ -6411,8 +6414,8 @@
 /area/ship/hallway/fore)
 "Ze" = (
 /obj/effect/turf_decal/solgov/all/center_left,
-/obj/structure/sign/poster/solfed/elysium{
-	pixel_x = -30
+/obj/structure/sign/poster/solfed/random{
+	pixel_x = -32
 	},
 /turf/open/floor/wood/walnut,
 /area/ship/security/prison)
@@ -6422,11 +6425,11 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/structure/sign/poster/solfed/elysium{
-	pixel_x = -32
-	},
 /obj/effect/turf_decal/siding/thinplating/dark{
 	dir = 9
+	},
+/obj/structure/sign/poster/solfed/random{
+	pixel_x = -32
 	},
 /turf/open/floor/wood/yew,
 /area/ship/hallway/central)
