@@ -37,7 +37,7 @@
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/slugthrower_shoulder
 	name = "\improper GEC \"Trebuchet\" ESMSSSHSL"
 	desc = "Exosuit Shoulder-Mounted Single-Shot Super-Heavy Slug Launcher... You have no idea what that means, but it is certainly a weapon for combat exosuits and it shoots super-heavy slugs at extremely low speed."
-	icon = 'mod_celadon/_storge_icons/icons/mob/test.dmi'
+	icon = 'mod_celadon/_storge_icons/icons/landsknecht.dmi' // заменить
 	icon_state = "test"
 	energy_drain = 500
 	equip_cooldown = 20

@@ -41,7 +41,7 @@
 		if(I.amount >= 20)
 			I.use_tool(src, user, 30, volume=50, amount=20)
 			req_plast = FALSE
-			to_chat(user, span_danger("I fix everything I can with plasteel..."))
+			to_chat(user, span_danger("Trying to patch this scrap up..."))
 			return
 
 		to_chat(user, span_danger("I need at least 20 plasteel sheets!"))
@@ -67,10 +67,11 @@
 		if(!req_cell)
 			to_chat(user, span_danger("Cell is already installed!"))
 			return
-		to_chat(user, span_danger("I install the cell..."))
+		to_chat(user, span_danger("Where the hell do I install the cell..."))
 		I.use_tool(src, user, 30, volume=50, amount=1)
 		used_cell = I
 		req_cell = FALSE
+		qdel(I)
 		return
 	if(istype(I, /obj/item/screwdriver))
 		return
@@ -79,10 +80,10 @@
 		return
 
 /obj/structure/mecha_wreckage/landsknecht/screwdriver_act(mob/living/user, obj/item/I)
-	. = ..()
 	if(!req_plast && !req_cables && !req_cell)
 		new /obj/mecha/combat/landsknecht(loc, used_cell)
 		qdel(src)
+	. = ..()
 
 /obj/mecha/combat/landsknecht/mechturn(direction)
 	. = ..()
