@@ -827,7 +827,7 @@
 /obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
-/turf/open/floor/mineral/plastitanium,
+/turf/open/floor/plasteel/tech,
 /area/ship/engineering/atmospherics)
 "bY" = (
 /turf/closed/wall/r_wall/syndicate/nodiagonal,
@@ -6381,10 +6381,7 @@
 	dir = 1
 	},
 /obj/docking_port/stationary{
-	dir = 2;
-	dwidth = 40;
-	width = 40;
-	height = 56
+	dir = 2
 	},
 /turf/open/floor/engine/hull/reinforced,
 /area/ship/external/dark)
@@ -10050,11 +10047,7 @@
 	density = 0;
 	pixel_y = 31
 	},
-/obj/docking_port/stationary{
-	dwidth = 40;
-	width = 40;
-	height = 56
-	},
+/obj/docking_port/stationary,
 /turf/open/floor/engine/hull/reinforced,
 /area/ship/external/dark)
 "Iq" = (
@@ -12308,7 +12301,7 @@
 /obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
-/turf/open/floor/mineral/plastitanium,
+/turf/open/floor/plasteel/tech,
 /area/ship/engineering/atmospherics)
 "Qn" = (
 /obj/machinery/power/emitter/welded{
@@ -16404,7 +16397,7 @@ mp
 "}
 (31,1,1) = {"
 mp
-Im
+wx
 TZ
 wv
 wv
@@ -16438,12 +16431,12 @@ wv
 wv
 wv
 da
-vC
+DB
 mp
 "}
 (32,1,1) = {"
 mp
-wx
+Im
 Mz
 Lr
 Lr
@@ -16477,7 +16470,7 @@ jf
 AC
 jf
 Yv
-DB
+vC
 mp
 "}
 (33,1,1) = {"

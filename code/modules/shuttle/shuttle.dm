@@ -393,6 +393,30 @@
 		QDEL_NULL(reserved_mapzone)
 	return ..()
 
+/obj/docking_port/stationary/capital
+	name = "capital dock"
+	var/datum/map_zone/reserved_mapzone
+	var/area/hyperspace/assigned_area
+	var/obj/docking_port/mobile/owner
+
+/obj/docking_port/stationary/capital/Initialize()
+	var/static/capital_dock_counter = 0
+	. = ..()
+	SSshuttle.transit += src
+	capital_dock_counter++
+	name = "capital dock [capital_dock_counter]"
+	/*
+	/obj/docking_port/stationary/capital/Destroy(force)
+	if(!QDELETED(docked))
+		log_world("A capital dock was destroyed while something was docked to it.")
+	SSshuttle.transit -= src
+	if(owner?.assigned_transit == src)
+		owner.assigned_transit = null
+	owner = null
+	if(!QDELETED(reserved_mapzone))
+		QDEL_NULL(reserved_mapzone)
+	return ..()
+	*/
 /obj/docking_port/mobile
 	name = "shuttle"
 	icon_state = "mobile"
