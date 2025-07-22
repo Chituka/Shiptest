@@ -1,0 +1,9 @@
+#ifndef MODPACK_CELADON_TGMC_HMG
+#define MODPACK_CELADON_TGMC_HMG
+
+#include "_tgmc_hmg.dm"
+
+#include "code/mounted.dm"
+#include "code/mob.dm"
+
+#endif

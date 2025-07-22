@@ -79,6 +79,7 @@
 #include "silicon/_silicon.dme"
 
 // --- MISC --- //
+#include "tgmc_hmg/_tgmc_hmg.dme"
 #include "ai_laws/_ai_laws.dme"
 #include "balance/_balance.dme"
 #include "ethereal_fix/_ethereal_fix.dme"

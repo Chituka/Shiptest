@@ -36,6 +36,7 @@
 	var/obj/spawned_on_undeploy
 	/// How long it takes for a wrench user to undeploy the object
 	var/undeploy_time = 3 SECONDS
+	var/oldtarget
 
 /obj/machinery/deployable_turret/Destroy()
 	target = null
@@ -43,6 +44,8 @@
 	return ..()
 
 /// Undeploying, for when you want to move your big dakka around
+// [CELADON-REMOVE]
+/*
 /obj/machinery/deployable_turret/wrench_act(mob/living/user, obj/item/wrench/used_wrench)
 	. = ..()
 	if(!can_be_undeployed)
@@ -57,7 +60,8 @@
 	//Keeps the health the same even if you redeploy the gun
 	undeployed_object.modify_max_integrity(max_integrity)
 	qdel(src)
-
+*/
+// [CELADON-REMOVE]
 //BUCKLE HOOKS
 
 /obj/machinery/deployable_turret/unbuckle_mob(mob/living/buckled_mob, force = FALSE, can_fall = TRUE)
@@ -199,7 +203,7 @@
 
 /obj/machinery/deployable_turret/hmg
 	name = "heavy machine gun turret"
-	desc = "A heavy calibre machine gun commonly used by Nanotrasen forces, famed for it's ability to give people on the recieving end more holes than normal."
+	desc = "A heavy caliber machine gun commonly used by Nanotrasen forces, famed for it's ability to give people on the recieving end more holes than normal."
 	icon_state = "hmg"
 	max_integrity = 250
 	projectile_type = /obj/projectile/bullet/manned_turret/hmg
