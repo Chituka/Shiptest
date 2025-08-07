@@ -44,6 +44,8 @@
 	var/click_cooldown_override = 0
 	///If true, overrides the bouncing sfx from the turf to this one
 	var/list/bounce_sfx_override
+	///Multiplier for weapon gun_wear
+	var/wear_modifier = 1
 
 	///What this casing can be stacked into.
 	var/obj/item/ammo_box/magazine/stack_type = /obj/item/ammo_box/magazine/ammo_stack
@@ -53,7 +55,7 @@
 /obj/item/ammo_casing/attackby(obj/item/attacking_item, mob/user, params)
 	if(istype(attacking_item, /obj/item/pen))
 		if(!user.is_literate())
-			to_chat(user, "<span class='notice'>You scribble illegibly on the [src]!</span>")
+			to_chat(user, span_notice("You scribble illegibly on the [src]!"))
 			return
 		var/inputvalue = stripped_input(user, "What would you like to label the round?", "Bullet Labelling", "", MAX_NAME_LEN)
 
@@ -145,6 +147,9 @@
 /obj/item/ammo_casing/proc/stack_with(obj/item/ammo_casing/other_casing)
 	var/obj/item/ammo_box/magazine/ammo_stack/ammo_stack = new stack_type(drop_location())
 	ammo_stack.name = "handful of [name]s" //"handful of .9mm bullet casings"
+// [CELADON-ADD] - ADD_MOD_BULLET_STACK - Загружает путь если из мода, иначе дефолтный
+	ammo_stack.base_icon = other_casing.icon
+// [/CELADON-ADD]
 	ammo_stack.base_icon_state = other_casing.icon_state
 	ammo_stack.caliber = caliber
 	ammo_stack.max_ammo = stack_size

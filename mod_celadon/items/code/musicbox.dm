@@ -1,10 +1,10 @@
 /obj/item/toy/musicbox
 	name = "Музыкальная шкатулка"
 	desc = "Надпись на дне: <i>Прекрасной вампирочке от её рычалки. С любовью на долгую память.</i>"
-	icon = 'mod_celadon/_storge_icons/icons/obj/musicbox.dmi'
+	icon = 'mod_celadon/_storge_icons/icons/items/misc/musicbox.dmi'
 	icon_state = "box_close"
-	lefthand_file = 'mod_celadon/_storge_icons/icons/mob/hands/musicbox_hands_left.dmi'
-	righthand_file = 'mod_celadon/_storge_icons/icons/mob/hands/musicbox_hands_right.dmi'
+	lefthand_file = 'mod_celadon/_storge_icons/icons/items/misc/in_hands/musicbox_hands_left.dmi'
+	righthand_file = 'mod_celadon/_storge_icons/icons/items/misc/in_hands/musicbox_hands_right.dmi'
 	usesound = 'mod_celadon/_storge_sounds/sound/items/musicbox.ogg'
 
 	COOLDOWN_DECLARE(musicbox_cooldown)
@@ -19,7 +19,7 @@
 	COOLDOWN_START(src, musicbox_cooldown, 38 SECONDS)
 	// Вероятно дальше есть способ делать это более правильно и более оптимизировано, но кто нас остановит?
 	addtimer(CALLBACK(src, .proc/start_playing), 5 SECONDS)
-	to_chat(user, "<span class='notice'>Вы проворачиваете ключик, что приводит шкатулку в действие.</span>")
+	to_chat(user, span_notice("Вы проворачиваете ключик, что приводит шкатулку в действие."))
 	playsound(src.loc, usesound, 50, TRUE)
 	addtimer(CALLBACK(src, .proc/finish_playing), 38 SECONDS)
 

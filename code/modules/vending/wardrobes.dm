@@ -2,8 +2,10 @@
 	icon_state = "refill_clothes"
 
 /obj/machinery/vending/wardrobe
-	default_price = 200
-	extra_price = 500
+	// [CELADON-REMOVE] - CELADON_ECONOMY - Вынесено в модуль. Иначе оверайд будет
+	// default_price = 200
+	// extra_price = 500
+	// [/CELADON-REMOVE]
 	input_display_header = "Returned Clothing"
 	light_mask = "wardrobe-light-mask"
 
@@ -164,7 +166,7 @@
 					/obj/item/clothing/mask/bandana/skull = 2
 					)
 	contraband = list(
-		// [CELADON-ADD] - CELADON_RETURN_CONTENT
+		// [CELADON-ADD] - CELADON_RETURN_CONTENT_SPAWN
 		/obj/item/clothing/suit/hooded/enginseer = 2, // WS edit: enginsineer robes
 		// [/CELADON-ADD]
 		/obj/item/organ/tongue/robot = 2)
@@ -206,7 +208,7 @@
 					/obj/item/clothing/head/beret/service = 2, //WS edit - Berets
 					/obj/item/clothing/suit/hooded/wintercoat/hydro = 2,
 					/obj/item/clothing/suit/apron = 2,
-					/obj/item/clothing/suit/apron/overalls = 3,
+					/obj/item/clothing/under/overalls = 3,
 					/obj/item/clothing/suit/apron/waders = 3,
 					/obj/item/clothing/under/rank/civilian/hydroponics = 3,
 					/obj/item/clothing/under/rank/civilian/hydroponics/skirt = 3,
@@ -292,7 +294,7 @@
 					/obj/item/storage/box/mousetraps = 2,
 					/obj/item/circuitboard/machine/dish_drive = 1,
 					/obj/item/clothing/suit/toggle/chef = 1,
-					// [CELADON-ADD] - CELADON_RETURN_CONTENT
+					// [CELADON-ADD] - CELADON_RETURN_CONTENT_SPAWN
 					/obj/item/clothing/shoes/cookflops = 2,
 					// [/CELADON-ADD]
 					/obj/item/clothing/under/rank/civilian/chef = 1,
@@ -381,7 +383,7 @@
 	vend_reply = "Thank you for using the ChapDrobe!"
 	products = list(/obj/item/storage/backpack/cultpack = 1,
 					/obj/item/clothing/head/beret/service = 1, //WS edit - berets
-					// [CELADON-ADD] - CELADON_RETURN_CONTENT
+					// [CELADON-ADD] - CELADON_RETURN_CONTENT_SPAWN
 					/obj/item/clothing/suit/chaplainsuit/nun = 1,
 					/obj/item/clothing/head/nun_hood = 1,
 					/obj/item/clothing/suit/chaplainsuit/holidaypriest = 1,
@@ -400,8 +402,12 @@
 					/obj/item/storage/fancy/candle_box = 2,
 					/obj/item/clothing/accessory/armband/med = 4)
 	contraband = list(/obj/item/toy/plush/plushvar = 1,
+					// [CELADON-ADD] - CELADON_RETURN_CONTENT_CLOWNS
+					/obj/item/clothing/suit/chaplainsuit/clownpriest = 1,
+					/obj/item/clothing/head/clownmitre = 1,
+					// [/CELADON-ADD]
 					/obj/item/toy/plush/narplush = 1)
-	// [CELADON-ADD] - CELADON_RETURN_CONTENT
+	// [CELADON-ADD] - CELADON_RETURN_CONTENT_SPAWN
 	premium = list(/obj/item/clothing/suit/chaplainsuit/bishoprobe = 1,
 					/obj/item/clothing/head/bishopmitre = 1)
 	// [/CELADON-ADD]
@@ -461,7 +467,7 @@
 					/obj/item/clothing/accessory/armband/hydro = 4,
 					/obj/item/storage/backpack/satchel/vir = 2)
 	contraband = list(/obj/item/clothing/suit/bio_suit/plaguedoctorsuit = 1,
-					// [CELADON-ADD] - CELADON_RETURN_CONTENT
+					// [CELADON-ADD] - CELADON_RETURN_CONTENT_SPAWN
 					/obj/item/clothing/head/plaguedoctorhat = 1,
 					// [/CELADON-ADD]
 					/obj/item/clothing/mask/gas/plaguedoctor = 1)

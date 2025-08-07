@@ -101,7 +101,7 @@
 	new /obj/item/clothing/accessory/pocketprotector/cosmetology(src)
 	new /obj/item/clothing/under/rank/civilian/chaplain(src)
 	new /obj/item/clothing/shoes/sneakers/black(src)
-	// [CELADON-ADD] - CELADON_RETURN_CONTENT
+	// [CELADON-ADD] - CELADON_RETURN_CONTENT_SPAWN
 	new /obj/item/clothing/suit/chaplainsuit/nun(src)
 	new /obj/item/clothing/head/nun_hood(src)
 	new /obj/item/clothing/suit/hooded/chaplainsuit/monkhabit(src)
@@ -301,7 +301,7 @@
 		/obj/item/storage/backpack/satchel/hyd = 2,
 		/obj/item/clothing/suit/hooded/wintercoat/hydro = 1,
 		/obj/item/clothing/suit/apron = 2,
-		/obj/item/clothing/suit/apron/overalls = 2,
+		/obj/item/clothing/under/overalls = 2,
 		/obj/item/clothing/under/rank/civilian/hydroponics = 3,
 		/obj/item/clothing/mask/bandana = 3)
 	generate_items_inside(items_inside,src)

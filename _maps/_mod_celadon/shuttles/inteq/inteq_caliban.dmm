@@ -219,7 +219,7 @@
 /area/ship/security/weapons_control)
 "bN" = (
 /obj/effect/landmark/subship{
-	subship_template = /datum/map_template/shuttle/subshuttles/inteq_tadpole
+	subship_template = /datum/map_template/shuttle/subshuttles/tadpole
 	},
 /turf/open/floor/plasteel/elevatorshaft{
 	color = "#808080"
@@ -5625,7 +5625,6 @@
 	anchored = 1
 	},
 /obj/item/gun/ballistic/automatic/assault/g36sh/inteq{
-	spawnwithmagazine = 0;
 	pixel_y = -8;
 	spawn_no_ammo = 1
 	},

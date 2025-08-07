@@ -62,9 +62,20 @@ GLOBAL_LIST_INIT(sandstone_recipes, list ( \
 	novariants = TRUE
 	merge_type = /obj/item/stack/sheet/mineral/sandbags
 
+// [CELADON-ADD] - CELADON_STRUCTURES - Барикады - Добавляем количество
+/obj/item/stack/sheet/mineral/sandbags/five
+	amount = 5
+
+/obj/item/stack/sheet/mineral/sandbags/twenty
+	amount = 20
+
+/obj/item/stack/sheet/mineral/sandbags/fifty
+	amount = 50
+// [/CELADON-ADD]
+
 GLOBAL_LIST_INIT(sandbag_recipes, list ( \
 	// [CELADON-ADD] - CELADON_STRUCTURES - Барикады
-	new/datum/stack_recipe("sandbags barricade", /obj/structure/deployable_barricade/sandbags, 12, time = 5 SECONDS, one_per_turf = TRUE, on_floor = TRUE), \
+	new/datum/stack_recipe("sandbags barricade", /obj/structure/deployable_barricade/sandbags, 5, time = 5 SECONDS, one_per_turf = TRUE, on_floor = TRUE), \
 	// [/CELADON-ADD]
 	new/datum/stack_recipe("sandbags", /obj/structure/barricade/sandbags, 1, time = 25, one_per_turf = 1, on_floor = 1), \
 	))
@@ -82,7 +93,7 @@ GLOBAL_LIST_INIT(sandbag_recipes, list ( \
 /obj/item/emptysandbag/attackby(obj/item/W, mob/user, params)
 	if(istype(W, /obj/item/stack/ore/glass))
 		var/obj/item/stack/ore/glass/G = W
-		to_chat(user, "<span class='notice'>You fill the sandbag.</span>")
+		to_chat(user, span_notice("You fill the sandbag."))
 		var/obj/item/stack/sheet/mineral/sandbags/I = new /obj/item/stack/sheet/mineral/sandbags(drop_location())
 		qdel(src)
 		if (Adjacent(user) && !issilicon(user))
@@ -96,6 +107,7 @@ GLOBAL_LIST_INIT(sandbag_recipes, list ( \
  */
 /obj/item/stack/sheet/mineral/diamond
 	name = "diamond"
+	icon = 'icons/obj/materials/ingots.dmi'
 	icon_state = "sheet-diamond"
 	item_state = "sheet-diamond"
 	singular_name = "diamond"
@@ -130,6 +142,7 @@ GLOBAL_LIST_INIT(diamond_recipes, list ( \
  */
 /obj/item/stack/sheet/mineral/uranium
 	name = "uranium"
+	icon = 'icons/obj/materials/sheets.dmi'
 	icon_state = "sheet-uranium"
 	item_state = "sheet-uranium"
 	singular_name = "uranium sheet"
@@ -167,10 +180,11 @@ GLOBAL_LIST_INIT(uranium_recipes, list ( \
  * Plasma
  */
 /obj/item/stack/sheet/mineral/plasma
-	name = "solid plasma"
-	icon_state = "sheet-plasma"
-	item_state = "sheet-plasma"
-	singular_name = "plasma sheet"
+	name = "plasma crystals"
+	icon = 'icons/obj/materials/ingots.dmi'
+	icon_state = "ingot-plasma"
+	item_state = "ingot-plasma"
+	singular_name = "plasma crystal"
 	sheettype = "plasma"
 	resistance_flags = FLAMMABLE
 	max_integrity = 100
@@ -220,6 +234,7 @@ GLOBAL_LIST_INIT(plasma_recipes, list ( \
  */
 /obj/item/stack/sheet/mineral/gold
 	name = "gold"
+	icon = 'icons/obj/materials/sheets.dmi'
 	icon_state = "sheet-gold"
 	item_state = "sheet-gold"
 	singular_name = "gold bar"
@@ -249,7 +264,7 @@ GLOBAL_LIST_INIT(gold_recipes, list ( \
 	if(item.tool_behaviour != TOOL_WIRECUTTER)
 		return
 	playsound(src, 'sound/weapons/slice.ogg', 50, TRUE, -1)
-	to_chat(user, "<span class='notice'>You start whittling away some of [src]...</span>")
+	to_chat(user, span_notice("You start whittling away some of [src]..."))
 	if(!do_after(user, 1 SECONDS, src))
 		return
 	var/obj/item/result = new /obj/item/garnish/gold(drop_location())
@@ -257,7 +272,7 @@ GLOBAL_LIST_INIT(gold_recipes, list ( \
 	use(1)
 	if(QDELETED(src) && give_to_user)
 		user.put_in_hands(result)
-	to_chat(user, "<span class='notice'>You finish cutting [src]</span>")
+	to_chat(user, span_notice("You finish cutting [src]"))
 
 /obj/item/stack/sheet/mineral/gold/fifty
 	amount = 50
@@ -273,6 +288,7 @@ GLOBAL_LIST_INIT(gold_recipes, list ( \
  */
 /obj/item/stack/sheet/mineral/silver
 	name = "silver"
+	icon = 'icons/obj/materials/sheets.dmi'
 	icon_state = "sheet-silver"
 	item_state = "sheet-silver"
 	singular_name = "silver bar"
@@ -299,7 +315,7 @@ GLOBAL_LIST_INIT(silver_recipes, list ( \
 	if(item.tool_behaviour != TOOL_WIRECUTTER)
 		return
 	playsound(src, 'sound/weapons/slice.ogg', 50, TRUE, -1)
-	to_chat(user, "<span class='notice'>You start whittling away some of [src]...</span>")
+	to_chat(user, span_notice("You start whittling away some of [src]..."))
 	if(!do_after(user, 1 SECONDS, src))
 		return
 	var/obj/item/result = new /obj/item/garnish/silver(drop_location())
@@ -307,7 +323,7 @@ GLOBAL_LIST_INIT(silver_recipes, list ( \
 	use(1)
 	if(QDELETED(src) && give_to_user)
 		user.put_in_hands(result)
-	to_chat(user, "<span class='notice'>You finish cutting [src]</span>")
+	to_chat(user, span_notice("You finish cutting [src]"))
 
 /obj/item/stack/sheet/mineral/silver/fifty
 	amount = 50
@@ -323,6 +339,7 @@ GLOBAL_LIST_INIT(silver_recipes, list ( \
  */
 /obj/item/stack/sheet/mineral/titanium
 	name = "titanium"
+	icon = 'icons/obj/materials/sheets.dmi'
 	icon_state = "sheet-titanium"
 	item_state = "sheet-titanium"
 	singular_name = "titanium sheet"
@@ -362,6 +379,7 @@ GLOBAL_LIST_INIT(titanium_recipes, list ( \
  */
 /obj/item/stack/sheet/mineral/plastitanium
 	name = "plastitanium"
+	icon = 'icons/obj/materials/sheets.dmi'
 	icon_state = "sheet-plastitanium"
 	item_state = "sheet-plastitanium"
 	singular_name = "plastitanium sheet"
@@ -419,7 +437,7 @@ GLOBAL_LIST_INIT(snow_recipes, list ( \
 	new/datum/stack_recipe("Snowball", /obj/item/toy/snowball, 1), \
 	new/datum/stack_recipe("Snow tile", /obj/item/stack/tile/mineral/snow, 1, 4, 20), \
 	// [CELADON-ADD] - CELADON_STRUCTURES - Барикады
-	new/datum/stack_recipe("snow barricade", /obj/structure/deployable_barricade/snow, 5, one_per_turf = TRUE, on_floor = TRUE), \
+	new/datum/stack_recipe("snow barricade", /obj/structure/deployable_barricade/snow, 3, one_per_turf = TRUE, on_floor = TRUE), \
 	// [/CELADON-ADD]
 	))
 
@@ -453,40 +471,6 @@ GLOBAL_LIST_INIT(abductor_recipes, list ( \
 	. += GLOB.abductor_recipes
 
 /*
- * Coal
- */
-
-/obj/item/stack/sheet/mineral/coal
-	name = "coal"
-	desc = "Someone's gotten on the naughty list."
-	icon = 'icons/obj/ores.dmi'
-	icon_state = "slag"
-	singular_name = "coal lump"
-	merge_type = /obj/item/stack/sheet/mineral/coal
-	grind_results = list(/datum/reagent/carbon = 20)
-	novariants = TRUE
-
-/obj/item/stack/sheet/mineral/coal/attackby(obj/item/W, mob/user, params)
-	if(W.get_temperature() > 300)//If the temperature of the object is over 300, then ignite
-		var/turf/T = get_turf(src)
-		message_admins("Coal ignited by [ADMIN_LOOKUPFLW(user)] in [ADMIN_VERBOSEJMP(T)]")
-		log_game("Coal ignited by [key_name(user)] in [AREACOORD(T)]")
-		fire_act(W.get_temperature())
-		return TRUE
-	else
-		return ..()
-
-/obj/item/stack/sheet/mineral/coal/fire_act(exposed_temperature, exposed_volume)
-	atmos_spawn_air("co2=[amount*10];TEMP=[exposed_temperature]")
-	qdel(src)
-
-/obj/item/stack/sheet/mineral/coal/five
-	amount = 5
-
-/obj/item/stack/sheet/mineral/coal/ten
-	amount = 10
-
-/*
  * Hellstone
  */
 /obj/item/stack/sheet/mineral/hidden
@@ -495,6 +479,7 @@ GLOBAL_LIST_INIT(abductor_recipes, list ( \
 
 /obj/item/stack/sheet/mineral/hidden/hellstone
 	name = "hellstone"
+	icon = 'icons/obj/materials/ingots.dmi'
 	icon_state = "sheet-hellstone"
 	item_state = "sheet-hellstone"
 	singular_name = "hellstone bar"
@@ -517,3 +502,4 @@ GLOBAL_LIST_INIT(abductor_recipes, list ( \
 
 /obj/item/stack/sheet/mineral/hidden/hellstone/five
 	amount = 5
+

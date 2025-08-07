@@ -33,7 +33,6 @@
 	pixel_y = 21;
 	pixel_x = 13
 	},
-/obj/item/circuitboard/machine/selling_pad,
 /turf/open/floor/plasteel/showroomfloor,
 /area/ship/crew/toilet)
 "af" = (
@@ -52,8 +51,7 @@
 /area/ship/external)
 "ah" = (
 /obj/machinery/suit_storage_unit/inherit,
-/obj/item/clothing/head/helmet/space/syndicate/black/engie,
-/obj/item/clothing/suit/space/syndicate/black/engie,
+/obj/item/clothing/suit/space/hardsuit/mining/independent,
 /obj/effect/decal/cleanable/cobweb,
 /obj/machinery/light/small/directional/north,
 /obj/item/clothing/shoes/magboots,
@@ -150,6 +148,9 @@
 	},
 /obj/machinery/power/port_gen/pacman,
 /obj/item/stack/sheet/mineral/plasma/twenty,
+/obj/structure/cable{
+	icon_state = "0-8"
+	},
 /turf/open/floor/plasteel/mono/dark,
 /area/ship/engineering)
 "au" = (
@@ -200,9 +201,7 @@
 "ay" = (
 /obj/machinery/light/small/directional/north,
 /obj/effect/turf_decal/box,
-/obj/structure/frame{
-	anchored = 1
-	},
+/obj/structure/frame/machine,
 /turf/open/floor/plasteel/mono/dark,
 /area/ship/engineering)
 "az" = (
@@ -308,8 +307,7 @@
 /area/ship/external)
 "aH" = (
 /obj/machinery/suit_storage_unit/inherit,
-/obj/item/clothing/head/helmet/space/syndicate/black/engie,
-/obj/item/clothing/suit/space/syndicate/black/engie,
+/obj/item/clothing/suit/space/hardsuit/mining/independent,
 /obj/item/clothing/shoes/magboots,
 /obj/item/clothing/mask/breath,
 /turf/open/floor/plasteel/mono/dark,
@@ -336,7 +334,7 @@
 "aJ" = (
 /obj/effect/turf_decal/box,
 /obj/machinery/newscaster/directional/north,
-/obj/machinery/computer/selling_pad_control,
+/obj/machinery/computer/arcade,
 /turf/open/floor/plasteel/dark,
 /area/ship/engineering)
 "aK" = (
@@ -1347,8 +1345,8 @@
 /obj/machinery/suit_storage_unit/inherit/industrial{
 	density = 0
 	},
-/obj/item/clothing/suit/space/syndicate/black/red,
-/obj/item/clothing/head/helmet/space/syndicate/black/red,
+/obj/item/clothing/suit/space/engineer,
+/obj/item/clothing/head/helmet/space/light/engineer,
 /obj/item/clothing/mask/breath,
 /obj/machinery/light_switch{
 	pixel_y = 21;
@@ -1374,7 +1372,8 @@
 "cs" = (
 /obj/machinery/door/airlock/command{
 	icon_state = "closed";
-	dir = 4
+	dir = 4;
+	req_access_txt = list(19)
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	icon_state = "pipe11-2";
@@ -1732,9 +1731,6 @@
 	dir = 6
 	},
 /obj/effect/decal/cleanable/generic,
-/obj/item/paper/crumpled/bloody{
-	default_raw_text = "Ох... Эти твари... Ебанные пираты! Но... Я успел спрятать наш каргопад в туалете!..."
-	},
 /turf/open/floor/plasteel/dark,
 /area/ship/engineering)
 "cT" = (
@@ -2163,8 +2159,8 @@
 /area/ship/maintenance/external)
 "dw" = (
 /obj/machinery/suit_storage_unit/inherit/industrial,
-/obj/item/clothing/suit/space/syndicate/green/dark,
-/obj/item/clothing/head/helmet/space/syndicate/green/dark,
+/obj/item/clothing/suit/space/engineer,
+/obj/item/clothing/head/helmet/space/light/engineer,
 /obj/machinery/light/small/directional/north,
 /obj/item/clothing/mask/breath,
 /obj/machinery/atmospherics/pipe/simple{
@@ -2333,8 +2329,7 @@
 /obj/machinery/suit_storage_unit/inherit,
 /obj/machinery/airalarm/directional/east,
 /obj/machinery/light/small/directional/south,
-/obj/item/clothing/head/helmet/space/syndicate/black/med,
-/obj/item/clothing/suit/space/syndicate/black/med,
+/obj/item/clothing/suit/space/hardsuit/medical,
 /obj/item/tank/internals/oxygen,
 /obj/item/clothing/mask/breath/medical,
 /turf/open/floor/plasteel/white,

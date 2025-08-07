@@ -30,9 +30,9 @@
 	В официальных документах эта бита проходит под элегантным названием \"Высокоскоростная система доставки Наказаний\". \
 	Выдаваясь только самым верным и эффективным офицерам, это оружие является одновременно символом статуса \
 	и инструментом высшего правосудия."
-	icon = 'mod_celadon/_storge_icons/icons/items/obj/centcom.dmi'
-	lefthand_file = 'mod_celadon/_storge_icons/icons/items/overlay/left_hand/left_centcom.dmi'
-	righthand_file = 'mod_celadon/_storge_icons/icons/items/overlay/right_hand/right_centcom.dmi'
+	icon = 'mod_celadon/_storge_icons/icons/items/weapons/centcom.dmi'
+	lefthand_file = 'mod_celadon/_storge_icons/icons/items/weapons/in_hands/left_centcom.dmi'
+	righthand_file = 'mod_celadon/_storge_icons/icons/items/weapons/in_hands/right_centcom.dmi'
 	w_class = WEIGHT_CLASS_SMALL
 	var/on_bit = FALSE
 	force = 40
@@ -79,7 +79,7 @@
 
 /obj/item/melee/baseball_bat/homerun/central_command/pickup(mob/living/user)
 	if(!HAS_TRAIT(user, TRAIT_MINDSHIELD))
-		to_chat(user, "<span class='cultlarge'>\"Это - оружие истинного правосудия. Тебе не дано обуздать его мощь.\"</span>")
+		to_chat(user, span_cultlarge("\"Это - оружие истинного правосудия. Тебе не дано обуздать его мощь.\""))
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
 			H.apply_damage(50, BRUTE, pick(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM))
@@ -99,7 +99,7 @@
 /obj/item/melee/baseball_bat/homerun/central_command/attack(mob/living/target, mob/living/user)
 	var/atom/throw_target = get_edge_target_turf(target, user.dir)
 	if(homerun_ready)
-		user.visible_message("<span class='userdanger'>С глаз долой!</span>")
+		user.visible_message(span_userdanger("С глаз долой!"))
 		target.throw_at(throw_target, rand(10,12), 16, user)
 		target.take_bodypart_damage(force_on)
 		target.apply_effect(100, EFFECT_STUN)
@@ -117,4 +117,4 @@
 	var/mob/living/carbon/human/H = user
 	H.take_bodypart_damage(force)
 	H.apply_effect(100, EFFECT_STUN)
-	to_chat(user, "<span class='cultlarge'>\"Туда тебя!\"</span>")
+	to_chat(user, span_cultlarge("\"Туда тебя!\""))

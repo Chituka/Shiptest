@@ -6,7 +6,7 @@
 
 /obj/item/card/id/elysium
 	desc = "A Elysium ID with no proper access to speak of."
-	icon = 'mod_celadon/_storge_icons/icons/obj/elysium_card.dmi'
+	icon = 'mod_celadon/_storge_icons/icons/items/misc/elysium_card.dmi'
 	faction_icon = "bg_pgf"
 	icon_state = "elysium"
 
@@ -46,6 +46,7 @@
 	if(visualsOnly)
 		return
 	H.faction |= list(FACTION_PLAYER_ELYSIUM)
+	H.grant_language(/datum/language/elysm)
 
 /datum/outfit/job/elysium/proc/get_elysium_access(mob/living/carbon/human/H)
 	var/obj/item/storage/wallet/W = null

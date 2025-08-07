@@ -61,7 +61,11 @@
 
 /obj/item/storage/guncase/vickland
 	gun_type = /obj/item/gun/ballistic/automatic/marksman/vickland
-	mag_type = /obj/item/ammo_box/vickland_a308
+	mag_type = /obj/item/ammo_box/vickland_a8_50r
+
+/obj/item/storage/guncase/invictus
+	gun_type = /obj/item/gun/ballistic/automatic/assault/invictus
+	mag_type = /obj/item/ammo_box/magazine/invictus_308_mag
 
 /* Scarbourough */
 
@@ -91,6 +95,10 @@
 
 /obj/item/storage/guncase/cobra
 	gun_type = /obj/item/gun/ballistic/automatic/smg/cobra/indie
+	mag_type = /obj/item/ammo_box/magazine/m45_cobra
+
+/obj/item/storage/guncase/c20r
+	gun_type = /obj/item/gun/ballistic/automatic/smg/cobra
 	mag_type = /obj/item/ammo_box/magazine/m45_cobra
 
 /obj/item/storage/guncase/boomslang
@@ -141,6 +149,10 @@
 
 /obj/item/storage/guncase/energy/bg16
 	gun_type = /obj/item/gun/energy/kalix/pgf
+	mag_type = /obj/item/stock_parts/cell/gun/pgf
+
+/obj/item/storage/guncase/energy/bgc10
+	gun_type = /obj/item/gun/energy/kalix/pgf/medium
 	mag_type = /obj/item/stock_parts/cell/gun/pgf
 
 /obj/item/storage/guncase/energy/hbg7
@@ -214,6 +226,9 @@
 	gun_type = /obj/item/gun/ballistic/automatic/smg/vector
 	mag_type = /obj/item/ammo_box/magazine/smgm9mm
 
+/obj/item/storage/guncase/cycler
+	gun_type = /obj/item/gun/ballistic/shotgun/automatic/dual_tube
+
 /* Sharplite */
 
 /obj/item/storage/guncase/pistol/miniegun
@@ -269,6 +284,10 @@
 /obj/item/storage/guncase/pistol/cm357
 	gun_type = /obj/item/gun/ballistic/automatic/pistol/cm357
 	mag_type = /obj/item/ammo_box/magazine/cm357
+
+/obj/item/storage/guncase/ecm6
+	gun_type = /obj/item/gun/energy/kalix/clip
+	mag_type = /obj/item/stock_parts/cell/gun/kalix
 
 /obj/item/storage/guncase/cm5
 	gun_type = /obj/item/gun/ballistic/automatic/smg/cm5
@@ -327,6 +346,10 @@
 /obj/item/storage/guncase/ssg04
 	gun_type = /obj/item/gun/ballistic/automatic/marksman/f4/inteq
 	mag_type = /obj/item/ammo_box/magazine/f4_308
+
+/obj/item/storage/guncase/rottweiler
+	gun_type = /obj/item/gun/ballistic/automatic/hmg/rottweiler
+	mag_type = /obj/item/ammo_box/magazine/rottweiler_308_box
 
 /* idk */
 

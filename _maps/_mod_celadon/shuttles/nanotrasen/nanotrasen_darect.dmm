@@ -350,7 +350,7 @@
 	dir = 4
 	},
 /obj/item/clothing/mask/gas/vigilitas,
-/obj/item/mod/control/pre_equipped/security,
+/obj/item/clothing/suit/space/hardsuit/ert/lp/sec,
 /turf/open/floor/plasteel/patterned,
 /area/ship/cargo)
 "gb" = (
@@ -1460,7 +1460,7 @@
 	dir = 8
 	},
 /obj/item/clothing/mask/gas/sechailer/swat,
-/obj/item/mod/control/pre_equipped/safeguard,
+/obj/item/clothing/suit/space/hardsuit/ert/lp,
 /turf/open/floor/wood,
 /area/ship/bridge)
 "zF" = (
@@ -1597,7 +1597,7 @@
 	dir = 4
 	},
 /obj/item/clothing/mask/gas/vigilitas,
-/obj/item/mod/control/pre_equipped/security,
+/obj/item/clothing/suit/space/hardsuit/ert/lp/sec,
 /turf/open/floor/plasteel/patterned,
 /area/ship/cargo)
 "BG" = (
@@ -2084,7 +2084,7 @@
 	pixel_x = 7;
 	pixel_y = 9
 	},
-/obj/item/reagent_containers/food/snacks/burger/cheese{
+/obj/item/food/burger/cheese{
 	pixel_x = -5;
 	pixel_y = -1
 	},
@@ -2116,9 +2116,9 @@
 /obj/item/reagent_containers/condiment/flour,
 /obj/item/reagent_containers/condiment/flour,
 /obj/item/reagent_containers/condiment/flour,
-/obj/item/reagent_containers/food/snacks/meat/slab/monkey,
-/obj/item/reagent_containers/food/snacks/meat/slab/monkey,
-/obj/item/reagent_containers/food/snacks/meat/slab/monkey,
+/obj/item/food/meat/slab/monkey,
+/obj/item/food/meat/slab/monkey,
+/obj/item/food/meat/slab/monkey,
 /turf/open/floor/plasteel/tech/grid,
 /area/ship/crew/canteen)
 "Ju" = (

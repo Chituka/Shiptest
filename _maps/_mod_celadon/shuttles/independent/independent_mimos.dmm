@@ -141,7 +141,7 @@
 /area/ship/crew/canteen)
 "bg" = (
 /obj/structure/table/wood,
-/obj/item/reagent_containers/food/snacks/hotdog,
+/obj/item/food/hotdog,
 /obj/item/trash/plate{
 	pixel_x = 7;
 	pixel_y = 6
@@ -225,7 +225,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 4
 	},
-/mob/living/simple_animal/hostile/rat,
+/mob/living/basic/mouse/rat,
 /turf/open/floor/plating,
 /area/ship/construction)
 "bI" = (
@@ -278,12 +278,12 @@
 /area/ship/engineering/atmospherics)
 "cG" = (
 /obj/structure/safe/floor,
-/obj/effect/spawner/random/random_ammo_protolathe_lootdrop,
+/obj/effect/spawner/random/salvage/prolathe/ammo,
 /obj/item/beacon{
 	icon_state = "bluebeacon";
 	name = "Подозрительный маяк"
 	},
-/mob/living/simple_animal/hostile/rat,
+/mob/living/basic/mouse/rat,
 /obj/item/storage/box/ammo/foam_darts/riot,
 /obj/item/storage/box/ammo/foam_darts,
 /obj/item/storage/box/ammo/foam_darts,
@@ -626,7 +626,7 @@
 /obj/structure/closet/secure_closet/engineering_personal{
 	req_access = null
 	},
-/obj/item/reagent_containers/food/snacks/kebab/rat/double,
+/obj/item/food/kebab/rat/double,
 /obj/item/clothing/suit/space/hardsuit,
 /turf/open/floor/plasteel/vaporwave{
 	icon_state = "floorscorched1"
@@ -869,7 +869,7 @@
 /obj/machinery/camera/preset{
 	dir = 4
 	},
-/mob/living/simple_animal/hostile/cockroach,
+/mob/living/basic/cockroach,
 /turf/open/floor/plasteel/vaporwave,
 /area/ship/crew/dorm/dormfour)
 "jP" = (
@@ -971,7 +971,6 @@
 	dir = 4
 	},
 /obj/structure/catwalk/over/plated_catwalk,
-/mob/living/simple_animal/hostile/clown/fleshclown,
 /turf/open/floor/plating,
 /area/ship/engineering/atmospherics)
 "kP" = (
@@ -1041,7 +1040,7 @@
 /obj/item/chair{
 	pixel_x = -1
 	},
-/mob/living/simple_animal/hostile/cockroach,
+/mob/living/basic/cockroach,
 /obj/machinery/light/broken/directional/east,
 /turf/open/floor/plating,
 /area/ship/engineering)
@@ -1103,7 +1102,7 @@
 	},
 /obj/structure/closet/crate/bin,
 /obj/item/storage/cans/sixbeer,
-/obj/item/reagent_containers/food/snacks/cheesiehonkers,
+/obj/item/food/cheesiehonkers,
 /obj/item/reagent_containers/food/drinks/beer/light,
 /turf/open/floor/wood/mahogany,
 /area/ship/security)
@@ -1567,30 +1566,15 @@
 /area/ship/security)
 "rR" = (
 /obj/structure/table/wood,
-/obj/item/reagent_containers/food/snacks/canned/peaches{
-	pixel_y = 10;
-	pixel_x = 5
-	},
-/obj/item/reagent_containers/food/snacks/canned/peaches{
-	pixel_y = 10;
-	pixel_x = 5
-	},
-/obj/item/reagent_containers/food/snacks/canned/peaches{
-	pixel_y = 10;
-	pixel_x = 5
-	},
-/obj/item/reagent_containers/food/snacks/canned/peaches{
-	pixel_y = 10;
-	pixel_x = 5
-	},
-/obj/item/reagent_containers/food/snacks/canned/peaches{
-	pixel_y = 10;
-	pixel_x = 5
-	},
-/obj/item/reagent_containers/food/snacks/canned/beans,
-/obj/item/reagent_containers/food/snacks/canned/beans,
-/obj/item/reagent_containers/food/snacks/canned/beans,
-/obj/item/reagent_containers/food/snacks/canned/beans,
+/obj/item/food/canned/peaches,
+/obj/item/food/canned/peaches,
+/obj/item/food/canned/peaches,
+/obj/item/food/canned/peaches,
+/obj/item/food/canned/peaches,
+/obj/item/food/canned/beans,
+/obj/item/food/canned/beans,
+/obj/item/food/canned/beans,
+/obj/item/food/canned/beans,
 /obj/effect/spawner/random/food_or_drink/ration,
 /obj/effect/spawner/random/food_or_drink/ration,
 /obj/machinery/door/window/northright{
@@ -1609,7 +1593,7 @@
 /turf/open/floor/wood/mahogany,
 /area/ship/security)
 "si" = (
-/obj/structure/sign/poster/contraband/clown,
+/obj/structure/sign/poster/contraband/smoke,
 /turf/closed/wall/mineral/titanium/nodiagonal,
 /area/ship/engineering/atmospherics)
 "sk" = (
@@ -1649,7 +1633,7 @@
 	pixel_x = 7;
 	pixel_y = -2
 	},
-/mob/living/simple_animal/hostile/rat,
+/mob/living/basic/mouse/rat,
 /obj/machinery/light/small/broken/directional/north,
 /turf/open/floor/plasteel/vaporwave{
 	icon_state = "floorscorched1"
@@ -1783,10 +1767,8 @@
 /obj/item/storage/pill_bottle/stimulant,
 /obj/item/storage/pill_bottle/lsd,
 /obj/item/storage/pill_bottle/psicodine,
-/obj/item/reagent_containers/syringe/contraband/bath_salts,
 /obj/item/reagent_containers/syringe/contraband/crank,
 /obj/item/reagent_containers/syringe/contraband/fentanyl,
-/obj/item/reagent_containers/syringe/contraband/krokodil,
 /obj/item/reagent_containers/syringe/contraband/methamphetamine,
 /obj/item/reagent_containers/syringe/contraband/methamphetamine,
 /obj/item/reagent_containers/syringe/contraband/morphine,
@@ -2410,7 +2392,7 @@
 	dir = 10
 	},
 /obj/machinery/airalarm/directional/east,
-/obj/item/bedsheet/dorms,
+/obj/effect/spawner/random/bedsheet,
 /obj/item/cane,
 /obj/item/storage/backpack/mime,
 /obj/effect/spawner/random/maintenance,
@@ -2528,7 +2510,7 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer2,
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/dirt/dust,
-/mob/living/simple_animal/hostile/rat,
+/mob/living/basic/mouse/rat,
 /turf/open/floor/plasteel/vaporwave{
 	icon_state = "floorscorched2"
 	},
@@ -2638,7 +2620,7 @@
 	},
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/spawner/random/decoration/glowstick,
-/mob/living/simple_animal/hostile/cockroach,
+/mob/living/basic/cockroach,
 /turf/open/floor/plating,
 /area/ship/engineering/incinerator)
 "Dp" = (
@@ -2654,7 +2636,6 @@
 	dir = 5
 	},
 /obj/structure/catwalk/over/plated_catwalk,
-/mob/living/simple_animal/hostile/clown/fleshclown,
 /obj/item/clothing/neck/stethoscope,
 /turf/open/floor/plating,
 /area/ship/engineering/atmospherics)
@@ -3089,9 +3070,9 @@
 /obj/item/clothing/mask/gas/clown_hat,
 /obj/item/bikehorn,
 /obj/item/pneumatic_cannon/pie,
-/obj/item/reagent_containers/food/snacks/pie/cream,
-/obj/item/reagent_containers/food/snacks/pie/cream,
-/obj/item/reagent_containers/food/snacks/pie/cream,
+/obj/item/food/pie/cream,
+/obj/item/food/pie/cream,
+/obj/item/food/pie/cream,
 /obj/item/clothing/shoes/clown_shoes,
 /turf/open/floor/plasteel,
 /area/ship/engineering)
@@ -3189,7 +3170,7 @@
 /area/ship/engineering)
 "JN" = (
 /obj/machinery/light/small/directional/north,
-/obj/machinery/power/solar_control,
+/obj/machinery/computer/solar_control,
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
@@ -3215,7 +3196,7 @@
 	pixel_y = -16
 	},
 /obj/machinery/power/apc/auto_name/directional/south,
-/obj/item/reagent_containers/food/snacks/grilledcheese,
+/obj/item/food/grilled_cheese_sandwich,
 /obj/item/trash/plate{
 	pixel_x = 7;
 	pixel_y = 2
@@ -3410,7 +3391,7 @@
 	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4,
 /obj/machinery/airalarm/directional/east,
-/obj/item/bedsheet/dorms,
+/obj/effect/spawner/random/bedsheet,
 /obj/item/cane,
 /obj/item/clothing/under/rank/civilian/mime/sexy,
 /obj/item/storage/backpack/mime,
@@ -3794,10 +3775,8 @@
 	dir = 5
 	},
 /obj/effect/decal/cleanable/vomit,
-/mob/living/simple_animal/hostile/clown/mutant/blob,
 /obj/item/clothing/shoes/clown_shoes/banana_shoes,
 /obj/structure/bed,
-/obj/item/reagent_containers/syringe/contraband/krokodil,
 /obj/item/reagent_containers/syringe/contraband/morphine,
 /turf/open/floor/plating,
 /area/ship/engineering/atmospherics)
@@ -4053,7 +4032,7 @@
 /obj/structure/cable{
 	icon_state = "1-4"
 	},
-/mob/living/simple_animal/hostile/rat,
+/mob/living/basic/mouse/rat,
 /obj/item/reagent_containers/syringe/contraband/space_drugs,
 /obj/structure/catwalk/over/plated_catwalk,
 /turf/open/floor/plating,
@@ -4267,15 +4246,15 @@
 /turf/closed/wall/mineral/titanium/interior,
 /area/ship/security)
 "Yf" = (
-/obj/item/reagent_containers/food/snacks/grown/cannabis{
+/obj/item/food/grown/cannabis{
 	pixel_x = 10;
 	pixel_y = 4
 	},
-/obj/item/reagent_containers/food/snacks/grown/cannabis{
+/obj/item/food/grown/cannabis{
 	pixel_x = 9;
 	pixel_y = 4
 	},
-/obj/item/reagent_containers/food/snacks/grown/cannabis/white{
+/obj/item/food/grown/cannabis/white{
 	pixel_x = 8;
 	pixel_y = 4
 	},
@@ -4325,7 +4304,7 @@
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
-/obj/item/clothing/suit/space/hardsuit/quixote,
+/obj/item/clothing/suit/space/hardsuit,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2{
 	dir = 4
 	},
@@ -4336,7 +4315,7 @@
 	dir = 4
 	},
 /obj/structure/safe/floor,
-/obj/item/dualsaber/yellow,
+/obj/item/melee/duelenergy/saber/yellow,
 /turf/open/floor/plasteel/tech/grid,
 /area/ship/bridge)
 "Zf" = (
@@ -4370,7 +4349,6 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/mob/living/simple_animal/hostile/clown/fleshclown,
 /obj/structure/chair/office,
 /turf/open/floor/plasteel,
 /area/ship/engineering/atmospherics)

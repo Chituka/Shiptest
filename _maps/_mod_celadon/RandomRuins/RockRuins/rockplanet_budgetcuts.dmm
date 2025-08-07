@@ -214,7 +214,7 @@
 /area/ruin/rockplanet/nanotrasen)
 "db" = (
 /obj/structure/bed/pod,
-/obj/item/bedsheet/dorms,
+/obj/effect/spawner/random/bedsheet,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood,
 /area/ruin/rockplanet/nanotrasen)
@@ -309,7 +309,7 @@
 /turf/open/floor/engine,
 /area/ruin/rockplanet/nanotrasen)
 "eW" = (
-/obj/effect/mob_spawn/human/corpse/nanotrasensoldier,
+/obj/effect/mob_spawn/human/corpse/vigilitas_private,
 /obj/effect/decal/cleanable/blood{
 	icon_state = "bubblegumfoot"
 	},
@@ -521,10 +521,10 @@
 	pixel_x = 5;
 	pixel_y = 5
 	},
-/obj/item/reagent_containers/food/snacks/tortilla,
-/obj/item/reagent_containers/food/snacks/tortilla,
-/obj/item/reagent_containers/food/snacks/tortilla,
-/obj/item/reagent_containers/food/snacks/tortilla,
+/obj/item/food/tortilla,
+/obj/item/food/tortilla,
+/obj/item/food/tortilla,
+/obj/item/food/tortilla,
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plasteel/showroomfloor,
@@ -1027,12 +1027,12 @@
 /area/ruin/rockplanet/nanotrasen)
 "pP" = (
 /obj/structure/table,
-/obj/item/reagent_containers/food/snacks/mint,
-/obj/item/reagent_containers/food/snacks/pastrybase{
+/obj/item/food/mint,
+/obj/item/food/pastrybase{
 	pixel_x = -4;
 	pixel_y = 3
 	},
-/obj/item/reagent_containers/food/snacks/pastrybase{
+/obj/item/food/pastrybase{
 	pixel_x = -6
 	},
 /obj/item/storage/box/donkpockets{
@@ -1561,7 +1561,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/obj/item/bedsheet/dorms,
+/obj/effect/spawner/random/bedsheet,
 /turf/open/floor/wood,
 /area/ruin/rockplanet/nanotrasen)
 "Ap" = (
@@ -1709,7 +1709,7 @@
 /area/overmap_encounter/planetoid/rockplanet/explored)
 "Cx" = (
 /obj/structure/bed/pod,
-/obj/item/bedsheet/dorms,
+/obj/effect/spawner/random/bedsheet,
 /obj/machinery/light/dim/directional/east,
 /turf/open/floor/wood,
 /area/ruin/rockplanet/nanotrasen)
@@ -1965,7 +1965,7 @@
 "FQ" = (
 /obj/structure/table/reinforced,
 /obj/effect/turf_decal/corner/opaque/red/diagonal,
-/obj/item/reagent_containers/food/snacks/donut/jelly/blumpkin{
+/obj/item/food/donut/jelly/blumpkin{
 	pixel_x = 4;
 	pixel_y = 5
 	},
@@ -2503,14 +2503,14 @@
 /area/ruin/rockplanet/nanotrasen)
 "Rm" = (
 /obj/structure/bed/pod,
-/obj/item/bedsheet/dorms,
+/obj/effect/spawner/random/bedsheet,
 /obj/machinery/light/dim/directional/east,
 /turf/open/floor/carpet/black,
 /area/ruin/rockplanet/nanotrasen)
 "RC" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/firedoor,
-/obj/item/reagent_containers/food/snacks/pie/cream,
+/obj/item/food/pie/cream,
 /turf/open/floor/plating,
 /area/ruin/rockplanet/nanotrasen)
 "RI" = (
@@ -2903,7 +2903,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/mob/living/simple_animal/hostile/human/nanotrasen/ranged/assault,
+/mob/living/simple_animal/hostile/human/nanotrasen/ranged/trooper,
 /turf/open/floor/plasteel/dark,
 /area/ruin/rockplanet/nanotrasen)
 "ZZ" = (

@@ -1,7 +1,7 @@
 /mob/living/simple_animal/pet/cat/moro
-	icon = 'mod_celadon/_storge_icons/icons/mobs/kovac_animals.dmi'
-	held_lh = 'mod_celadon/_storge_icons/icons/mobs/animals_held_lh.dmi'
-	held_rh = 'mod_celadon/_storge_icons/icons/mobs/animals_held_rh.dmi'
+	icon = 'mod_celadon/_storge_icons/icons/mobs/pet_content/pets.dmi'
+	held_lh = 'mod_celadon/_storge_icons/icons/mobs/pet_content/pets_held_lh.dmi'
+	held_rh = 'mod_celadon/_storge_icons/icons/mobs/pet_content/pets_held_rh.dmi'
 	name = "Moro"
 	desc = "He likes grechkya."
 	icon_state = "moro"
@@ -16,6 +16,9 @@
 	minbodytemp = 0
 	melee_damage_lower = 5
 	melee_damage_upper = 15
+
+/mob/living/simple_animal/pet/cat/moro/Life()
+	return
 
 /mob/living/simple_animal/pet/cat/moro/update_resting()
 	. = ..()

@@ -12,6 +12,7 @@
 	footstep_type = FOOTSTEP_MOB_SHOE
 	mob_spawner = /obj/effect/mob_spawn/human/corpse/frontier
 	r_hand = /obj/item/melee/knife/survival
+	dodging = TRUE
 
 /mob/living/simple_animal/hostile/human/frontier/internals
 	icon_state = "frontiersmanmelee_mask"
@@ -21,15 +22,29 @@
 
 /mob/living/simple_animal/hostile/human/frontier/ranged
 	name = "Frontiersman Quickdraw"
-	desc = "A member of the brutal Frontiersman terrorist fleet! This one thumbs a slender revolver, stained chrome and a malicious smile glinting in the light."
+	desc = "A member of the brutal Frontiersman terrorist fleet! This one thumbs a slender pistol, stained chrome and a malicious smile glinting in the light."
 	icon_state = "frontiersmanranged"
 	ranged = 1
+	rapid_fire_delay = 1.5 SECONDS
 	retreat_distance = 5
 	minimum_distance = 5
-	projectilesound = 'sound/weapons/gun/revolver/cattleman.ogg'
-	casingtype = /obj/item/ammo_casing/a44roum
+	projectilesound = 'sound/weapons/gun/pistol/mauler.ogg'
+	casingtype = /obj/item/ammo_casing/c9mm
 	mob_spawner = /obj/effect/mob_spawn/human/corpse/frontier/ranged
-	r_hand = /obj/item/gun/ballistic/revolver/shadow
+	r_hand = /obj/item/gun/ballistic/automatic/pistol/mauler/regular
+
+/mob/living/simple_animal/hostile/human/frontier/ranged/space
+	icon_state = "frontiersmanranged_mask"
+	atmos_requirements = IMMUNE_ATMOS_REQS
+	minbodytemp = 0
+	maxbodytemp = 1000
+	mob_spawner = /obj/effect/mob_spawn/human/corpse/frontier/space
+	armor_base = /obj/item/clothing/suit/space/hardsuit/security/independent/frontier
+
+/mob/living/simple_animal/hostile/human/frontier/ranged/space/Initialize()
+	. = ..()
+	ADD_TRAIT(src, TRAIT_SPACEWALK, INNATE_TRAIT)
+	set_light(4)
 
 /mob/living/simple_animal/hostile/human/frontier/ranged/internals
 	icon_state = "frontiersmanranged_mask"
@@ -42,6 +57,64 @@
 
 /mob/living/simple_animal/hostile/human/frontier/ranged/neutered
 	weapon_drop_chance = 0
+
+/mob/living/simple_animal/hostile/human/frontier/ranged/wasp
+	name = "Frontiersman Searer"
+	desc = "A member of the brutal Frontiersman terrorist fleet! This one's trigger finger itches, ready to dump their entire laser SMG cell into an unlucky person."
+	icon_state = "frontiersmanranged"
+	retreat_distance = 2
+	minimum_distance = 1
+	projectilesound = 'sound/weapons/laser4.ogg'
+	rapid = 2
+	casingtype = null
+	projectiletype = /obj/projectile/beam/laser/eoehoma/wasp
+	rapid_fire_delay = 0.18 SECONDS
+	r_hand = /obj/item/gun/energy/laser/wasp
+	spread = 12
+
+/mob/living/simple_animal/hostile/human/frontier/ranged/wasp/neutered
+	weapon_drop_chance = 0
+
+/mob/living/simple_animal/hostile/human/frontier/ranged/wasp/internals
+	icon_state = "frontiersmanranged_mask"
+	atmos_requirements = IMMUNE_ATMOS_REQS
+	minbodytemp = 0
+	mob_spawner = /obj/effect/mob_spawn/human/corpse/frontier/ranged/internals
+
+/mob/living/simple_animal/hostile/human/frontier/ranged/wasp/internals/neutered
+	weapon_drop_chance = 0
+
+/mob/living/simple_animal/hostile/human/frontier/ranged/pounder
+	name = "Frontiersman Slammer"
+	desc = "A member of the brutal Frontiersman terrorist fleet! This one gingerly stares forward, eager to pull the trigger on their antiquidated SMG."
+	icon_state = "frontiersmanranged"
+	retreat_distance = 3
+	minimum_distance = 2
+	rapid = 10
+	rapid_fire_delay = 1
+	projectilesound = 'sound/weapons/gun/smg/pounder.ogg'
+	casingtype = /obj/item/ammo_casing/c22lr
+	r_hand = /obj/item/gun/ballistic/automatic/smg/pounder
+
+/mob/living/simple_animal/hostile/human/frontier/ranged/pounder/internals
+	icon_state = "frontiersmanranged_mask"
+	atmos_requirements = IMMUNE_ATMOS_REQS
+	minbodytemp = 0
+	mob_spawner = /obj/effect/mob_spawn/human/corpse/frontier/ranged/internals
+
+/mob/living/simple_animal/hostile/human/frontier/ranged/pounder/space
+	icon_state = "frontiersmanranged_mask"
+	atmos_requirements = IMMUNE_ATMOS_REQS
+	minbodytemp = 0
+	maxbodytemp = 1000
+	icon_state = "frontiersmanpounder"
+	mob_spawner = /obj/effect/mob_spawn/human/corpse/frontier/space
+	armor_base = /obj/item/clothing/suit/space/hardsuit/security/independent/frontier
+
+/mob/living/simple_animal/hostile/human/frontier/ranged/space/Initialize()
+	. = ..()
+	ADD_TRAIT(src, TRAIT_SPACEWALK, INNATE_TRAIT)
+	set_light(4)
 
 /mob/living/simple_animal/hostile/human/frontier/ranged/surgeon
 	name = "Frontiersman Sawbones"
@@ -79,6 +152,20 @@
 	projectilesound = 'sound/weapons/gun/rifle/mosin.ogg'
 	r_hand = /obj/item/gun/ballistic/rifle/illestren
 
+/mob/living/simple_animal/hostile/human/frontier/ranged/mosin/space
+	icon_state = "frontiersmanrangedrifle_mask"
+	atmos_requirements = IMMUNE_ATMOS_REQS
+	icon_state = "frontiersmanrangedrifle_space"
+	minbodytemp = 0
+	maxbodytemp = 1000
+	mob_spawner = /obj/effect/mob_spawn/human/corpse/frontier/space
+	armor_base = /obj/item/clothing/suit/space/hardsuit/security/independent/frontier
+
+/mob/living/simple_animal/hostile/human/frontier/ranged/mosin/space/Initialize()
+	. = ..()
+	ADD_TRAIT(src, TRAIT_SPACEWALK, INNATE_TRAIT)
+	set_light(4)
+
 /mob/living/simple_animal/hostile/human/frontier/ranged/mosin/internals
 	icon_state = "frontiersmanrangedrifle_mask"
 	atmos_requirements = IMMUNE_ATMOS_REQS
@@ -95,14 +182,26 @@
 	name = "Frontiersman Doorkicker"
 	desc = "A member of the brutal Frontiersman terrorist fleet! Bedecked in military-grade armor, they swagger their shotgun about with a boldness uncommon even among other Frontiersmen."
 	icon_state = "frontiersmanrangedelite"
-	maxHealth = 170
-	health = 170
 	shoot_point_blank = TRUE
 	projectilesound = 'sound/weapons/gun/shotgun/shot.ogg'
 	casingtype = /obj/item/ammo_casing/shotgun/buckshot
 	mob_spawner = /obj/effect/mob_spawn/human/corpse/frontier/ranged/trooper
 	r_hand = /obj/item/gun/ballistic/shotgun/brimstone
 	armor_base = /obj/item/clothing/suit/armor/vest/frontier
+
+/mob/living/simple_animal/hostile/human/frontier/ranged/trooper/space
+	icon_state = "frontiersmanrangedelite_mask"
+	atmos_requirements = IMMUNE_ATMOS_REQS
+	icon_state = "frontiersmenrangedelite_space"
+	minbodytemp = 0
+	maxbodytemp = 1000
+	mob_spawner = /obj/effect/mob_spawn/human/corpse/frontier/space
+	armor_base = /obj/item/clothing/suit/space/hardsuit/security/independent/frontier
+
+/mob/living/simple_animal/hostile/human/frontier/ranged/trooper/space/Initialize()
+	. = ..()
+	ADD_TRAIT(src, TRAIT_SPACEWALK, INNATE_TRAIT)
+	set_light(4)
 
 /mob/living/simple_animal/hostile/human/frontier/ranged/trooper/internals
 	icon_state = "frontiersmanrangedelite_mask"
@@ -114,6 +213,32 @@
 	weapon_drop_chance = 0
 
 /mob/living/simple_animal/hostile/human/frontier/ranged/trooper/neutered
+	weapon_drop_chance = 0
+
+/mob/living/simple_animal/hostile/human/frontier/ranged/trooper/wasp
+	name = "Frontiersman Stinger"
+	desc = "A member of the brutal Frontiersman terrorist fleet! This one is well protected with their laser SMG, ready to scorch anyone who stands in their way."
+	icon_state = "frontiersmanrangedak47"
+	retreat_distance = 2
+	minimum_distance = 1
+	projectilesound = 'sound/weapons/laser4.ogg'
+	rapid = 3
+	spread = 12
+	casingtype = null
+	projectiletype = /obj/projectile/beam/laser/eoehoma/wasp
+	rapid_fire_delay = 0.1 SECONDS
+	r_hand = /obj/item/gun/energy/laser/wasp
+
+/mob/living/simple_animal/hostile/human/frontier/ranged/wasp/neutered
+	weapon_drop_chance = 0
+
+/mob/living/simple_animal/hostile/human/frontier/ranged/trooper/wasp/internals
+	icon_state = "frontiersmanrangedak47_mask"
+	atmos_requirements = IMMUNE_ATMOS_REQS
+	minbodytemp = 0
+	mob_spawner = /obj/effect/mob_spawn/human/corpse/frontier/ranged/trooper/internals
+
+/mob/living/simple_animal/hostile/human/frontier/ranged/trooper/wasp/internals/neutered
 	weapon_drop_chance = 0
 
 /mob/living/simple_animal/hostile/human/frontier/ranged/trooper/flame
@@ -138,7 +263,7 @@
 /mob/living/simple_animal/hostile/human/frontier/ranged/trooper/flame/OpenFire()
 	var/turf/T = get_ranged_target_turf_direct(src, target, 4)
 	var/list/burn_turfs = getline(src, T) - get_turf(src)
-	visible_message("<span class='danger'><b>[src]</b> [ranged_message] at [target.name]!</span>")
+	visible_message(span_danger("<b>[src]</b> [ranged_message] at [target.name]!"))
 	playsound(src, projectilesound, 100, TRUE)
 	fire_line(src, burn_turfs, "flamethrower", TRUE, 10)
 	ranged_cooldown = world.time + ranged_cooldown_time
@@ -154,7 +279,21 @@
 	rapid = 4
 	rapid_fire_delay = 3
 	casingtype = /obj/item/ammo_casing/a762_40
+	armor_base = /obj/item/clothing/suit/armor/vest/frontier
 	r_hand = /obj/item/gun/ballistic/automatic/assault/skm
+
+/mob/living/simple_animal/hostile/human/frontier/ranged/trooper/skm/space
+	atmos_requirements = IMMUNE_ATMOS_REQS
+	minbodytemp = 0
+	maxbodytemp = 1000
+	icon_state = "frontiersmanrangedak47_space"
+	mob_spawner = /obj/effect/mob_spawn/human/corpse/frontier/space
+	armor_base = /obj/item/clothing/suit/space/hardsuit/security/independent/frontier
+
+/mob/living/simple_animal/hostile/human/frontier/ranged/trooper/skm/space/Initialize()
+	. = ..()
+	ADD_TRAIT(src, TRAIT_SPACEWALK, INNATE_TRAIT)
+	set_light(4)
 
 /mob/living/simple_animal/hostile/human/frontier/ranged/trooper/skm/internals
 	icon_state = "frontiersmanrangedak47_mask"
@@ -175,6 +314,7 @@
 	icon_state = "frontiersmanrangedmosin"
 	casingtype = /obj/item/ammo_casing/a8_50r
 	projectilesound = 'sound/weapons/gun/rifle/mosin.ogg'
+	armor_base = /obj/item/clothing/suit/armor/vest/frontier
 	r_hand = /obj/item/gun/ballistic/rifle/illestren
 
 /mob/living/simple_animal/hostile/human/frontier/ranged/trooper/rifle/internals
@@ -191,15 +331,28 @@
 
 /mob/living/simple_animal/hostile/human/frontier/ranged/trooper/heavy
 	name = "Frontiersman Sweeper"
-	desc = "Unseen behind the mirror-visor of this heavily plated hardsuit, flinty eyes dream of cruelty. A mass of chrome and photonics swings your way, the soft whine of its motor a harbinger of iridescent death."
+	desc = "A horrifically still mass of plasteel and flesh. Its motions are filled with a deliberate and exacting malice. Its weapon is raised, and it prepares to pull the trigger."
 	icon_state = "frontiersmanrangedminigun"
-	projectilesound = 'sound/weapons/laser4.ogg'
-	rapid = 6
-	rapid_fire_delay = 1.5
-	casingtype = null
-	projectiletype = /obj/projectile/beam/weak/penetrator
+	projectilesound = 'sound/weapons/gun/hmg/shredder.ogg'
+	rapid = 5
+	rapid_fire_delay = 2
+	casingtype = /obj/item/ammo_casing/shotgun
+	r_hand = /obj/item/gun/ballistic/automatic/hmg/shredder
 	mob_spawner = /obj/effect/mob_spawn/human/corpse/frontier/ranged/trooper/heavy
 	armor_base = /obj/item/clothing/suit/space/hardsuit/security/independent/frontier
+
+/mob/living/simple_animal/hostile/human/frontier/ranged/trooper/heavy/space
+	icon_state = "frontiersmanranged_mask"
+	atmos_requirements = IMMUNE_ATMOS_REQS
+	minbodytemp = 0
+	maxbodytemp = 1000
+	icon_state = "frontiersmanrangedminigun_space"
+	mob_spawner = /obj/effect/mob_spawn/human/corpse/frontier/space
+
+/mob/living/simple_animal/hostile/human/frontier/ranged/space/Initialize()
+	. = ..()
+	ADD_TRAIT(src, TRAIT_SPACEWALK, INNATE_TRAIT)
+	set_light(4)
 
 /mob/living/simple_animal/hostile/human/frontier/ranged/trooper/heavy/internals
 	icon_state = "frontiersmanrangedminigun_mask"
@@ -207,18 +360,31 @@
 	minbodytemp = 0
 	mob_spawner = /obj/effect/mob_spawn/human/corpse/frontier/ranged/trooper/heavy/internals
 
+/mob/living/simple_animal/hostile/human/frontier/ranged/trooper/heavy/internals/buckshot
+	casingtype = /obj/item/ammo_casing/shotgun/buckshot
+
+/mob/living/simple_animal/hostile/human/frontier/ranged/trooper/heavy/internals/buckshot/neutered
+	weapon_drop_chance = 0
+
 /mob/living/simple_animal/hostile/human/frontier/ranged/trooper/heavy/internals/neutered
 	weapon_drop_chance = 0
 
 /mob/living/simple_animal/hostile/human/frontier/ranged/trooper/heavy/neutered
 	weapon_drop_chance = 0
 
+/mob/living/simple_animal/hostile/human/frontier/ranged/trooper/heavy/space/neutered
+	weapon_drop_chance = 0
+
+/mob/living/simple_animal/hostile/human/frontier/ranged/trooper/heavy/buckshot
+	casingtype = /obj/item/ammo_casing/shotgun/buckshot
+
+/mob/living/simple_animal/hostile/human/frontier/ranged/trooper/heavy/buckshot/neutered
+	weapon_drop_chance = 0
+
 /mob/living/simple_animal/hostile/human/frontier/ranged/officer
 	name = "Frontiersman Boss"
 	desc = "This Frontiersman moves with what could almost pass for discipline among the infamously ragtag terrorists. They leer at their underlings, one hand resting consciously over the machine pistol at their hip."
 	icon_state = "frontiersmanofficer"
-	maxHealth = 65
-	health = 65
 	rapid = 6
 	rapid_fire_delay = 1
 	shoot_point_blank = TRUE
@@ -226,6 +392,7 @@
 	casingtype = /obj/item/ammo_casing/c9mm
 	mob_spawner = /obj/effect/mob_spawn/human/corpse/frontier/ranged/officer
 	r_hand = /obj/item/gun/ballistic/automatic/pistol/mauler
+	armor_base = /obj/item/clothing/suit/armor/frontier
 
 /mob/living/simple_animal/hostile/human/frontier/ranged/officer/internals
 	icon_state = "frontiersmanofficer_mask"
@@ -238,3 +405,12 @@
 
 /mob/living/simple_animal/hostile/human/frontier/ranged/officer/neutured
 	weapon_drop_chance = 0
+
+/mob/living/simple_animal/hostile/human/frontier/ranged/officer/rifle
+	name = "Frontiersman Commander"
+	desc = "This Frontiersman sways through the world with a deliberate cadence. Their eyes stay up as they search for a target, rubbing at the bolt of their rifle."
+	casingtype = /obj/item/ammo_casing/a8_50r/match
+	projectilesound = 'sound/weapons/gun/rifle/mosin.ogg'
+	r_hand = /obj/item/gun/ballistic/rifle/illestren
+	rapid = 2
+	rapid_fire_delay = 10

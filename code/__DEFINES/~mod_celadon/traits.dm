@@ -6,3 +6,13 @@
 
 /// This mob heals from carp rifts.
 #define TRAIT_HEALS_FROM_CARP_RIFTS "heals_from_carp_rifts"
+
+#define TRAIT_FAN_CLOWN "fan_clown"
+#define TRAIT_FAN_MIME "fan_mime"
+
+#define TRAIT_DEPRESSION "depression"
+#define TRAIT_UNSTABLE "unstable"
+#define TRAIT_NIGHT_VISION "night_vision"
+#define TRAIT_SKITTISH "skittish"
+#define TRAIT_DRUNK_HEALING "drunk_healing"
+#define TRAIT_SNOB "snob"

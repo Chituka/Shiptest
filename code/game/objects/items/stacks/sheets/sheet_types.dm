@@ -18,8 +18,10 @@
 	name = "metal"
 	desc = "Sheets made out of metal."
 	singular_name = "metal sheet"
+	icon = 'icons/obj/materials/sheets.dmi'
 	icon_state = "sheet-metal"
 	item_state = "sheet-metal"
+
 	custom_materials = list(/datum/material/iron=MINERAL_MATERIAL_AMOUNT)
 	throwforce = 10
 	flags_1 = CONDUCT_1
@@ -73,7 +75,7 @@ GLOBAL_LIST_INIT(plasteel_recipes, list ( \
 	)), \
 	new/datum/stack_recipe("shutters frame", /obj/structure/poddoor_assembly/shutters, 5, time = 50, one_per_turf = 1, on_floor = 1), \
 	// [CELADON-ADD] - CELADON_STRUCTURES - Барикады
-	new/datum/stack_recipe("plasteel barricade", /obj/structure/deployable_barricade/metal/plasteel, 20, time = 10 SECONDS, one_per_turf = TRUE, on_floor = TRUE), \
+	new/datum/stack_recipe("plasteel barricade", /obj/structure/deployable_barricade/metal/plasteel, 10, time = 10 SECONDS, one_per_turf = TRUE, on_floor = TRUE), \
 	// [/CELADON-ADD]
 	new/datum/stack_recipe("blast door frame", /obj/structure/poddoor_assembly, 15, time = 50, one_per_turf = 1, on_floor = 1)
 ))
@@ -82,6 +84,7 @@ GLOBAL_LIST_INIT(plasteel_recipes, list ( \
 	name = "plasteel"
 	singular_name = "plasteel sheet"
 	desc = "This sheet is an alloy of iron and plasma."
+	icon = 'icons/obj/materials/sheets.dmi'
 	icon_state = "sheet-plasteel"
 	item_state = "sheet-plasteel"
 	custom_materials = list(/datum/material/iron=MINERAL_MATERIAL_AMOUNT, /datum/material/plasma=MINERAL_MATERIAL_AMOUNT)
@@ -159,8 +162,9 @@ GLOBAL_LIST_INIT(wood_recipes, list ( \
 	new/datum/stack_recipe("wooden railing", /obj/structure/railing/wood, 3, time = 18, window_checks = TRUE), \
 	new/datum/stack_recipe("wooden railing corner", /obj/structure/railing/corner/wood, 1, time = 10, window_checks = TRUE), \
 	new /datum/stack_recipe("wooden computer frame", /obj/structure/frame/computer/solgov, 5, time = 25, one_per_turf = TRUE, on_floor = TRUE), \
+	new/datum/stack_recipe("planter box", /obj/machinery/hydroponics/wooden, 5, time = 8 SECONDS, one_per_turf = TRUE, on_floor = TRUE), \
 	// [CELADON-ADD] - CELADON_STRUCTURES - Барикады
-	new/datum/stack_recipe("Wooden Half-Barricade", /obj/structure/deployable_barricade/wooden, 20, time = 5 SECONDS, one_per_turf = TRUE, on_floor = TRUE), \
+	new/datum/stack_recipe("Wooden Half-Barricade", /obj/structure/deployable_barricade/wooden, 10, time = 5 SECONDS, one_per_turf = TRUE, on_floor = TRUE), \
 	// [/CELADON-ADD]
 	))
 
@@ -378,7 +382,6 @@ GLOBAL_LIST_INIT(cardboard_recipes, list (														\
 		new /datum/stack_recipe("donk-pockets teriyaki box", /obj/item/storage/box/donkpockets/donkpocketteriyaki),		\
 		new /datum/stack_recipe("donk-pockets pizza box", /obj/item/storage/box/donkpockets/donkpocketpizza),			\
 		new /datum/stack_recipe("donk-pockets berry box", /obj/item/storage/box/donkpockets/donkpocketberry),			\
-		new /datum/stack_recipe("donk-pockets honk box", /obj/item/storage/box/donkpockets/donkpockethonk),				\
 		new /datum/stack_recipe("monkey cube box", /obj/item/storage/box/monkeycubes),
 		new /datum/stack_recipe("nugget box", /obj/item/storage/fancy/nugget_box),			\
 		null,																					\
@@ -439,7 +442,7 @@ GLOBAL_LIST_INIT(cardboard_recipes, list (														\
 	if(istype(I, /obj/item/stamp/chameleon) && !istype(loc, /obj/item/storage))
 		var/atom/droploc = drop_location()
 		if(use(1))
-			to_chat(user, "<span class='notice'>You stamp the cardboard in a sinister way.</span>")
+			to_chat(user, span_notice("You stamp the cardboard in a sinister way."))
 			if (amount >= 0)
 				new/obj/item/storage/box/syndie_kit(droploc)
 	else
@@ -457,7 +460,7 @@ GLOBAL_LIST_INIT(bronze_recipes, list ( \
 	new/datum/stack_recipe("pinion airlock assembly", /obj/structure/door_assembly/door_assembly_bronze, 4, time = 50, one_per_turf = TRUE, on_floor = TRUE), \
 	new/datum/stack_recipe("bronze pinion airlock assembly", /obj/structure/door_assembly/door_assembly_bronze/seethru, 4, time = 50, one_per_turf = TRUE, on_floor = TRUE), \
 	new/datum/stack_recipe("bronze hat", /obj/item/clothing/head/bronze), \
-	// [CELADON-ADD] - CELADON_RETURN_CONTENT
+	// [CELADON-ADD] - CELADON_RETURN_CONTENT_SPAWN
 	new/datum/stack_recipe("bronze suit", /obj/item/clothing/suit/bronze), \
 	new/datum/stack_recipe("bronze boots", /obj/item/clothing/shoes/bronze), \
 	// [/CELADON-ADD]

@@ -25,7 +25,7 @@
 		/obj/item/clothing/suit/hooded/wintercoat = 1,
 		/obj/item/clothing/suit/jacket = 1,
 		/obj/item/clothing/suit/jacket/leather = 1,
-		// [CELADON-ADD] - CELADON_RETURN_CONTENT
+		// [CELADON-ADD] - CELADON_RETURN_CONTENT_SPAWN
 		/obj/item/clothing/suit/jacket/leather/overcoat = 1,
 		// [/CELADON-ADD]
 		/obj/item/clothing/suit/jacket/leather/duster = 1,
@@ -82,7 +82,7 @@
 			/obj/item/clothing/head/hardhat = 2,
 			/obj/item/clothing/head/hardhat/orange = 2,
 			/obj/item/clothing/head/hardhat/dblue = 2,
-			// [CELADON-ADD] - CELADON_RETURN_CONTENT
+			// [CELADON-ADD] - CELADON_RETURN_CONTENT_SPAWN
 			/obj/item/clothing/head/foilhat = 1,
 			// [/CELADON-ADD]
 			/obj/item/clothing/head/pirate = 1,
@@ -101,10 +101,7 @@
 			/obj/item/clothing/neck/scarf/red = 1,
 			/obj/item/clothing/neck/scarf/green = 1,
 			/obj/item/clothing/neck/scarf/darkblue = 1,
-			/obj/item/clothing/neck/shemagh = 1,
-			/obj/item/clothing/neck/stripedredscarf = 1,
-			/obj/item/clothing/neck/stripedgreenscarf = 1,
-			/obj/item/clothing/neck/stripedbluescarf = 1
+			/obj/item/clothing/neck/shemagh = 1
 			)
 		)
 	ears = pick(/obj/item/radio/headset, /obj/item/radio/headset/alt)
@@ -185,7 +182,7 @@
 			/obj/item/pickaxe/silver = 4,
 			/obj/item/pickaxe/diamond = 2,
 			/obj/item/gun/energy/kinetic_accelerator = 2,
-			/obj/item/kinetic_crusher/old = 1
+			// /obj/item/kinetic_crusher/old = 1 - [CELADON-DELETE] - Баланс
 			)
 		)
 	if(prob(75))
@@ -252,8 +249,8 @@
 	else if (prob(75))
 		backpack_contents = list()
 		back = pick_weight(list(
-			/obj/item/kinetic_crusher = 9,
-			/obj/item/kinetic_crusher/old = 1
+			// /obj/item/kinetic_crusher = 9, - [CELADON-DELETE] - Баланс
+			// /obj/item/kinetic_crusher/old = 1 - [CELADON-DELETE] - Баланс
 			)
 		)
 
@@ -383,7 +380,6 @@
 			/obj/item/stock_parts/matter_bin/adv = 2,
 			/obj/item/survey_handheld = 1,
 			/obj/item/weldingtool/electric = 1,
-			/obj/item/mmi/posibrain = 1,
 			/obj/item/reagent_containers/glass/beaker/plastic = 1,
 			/obj/item/organ/eyes/robotic/shield = 1,
 			/obj/item/organ/eyes/robotic/glow = 1,

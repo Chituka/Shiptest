@@ -24,12 +24,8 @@
 //Berets, AKA how I lost my will to live again
 
 /datum/gear/hat/beret
-	display_name = "beret, red"
-	path = /obj/item/clothing/head/beret
-
-/datum/gear/hat/beret/black
-	display_name = "beret, black"
-	path = /obj/item/clothing/head/beret/black
+	display_name = "beret, recolorable"
+	path = /obj/item/clothing/head/beret/color
 
 /datum/gear/hat/beret/departmental
 	display_name = "beret, departmental"
@@ -69,8 +65,10 @@
 		"Curator" = /obj/item/clothing/head/beret/service,
 		"Janitor" = /obj/item/clothing/head/beret/service,
 		"Lawyer" = /obj/item/clothing/head/beret/service,
+// [CELADON-ADD] - CELADON_RETURN_CONTENT_CLOWNS
 		"Mime" = /obj/item/clothing/head/beret,
 		"Clown" = /obj/item/clothing/head/beret/puce
+// [/CELADON-ADD]
 	)
 
 /datum/gear/hat/beret/engineering/hazard
@@ -104,32 +102,9 @@
 //Beanies
 
 /datum/gear/hat/beanie
-	display_name = "beanie, white"
+	display_name = "beanie, recolorable"
 	path = /obj/item/clothing/head/beanie
 
-/datum/gear/hat/beanie/black
-	display_name = "beanie, black"
-	path = /obj/item/clothing/head/beanie/black
-
-/datum/gear/hat/beanie/red
-	display_name = "beanie, red"
-	path = /obj/item/clothing/head/beanie/red
-
-/datum/gear/hat/beanie/green
-	display_name = "beanie, green"
-	path = /obj/item/clothing/head/beanie/green
-
-/datum/gear/hat/beanie/purple
-	display_name = "beanie, purple"
-	path = /obj/item/clothing/head/beanie/purple
-
-/datum/gear/hat/beanie/blue
-	display_name = "beanie, blue"
-	path = /obj/item/clothing/head/beanie/darkblue
-
-/datum/gear/hat/beanie/orange
-	display_name = "beanie, orange"
-	path = /obj/item/clothing/head/beanie/orange
 //Misc
 
 /datum/gear/hat/that
@@ -171,3 +146,7 @@
 /datum/gear/hat/flap
 	display_name = "flap cap, recolorable"
 	path = /obj/item/clothing/head/flap
+
+/datum/gear/hat/sunhat
+	display_name = "sun hat"
+	path = /obj/item/clothing/head/sunhat

@@ -1,10 +1,10 @@
 // ROBOT ALCOHOL PAST THIS POINT
 // WOOO!
 // /obj/structure/aquarium
-// 	icon = 'mod_celadon/_storge_icons/icons/food_and_drinks/drinks.dmi'
+// 	icon = 'mod_celadon/_storge_icons/icons/items/misc/drinks.dmi'
 
 /obj/item/reagent_containers/food/drinks
-	icon = 'mod_celadon/_storge_icons/icons/food_and_drinks/drinks.dmi'
+	icon = 'mod_celadon/_storge_icons/icons/items/misc/drinks.dmi'
 
 #define REAGENT_TOUCH 1
 #define REAGENT_INGEST 2
@@ -34,7 +34,7 @@
 	if(M.dna.species.reagent_tag & PROCESS_SYNTHETIC)
 		return
 	if(method == REAGENT_INGEST)
-		to_chat(M, pick("<span class = 'danger'>That was awful!</span>", "<span class = 'danger'>Yuck!</span>"))
+		to_chat(M, pick("<span class = 'danger'>That was awful!"), "<span class = 'danger'>Yuck!")))
 */
 /datum/reagent/consumable/ethanol/synthanol/robottears
 	name = "Robot Tears"

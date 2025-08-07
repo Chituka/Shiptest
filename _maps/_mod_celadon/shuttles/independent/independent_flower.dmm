@@ -479,7 +479,7 @@
 /turf/open/floor/grass,
 /area/ship/crew/hydroponics)
 "rI" = (
-/obj/machinery/power/solar_control,
+/obj/machinery/computer/solar_control,
 /obj/structure/cable/yellow{
 	icon_state = "0-2"
 	},
@@ -958,19 +958,21 @@
 /obj/structure/cable{
 	icon_state = "1-4"
 	},
-/obj/item/kirbyplants/random,
 /obj/effect/turf_decal/corner/opaque/brown/border{
 	dir = 10
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/suit_storage_unit/inherit,
+/obj/item/clothing/suit/space/eva,
+/obj/item/clothing/head/helmet/space/eva,
 /turf/open/floor/plasteel/dark,
 /area/ship/cargo)
 "Ih" = (
 /obj/structure/bed,
 /obj/structure/curtain/bounty,
-/obj/item/bedsheet/random,
+/obj/effect/spawner/random/bedsheet,
 /obj/machinery/firealarm/directional/east,
 /obj/machinery/light/directional/west,
 /obj/item/radio/intercom/directional/north,
@@ -1492,7 +1494,7 @@
 /obj/effect/turf_decal/corner/opaque/bottlegreen/half{
 	dir = 4
 	},
-/turf/open/floor/hangar/plasteel/white,
+/turf/open/floor/plasteel/white,
 /area/ship/crew/hydroponics)
 "Vi" = (
 /obj/structure/cable{

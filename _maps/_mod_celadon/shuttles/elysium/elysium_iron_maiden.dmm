@@ -473,10 +473,10 @@
 "rB" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/structure/table/wood,
-/obj/item/reagent_containers/food/snacks/grown/ambrosia{
+/obj/item/food/grown/ambrosia{
 	pixel_y = 11
 	},
-/obj/item/reagent_containers/food/snacks/grown/ambrosia{
+/obj/item/food/grown/ambrosia{
 	pixel_y = -3;
 	pixel_x = -11
 	},
@@ -485,7 +485,7 @@
 	pixel_y = 3
 	},
 /obj/machinery/newscaster/directional/south,
-/obj/item/reagent_containers/food/snacks/pizzaslice/meat,
+/obj/item/food/pizzaslice/meat,
 /turf/open/floor/carpet/green,
 /area/ship/crew/cryo)
 "tb" = (
@@ -655,6 +655,18 @@
 	pixel_y = -3
 	},
 /obj/structure/closet/crate/secure/exo,
+/obj/item/storage/box/ammo/a762_40{
+	pixel_x = -5;
+	pixel_y = -3
+	},
+/obj/item/storage/box/ammo/a762_40{
+	pixel_x = -5;
+	pixel_y = -3
+	},
+/obj/item/storage/box/ammo/a762_40{
+	pixel_x = -5;
+	pixel_y = -3
+	},
 /turf/open/floor/plasteel/mono/dark,
 /area/ship/cargo)
 "xk" = (
@@ -946,7 +958,7 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/item/reagent_containers/food/snacks/grown/ambrosia/gaia,
+/obj/item/food/grown/ambrosia/gaia,
 /turf/open/floor/plating,
 /area/ship/bridge)
 "Jn" = (
@@ -958,22 +970,22 @@
 "JS" = (
 /obj/effect/turf_decal/box,
 /obj/effect/turf_decal/trimline/opaque/green/arrow_cw,
-/obj/item/reagent_containers/food/snacks/burger{
+/obj/item/food/burger{
 	pixel_x = 4
 	},
-/obj/item/reagent_containers/food/snacks/burger{
+/obj/item/food/burger{
 	pixel_x = 4
 	},
-/obj/item/reagent_containers/food/snacks/burger{
+/obj/item/food/burger{
 	pixel_x = 4
 	},
-/obj/item/reagent_containers/food/snacks/burger{
+/obj/item/food/burger{
 	pixel_x = 4
 	},
-/obj/item/reagent_containers/food/snacks/burger{
+/obj/item/food/burger{
 	pixel_x = 4
 	},
-/obj/item/reagent_containers/food/snacks/burger{
+/obj/item/food/burger{
 	pixel_x = 4
 	},
 /obj/structure/closet/crate/large,
@@ -1323,8 +1335,7 @@
 	dir = 5
 	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
-	dir = 1;
-	filter_types = list("n2")
+	dir = 1
 	},
 /obj/item/trash/energybar,
 /turf/open/floor/plasteel/tech,
@@ -1420,8 +1431,7 @@
 /area/ship/crew/cryo)
 "UR" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
-	dir = 1;
-	filter_types = list("n2")
+	dir = 1
 	},
 /obj/structure/closet/secure_closet/wall{
 	icon_state = "generic_wall";

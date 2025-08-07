@@ -177,7 +177,9 @@
 /obj/effect/turf_decal/spline/fancy/opaque/nakamuraayellow{
 	dir = 9
 	},
-/obj/item/mod/control/pre_equipped/atmospheric,
+/obj/item/clothing/suit/space/hardsuit/engine/atmos,
+/obj/item/tank/internals/oxygen,
+/obj/item/clothing/mask/gas/atmos,
 /turf/open/floor/plasteel/patterned,
 /area/ship/storage{
 	name = "Storage And Science Bay"
@@ -670,7 +672,7 @@
 /area/ship/engineering/communications)
 "ga" = (
 /obj/structure/bed,
-/obj/item/bedsheet/dorms,
+/obj/effect/spawner/random/bedsheet,
 /obj/structure/curtain/bounty,
 /obj/structure/window/reinforced{
 	dir = 4
@@ -1075,13 +1077,13 @@
 /area/ship/engineering/communications)
 "lb" = (
 /obj/structure/bed,
-/obj/item/bedsheet/dorms,
+/obj/effect/spawner/random/bedsheet,
 /obj/structure/curtain/bounty,
 /turf/open/floor/plasteel/grimy,
 /area/ship/crew)
 "lE" = (
 /obj/effect/turf_decal/box/corners,
-/obj/effect/spawner/random/salvage_machine,
+/obj/effect/spawner/random/salvage/machine,
 /turf/open/floor/plasteel/patterned/cargo_one,
 /area/ship/cargo/starboard)
 "lS" = (
@@ -2096,7 +2098,8 @@
 /obj/machinery/suit_storage_unit/inherit,
 /obj/effect/turf_decal/spline/fancy/opaque/ntblue,
 /obj/item/clothing/mask/gas/atmos,
-/obj/item/mod/control/pre_equipped/advanced,
+/obj/item/clothing/suit/space/hardsuit/engine/elite,
+/obj/item/tank/internals/oxygen,
 /turf/open/floor/plasteel/tech,
 /area/ship/crew/dorm/captain)
 "zM" = (
@@ -2316,7 +2319,7 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/random/salvage_machine,
+/obj/effect/spawner/random/salvage/machine,
 /turf/open/floor/plasteel/patterned/cargo_one,
 /area/ship/cargo/starboard)
 "Ce" = (
@@ -4148,7 +4151,9 @@
 /obj/effect/turf_decal/spline/fancy/opaque/nakamuraayellow{
 	dir = 8
 	},
-/obj/item/mod/control/pre_equipped/atmospheric,
+/obj/item/clothing/suit/space/hardsuit/engine/atmos,
+/obj/item/tank/internals/oxygen,
+/obj/item/clothing/mask/gas/atmos,
 /turf/open/floor/plasteel/patterned,
 /area/ship/storage{
 	name = "Storage And Science Bay"

@@ -12,6 +12,10 @@ GLOBAL_LIST_INIT(available_ui_styles, list(
 	"Slimecore" = 'icons/hud/screen_slimecore.dmi',
 	"Operative" = 'icons/hud/screen_operative.dmi',
 	"Clockwork" = 'icons/hud/screen_clockwork.dmi',
+// [CELADON-ADD] - NEW UI SCREENS
+	"Tetramon (Ru)" = 'mod_celadon/_storge_icons/icons/assets/hud/screen_tetramon.dmi',
+	"Wayfaron (Goon)" = 'mod_celadon/_storge_icons/icons/assets/hud/screen_wayfaron.dmi',
+// [/CELADON-ADD]
 	"Glass" = 'icons/hud/screen_glass.dmi'
 ))
 
@@ -259,9 +263,9 @@ GLOBAL_LIST_INIT(available_ui_styles, list(
 
 	if(hud_used && client)
 		hud_used.show_hud() //Shows the next hud preset
-		to_chat(usr, "<span class='info'>Switched HUD mode. Press F12 to toggle.</span>")
+		to_chat(usr, span_info("Switched HUD mode. Press F12 to toggle."))
 	else
-		to_chat(usr, "<span class='warning'>This mob type does not use a HUD.</span>")
+		to_chat(usr, span_warning("This mob type does not use a HUD."))
 
 
 //(re)builds the hand ui slots, throwing away old ones

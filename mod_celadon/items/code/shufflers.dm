@@ -9,9 +9,9 @@
 /obj/item/ammo_box/shuffler/unique_action(mob/living/user)
 	stored_ammo = shuffle(stored_ammo)
 	playsound(src, shuffle_sound, 50, TRUE)
-	user.visible_message("<span class='notice'>[user] shuffles bullets in [src].</span>", \
-						"<span class='notice'>You shuffle bullets in [src].</span>", \
-						"<span class='notice'>You hear shuffling sound.</span>")
+	user.visible_message(span_notice("[user] shuffles bullets in [src]."), \
+						span_notice("You shuffle bullets in [src]."), \
+						span_notice("You hear shuffling sound."))
 
 /obj/item/ammo_box/shuffler/examine(mob/user)
 	. = ..()
@@ -20,7 +20,7 @@
 /obj/item/ammo_box/shuffler/a12g
 	name = "buckshot shuffler"
 	desc = "Buckshot magazine with shuffle function. Don't forget your release of liability."
-	icon = 'mod_celadon/_storge_icons/icons/ammo/ammo.dmi'
+	icon = 'mod_celadon/_storge_icons/icons/items/weapons/ammo/ammo.dmi'
 	base_icon_state = "buckshot_shuffler"
 	icon_state = "buckshot_shuffler-0"
 	caliber = "12ga"

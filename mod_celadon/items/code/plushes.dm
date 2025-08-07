@@ -4,7 +4,7 @@
 
 // // MODULAR PLUSHES
 /obj/item/toy/plush/celadon
-	icon = 'mod_celadon/_storge_icons/icons/items/plushes.dmi'
+	icon = 'mod_celadon/_storge_icons/icons/items/misc/plushes.dmi'
 
 /obj/item/toy/plush/celadon/borbplushie
 	name = "borb plushie"
@@ -617,56 +617,56 @@
 /obj/random/carp_plushie
 	name = "Random Carp Plushie"
 	desc = "This is a random plushie"
-	icon = 'mod_celadon/_storge_icons/icons/items/plushes.dmi'
+	icon = 'mod_celadon/_storge_icons/icons/items/misc/plushes.dmi'
 	icon_state = "carpplushie"
 
 // /obj/random/carp_plushie/item_to_spawn()
 // 	return pick(typesof(/obj/item/toy/plush/carpplushie)) //can pick any carp plushie, even the original.
 
 /obj/item/toy/plush/carpplushie/ice
-	icon = 'mod_celadon/_storge_icons/icons/items/plushes.dmi'
+	icon = 'mod_celadon/_storge_icons/icons/items/misc/plushes.dmi'
 	icon_state = "icecarp"
 
 /obj/item/toy/plush/carpplushie/silent
-	icon = 'mod_celadon/_storge_icons/icons/items/plushes.dmi'
+	icon = 'mod_celadon/_storge_icons/icons/items/misc/plushes.dmi'
 	icon_state = "silentcarp"
 
 /obj/item/toy/plush/carpplushie/electric
-	icon = 'mod_celadon/_storge_icons/icons/items/plushes.dmi'
+	icon = 'mod_celadon/_storge_icons/icons/items/misc/plushes.dmi'
 	icon_state = "electriccarp"
 
 /obj/item/toy/plush/carpplushie/gold
-	icon = 'mod_celadon/_storge_icons/icons/items/plushes.dmi'
+	icon = 'mod_celadon/_storge_icons/icons/items/misc/plushes.dmi'
 	icon_state = "goldcarp"
 
 /obj/item/toy/plush/carpplushie/toxin
-	icon = 'mod_celadon/_storge_icons/icons/items/plushes.dmi'
+	icon = 'mod_celadon/_storge_icons/icons/items/misc/plushes.dmi'
 	icon_state = "toxincarp"
 
 /obj/item/toy/plush/carpplushie/dragon
-	icon = 'mod_celadon/_storge_icons/icons/items/plushes.dmi'
+	icon = 'mod_celadon/_storge_icons/icons/items/misc/plushes.dmi'
 	icon_state = "dragoncarp"
 
 /obj/item/toy/plush/carpplushie/pink
-	icon = 'mod_celadon/_storge_icons/icons/items/plushes.dmi'
+	icon = 'mod_celadon/_storge_icons/icons/items/misc/plushes.dmi'
 	icon_state = "pinkcarp"
 
 /obj/item/toy/plush/carpplushie/candy
-	icon = 'mod_celadon/_storge_icons/icons/items/plushes.dmi'
+	icon = 'mod_celadon/_storge_icons/icons/items/misc/plushes.dmi'
 	icon_state = "candycarp"
 
 /obj/item/toy/plush/carpplushie/nebula
-	icon = 'mod_celadon/_storge_icons/icons/items/plushes.dmi'
+	icon = 'mod_celadon/_storge_icons/icons/items/misc/plushes.dmi'
 	icon_state = "nebulacarp"
 
 /obj/item/toy/plush/carpplushie/void
-	icon = 'mod_celadon/_storge_icons/icons/items/plushes.dmi'
+	icon = 'mod_celadon/_storge_icons/icons/items/misc/plushes.dmi'
 	icon_state = "voidcarp"
 
 /obj/item/toy/plush/axolotlplushie
 	name = "axolotl plushie"
 	desc = "An adorable stuffed toy that resembles an axolotl. Not to be mistaken for the real thing."
-	icon = 'mod_celadon/_storge_icons/icons/items/plushes.dmi'
+	icon = 'mod_celadon/_storge_icons/icons/items/misc/plushes.dmi'
 	icon_state = "plushie_axolotl"
 	attack_verb = list("nibbles", "splats")
 	var/axolotlbite = 'mod_celadon/_storge_sounds/sound/plushes/axolotl.ogg'
@@ -681,7 +681,7 @@
 		return ..()
 
 	playsound(src, 'mod_celadon/_storge_sounds/sound/plushes/axolotl.ogg', 20, 0)
-	user.visible_message(span_boldnotice("<span class='danger'>Squeeek!</span>"))
+	user.visible_message(span_boldnotice(span_danger("Squeeek!")))
 	cooldown = TRUE
 	addtimer(VARSET_CALLBACK(src, cooldown, FALSE), 3 SECONDS)
 
@@ -719,7 +719,7 @@
 		return ..()
 
 	playsound(loc, pick('mod_celadon/_storge_sounds/sound/plushes/supermatter.ogg', 'mod_celadon/_storge_sounds/sound/plushes/glass_step_sm.ogg'), 10, 1)
-	user.visible_message(span_boldnotice("<span class='danger'> DESTABILIZATION!</span>"))
+	user.visible_message(span_boldnotice(span_danger(" DESTABILIZATION!")))
 	cooldown = TRUE
 	addtimer(VARSET_CALLBACK(src, cooldown, FALSE), 3 SECONDS)
 
@@ -777,11 +777,6 @@
 	desc = "Faces into the floor!"
 	icon_state = "hampter_ert"
 
-// /obj/item/toy/plush/celadon/hampter/cute
-// 	name = "cute hampter"
-// 	desc = "A familiar big-eyed cute hampter plushie"
-// 	icon_state = "hampster_cute"
-
 /obj/item/toy/plush/celadon/beaver
 	name = "Beaver plushie"
 	desc = "A cute soft toy of a beaver. Holding it in your hands, you can hardly restrain yourself from screaming with happiness."
@@ -803,7 +798,7 @@
 /obj/item/toy/plush/celadon/rd
 	name = "RD doll"
 	desc = "An adorable anime toy looks like a RD!"
-	icon = 'mod_celadon/_storge_icons/icons/items/plushes.dmi'
+	icon = 'mod_celadon/_storge_icons/icons/items/misc/plushes.dmi'
 	icon_state = "RD_doll"
 	attack_verb = list("researched", "experimented")
 	squeak_override = list('mod_celadon/_storge_sounds/sound/plushes/beep.ogg' = 1)
@@ -884,4 +879,69 @@
 	var/message
 	message = "Тик-так, щас взорррву!"
 	user.visible_message(span_boldnotice(message))
+	COOLDOWN_START(src, cooldown, 3 SECONDS)
+
+/obj/item/toy/plush/celadon/kira
+	name = "Kira plushie"
+	desc = "Это игрушка кого-то вам напоминает, но кого, не понятно. Кошка какая-то..."
+	icon_state = "kira"
+	item_state = "kira"
+	w_class = WEIGHT_CLASS_SMALL
+	gender = FEMALE
+	COOLDOWN_DECLARE(cooldown)
+
+/obj/item/toy/plush/celadon/kira/attack_self(mob/user)
+
+	if(!COOLDOWN_FINISHED(src, cooldown))
+		return
+
+	playsound(loc, 'mod_celadon/_storge_sounds/sound/purr.ogg', 50, FALSE)
+	var/message
+	message = pick("Кира чувствует что ваша киска в зоне риска!",
+					"Кира чувствует, что ты устал.",
+					"Кира не прочь помочь тебе отдохнуть.",
+					"Послушай мурчание Киры.",
+					"Пора снова в шахты! Скала и Камень!")
+	user.visible_message(span_boldnotice(message))
+	COOLDOWN_START(src, cooldown, 3 SECONDS)
+
+/obj/item/toy/plush/celadon/mira
+	name = "Mira plushie"
+	desc = "Очаровательная таяра альбинос в нижнем белье, так и манит её погладить."
+	icon_state = "mira"
+	item_state = "mira"
+	w_class = WEIGHT_CLASS_SMALL
+	gender = FEMALE
+	COOLDOWN_DECLARE(cooldown)
+
+/obj/item/toy/plush/celadon/mira/attack_self(mob/user)
+
+	if(!COOLDOWN_FINISHED(src, cooldown))
+		return
+
+	playsound(loc, 'mod_celadon/_storge_sounds/sound/emotes/tajaran/mrowss.ogg', 50, FALSE)
+	var/message
+	message = "Не дождешься :3"
+	user.visible_message(span_boldnotice(message))
+	COOLDOWN_START(src, cooldown, 3 SECONDS)
+
+/obj/item/toy/plush/celadon/tora
+	name = "Tora plushie"
+	desc = "Пышная и мягкая плюшевая девушка с крашером в руках и ненавистью к НТ в глазах. Взглянув на неё, так и хочется прокричать \"For the syndicate!\""
+	icon_state = "tora"
+	item_state = "tora"
+	w_class = WEIGHT_CLASS_SMALL
+	gender = FEMALE
+	COOLDOWN_DECLARE(cooldown)
+	squeak_override = list('mod_celadon/_storge_sounds/sound/emotes/tajaran/mrowss.ogg' = 1)
+
+/obj/item/toy/plush/celadon/tora/attack_self(mob/user)
+
+	if(!COOLDOWN_FINISHED(src, cooldown))
+		return
+
+	playsound(loc, 'mod_celadon/_storge_sounds/sound/purr.ogg', 50, FALSE)
+	var/message
+	message = "СМЕРТЬ МОНОПОЛИСТАМ!"
+	user.visible_message(span_bolddanger(message))
 	COOLDOWN_START(src, cooldown, 3 SECONDS)

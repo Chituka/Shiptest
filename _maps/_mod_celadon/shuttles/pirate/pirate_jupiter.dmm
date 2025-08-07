@@ -197,7 +197,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/item/radio/intercom/directional/east,
+/obj/machinery/airalarm/directional/east,
 /turf/open/floor/plasteel/dark,
 /area/ship/engineering)
 "cP" = (
@@ -736,6 +736,10 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/ship/cargo)
+"lp" = (
+/obj/structure/falsewall/plastitanium,
+/turf/open/floor/plasteel/mono/dark,
+/area/ship/maintenance/central)
 "lr" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -812,15 +816,15 @@
 /turf/open/floor/plating/airless,
 /area/ship/external)
 "mo" = (
-/obj/machinery/computer/monitor{
-	dir = 1
-	},
 /obj/effect/turf_decal/spline/fancy/opaque/black{
 	dir = 1
 	},
 /obj/structure/cable,
 /obj/item/radio/intercom/wideband/directional/east,
 /obj/machinery/power/apc/auto_name/directional/south,
+/obj/machinery/modular_computer/console/preset/command{
+	dir = 1
+	},
 /turf/open/floor/plasteel/telecomms_floor,
 /area/ship/bridge)
 "ms" = (
@@ -1312,8 +1316,6 @@
 	pixel_x = 4;
 	pixel_y = 0
 	},
-/obj/item/clothing/head/helmet/bulletproof/m10,
-/obj/item/clothing/head/helmet/bulletproof/m10,
 /obj/item/clothing/gloves/tackler,
 /obj/item/clothing/gloves/tackler{
 	pixel_x = 0;
@@ -1345,6 +1347,8 @@
 	pixel_x = -3;
 	pixel_y = -3
 	},
+/obj/item/clothing/head/helmet/bulletproof/x11,
+/obj/item/clothing/head/helmet/bulletproof/x11,
 /turf/open/floor/plasteel/tech,
 /area/ship/security/armory)
 "tJ" = (
@@ -1680,7 +1684,7 @@
 /turf/open/floor/plasteel/dark,
 /area/ship/cargo)
 "yJ" = (
-/obj/machinery/computer/selling_pad_control{
+/obj/machinery/computer/arcade{
 	dir = 1
 	},
 /obj/machinery/camera/xray{
@@ -2287,7 +2291,6 @@
 /area/ship/cargo)
 "Hx" = (
 /obj/machinery/autolathe,
-/obj/machinery/airalarm/directional/east,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
@@ -2480,7 +2483,6 @@
 /turf/closed/wall/mineral/plastitanium,
 /area/ship/maintenance/central)
 "Ko" = (
-/obj/machinery/selling_pad,
 /obj/effect/turf_decal/spline/fancy/opaque/black{
 	dir = 8
 	},
@@ -3011,6 +3013,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
+/obj/item/radio/intercom/directional/east,
 /turf/open/floor/plasteel/stairs,
 /area/ship/engineering)
 "TI" = (
@@ -3126,6 +3129,18 @@
 	},
 /obj/structure/table,
 /obj/machinery/light/small/directional/south,
+/obj/item/storage/box/donkpockets/donkpocketspicy{
+	desc = "Produced personally be CHUVAK TM. Ultra-spicy";
+	name = "CHUVAK TM Donk-pockets";
+	pixel_x = 0;
+	pixel_y = 2
+	},
+/obj/item/storage/box/donkpockets/donkpocketspicy{
+	desc = "Produced personally be CHUVAK TM. Ultra-spicy";
+	name = "CHUVAK TM Donk-pockets";
+	pixel_x = 0;
+	pixel_y = 5
+	},
 /turf/open/floor/plasteel/dark,
 /area/ship/cargo)
 "Xw" = (
@@ -3621,7 +3636,7 @@ Wv
 Zk
 OG
 MU
-MU
+lp
 MU
 OG
 Ru

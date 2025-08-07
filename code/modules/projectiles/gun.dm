@@ -14,6 +14,9 @@
 	throw_speed = 3
 	throw_range = 5
 	force = 5
+
+	bad_type = /obj/item/gun
+
 	item_flags = NEEDS_PERMIT
 	attack_verb = list("struck", "hit", "bashed")
 	pickup_sound = 'sound/items/handling/gun_pickup.ogg'
@@ -109,8 +112,8 @@
 	//Can it be charged in a recharger?
 	var/can_charge = TRUE
 	var/selfcharge = FALSE
-	var/charge_tick = 0
-	var/charge_delay = 4
+	var/charge_timer = 0
+	var/charge_delay = 8
 	//whether the gun's cell drains the cyborg user's cell to recharge
 	var/use_cyborg_cell = FALSE
 	//Time it takes to unscrew the cell
@@ -359,22 +362,25 @@
 	AddComponent(/datum/component/two_handed)
 
 /// triggered on wield of two handed item
-/obj/item/gun/proc/on_wield(obj/item/source, mob/user)
+/obj/item/gun/proc/on_wield(obj/item/source, mob/user, instant)
 	wielded = TRUE
-	INVOKE_ASYNC(src, PROC_REF(do_wield), user)
+	INVOKE_ASYNC(src, PROC_REF(do_wield), user, instant)
 
-/obj/item/gun/proc/do_wield(mob/user)
+/obj/item/gun/proc/do_wield(mob/user, instant)
 	user.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/gun, multiplicative_slowdown = wield_slowdown)
 	wield_time = world.time + wield_delay
-	if(wield_time > 0)
+// [CELADON-ADD] - CELADON_FIXES
+	if(azoom)
+		azoom.Grant(user)
+// [/CELADON-ADD]
+	if(wield_time > 0 && !instant)
 		if(do_after(
 			user,
 			wield_delay,
 			user,
-			FALSE,
+			IGNORE_USER_LOC_CHANGE | IGNORE_TARGET_LOC_CHANGE,
 			TRUE,
-			CALLBACK(src, PROC_REF(is_wielded)),
-			timed_action_flags = IGNORE_USER_LOC_CHANGE
+			CALLBACK(src, PROC_REF(is_wielded))
 			)
 			)
 			wielded_fully = TRUE
@@ -388,7 +394,13 @@
 	wielded = FALSE
 	wielded_fully = FALSE
 	zoom(user, forced_zoom = FALSE)
+// [CELADON-ADD] - CELADON_FIXES
+	if(azoom)
+		azoom.Remove(user)
+// [/CELADON-ADD]
 	user.remove_movespeed_modifier(/datum/movespeed_modifier/gun)
+	if(azoom)
+		azoom.Remove(user)
 
 /obj/item/gun/proc/is_wielded()
 	return wielded
@@ -412,14 +424,17 @@
 
 /obj/item/gun/examine(mob/user)
 	. = ..()
+	if(manufacturer)
+		. += span_notice("It has <b>[manufacturer]</b> engraved on it.")
+
+/obj/item/gun/examine_more(mob/user)
+	. = ..()
 	if(has_safety)
-		. += "The safety is [safety ? "<span class='green'>ON</span>" : "<span class='red'>OFF</span>"]. Ctrl-Click to toggle the safety."
+		. += "The safety is [safety ? span_green("ON") : span_red("OFF")]. Ctrl-Click to toggle the safety."
 
 	if(gun_firemodes.len > 1)
 		. += "You can change the [src]'s firemode by pressing the <b>secondary action</b> key. By default, this is <b>Shift + Space</b>"
 
-	if(manufacturer)
-		. += "<span class='notice'>It has <b>[manufacturer]</b> engraved on it.</span>"
 
 /obj/item/gun/attackby(obj/item/I, mob/living/user, params)
 	. = ..()
@@ -477,7 +492,7 @@
 /* TODO: gunpointing is very broken, port the old skyrat gunpointing? its much better, usablity wise and rp wise?
 		if(ismob(target) && user.a_intent == INTENT_GRAB)
 			if(user.GetComponent(/datum/component/gunpoint))
-				to_chat(user, "<span class='warning'>You are already holding someone up!</span>")
+				to_chat(user, span_warning("You are already holding someone up!"))
 				return
 			user.AddComponent(/datum/component/gunpoint, target, src)
 			return
@@ -511,17 +526,17 @@
 
 	//we then check our weapon weight vs if we are being wielded...
 	if(weapon_weight == WEAPON_VERY_HEAVY && (!wielded_fully))
-		to_chat(user, "<span class='warning'>You need a fully secure grip to fire [src]!</span>")
+		to_chat(user, span_warning("You need a fully secure grip to fire [src]!"))
 		return
 
 	if(weapon_weight == WEAPON_HEAVY && (!wielded))
-		to_chat(user, "<span class='warning'>You need a more secure grip to fire [src]!</span>")
+		to_chat(user, span_warning("You need a more secure grip to fire [src]!"))
 		return
 	//If we have the pacifist trait and a chambered round, don't fire. Honestly, pacifism quirk is pretty stupid, and as such we check again in process_fire() anyways
 	if(chambered)
 		if(HAS_TRAIT(user, TRAIT_PACIFISM)) // If the user has the pacifist trait, then they won't be able to fire [src] if the round chambered inside of [src] is lethal.
 			if(chambered.harmful) // Is the bullet chambered harmful?
-				to_chat(user, "<span class='warning'>[src] is lethally chambered! You don't want to risk harming anyone...</span>")
+				to_chat(user, span_warning("[src] is lethally chambered! You don't want to risk harming anyone..."))
 				return
 
 	//Dual wielding handling. Not the biggest fan of this, but it's here. Dual berettas not included
@@ -534,7 +549,7 @@
 			else if(found_gun.can_trigger_gun(user))
 				bonus_spread += dual_wield_spread
 				loop_counter++
-				addtimer(CALLBACK(found_gun, TYPE_PROC_REF(/obj/item/gun, pre_fire), target, user, TRUE, params, null, bonus_spread), loop_counter)
+				addtimer(CALLBACK(found_gun, TYPE_PROC_REF(/obj/item/gun, pre_fire), target, user, TRUE, FALSE, params, null, bonus_spread, TRUE), loop_counter)
 
 	//get current firemode
 	var/current_firemode = gun_firemodes[firemode_index]
@@ -596,7 +611,7 @@
 	if(chambered)
 		if(HAS_TRAIT(user, TRAIT_PACIFISM)) // If the user has the pacifist trait, then they won't be able to fire [src] if the round chambered inside of [src] is lethal.
 			if(chambered.harmful) // Is the bullet chambered harmful?
-				to_chat(user, "<span class='warning'>[src] is lethally chambered! You don't want to risk harming anyone...</span>")
+				to_chat(user, span_warning("[src] is lethally chambered! You don't want to risk harming anyone..."))
 				currently_firing_burst = FALSE //no burst 4 u
 				return FALSE
 	else
@@ -659,10 +674,10 @@
 
 /obj/item/gun/proc/shoot_with_empty_chamber(mob/living/user as mob|obj)
 	if(!safety)
-		to_chat(user, "<span class='danger'>*[dry_fire_text]*</span>")
+		to_chat(user, span_danger("*[dry_fire_text]*"))
 		playsound(src, dry_fire_sound, 30, TRUE)
 		return
-	to_chat(user, "<span class='danger'>Safeties are active on the [src]! Turn them off to fire!</span>")
+	to_chat(user, span_danger("Safeties are active on the [src]! Turn them off to fire!"))
 
 
 /obj/item/gun/proc/shoot_live_shot(mob/living/user, pointblank = FALSE, atom/pbtarget = null, message = TRUE)
@@ -678,7 +693,7 @@
 		simulate_recoil(user, recoil, actual_angle)
 	else if(!wielded_fully)
 		var/recoil_temp = recoil_unwielded
-		var/obj/item/shield/riot/shield = user.get_inactive_held_item()
+		var/obj/item/shield/shield = user.get_inactive_held_item()
 		if(istype(shield))
 			recoil_temp += shield.recoil_bonus
 		simulate_recoil(user, recoil_temp, actual_angle)
@@ -694,7 +709,7 @@
 						span_danger("You fire [src] point blank at [pbtarget]!"),
 						span_hear("You hear a gunshot!"), COMBAT_MESSAGE_RANGE, pbtarget
 				)
-				to_chat(pbtarget, "<span class='userdanger'>[user] fires [src] point blank at you!</span>")
+				to_chat(pbtarget, span_userdanger("[user] fires [src] point blank at you!"))
 				if(pb_knockback > 0 && ismob(pbtarget))
 					var/mob/PBT = pbtarget
 					var/atom/throw_target = get_edge_target_turf(PBT, user.dir)
@@ -742,8 +757,8 @@
 	if(!silent)
 		playsound(user, 'sound/weapons/gun/general/selector.ogg', 100, TRUE)
 		user.visible_message(
-			span_notice("[user] turns the [safety_wording] on [src] [safety ? "<span class='green'>ON</span>" : "<span class='red'>OFF</span>"]."),
-			span_notice("You turn the [safety_wording] on [src] [safety ? "<span class='green'>ON</span>" : "<span class='red'>OFF</span>"]."),
+			span_notice("[user] turns the [safety_wording] on [src] [safety ? span_green("ON") : span_red("OFF")]."),
+			span_notice("You turn the [safety_wording] on [src] [safety ? span_green("ON") : span_red("OFF")]."),
 		)
 
 	update_appearance()
@@ -755,14 +770,10 @@
 /obj/item/gun/pickup(mob/user)
 	. = ..()
 	update_appearance()
-	if(azoom)
-		azoom.Grant(user)
 
 /obj/item/gun/dropped(mob/user)
 	. = ..()
 	update_appearance()
-	if(azoom)
-		azoom.Remove(user)
 	if(zoomed)
 		zoom(user, user.dir)
 
@@ -863,7 +874,7 @@
 	final_spread += bonus_spread
 
 	if(HAS_TRAIT(user, TRAIT_GUNSLINGER))
-		randomized_bonus_spread += rand(0, gunslinger_spread_bonus)
+		randomized_bonus_spread += min(gunslinger_spread_bonus, rand(0, gunslinger_spread_bonus))
 
 	if(HAS_TRAIT(user, TRAIT_POOR_AIM))
 		randomized_bonus_spread += rand(0, 25)
@@ -1011,15 +1022,16 @@
 		human_holder = src
 	for(var/obj/item/gun/at_risk in get_all_contents())
 		var/chance_to_fire = round(GUN_NO_SAFETY_MALFUNCTION_CHANCE_MEDIUM * at_risk.safety_multiplier)
+		var/bodyzone = pick_weight(list(BODY_ZONE_HEAD = 1, BODY_ZONE_CHEST = 9, BODY_ZONE_L_ARM = 4, BODY_ZONE_R_ARM = 4, BODY_ZONE_L_LEG = 41, BODY_ZONE_R_LEG = 41))
 		if(human_holder)
 			// gun is less likely to go off in a holster
 			if(at_risk == human_holder.s_store)
 				chance_to_fire = round(GUN_NO_SAFETY_MALFUNCTION_CHANCE_LOW * at_risk.safety_multiplier)
+				bodyzone = pick_weight(list(BODY_ZONE_CHEST = 10, BODY_ZONE_L_LEG = 45, BODY_ZONE_R_LEG = 45))
 		if(at_risk.safety == FALSE && prob(chance_to_fire))
-			var/bodyzone = pick(BODY_ZONE_HEAD, BODY_ZONE_CHEST, BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG,BODY_ZONE_R_LEG)
 			if(at_risk.process_fire(src,src,FALSE, null, bodyzone) == TRUE)
 				log_combat(src,src,"misfired",at_risk,"caused by [cause]")
-				visible_message(span_danger("\The [at_risk.name]'s trigger gets caught as [src] falls, suddenly going off into [src]'s [bodyzone]!"), span_danger("\The [at_risk.name]'s trigger gets caught on something as you fall, suddenly going off into your [bodyzone]!"))
+				visible_message(span_danger("\The [at_risk.name]'s trigger gets caught as [src] falls, suddenly going off into [src]'s [get_bodypart(bodyzone)]!"), span_danger("\The [at_risk.name]'s trigger gets caught on something as you fall, suddenly going off into your [get_bodypart(bodyzone)]!"))
 				human_holder.force_scream()
 
 //I need to refactor this into an attachment
@@ -1132,7 +1144,7 @@
 	else
 		SEND_SIGNAL(src, COMSIG_GUN_DISABLE_AUTOFIRE)
 //wawa
-	to_chat(user, "<span class='notice'>Switched to [gun_firenames[current_firemode]].</span>")
+	to_chat(user, span_notice("Switched to [gun_firenames[current_firemode]]."))
 	playsound(user, 'sound/weapons/gun/general/selector.ogg', 100, TRUE)
 	update_appearance()
 	for(var/datum/action/current_action as anything in actions)

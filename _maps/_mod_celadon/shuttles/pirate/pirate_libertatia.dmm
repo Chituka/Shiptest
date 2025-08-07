@@ -47,6 +47,10 @@
 	pixel_x = -4;
 	pixel_y = 4
 	},
+/obj/item/gun/energy/kinetic_accelerator/crossbow{
+	pixel_x = 5;
+	pixel_y = -4
+	},
 /turf/open/floor/pod/light,
 /area/ship/bridge)
 "br" = (
@@ -818,6 +822,16 @@
 /obj/item/lighter{
 	pixel_x = 14
 	},
+/obj/item/storage/box/donkpockets/donkpocketspicy{
+	desc = "Produced personally be CHUVAK TM. Ultra-spicy";
+	name = "CHUVAK TM Donk-pockets"
+	},
+/obj/item/storage/box/donkpockets/donkpocketspicy{
+	desc = "Produced personally be CHUVAK TM. Ultra-spicy";
+	name = "CHUVAK TM Donk-pockets";
+	pixel_x = 0;
+	pixel_y = 5
+	},
 /turf/open/floor/plasteel/grimy,
 /area/ship/crew)
 "yi" = (
@@ -1092,12 +1106,12 @@
 /area/ship/crew)
 "Ef" = (
 /obj/structure/closet/crate/freezer/blood,
-/obj/item/reagent_containers/blood/universal{
+/obj/item/reagent_containers/blood/OMinus{
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/obj/item/reagent_containers/blood/universal,
-/obj/item/reagent_containers/blood/universal{
+/obj/item/reagent_containers/blood/OMinus,
+/obj/item/reagent_containers/blood/OMinus{
 	pixel_x = -4;
 	pixel_y = -4
 	},
@@ -1299,12 +1313,11 @@
 /turf/open/floor/pod/light,
 /area/ship/cargo)
 "Ks" = (
-/obj/machinery/computer/selling_pad_control,
+/obj/machinery/computer/arcade,
 /turf/open/floor/pod/light,
 /area/ship/cargo)
 "KD" = (
 /obj/effect/turf_decal/box,
-/obj/machinery/selling_pad,
 /turf/open/floor/pod/light,
 /area/ship/cargo)
 "KS" = (
@@ -1617,15 +1630,15 @@
 /turf/open/floor/mineral/plastitanium,
 /area/ship/cargo)
 "Sw" = (
-/obj/item/reagent_containers/food/snacks/canned/beans{
+/obj/item/food/canned/beans{
 	pixel_x = -5;
 	pixel_y = 3
 	},
-/obj/item/reagent_containers/food/snacks/canned/beans{
+/obj/item/food/canned/beans{
 	pixel_x = 2;
 	pixel_y = 3
 	},
-/obj/item/reagent_containers/food/snacks/canned/beans{
+/obj/item/food/canned/beans{
 	pixel_x = -2
 	},
 /obj/item/reagent_containers/food/drinks/waterbottle/large{

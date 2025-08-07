@@ -465,8 +465,8 @@
 "cN" = (
 /obj/effect/turf_decal/industrial/outline/yellow,
 /obj/machinery/suit_storage_unit/inherit/industrial,
-/obj/item/clothing/suit/space/hardsuit/engine/atmos,
 /obj/item/tank/jetpack/oxygen,
+/obj/item/clothing/suit/space/hardsuit/engine/elite,
 /turf/open/floor/plasteel/dark,
 /area/ship/engineering/communications)
 "cP" = (
@@ -1134,7 +1134,7 @@
 /obj/effect/turf_decal/corner/opaque/yellow,
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/firealarm/directional/south,
-/obj/item/clothing/suit/space/hardsuit/security/inteq,
+/obj/item/clothing/suit/space/hardsuit/syndi/inteq,
 /turf/open/floor/plasteel/dark,
 /area/ship/bridge)
 "gj" = (
@@ -1383,7 +1383,6 @@
 /obj/machinery/door/airlock/engineering{
 	dir = 4;
 	name = "Engineering";
-	normalspeed = 0;
 	req_access_txt = "10"
 	},
 /obj/effect/turf_decal/industrial/warning/fulltile,
@@ -1664,7 +1663,7 @@
 	pixel_x = -1;
 	pixel_y = 14
 	},
-/obj/item/reagent_containers/food/snacks/chips{
+/obj/item/food/chips{
 	layer = 4.6;
 	pixel_x = 7;
 	pixel_y = 4
@@ -2682,15 +2681,14 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
-	dir = 1;
-	filter_types = list("o2")
-	},
 /obj/machinery/atmospherics/components/binary/pump{
 	dir = 8;
 	name = "engine fuel pump";
 	pixel_y = 10;
 	piping_layer = 5
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
+	dir = 1
 	},
 /turf/open/floor/plasteel/tech,
 /area/ship/engineering)
@@ -3149,6 +3147,8 @@
 /obj/item/ammo_box/magazine/co9mm{
 	pixel_x = 5
 	},
+/obj/item/ammo_box/magazine/smgm10mm,
+/obj/item/ammo_box/magazine/smgm10mm,
 /obj/item/ammo_box/magazine/smgm10mm,
 /obj/item/ammo_box/magazine/smgm10mm,
 /turf/open/floor/plasteel/tech/grid,
@@ -3762,12 +3762,16 @@
 /obj/item/gun/ballistic/shotgun/automatic/bulldog/inteq{
 	pixel_x = -8;
 	pixel_y = 8;
-	spawnwithmagazine = 0
+	
 	},
 /obj/structure/sign/poster/retro/lasergun_new{
 	pixel_x = -32
 	},
 /obj/item/gun/ballistic/automatic/smg/skm_carbine/inteq,
+/obj/item/gun/ballistic/automatic/smg/skm_carbine/inteq{
+	pixel_x = -8;
+	pixel_y = -4
+	},
 /turf/open/floor/plasteel/tech/grid,
 /area/ship/security/armory)
 "wa" = (
@@ -4093,7 +4097,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/structure/closet/crate/critter,
-/mob/living/simple_animal/hostile/hivebot/mechanic{
+/mob/living/basic/hivebot/mechanic{
 	desc = "A very rusty maintenance hivebot. Judging by the wires looping haphazardly from its panels and the Inteq shield spray painted on its chassis, somebody, somehow, has hacked it into complacency.";
 	environment_smash = 0;
 	faction = list("neutral");
@@ -8956,7 +8960,6 @@
 /obj/machinery/door/airlock/engineering{
 	dir = 4;
 	name = "Engineering";
-	normalspeed = 0;
 	req_access_txt = "10"
 	},
 /obj/effect/turf_decal/industrial/warning/fulltile,

@@ -33,8 +33,8 @@
 /obj/structure/closet/wall/orange/directional/south{
 	name = "generator fuel closet"
 	},
-/obj/item/stack/sheet/mineral/uranium/twenty,
-/obj/item/stack/sheet/mineral/plasma/fifty,
+/obj/item/stack/sheet/mineral/plasma/ten,
+/obj/item/stack/sheet/mineral/uranium/five,
 /turf/open/floor/plating,
 /area/ship/general/engineering)
 "aV" = (
@@ -52,6 +52,17 @@
 /obj/item/stock_parts/cell/gun,
 /obj/item/stock_parts/cell/gun,
 /obj/item/stock_parts/cell/gun,
+/obj/item/stock_parts/cell/gun,
+/obj/item/stock_parts/cell/gun,
+/obj/item/stock_parts/cell/gun,
+/obj/item/stock_parts/cell/gun,
+/obj/item/stock_parts/cell/gun,
+/obj/item/stock_parts/cell/gun,
+/obj/item/stock_parts/cell/gun,
+/obj/item/stock_parts/cell/gun,
+/obj/item/ammo_box/magazine/wt550m9,
+/obj/item/ammo_box/magazine/wt550m9,
+/obj/item/ammo_box/magazine/wt550m9,
 /turf/open/floor/plasteel/tech,
 /area/ship/security/armory)
 "ba" = (
@@ -521,7 +532,6 @@
 /obj/item/restraints/handcuffs,
 /obj/item/assembly/flash,
 /obj/item/reagent_containers/spray/pepper,
-/obj/item/shield/riot/tele,
 /obj/item/clothing/head/nanotrasen/beret{
 	name = "fancy ntas leader's beret";
 	desc = "A well-made beret in Nanotrasen Blue with a corporate logo on the side, often seen topping the heads of Nanotrasen, Inc. emergency response teams' managerial staff."
@@ -534,17 +544,10 @@
 /obj/item/storage/lockbox/medal,
 /obj/item/gps,
 /obj/item/megaphone/command,
-/obj/item/crowbar/syndie{
-	name = "elite crowbar"
-	},
 /obj/item/binoculars,
-/obj/item/clothing/glasses/hud/health/night,
 /obj/item/tank/jetpack/suit,
-/obj/item/melee/energy/sword/saber/blue{
-	name = "Nanotrasen Special Energy sword"
-	},
 /obj/item/clothing/mask/balaclava/combat,
-/obj/item/melee/classic_baton/telescopic,
+/obj/item/clothing/glasses/hud/health/night,
 /turf/open/floor/plasteel/tech,
 /area/ship/crew/dorm/captain)
 "gK" = (
@@ -1104,7 +1107,6 @@
 	pixel_x = 11;
 	pixel_y = -16
 	},
-/obj/item/storage/firstaid/medical,
 /turf/open/floor/plasteel/white,
 /area/ship/medical)
 "os" = (
@@ -1218,11 +1220,11 @@
 /obj/item/reagent_containers/blood/random,
 /obj/item/reagent_containers/blood/random,
 /obj/item/reagent_containers/blood/random,
-/obj/item/reagent_containers/food/snacks/meat/slab/synthmeat{
+/obj/item/food/meat/slab/synthmeat{
 	pixel_y = 3
 	},
-/obj/item/reagent_containers/food/snacks/meat/slab/synthmeat,
-/obj/item/reagent_containers/food/snacks/meat/slab/synthmeat{
+/obj/item/food/meat/slab/synthmeat,
+/obj/item/food/meat/slab/synthmeat{
 	pixel_y = -3
 	},
 /turf/open/floor/plasteel/tech,
@@ -1589,14 +1591,11 @@
 	pixel_x = -1;
 	pixel_y = 11
 	},
-/obj/item/gun/energy/e_gun/smg{
-	pixel_x = 0;
-	pixel_y = 4
-	},
 /obj/item/gun/energy/e_gun/iot{
 	pixel_x = 0;
 	pixel_y = -5
 	},
+/obj/item/gun/ballistic/automatic/smg/wt550,
 /turf/open/floor/plasteel/tech,
 /area/ship/security/armory)
 "uM" = (
@@ -2327,9 +2326,6 @@
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer4{
-	dir = 4
-	},
 /obj/effect/turf_decal/corner/opaque/ntblue/bordercorner{
 	dir = 1
 	},
@@ -2444,7 +2440,7 @@
 	dir = 6
 	},
 /obj/structure/table/reinforced/titaniumglass,
-/obj/item/storage/case/surgery,
+/obj/item/storage/firstaid/medical,
 /turf/open/floor/plasteel/white,
 /area/ship/medical)
 "Ht" = (
@@ -2483,10 +2479,9 @@
 	anchored = 1
 	},
 /obj/item/stack/sheet/mineral/titanium/twenty,
+/obj/item/stack/sheet/metal/ten,
 /obj/item/stack/sheet/glass/fifty,
-/obj/item/stack/sheet/metal/fifty,
-/obj/item/stack/sheet/metal/fifty,
-/obj/item/stack/sheet/plasteel/twenty,
+/obj/item/stack/sheet/glass/fifty,
 /turf/open/floor/plasteel/tech,
 /area/ship/security)
 "HJ" = (
@@ -2650,7 +2645,6 @@
 /obj/item/restraints/legcuffs/bola/energy,
 /obj/item/storage/box/handcuffs,
 /obj/item/storage/box/handcuffs,
-/obj/item/shield/riot/tele,
 /turf/open/floor/plasteel/tech,
 /area/ship/security/armory)
 "Jo" = (
@@ -3172,23 +3166,23 @@
 	icon_state = "freezer_wall";
 	name = "snack freezer"
 	},
-/obj/item/reagent_containers/food/snacks/burger{
+/obj/item/food/burger{
 	pixel_x = 7;
 	pixel_y = -3
 	},
-/obj/item/reagent_containers/food/snacks/burger{
+/obj/item/food/burger{
 	pixel_x = -5;
 	pixel_y = 3
 	},
-/obj/item/reagent_containers/food/snacks/burger{
+/obj/item/food/burger{
 	pixel_x = 3;
 	pixel_y = 5
 	},
-/obj/item/reagent_containers/food/snacks/burger/baconburger{
+/obj/item/food/burger/baconburger{
 	pixel_x = 2;
 	pixel_y = 1
 	},
-/obj/item/reagent_containers/food/snacks/burger/baconburger{
+/obj/item/food/burger/baconburger{
 	pixel_x = -3;
 	pixel_y = -4
 	},
@@ -3374,9 +3368,7 @@
 /obj/item/radio/headset/nanotrasen/alt,
 /obj/item/tank/internals/emergency_oxygen/double,
 /obj/item/gps,
-/obj/item/gun/energy/e_gun{
-	cell_type = /obj/item/stock_parts/cell/gun/upgraded
-	},
+/obj/item/storage/guncase/energy/egun,
 /obj/effect/turf_decal/corner/opaque/ntblue/border,
 /obj/structure/cable{
 	icon_state = "2-8"
@@ -3624,19 +3616,6 @@
 	icon_state = "sec_wall";
 	name = "autolathe supplies locker"
 	},
-/obj/item/stack/sheet/metal/five{
-	pixel_x = -6;
-	pixel_y = 0
-	},
-/obj/item/stack/sheet/glass/five{
-	pixel_x = 8;
-	pixel_y = 0
-	},
-/obj/item/disk/design_disk{
-	design_name = "Weapon Power Cell";
-	starting_blueprints = list(/datum/design/gun_cell);
-	desc = "A design disk containing a design for a basic weapon power cell. Glory to Nanotrasen!"
-	},
 /turf/open/floor/plasteel/tech,
 /area/ship/security)
 "WK" = (
@@ -3835,9 +3814,7 @@
 	name = "medical operative's locker";
 	anchored = 1
 	},
-/obj/item/gun/energy/e_gun{
-	cell_type = /obj/item/stock_parts/cell/gun/upgraded
-	},
+/obj/item/storage/guncase/energy/egun,
 /obj/item/melee/knife/combat,
 /obj/item/defibrillator/compact/combat/loaded/nanotrasen,
 /obj/item/storage/backpack/ert/medical,

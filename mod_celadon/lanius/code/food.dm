@@ -31,7 +31,7 @@ var/ration = list( /obj/item/stack/sheet/metal,
 		return ..()
 	if(islanius(M))
 		if(M.nutrition > (600))	// The more you eat - the more you can eat
-			user.visible_message("<span class='warning'>[user] cannot force any more of \the [src] to go down [user.p_their()] throat!</span>", "<span class='warning'>You cannot force any more of \the [src] to go down your throat!</span>")
+			user.visible_message(span_warning("[user] cannot force any more of \the [src] to go down [user.p_their()] throat!"), span_warning("You cannot force any more of \the [src] to go down your throat!"))
 			return FALSE
 		playsound(M.loc,pick('mod_celadon/_storge_sounds/sound/lanius/bp_sfx_RockMan_Thud1_01.ogg',
 		'mod_celadon/_storge_sounds/sound/lanius/bp_sfx_RockMan_Thud2_01.ogg',
@@ -52,7 +52,7 @@ var/ration = list( /obj/item/stack/sheet/metal,
 		return ..()
 	if(islanius(M))
 		if(M.nutrition > (600))	// The more you eat - the more you can eat
-			user.visible_message("<span class='warning'>[user] cannot force any more of \the [src] to go down [user.p_their()] throat!</span>", "<span class='warning'>You cannot force any more of \the [src] to go down your throat!</span>")
+			user.visible_message(span_warning("[user] cannot force any more of \the [src] to go down [user.p_their()] throat!"), span_warning("You cannot force any more of \the [src] to go down your throat!"))
 			return FALSE
 		playsound(M.loc,pick('mod_celadon/_storge_sounds/sound/lanius/bp_sfx_RockMan_Thud1_01.ogg',
 		'mod_celadon/_storge_sounds/sound/lanius/bp_sfx_RockMan_Thud2_01.ogg',
@@ -72,7 +72,7 @@ var/ration = list( /obj/item/stack/sheet/metal,
 		return ..()
 	if(islanius(M))
 		if(M.nutrition > (600))	// The more you eat - the more you can eat
-			user.visible_message("<span class='warning'>[user] cannot force any more of \the [src] to go down [user.p_their()] throat!</span>", "<span class='warning'>You cannot force any more of \the [src] to go down your throat!</span>")
+			user.visible_message(span_warning("[user] cannot force any more of \the [src] to go down [user.p_their()] throat!"), span_warning("You cannot force any more of \the [src] to go down your throat!"))
 			return FALSE
 		playsound(M.loc,pick('mod_celadon/_storge_sounds/sound/lanius/bp_sfx_RockMan_Thud1_01.ogg',
 		'mod_celadon/_storge_sounds/sound/lanius/bp_sfx_RockMan_Thud2_01.ogg',
@@ -91,14 +91,14 @@ var/ration = list( /obj/item/stack/sheet/metal,
 // АХТУНГИ!
 
 /atom/movable/screen/alert/hungry/lanius
-	icon = 'mod_celadon/_storge_icons/icons/lanius/screen_alert.dmi'
+	icon = 'mod_celadon/_storge_icons/icons/species/lanius/screen_alert.dmi'
 	name = "Hungry"
 	desc = "Some food would be good right about now."
 	icon_state = "hungry"
 
 
 /atom/movable/screen/alert/starving/lanius
-	icon = 'mod_celadon/_storge_icons/icons/lanius/screen_alert.dmi'
+	icon = 'mod_celadon/_storge_icons/icons/species/lanius/screen_alert.dmi'
 	name = "Starving"
 	desc = "You're severely malnourished. The hunger pains make moving around a chore."
 	icon_state = "starving"

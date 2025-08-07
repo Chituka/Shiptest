@@ -54,7 +54,7 @@
 /obj/machinery/porta_turret/syndicate/grenade_40mm
 	name = "mounted grenade launcher (40mm)"
 	desc = "Syndicate 40mm grenade launcher defense turret. If you've had this much time to look at it, you're probably already dead."
-	icon = 'mod_celadon/_storge_icons/icons/turrets.dmi'
+	icon = 'mod_celadon/_storge_icons/icons/structures/turrets.dmi'
 	icon_state = "syndie_grenade"
 	base_icon_state = "syndie_grenade"
 	stun_projectile = /obj/projectile/bullet/a40mm
@@ -102,7 +102,7 @@
 /obj/machinery/porta_turret/syndicate/no_access/grenade_40mm
 	name = "mounted grenade launcher (40mm)"
 	desc = "Syndicate 40mm grenade launcher defense turret. If you've had this much time to look at it, you're probably already dead."
-	icon = 'mod_celadon/_storge_icons/icons/turrets.dmi'
+	icon = 'mod_celadon/_storge_icons/icons/structures/turrets.dmi'
 	icon_state = "syndie_grenade"
 	base_icon_state = "syndie_grenade"
 	stun_projectile = /obj/projectile/bullet/a40mm
@@ -174,8 +174,8 @@
 	max_integrity = 150 //сепарские турели очевидно не особо крепкие
 
 /obj/machinery/porta_turret/ship/elysium/light
-	name = "Scrapped 10mm Light Turret"
-	desc = "A light Separatist's Ahisai'i turret. Shoots 10mm projectiles at a close range."
+	name = "Scrapped 10x22mm Light Turret"
+	desc = "A light Separatist's Ahisai'i turret. Shoots 10x22mm projectiles at a close range."
 	stun_projectile = /obj/projectile/bullet/c10mm/rubber
 	stun_projectile_sound = 'sound/weapons/gun/smg/vector_fire.ogg'
 	lethal_projectile = /obj/projectile/bullet/c10mm
@@ -199,7 +199,7 @@
 /obj/machinery/porta_turret/ship/solfed
 	name = "Solarian Gauss Turret"
 	desc = "An effective gauss defence system used by Solfed's vessels. Uses ferromagnetic pellets."
-	faction = list(FACTION_PLAYER_SOLGOV, "turret")
+	faction = list(FACTION_PLAYER_SOLFED, "turret")
 	stun_projectile = /obj/projectile/bullet/a556_42/rubber
 	stun_projectile_sound = 'sound/weapons/gun/smg/shot.ogg'
 	lethal_projectile = /obj/projectile/bullet/gauss

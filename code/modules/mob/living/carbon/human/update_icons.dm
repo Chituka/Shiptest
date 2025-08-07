@@ -117,6 +117,8 @@ There are several things that need to be remembered:
 			t_color = U.icon_state
 		if(U.adjusted == ALT_STYLE)
 			t_color = "[t_color]_d"
+		if(U.adjusted == ROLLED_STYLE)
+			t_color = "[t_color]_s"
 
 		///The final thing we overlay. Set on build_worn_icon.
 		var/mutable_appearance/uniform_overlay
@@ -127,6 +129,8 @@ There are several things that need to be remembered:
 		var/target_overlay = U.icon_state
 		if(U.adjusted == ALT_STYLE)
 			target_overlay = "[target_overlay]_d"
+		if(U.adjusted == ROLLED_STYLE)
+			target_overlay = "[target_overlay]_s"
 		/// Does this clothing need to be generated via greyscale?
 		var/handled_by_bodytype = FALSE
 
@@ -392,7 +396,7 @@ There are several things that need to be remembered:
 		/// Does this clothing need to be generated via greyscale?
 		var/handled_by_bodytype = FALSE
 
-		// [CELADON-EDIT] - RESPRITE
+		// [CELADON-EDIT] - CELADON_RESPRITE
 		// if((dna.species.bodytype & BODYTYPE_DIGITIGRADE) && ((I.supports_variations & DIGITIGRADE_VARIATION) || (I.supports_variations & DIGITIGRADE_VARIATION_SAME_ICON_FILE))) [CELADON-EDIT] - ORIGINAL
 		// 	var/obj/item/bodypart/leg = src.get_bodypart(BODY_ZONE_L_LEG)
 		// 	if(leg.bodytype & BODYTYPE_DIGITIGRADE && !leg.plantigrade_forced)
@@ -400,7 +404,7 @@ There are several things that need to be remembered:
 		// 	if((I.supports_variations & DIGITIGRADE_VARIATION_SAME_ICON_FILE))
 		// 		icon_file = I.mob_overlay_icon
 		// 		target_overlay = "[target_overlay]_digi"	// [/CELADON-EDIT] - ORIGINAL
-		// [/CELADON-EDIT] - RESPRITE
+		// [/CELADON-EDIT]
 		var/obj/item/bodypart/leg_bodypart = src.get_bodypart(BODY_ZONE_L_LEG)
 		if(leg_bodypart.bodytype & BODYTYPE_DIGITIGRADE)
 			if(icon_exists(SARATHI_DIGITIGRADE_BOOTS_PATH, RESOLVE_ICON_STATE(I)))
@@ -507,7 +511,7 @@ There are several things that need to be remembered:
 		/// Does this clothing need to be generated via greyscale?
 		var/handled_by_bodytype = FALSE
 
-		// [CELADON-EDIT] - RESPRITE
+		// [CELADON-EDIT] - CELADON_RESPRITE
 		// var/obj/item/bodypart/head_bodypart = src.get_bodypart(BODY_ZONE_HEAD) // CELADON-EDIT - ORIGINAL
 		// if((head_bodypart.bodytype & BODYTYPE_SNOUT) && (I.supports_variations & SNOUTED_VARIATION)) // CELADON-EDIT - ORIGINAL
 		// 	target_overlay = "[target_overlay]_snouted" // CELADON-EDIT - ORIGINAL
@@ -519,7 +523,7 @@ There are several things that need to be remembered:
 					icon_file = I.snout_override_icon
 			else
 				handled_by_bodytype = TRUE
-		// [CELADON-EDIT] - RESPRITES
+		// [CELADON-EDIT]
 
 
 		else if(dna.species.bodytype & BODYTYPE_VOX)
@@ -624,7 +628,7 @@ There are several things that need to be remembered:
 		/// Does this clothing need to be generated via greyscale?
 		var/handled_by_bodytype = FALSE
 
-		// [CELADON - EDIT] - RESPRITE
+		// [CELADON - EDIT] - CELADON_RESPRITE
 		// if((dna.species.bodytype & BODYTYPE_DIGITIGRADE) && ((I.supports_variations & DIGITIGRADE_VARIATION) || (I.supports_variations & DIGITIGRADE_VARIATION_SAME_ICON_FILE))) [CELADON - EDIT] - ORIGINAL
 		// 	icon_file = DIGITIGRADE_SUIT_PATH
 		// 	if((I.supports_variations & DIGITIGRADE_VARIATION_SAME_ICON_FILE))
@@ -641,7 +645,7 @@ There are several things that need to be remembered:
 					icon_file = SARATHI_DIGITIGRADE_UNDER_PATH
 				else
 					handled_by_bodytype = TRUE
-		// [/CELADON - EDIT] - RESPRITE
+		// [/CELADON - EDIT]
 
 		else if(dna.species.bodytype & BODYTYPE_VOX)
 			if(I.supports_variations & VOX_VARIATION)
@@ -722,7 +726,7 @@ There are several things that need to be remembered:
 		var/handled_by_bodytype = FALSE
 
 		if(!(ITEM_SLOT_MASK in check_obscured_slots()))
-			// [CELADON-EDIT] - RESPRITE
+			// [CELADON-EDIT] - CELADON_RESPRITE
 			// var/obj/item/bodypart/head_bodypart = src.get_bodypart(BODY_ZONE_HEAD) // CELADON-EDIT - ORIGINAL
 			// if((head_bodypart.bodytype & BODYTYPE_SNOUT) && (I.supports_variations & SNOUTED_VARIATION)) // CELADON-EDIT - ORIGINAL
 			// 	target_overlay = "[target_overlay]_snouted" // CELADON-EDIT - ORIGINAL
@@ -801,12 +805,12 @@ There are several things that need to be remembered:
 					handled_by_bodytype = TRUE
 
 			else if(dna.species.bodytype & BODYTYPE_KEPORI)
-//				if(I.supports_variations & KEPORI_VARIATION)
-//					icon_file = KEPORI_NECK_PATH
-//					if(I.kepoi_override_icon)
-//						icon_file = I.kepoi_override_icon
-//				else
-				handled_by_bodytype = TRUE
+				if(I.supports_variations & KEPORI_VARIATION)
+					icon_file = KEPORI_NECK_PATH
+					if(I.kepori_override_icon)
+						icon_file = I.kepori_override_icon
+				else
+					handled_by_bodytype = TRUE
 
 			if(!(icon_exists(icon_file, RESOLVE_ICON_STATE(I))))
 				handled_by_bodytype = TRUE

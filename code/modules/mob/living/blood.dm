@@ -46,16 +46,16 @@
 		switch(blood_volume)
 			if(BLOOD_VOLUME_EXCESS to BLOOD_VOLUME_MAX_LETHAL)
 				if(prob(15))
-					to_chat(src, "<span class='userdanger'>Blood starts to tear your skin apart. You're going to burst!</span>")
+					to_chat(src, span_userdanger("Blood starts to tear your skin apart. You're going to burst!"))
 					inflate_gib()
 			if(BLOOD_VOLUME_MAXIMUM to BLOOD_VOLUME_EXCESS)
 				if(prob(10))
-					to_chat(src, "<span class='warning'>You feel terribly bloated.</span>")
+					to_chat(src, span_warning("You feel terribly bloated."))
 
 			if(BLOOD_VOLUME_OKAY to BLOOD_VOLUME_SAFE)
 
 				if(prob(1))
-					to_chat(src, "<span class='warning'>You feel [word].</span>")
+					to_chat(src, span_warning("You feel [word]."))
 				if(oxyloss < 20)
 					adjustOxyLoss(round((BLOOD_VOLUME_NORMAL - blood_volume) * 0.02, 1))
 
@@ -69,14 +69,14 @@
 
 				if(prob(15))
 					Unconscious(rand(2 SECONDS,6 SECONDS))
-					to_chat(src, "<span class='warning'>You feel very [word].</span>")
+					to_chat(src, span_warning("You feel very [word]."))
 
 			if(BLOOD_VOLUME_SURVIVE to BLOOD_VOLUME_BAD)
 				adjustOxyLoss(round((BLOOD_VOLUME_NORMAL - blood_volume) * 0.02, 1))
 				adjustToxLoss(2)
 				if(prob(15))
 					Unconscious(rand(2 SECONDS,6 SECONDS))
-					to_chat(src, "<span class='warning'>You feel extremely [word].</span>")
+					to_chat(src, span_warning("You feel extremely [word]."))
 			if(-INFINITY to BLOOD_VOLUME_SURVIVE)
 				if(!HAS_TRAIT(src, TRAIT_NODEATH))
 					death()
@@ -180,7 +180,10 @@
 ****************************************************/
 
 //Gets blood from mob to a container or other mob, preserving all data in it.
-/mob/living/proc/transfer_blood_to(atom/movable/AM, amount, forced)
+// [CELADON-EDIT] - CELADON_FIXES_BLOOD
+// /mob/living/proc/transfer_blood_to(atom/movable/AM, amount, forced)	// ORIGINAL
+/mob/living/proc/transfer_blood_to(atom/movable/AM, amount, forced, allow_excess = FALSE)
+// [CELADON-EDIT]
 	if(!blood_volume || !AM.reagents)
 		return FALSE
 	if(blood_volume < BLOOD_VOLUME_BAD && !forced)
@@ -213,7 +216,12 @@
 					C.reagents.add_reagent(/datum/reagent/toxin, amount * 0.5)
 					return TRUE
 
-			C.blood_volume = min(C.blood_volume + round(amount, 0.1), BLOOD_VOLUME_MAX_LETHAL)
+			// Ограничиваем кровь до нормального уровня, если не указан флаг allow_excess
+			var/max_blood = allow_excess ? BLOOD_VOLUME_MAX_LETHAL : BLOOD_VOLUME_NORMAL	// [CELADON-ADD] - CELADON_FIXES_BLOOD
+			// [CELADON-EDIT] - CELADON_FIXES_BLOOD
+			// /mob/living/proc/transfer_blood_to(atom/movable/AM, amount, forced)	// ORIGINAL
+			C.blood_volume = min(C.blood_volume + round(amount, 0.1), max_blood)
+			// [/CELADON-EDIT]
 			return TRUE
 
 	AM.reagents.add_reagent(blood_id, amount, blood_data, bodytemperature)

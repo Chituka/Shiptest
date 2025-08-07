@@ -1,7 +1,7 @@
 /obj/item/storage/ashtray
 	name = "Пепельница"
 	desc = "Дешёвая пепельница."
-	icon = 'mod_celadon/_storge_icons/icons/items/obj/ashtray.dmi'
+	icon = 'mod_celadon/_storge_icons/icons/items/misc/ashtray.dmi'
 	icon_state = "ashtray_bl"
 	var/icon_half  = "ashtray_half_bl"
 	var/icon_full  = "ashtray_full_bl"
@@ -43,7 +43,7 @@
 			else
 				visible_message("[user] places [I] in [src].")
 		else
-			to_chat(user, "<span class='warning'>You can't put [I] in [src]. Its already full.</span>")
+			to_chat(user, span_warning("You can't put [I] in [src]. Its already full."))
 	add_fingerprint(user)
 	update_appearance(UPDATE_DESC|UPDATE_ICON_STATE)
 
@@ -76,13 +76,13 @@
 /obj/item/storage/ashtray/deconstruct()
 	var/obj/item/trash/broken_ashtray/shards = new(get_turf(src))
 	shards.icon_state = icon_broken
-	visible_message("<span class='warning'>Oops, [src] broke into a lot of pieces!</span>")
+	visible_message(span_warning("Oops, [src] broke into a lot of pieces!"))
 	return ..()
 
 
 /obj/item/storage/ashtray/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 	if(length(contents))
-		visible_message("<span class='warning'>[src] slams into [hit_atom] spilling its contents!</span>")
+		visible_message(span_warning("[src] slams into [hit_atom] spilling its contents!"))
 	empty_tray()
 	if(rand(1,20) > max_integrity)
 		deconstruct()
@@ -125,7 +125,7 @@
 
 /obj/item/trash/broken_ashtray
 	name = "Осколки пепельницы"
-	icon = 'mod_celadon/_storge_icons/icons/items/obj/ashtray.dmi'
+	icon = 'mod_celadon/_storge_icons/icons/items/misc/ashtray.dmi'
 	icon_state = "ashtray_bork_bl"
 
 /obj/item/trash/broken_ashtray/Initialize(mapload)

@@ -1,10 +1,10 @@
 /datum/language_holder/riol
 	understood_languages = list(
-		/datum/language/common = list(LANGUAGE_ATOM),
+		/datum/language/galactic_common = list(LANGUAGE_ATOM),
 		/datum/language/canilunzt = list(LANGUAGE_ATOM),
 	)
 	spoken_languages = list(
-		/datum/language/common = list(LANGUAGE_ATOM),
+		/datum/language/galactic_common = list(LANGUAGE_ATOM),
 		/datum/language/canilunzt = list(LANGUAGE_ATOM),
 	)
 
@@ -22,7 +22,7 @@
 		"hel","ischt","far","va","baram","yereng","tech","lach","sam","mak","lich","gen","or","ag","ekt","gek","stag","onn", \
 		"bin","ket","yarl","volf","eyanech","kresvz","azunayn","ghchv"
 	)
-	icon = 'mod_celadon/_storge_icons/icons/language.dmi'
+	icon = 'mod_celadon/_storge_icons/icons/assets/language.dmi'
 	icon_state = "canilunzt"
 	default_priority = 90
 

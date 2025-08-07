@@ -106,7 +106,7 @@
 	pixel_x = -8;
 	pixel_y = 2
 	},
-/obj/item/reagent_containers/food/snacks/canned/beans{
+/obj/item/food/canned/beans{
 	pixel_x = 6;
 	pixel_y = 1
 	},
@@ -192,7 +192,6 @@
 /area/ruin)
 "S" = (
 /obj/effect/decal/cleanable/blood,
-/obj/effect/mob_spawn/human/corpse/syndicatesoldier,
 /turf/open/floor/plating/asteroid/whitesands/lit,
 /area/overmap_encounter/planetoid/sand/explored)
 "T" = (

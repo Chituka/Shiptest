@@ -1,5 +1,6 @@
 /datum/emote
 	cooldown = 1.5 SECONDS
+	muzzled_noises = list("сильный", "слабый")
 	// audio_cooldown = 3 SECONDS
 
 //////////////////////
@@ -57,13 +58,13 @@
 	key = "burp"
 	key_third_person = "burps"
 	message = "рыгает."
-	emote_type = EMOTE_AUDIBLE
+	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
 
 /datum/emote/living/choke
 	key = "choke"
 	key_third_person = "chokes"
 	message = "давится!"
-	emote_type = EMOTE_AUDIBLE
+	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
 
 /datum/emote/living/cross
 	key = "cross"
@@ -72,25 +73,47 @@
 	emote_type = EMOTE_VISIBLE
 	hands_use_check = TRUE
 
-/datum/emote/living/carbon/mothchitter
-	key = "chitter"
-	key_third_person = "chitters"
-	message = "жужит."
+/datum/emote/living/carbon/clap
+	key = "clap"
+	key_third_person = "claps"
+	message = "хлопает."
+	muzzle_ignore = TRUE
+	hands_use_check = TRUE
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
 
+/datum/emote/living/carbon/clap/get_sound(mob/living/user)
+	if(ishuman(user))
+		if(!user.get_bodypart(BODY_ZONE_L_ARM) || !user.get_bodypart(BODY_ZONE_R_ARM))
+			return
+		else
+			return pick('sound/misc/clap1.ogg',
+							'sound/misc/clap2.ogg',
+							'sound/misc/clap3.ogg',
+							'sound/misc/clap4.ogg')
+
+/datum/emote/living/carbon/mothchitter
+	key = "chitter"
+	key_third_person = "chitters"
+	message = "жужжит."
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+
+/datum/emote/living/carbon/mothchitter/can_run_emote(mob/user, status_check = TRUE , intentional)
+	if(!..())
+		return FALSE
+	if(!ismoth(user) || istype(user, /mob/living/simple_animal/pet/mothroach))
+		return FALSE
+	return TRUE
+
 /datum/emote/living/carbon/mothchitter/get_sound(mob/living/user)
-	if(!ishuman(user))
-		return
-	var/mob/living/carbon/human/H = user
-	if(ismoth(H) | (istype(H, /mob/living/simple_animal/pet/mothroach)))
-		return 'mod_celadon/_storge_sounds/sound/voice/moth/mothchitter.ogg'
+	return 'mod_celadon/_storge_sounds/sound/voice/moth/mothchitter.ogg'
 
 /datum/emote/living/chuckle
 	key = "chuckle"
 	key_third_person = "chuckles"
 	message = "усмехается."
-	emote_type = EMOTE_AUDIBLE
+	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
 
 /datum/emote/living/collapse
 	key = "collapse"
@@ -108,7 +131,7 @@
 	key = "cough"
 	key_third_person = "coughs"
 	message = "кашляет!"
-	emote_type = EMOTE_AUDIBLE
+	emote_type = EMOTE_VISIBLE
 
 /datum/emote/living/cough/can_run_emote(mob/user, status_check = TRUE , intentional)
 	. = ..()
@@ -183,7 +206,7 @@
 	key = "drool"
 	key_third_person = "drools"
 	message = "пускает слюни."
-	emote_type = EMOTE_AUDIBLE
+	emote_type = EMOTE_VISIBLE
 
 /datum/emote/living/faint
 	key = "faint"
@@ -201,9 +224,15 @@
 	key = "flap"
 	key_third_person = "flaps"
 	message = "взмахивает крыльями."
-	emote_type = EMOTE_AUDIBLE
+	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
 	hands_use_check = TRUE
 	var/wing_time = 20
+
+/datum/emote/living/flap/can_run_emote(mob/user, status_check, intentional)
+	var/mob/living/carbon/human/H = user
+	if(H.dna.features["wings"] == "None")
+		return FALSE
+	return TRUE
 
 /datum/emote/living/flap/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
@@ -222,7 +251,7 @@
 	key = "aflap"
 	key_third_person = "aflaps"
 	message = "яростно взмахивает крыльями!"
-	emote_type = EMOTE_AUDIBLE
+	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
 	hands_use_check = TRUE
 	wing_time = 10
 
@@ -247,8 +276,6 @@
 /datum/emote/living/gag/get_sound(mob/living/user)
 	if(!ishuman(user))
 		return
-	// if(!ishuman(user))
-	// 	return
 	var/mob/living/carbon/human/H = user
 	if(!H.mind || !H.mind.miming)
 		if(user.gender == FEMALE)
@@ -289,8 +316,6 @@
 /datum/emote/living/gasp/get_sound(mob/living/user)
 	if(!ishuman(user))
 		return
-	// if(!ishuman(user))
-	// 	return
 	var/mob/living/carbon/human/H = user
 	if(!H.mind || !H.mind.miming)
 		if(user.gender == FEMALE)
@@ -346,7 +371,7 @@
 	key = "grin"
 	key_third_person = "grins"
 	message = "оскаливается в улыбке."
-	emote_type = EMOTE_AUDIBLE
+	emote_type = EMOTE_VISIBLE
 
 /datum/emote/living/groan
 	key = "groan"
@@ -387,8 +412,18 @@
 	key = "jump"
 	key_third_person = "jumps"
 	message = "прыгает!"
-	emote_type = EMOTE_AUDIBLE
+	emote_type = EMOTE_VISIBLE
 	hands_use_check = TRUE
+
+/datum/emote/living/jump/run_emote(mob/living/user, params, type_override, intentional)
+	. = ..()
+	if(!.)
+		return FALSE
+	animate(user, pixel_y = user.pixel_y + 4, time = 0.1 SECONDS)
+	animate(pixel_y = user.pixel_y - 4, time = 0.1 SECONDS)
+
+/datum/emote/living/jump/get_sound(mob/living/user)
+	return 'sound/weapons/thudswoosh.ogg'
 
 /datum/emote/living/kiss
 	key = "kiss"
@@ -428,8 +463,6 @@
 /datum/emote/living/laugh/get_sound(mob/living/user)
 	if(!ishuman(user))
 		return
-	// if(!ishuman(user))
-	// 	return
 	var/mob/living/carbon/human/H = user
 	if(!H.mind || !H.mind.miming)
 		if(user.gender == FEMALE)
@@ -444,7 +477,7 @@
 /datum/emote/living/laugh_evil
 	key = "laugh_evil"
 	key_third_person = "laughs_evil"
-	message = "Злорадно смеётся."
+	message = "злорадно смеётся."
 	message_mime = "тихо злорадно смеётся!"
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
@@ -458,8 +491,6 @@
 /datum/emote/living/laugh_evil/get_sound(mob/living/user)
 	if(!ishuman(user))
 		return
-	// if(!ishuman(user))
-	// 	return
 	var/mob/living/carbon/human/H = user
 	if(ismoth(H))
 		return 'mod_celadon/_storge_sounds/sound/voice/moth/mothlaugh.ogg'
@@ -495,12 +526,15 @@
 	emote_type = EMOTE_AUDIBLE
 	vary = TRUE
 
+/datum/emote/living/carbon/mothsqueak/can_run_emote(mob/user, status_check, intentional)
+	if(!..())
+		return FALSE
+	if(!ismoth(user) && !istype(user, /mob/living/simple_animal/pet/mothroach))
+		return FALSE
+	return TRUE
+
 /datum/emote/living/carbon/mothsqueak/get_sound(mob/living/user)
-	if(!ishuman(user))
-		return
-	var/mob/living/carbon/human/H = user
-	if(ismoth(H) | (istype(H, /mob/living/simple_animal/pet/mothroach)))
-		return 'mod_celadon/_storge_sounds/sound/voice/moth/mothsqueak.ogg'
+	return 'mod_celadon/_storge_sounds/sound/voice/moth/mothsqueak.ogg'
 
 /datum/emote/living/peace
 	key = "peace"
@@ -525,7 +559,7 @@
 				message_param = "пытается показать на %t с помощью ноги, но теряет баланс и <span class='userdanger'>падает на землю</span>!"
 				H.Paralyze(20)
 			else
-				message_param = "<span class='userdanger'>[user.p_their()] ударяется головой об землю</span> пытаясь двигаться в сторону %t."
+				message_param = "[span_userdanger("bumps [user.p_their()] ударяется головой об землю")] пытаясь двигаться в сторону %t."
 				H.adjustOrganLoss(ORGAN_SLOT_BRAIN, 5)
 	..()
 
@@ -569,13 +603,32 @@
 	key = "shiver"
 	key_third_person = "shiver"
 	message = "дрожит!"
-	emote_type = EMOTE_AUDIBLE
+	emote_type = EMOTE_VISIBLE
+
+#define SHIVER_LOOP_DURATION (1 SECONDS)
+/datum/emote/living/shiver/run_emote(mob/living/user, params, type_override, intentional)
+	. = ..()
+	if(!.)
+		return FALSE
+	animate(user, pixel_x = user.pixel_x + 1, time = 0.1 SECONDS)
+	for(var/i in 1 to SHIVER_LOOP_DURATION / (0.2 SECONDS)) //desired total duration divided by the iteration duration to give the necessary iteration count
+		animate(pixel_x = user.pixel_x - 1, time = 0.1 SECONDS)
+		animate(pixel_x = user.pixel_x + 1, time = 0.1 SECONDS)
+	animate(pixel_x = user.pixel_x - 1, time = 0.1 SECONDS)
+#undef SHIVER_LOOP_DURATION
 
 /datum/emote/living/sigh
 	key = "sigh"
 	key_third_person = "sighs"
 	message = "вздыхает."
 	emote_type = EMOTE_AUDIBLE
+
+/datum/emote/living/sigh/run_emote(mob/living/user, params, type_override, intentional)
+	. = ..()
+	if(!ishuman(user))
+		return
+	var/image/emote_animation = image('mod_celadon/_storge_icons/icons/assets/qol/emote_visuals.dmi', user, "sigh")
+	flick_overlay_global(emote_animation, GLOB.clients, 2.0 SECONDS)
 
 /datum/emote/living/sigh/get_sound(mob/living/user)
 	if(!ishuman(user))
@@ -608,7 +661,7 @@
 	key = "sneeze"
 	key_third_person = "sneezes"
 	message = "чихает."
-	emote_type = EMOTE_AUDIBLE
+	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
 
 /datum/emote/living/sneeze/get_sound(mob/living/user)
 	if(!ishuman(user))
@@ -628,8 +681,8 @@
 /datum/emote/living/sniff
 	key = "sniff"
 	key_third_person = "sniffs"
-	message = "Шмыгает."
-	emote_type = EMOTE_AUDIBLE
+	message = "шмыгает."
+	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
 
 /datum/emote/living/sniff/get_sound(mob/living/user)
 	if(!ishuman(user))
@@ -709,13 +762,13 @@
 	key = "sulk"
 	key_third_person = "sulks"
 	message = "сильно сердится."
-	emote_type = EMOTE_AUDIBLE
+	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
 
 /datum/emote/living/surrender
 	key = "surrender"
 	key_third_person = "surrenders"
 	message = "сдаётся! Падает на землю, закидывая руки за свою голову."
-	emote_type = EMOTE_AUDIBLE
+	emote_type = EMOTE_VISIBLE
 
 /datum/emote/living/surrender/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
@@ -727,8 +780,18 @@
 /datum/emote/living/sway
 	key = "sway"
 	key_third_person = "sways"
-	message = "головокружительно кружится."
+	message = "головокружительно покачивается."
 	emote_type = EMOTE_VISIBLE
+
+/datum/emote/living/sway/run_emote(mob/living/user, params, type_override, intentional)
+	. = ..()
+	if(!.)
+		return FALSE
+	animate(user, pixel_x = user.pixel_x + 2, time = 0.5 SECONDS)
+	for(var/i in 1 to 2)
+		animate(pixel_x = user.pixel_x - 4, time = 1.0 SECONDS)
+		animate(pixel_x = user.pixel_x + 4, time = 1.0 SECONDS)
+	animate(pixel_x = user.pixel_x - 2, time = 0.5 SECONDS)
 
 /datum/emote/living/tremble
 	key = "tremble"
@@ -736,16 +799,45 @@
 	message = "дрожит в ужасе!"
 	emote_type = EMOTE_VISIBLE
 
+#define TREMBLE_LOOP_DURATION (4.4 SECONDS)
+/datum/emote/living/tremble/run_emote(mob/living/user, params, type_override, intentional)
+	. = ..()
+	if(!.)
+		return FALSE
+	animate(user, pixel_x = user.pixel_x + 2, time = 0.2 SECONDS)
+	for(var/i in 1 to TREMBLE_LOOP_DURATION / (0.4 SECONDS)) //desired total duration divided by the iteration duration to give the necessary iteration count
+		animate(pixel_x = user.pixel_x - 2, time = 0.2 SECONDS)
+		animate(pixel_x = user.pixel_x + 2, time = 0.2 SECONDS)
+	animate(pixel_x = user.pixel_x - 2, time = 0.2 SECONDS)
+#undef TREMBLE_LOOP_DURATION
+
 /datum/emote/living/twitch
 	key = "twitch"
 	key_third_person = "twitches"
 	message = "сильно дёргается."
 	emote_type = EMOTE_VISIBLE
 
+/datum/emote/living/twitch/run_emote(mob/living/user, params, type_override, intentional)
+	. = ..()
+	if(!.)
+		return FALSE
+	animate(user, pixel_x = user.pixel_x - 1, time = 0.1 SECONDS)
+	animate(pixel_x = user.pixel_x + 1, time = 0.1 SECONDS)
+	animate(time = 0.1 SECONDS)
+	animate(pixel_x = user.pixel_x - 1, time = 0.1 SECONDS)
+	animate(pixel_x = user.pixel_x + 1, time = 0.1 SECONDS)
+
 /datum/emote/living/twitch_s
 	key = "twitch_s"
 	message = "дёргается."
 	emote_type = EMOTE_VISIBLE
+
+/datum/emote/living/twitch_s/run_emote(mob/living/user, params, type_override, intentional)
+	. = ..()
+	if(!.)
+		return FALSE
+	animate(user, pixel_x = user.pixel_x - 1, time = 0.1 SECONDS)
+	animate(pixel_x = user.pixel_x + 1, time = 0.1 SECONDS)
 
 /datum/emote/living/wave
 	key = "wave"
@@ -766,17 +858,11 @@
 	message = "слегка улыбается."
 	emote_type = EMOTE_VISIBLE
 
-/datum/emote/living/wing
-	key = "wing"
-	key_third_person = "wings"
-	message = "подмигивает."
-	emote_type = EMOTE_VISIBLE
-
 /datum/emote/living/yawn
 	key = "yawn"
 	key_third_person = "yawns"
 	message = "зевает."
-	emote_type = EMOTE_AUDIBLE
+	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
 
 /datum/emote/living/yawn/get_sound(mob/living/user)
 	if(!ishuman(user))
@@ -797,6 +883,17 @@
 	key_third_person = "gurgles"
 	message = "издает неприятное хлюпанье."
 	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+
+/datum/emote/living/gurgle/can_run_emote(mob/user, status_check = TRUE , intentional)
+	if(!..())
+		return FALSE
+	if(!isjellyperson(user))
+		return FALSE
+	return TRUE
+
+/datum/emote/living/gurgle/get_sound(mob/living/user)
+	return 'mod_celadon/_storge_sounds/sound/emotes/jelly/gurgle.ogg'
 
 /datum/emote/living/custom
 	key = "me"
@@ -807,9 +904,9 @@
 	. = ..() && intentional
 
 /datum/emote/living/custom/proc/check_invalid(mob/user, input)
-	var/static/regex/stop_bad_mime = regex(@"says|exclaims|yells|asks")
-	if(stop_bad_mime.Find(input, 1, 1))
-		to_chat(user, "<span class='danger'>Invalid emote.</span>")
+	var/static/regex/stop_bypasser = regex(@"says|exclaims|yells|asks")
+	if(stop_bypasser.Find(input, 1, 1))
+		to_chat(user, span_danger("Invalid emote."))
 		return TRUE
 	return FALSE
 
@@ -817,14 +914,14 @@
 	if(!can_run_emote(user, TRUE, intentional))
 		return FALSE
 	if(is_banned_from(user.ckey, "Emote"))
-		to_chat(user, "<span class='boldwarning'>You cannot send custom emotes (banned).</span>")
+		to_chat(user, span_boldwarning("You cannot send custom emotes (banned)."))
 		return FALSE
 	else if(QDELETED(user))
 		return FALSE
 	else if(user.client && user.client.prefs.muted & MUTE_IC)
-		to_chat(user, "<span class='boldwarning'>You cannot send IC messages (muted).</span>")
+		to_chat(user, span_boldwarning("You cannot send IC messages (muted)."))
 		return FALSE
-	else if(params == ".")
+	else if(!params)
 		var/custom_emote = copytext(sanitize(input("Choose an emote to display.") as text|null), 1, MAX_MESSAGE_LEN)
 		if(custom_emote && !check_invalid(user, custom_emote))
 			var/type = input("Is this a visible or hearable emote?") as null|anything in list("Visible", "Hearable")
@@ -853,7 +950,7 @@
 
 /datum/emote/living/help/run_emote(mob/user, params, type_override, intentional)
 	var/list/keys = list()
-	var/list/message = list("Available emotes, you can use them with say \"*emote\": ")
+	var/list/message = list("Доступный список эмоций. Их можно использовать в поле say \"*emote\": ")
 
 	for(var/key in GLOB.emote_list)
 		for(var/datum/emote/P in GLOB.emote_list[key])
@@ -879,8 +976,8 @@
 /datum/emote/beep
 	key = "beep"
 	key_third_person = "beeps"
-	message = "beeps."
-	message_param = "beeps at %t."
+	message = "бипает."
+	message_param = "бипает на %t."
 	sound = 'sound/machines/twobeep.ogg'
 	mob_type_allowed_typecache = list(/mob/living/brain, /mob/living/silicon)
 
@@ -898,7 +995,7 @@
 	key = "clack"
 	key_third_person = "clacks"
 	message = "щёлкает челюстью."
-	emote_type = EMOTE_AUDIBLE
+	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
 
 // /datum/emote/living/hoot
 // 	key = "hoot"
@@ -929,8 +1026,6 @@
 /datum/emote/living/warcray/get_sound(mob/living/user)
 	if(!ishuman(user))
 		return
-	// if(!ishuman(user))
-	// 	return
 	var/mob/living/carbon/human/H = user
 	if(!H.mind || !H.mind.miming)
 		if(user.gender == FEMALE)
@@ -1012,8 +1107,6 @@
 /datum/emote/living/sigh/get_sound(mob/living/user)
 	if(!ishuman(user))
 		return
-	// if(!ishuman(user))
-	// 	return
 	var/mob/living/carbon/human/H = user
 
 	if(H.gender == FEMALE)
@@ -1060,8 +1153,6 @@
 /datum/emote/living/carbon/giggle/get_sound(mob/living/user)
 	if(!ishuman(user))
 		return
-	// if(!ishuman(user))
-	// 	return
 	var/mob/living/carbon/human/H = user
 
 	if(H.gender == FEMALE)
@@ -1119,8 +1210,6 @@
 /datum/emote/living/carbon/human/gasp/get_sound(mob/user)
 	if(!ishuman(user))
 		return
-	// if(!ishuman(user))
-	// 	return
 	var/mob/living/carbon/human/H = user
 
 	if(H.is_muzzled())
@@ -1150,15 +1239,13 @@
 /datum/emote/living/carbon/human/cry
 	key = "cry"
 	key_third_person = "cries"
-	message = "Плачет."
-	muzzled_noises = list("слабо", "жалко", "грустно")
+	message = "плачет."
+	muzzled_noises = list("слабый", "слезливый", "грустный")
 	emote_type = EMOTE_AUDIBLE
 
 /datum/emote/living/carbon/human/cry/get_sound(mob/living/user)
 	if(!ishuman(user))
 		return
-	// if(!ishuman(user))
-	// 	return
 	var/mob/living/carbon/human/H = user
 
 	if(H.gender == FEMALE)
@@ -1179,8 +1266,6 @@
 /datum/emote/living/carbon/human/sneeze/get_sound(mob/user)
 	if(!ishuman(user))
 		return
-	// if(!ishuman(user))
-	// 	return
 	var/mob/living/carbon/human/H = user
 
 	if(H.gender == FEMALE)
@@ -1195,9 +1280,9 @@
 	bypass_unintentional_cooldown = TRUE
 	sound = 'mod_celadon/_storge_sounds/sound/emotes/fart.ogg'
 
-/////////////////////
+//////////////////
 /// New Emotes ///
-///////////////////
+//////////////////
 
 /datum/emote/living/carbon/human/whistle
 	key = "whistle"
@@ -1205,13 +1290,12 @@
 	message = "свистит."
 	message_param = "свистит на %t."
 	emote_type = EMOTE_AUDIBLE | EMOTE_MOUTH | EMOTE_VISIBLE
-	sound = 'mod_celadon/_storge_sounds/sound/emotes/whistle.ogg'
+	vary = TRUE
 
 /datum/emote/living/carbon/human/whistle/get_sound(mob/living/user)
-	if(!ishuman(user))
-		return pick('mod_celadon/_storge_sounds/sound/emotes/whistle.ogg')
-	if(ishuman(user))
-		return pick('mod_celadon/_storge_sounds/sound/emotes/whistle.ogg')
+	if(iskepori(user))
+		return 'sound/voice/kepori/kepiwhistle.ogg'
+	return 'mod_celadon/_storge_sounds/sound/emotes/whistle.ogg'
 
 /datum/emote/living/carbon/human/snuffle
 	key = "snuffle"
@@ -1252,9 +1336,14 @@
 	emote_type = EMOTE_VISIBLE | EMOTE_MOUTH | EMOTE_AUDIBLE
 	age_based = TRUE
 
+/datum/emote/living/carbon/human/roar/can_run_emote(mob/user, status_check = TRUE , intentional)
+	if(!..())
+		return FALSE
+	if(!islizard(user))
+		return FALSE
+	return TRUE
+
 /datum/emote/living/carbon/human/roar/get_sound(mob/living/user)
-	if(!ishuman(user))
-		return
 	return pick(
 		'mod_celadon/_storge_sounds/sound/emotes/unathi/roar_unathi_1.ogg',
 		'mod_celadon/_storge_sounds/sound/emotes/unathi/roar_unathi_2.ogg',
@@ -1271,13 +1360,17 @@
 	volume = 50
 	muzzled_noises = list("слабо урчащий")
 
+/datum/emote/living/carbon/human/rumble/can_run_emote(mob/user, status_check = TRUE , intentional)
+	if(!..())
+		return FALSE
+	if(!islizard(user))
+		return FALSE
+	return TRUE
+
 /datum/emote/living/carbon/human/rumble/get_sound(mob/living/user)
-	if(!ishuman(user))
-		return
-	if(islizard(user))
-		return pick(
-			'mod_celadon/_storge_sounds/sound/emotes/unathi/rumble_unathi_1.ogg',
-			'mod_celadon/_storge_sounds/sound/emotes/unathi/rumble_unathi_2.ogg')
+	return pick(
+		'mod_celadon/_storge_sounds/sound/emotes/unathi/rumble_unathi_1.ogg',
+		'mod_celadon/_storge_sounds/sound/emotes/unathi/rumble_unathi_2.ogg')
 
 /datum/emote/living/carbon/human/threat
 	key = "threat"
@@ -1289,6 +1382,13 @@
 	age_based = TRUE
 	volume = 80
 	muzzled_noises = list("очень раздражённый")
+
+/datum/emote/living/carbon/human/threat/can_run_emote(mob/user, status_check = TRUE , intentional)
+	if(!..())
+		return FALSE
+	if(!islizard(user))
+		return FALSE
+	return TRUE
 
 /datum/emote/living/carbon/human/threat/get_sound(mob/living/user)
 	return pick(
@@ -1306,15 +1406,13 @@
 	vary = TRUE
 	sound = 'mod_celadon/_storge_sounds/sound/emotes/tajaran/purr_tajaran.ogg'
 	volume = 80
-	muzzled_noises = list("слабо")
+	muzzled_noises = list("слабый мурчащий")
 
 /datum/emote/living/carbon/human/purr/can_run_emote(mob/user, status_check = TRUE , intentional)
 	if(!..())
 		return FALSE
-
-	if (!istajara(user))
+	if(!istajara(user))
 		return FALSE
-
 	return TRUE
 
 /datum/emote/living/carbon/human/purrl
@@ -1329,15 +1427,13 @@
 	vary = TRUE
 	sound = 'mod_celadon/_storge_sounds/sound/emotes/tajaran/purr_tajaran_long.ogg'
 	volume = 80
-	muzzled_noises = list("слабо")
+	muzzled_noises = list("слабый мурчащий")
 
 /datum/emote/living/carbon/human/purrl/can_run_emote(mob/user, status_check = TRUE , intentional)
 	if(!..())
 		return FALSE
-
-	if (!istajara(user))
+	if(!istajara(user))
 		return FALSE
-
 	return TRUE
 
 /datum/emote/living/carbon/human/mrowss
@@ -1351,15 +1447,13 @@
 	vary = TRUE
 	cooldown = 5 SECONDS
 	volume = 50
-	muzzled_noises = list("слабо")
+	muzzled_noises = list("слабый мурлыкающий")
 
 /datum/emote/living/carbon/human/mrowss/can_run_emote(mob/user, status_check = TRUE , intentional)
 	if(!..())
 		return FALSE
-
-	if (!istajara(user))
+	if(!istajara(user))
 		return FALSE
-
 	return TRUE
 
 /datum/emote/living/carbon/human/hiss/tajara
@@ -1367,7 +1461,7 @@
 	// species_type_whitelist_typecache = list(/datum/species/tajaran)
 	sound = 'mod_celadon/_storge_sounds/sound/emotes/tajaran/hiss_tajaran.ogg'
 	volume = 80
-	muzzled_noises = list("irritated")
+	muzzled_noises = list("тихий шипящий")
 
 /datum/emote/living/carbon/human/hiss
 	key = "hiss"
@@ -1380,15 +1474,13 @@
 	vary = TRUE
 	sound = 'mod_celadon/_storge_sounds/sound/emotes/tajaran/hiss_tajaran.ogg'
 	volume = 80
-	muzzled_noises = list("слабо")
+	muzzled_noises = list("слабый шипящий")
 
 /datum/emote/living/carbon/human/hiss/can_run_emote(mob/user, status_check = TRUE , intentional)
 	if(!..())
 		return FALSE
-
-	if(!istajara(user))
+	if(!istajara(user) && !islizard(user))
 		return FALSE
-
 	return TRUE
 
 /datum/emote/living/carbon/human/hiss/get_sound(mob/living/user)
@@ -1398,7 +1490,6 @@
 		return 'mod_celadon/_storge_sounds/sound/emotes/tajaran/hiss_tajaran.ogg'
 	if(islizard(user))
 		return 'sound/voice/lizard/hiss.ogg'
-
 
 /datum/emote/living/carbon/human/whip
 	key = "whip"
@@ -1424,10 +1515,8 @@
 /datum/emote/living/carbon/human/whip/can_run_emote(mob/user, status_check = TRUE, intentional)
 	if(!..())
 		return FALSE
-
 	if(!can_wag(user))
 		return FALSE
-
 	return TRUE
 
 
@@ -1457,6 +1546,7 @@
 // 	cooldown = 10 SECONDS
 // 	volume = 30
 
+// Копия fox_purr
 /datum/emote/living/carbon/human/ururu
 	key = "ururu"
 	key_third_person = "ururu"
@@ -1464,11 +1554,18 @@
 	message_param = "урчит на %t."
 	sound = 'mod_celadon/_storge_sounds/sound/emotes/vulpkanin/purr.ogg'
 	// species_type_whitelist_typecache = list(/datum/species/vulpkanin)
-	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
+	emote_type = EMOTE_VISIBLE | EMOTE_MOUTH | EMOTE_AUDIBLE
 	vary = TRUE
 	cooldown = 10 SECONDS
 	volume = 50
-	muzzled_noises = list("слабо")
+	muzzled_noises = list("слабый урчащий")
+
+/datum/emote/living/carbon/human/ururu/can_run_emote(mob/user, status_check = TRUE, intentional)
+	if(!..())
+		return FALSE
+	if(!isriol(user))
+		return FALSE
+	return TRUE
 
 /datum/emote/living/carbon/human/meow
 	key = "meow"
@@ -1481,9 +1578,9 @@
 	vary = TRUE
 	cooldown = 10 SECONDS
 	volume = 50
-	muzzled_noises = list("слабо")
+	muzzled_noises = list("слабо мяукающий")
 
-/datum/emote/living/carbon/human/mrow
+/datum/emote/living/carbon/human/tajara/mrow
 	key = "mrow"
 	key_third_person = "mrow"
 	message = "раздражённо мяукает."
@@ -1494,25 +1591,20 @@
 	vary = TRUE
 	cooldown = 10 SECONDS
 	volume = 70
-	muzzled_noises = list("слабо")
+	muzzled_noises = list("слабо раздраженный мяукающий")
 
 /datum/emote/living/carbon/human/tajara/can_run_emote(mob/user, status_check = TRUE , intentional)
 	if(!..())
 		return FALSE
-
-	if (!istajara(user))
+	if(!istajara(user))
 		return FALSE
-
 	return TRUE
 
 /datum/emote/living/carbon/human/spin
 	key = "spin"
 	key_third_person = "spines"
-	message = "Кружится."
-	emote_type = EMOTE_VISIBLE
-
-/datum/emote/spin
 	message = "кружится."
+	emote_type = EMOTE_VISIBLE
 
 /datum/emote/living/carbon/moan
 	key = "moan"
@@ -1524,10 +1616,8 @@
 /datum/emote/living/carbon/moan/can_run_emote(mob/user, status_check = TRUE , intentional)
 	if(!..())
 		return FALSE
-
-	if (isipc(user) || islanius(user))
+	if(isipc(user) || islanius(user))
 		return FALSE
-
 	return TRUE
 
 /datum/emote/living/carbon/moan/get_sound(mob/living/user)
@@ -1574,13 +1664,35 @@
 	message = "трясётся."
 	// unintentional_stat_allowed = UNCONSCIOUS
 
+/datum/emote/living/bshake/run_emote(mob/user, params, type_override, intentional)
+	. = ..()
+	if(!.)
+		return FALSE
+	animate(user, pixel_x = user.pixel_x + 2, time = 0.1 SECONDS)
+	animate(pixel_x = user.pixel_x - 2, time = 0.1 SECONDS)
+	animate(time = 0.1 SECONDS)
+	animate(pixel_x = user.pixel_x + 2, time = 0.1 SECONDS)
+	animate(pixel_x = user.pixel_x - 2, time = 0.1 SECONDS)
+
 /datum/emote/living/carbon/human/snap
 	key = "snap"
 	key_third_person = "snaps"
 	message = "щёлкает пальцами."
 	message_param = "snaps their fingers at %t."
 	sound = 'mod_celadon/_storge_sounds/sound/emotes/fingersnap.ogg'
-	emote_type = EMOTE_AUDIBLE
+	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/wing
+	key = "wing"
+	key_third_person = "wings"
+	message = "расправляет крылья"
+	emote_type = EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/wing/can_run_emote(mob/user, status_check, intentional)
+	var/mob/living/carbon/human/H = user
+	if(H.dna.features["wings"] == "None")
+		return FALSE
+	return TRUE
 
 // /datum/emote/living/carbon/human/snap/run_emote(mob/user, params, type_override, intentional)
 
@@ -1599,7 +1711,7 @@
 // 		return TRUE
 
 // 	if(prob(5))
-// 		user.visible_message("<span class='danger'><b>[user]</b> snaps [user.p_their()] fingers right off!</span>")
+// 		user.visible_message(span_danger("<b>[user]</b> snaps [user.p_their()] fingers right off!"))
 // 		playsound(user.loc, 'sound/effects/snap.ogg', 50, 1)
 // 		return TRUE
 // 	return ..()
@@ -1707,3 +1819,224 @@
 // /datum/emote/living/carbon/human/highfive/rps/reset_emote()
 // 	..()
 // 	move = initial(move)
+
+
+/datum/emote/living/carbon/human/glasses
+	key = "glasses"
+	key_third_person = "glasses"
+	message = "поправляет очки."
+	emote_type = EMOTE_VISIBLE
+	cooldown = 5 SECONDS
+	var/static/list/allowed_glasses = list(
+		/obj/item/clothing/glasses/regular,
+		/obj/item/clothing/glasses/sunglasses,
+		/obj/item/clothing/glasses/hud/health/sunglasses,
+		/obj/item/clothing/glasses/hud/diagnostic/sunglasses,
+		/obj/item/clothing/glasses/hud/security/sunglasses,
+		/obj/item/clothing/glasses/meson/sunglasses
+	)
+	var/static/list/blocking_headgear = list(
+		/obj/item/clothing/head/helmet/space,
+		/obj/item/clothing/head/mod
+	)
+
+/datum/emote/living/carbon/human/glasses/can_run_emote(mob/user, status_check, intentional)
+	if(!..())
+		return FALSE
+
+	var/obj/item/eyes_slot = user.get_item_by_slot(ITEM_SLOT_EYES)
+	if(!is_type_in_list(eyes_slot, allowed_glasses))
+		to_chat(user, span_warning("На мне нет подходящих очков!"))
+		return FALSE
+
+	var/obj/item/head_slot = user.get_item_by_slot(ITEM_SLOT_HEAD)
+	if(is_type_in_list(head_slot, blocking_headgear))
+		to_chat(user, span_warning("Я не могу поправить очки через шлем!"))
+		return FALSE
+
+	return TRUE
+
+/datum/emote/living/carbon/human/glasses/run_emote(mob/user, params, type_override, intentional)
+	if(!..())
+		return FALSE
+	var/image/emote_animation = image('mod_celadon/_storge_icons/icons/assets/qol/emote_visuals.dmi', user, "glasses")
+	flick_overlay_global(emote_animation, GLOB.clients, 1.6 SECONDS)
+	return TRUE
+
+/////////////////////
+// Рассовые эмоуты //
+/////////////////////
+
+// Mothman
+
+/datum/emote/living/flutter
+	key = "flutter"
+	key_third_person = "flutters"
+	message = "трепещет крыльями."
+	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
+
+/datum/emote/living/flutter/can_run_emote(mob/user, status_check = TRUE , intentional)
+	if(!..())
+		return FALSE
+	if(!ismoth(user))
+		return FALSE
+	return TRUE
+
+/datum/emote/living/flutter/get_sound(mob/living/user)
+	if(!ishuman(user))
+		return
+	return 'mod_celadon/_storge_sounds/sound/voice/moth/moth_flutter.ogg'
+
+// Jellyperson
+
+/datum/emote/living/carbon/human/jelly/squish
+	key = "squish"
+	key_third_person = "squishes"
+	message = "хлюпает."
+	emote_type = EMOTE_VISIBLE
+	vary = TRUE
+
+/datum/emote/living/carbon/human/jelly/squish/get_sound(mob/living/user)
+	return 'mod_celadon/_storge_sounds/sound/plushes/voice/slime_squish.ogg'
+
+/datum/emote/living/carbon/human/jelly/can_run_emote(mob/user, status_check = TRUE , intentional)
+	if(!..())
+		return FALSE
+	if(!isjellyperson(user))
+		return FALSE
+	return TRUE
+
+/datum/emote/living/carbon/human/jelly/bubble
+	key = "bubble"
+	key_third_person = "bubbles"
+	message = "булькает."
+	emote_type = EMOTE_VISIBLE
+	vary = TRUE
+
+/datum/emote/living/carbon/human/jelly/bubble/get_sound(mob/living/user)
+	return 'mod_celadon/_storge_sounds/sound/emotes/mob_effects/slime_bubble.ogg'
+
+/datum/emote/living/carbon/human/jelly/pop
+	key = "pop"
+	key_third_person = "popped"
+	message = "хлопает ртом."
+	emote_type = EMOTE_VISIBLE
+	vary = TRUE
+
+/datum/emote/living/carbon/human/jelly/pop/get_sound(mob/living/user)
+	return 'mod_celadon/_storge_sounds/sound/emotes/mob_effects/slime_pop.ogg'
+
+// VOX & KEPORI
+
+/datum/emote/living/carbon/human/tailthump
+	key = "thump"
+	key_third_person = "thumps their tail"
+	message = "ударяет хвостом."
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+
+/datum/emote/living/carbon/human/tailthump/can_run_emote(mob/user, status_check = TRUE , intentional)
+	if(!..())
+		return FALSE
+	if(!isvox(user))
+		return FALSE
+	return TRUE
+
+/datum/emote/living/carbon/human/tailthump/get_sound(mob/living/user)
+	return 'sound/voice/lizard/tailthump.ogg'
+
+/datum/emote/living/carbon/human/kepiclick
+	key = "click"
+	key_third_person = "clicks"
+	message = "щелкает клювом."
+	emote_type = EMOTE_AUDIBLE
+
+/datum/emote/living/carbon/human/kepiclick/can_run_emote(mob/user, status_check = TRUE , intentional)
+	if(!..())
+		return FALSE
+	if(!iskepori(user) && !isvox(user))
+		return FALSE
+	return TRUE
+
+/datum/emote/living/carbon/human/kepiclick/get_sound(mob/living/user)
+	return 'sound/voice/kepori/kepiclick.ogg'
+
+/datum/emote/living/carbon/human/quill
+	key = "quill"
+	key_third_person = "quill"
+	message = "шуршит перьями."
+	emote_type = EMOTE_VISIBLE
+	vary = TRUE
+
+/datum/emote/living/carbon/human/quill/can_run_emote(mob/user, status_check = TRUE , intentional)
+	if(!..())
+		return FALSE
+	if(!iskepori(user) && !isvox(user))
+		return FALSE
+	return TRUE
+
+/datum/emote/living/carbon/human/quill/get_sound(mob/living/user)
+	return pick(
+		'mod_celadon/_storge_sounds/sound/emotes/kepori/quill_1.ogg',
+		'mod_celadon/_storge_sounds/sound/emotes/kepori/quill_2.ogg')
+
+// SKELETON
+
+/datum/emote/living/carbon/human/rattle
+	key = "rattle"
+	key_third_person = "rattles"
+	message = "гремит костями."
+	emote_type = EMOTE_VISIBLE
+
+/datum/emote/living/carbon/human/rattle/can_run_emote(mob/user, status_check = TRUE, intentional)
+	if(!..())
+		return FALSE
+	if(!isskeleton(user))
+		return FALSE
+	return TRUE
+
+////////////////////////
+// Отключенные эмоуты //
+////////////////////////
+
+/datum/emote/living/carbon/human/kepiwhistle	// Дубликат, конфликтующий с обычным свистом
+	key = "kepiwhistle"
+
+/datum/emote/living/carbon/human/kepiwhistle/can_run_emote(mob/user, status_check = TRUE , intentional)
+	return FALSE
+
+/datum/emote/living/carbon/human/squeal			// Не уместный звук
+	key = "squeal"
+
+/datum/emote/living/carbon/human/squeal/can_run_emote(mob/user, status_check = TRUE , intentional)
+	return FALSE
+
+/datum/emote/living/carbon/human/kepiwoop 		// Когда звук появится тогда можно включать
+	key = "woop"
+
+/datum/emote/living/carbon/human/kepiwoop/can_run_emote(mob/user, status_check = TRUE , intentional)
+	return FALSE
+
+/datum/emote/living/carbon/sign/signal			// Не работает так как задумано
+	key = "signal"
+
+/datum/emote/living/carbon/sign/signal/can_run_emote(mob/user, status_check = TRUE , intentional)
+	return FALSE
+
+/datum/emote/exercise/pushup					// Не работает вообще
+	key = "pushup"
+
+/datum/emote/exercise/pushup/can_run_emote(mob/user, status_check = TRUE , intentional)
+	return FALSE
+
+/datum/emote/living/carbon/noogie				// Не работает вообще
+	key = "noogie"
+
+/datum/emote/living/carbon/noogie/can_run_emote(mob/user, status_check = TRUE , intentional)
+	return FALSE
+
+/datum/emote/exercise							// Работает, но всегда с 0 результатом и требует починки, пока будет выключена
+	key = "exercise"
+
+/datum/emote/living/carbon/noogie/can_run_emote(mob/user, status_check = TRUE , intentional)
+	return FALSE

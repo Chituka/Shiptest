@@ -329,27 +329,27 @@
 /area/ship/crew/dorm)
 "bC" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
-/obj/item/reagent_containers/food/snacks/meat/slab,
-/obj/item/reagent_containers/food/snacks/meat/slab,
-/obj/item/reagent_containers/food/snacks/meat/slab,
-/obj/item/reagent_containers/food/snacks/meat/slab,
-/obj/item/reagent_containers/food/snacks/meat/slab,
-/obj/item/reagent_containers/food/snacks/meat/slab,
-/obj/item/reagent_containers/food/snacks/meat/slab,
-/obj/item/reagent_containers/food/snacks/meat/slab,
-/obj/item/reagent_containers/food/snacks/meat/slab,
-/obj/item/reagent_containers/food/snacks/meat/slab,
-/obj/item/reagent_containers/food/snacks/meat/slab,
+/obj/item/food/meat/slab,
+/obj/item/food/meat/slab,
+/obj/item/food/meat/slab,
+/obj/item/food/meat/slab,
+/obj/item/food/meat/slab,
+/obj/item/food/meat/slab,
+/obj/item/food/meat/slab,
+/obj/item/food/meat/slab,
+/obj/item/food/meat/slab,
+/obj/item/food/meat/slab,
+/obj/item/food/meat/slab,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
-/obj/item/reagent_containers/food/snacks/meat/slab,
-/obj/item/reagent_containers/food/snacks/meat/slab,
-/obj/item/reagent_containers/food/snacks/meat/slab,
-/obj/item/reagent_containers/food/snacks/meat/slab,
-/obj/item/reagent_containers/food/snacks/meat/slab,
-/obj/item/reagent_containers/food/snacks/meat/slab,
+/obj/item/food/meat/slab,
+/obj/item/food/meat/slab,
+/obj/item/food/meat/slab,
+/obj/item/food/meat/slab,
+/obj/item/food/meat/slab,
+/obj/item/food/meat/slab,
 /obj/structure/closet/secure_closet/freezer/kitchen/wall/directional/west,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plasteel,
@@ -3770,8 +3770,8 @@
 /obj/item/reagent_containers/food/drinks/mug/coco{
 	pixel_y = 9
 	},
-/obj/item/reagent_containers/food/snacks/cracker,
-/obj/item/reagent_containers/food/snacks/cracker{
+/obj/item/food/cracker,
+/obj/item/food/cracker{
 	pixel_x = 6;
 	pixel_y = 3
 	},
@@ -4235,7 +4235,7 @@
 /turf/open/floor/grass,
 /area/ship/crew/canteen)
 "zs" = (
-/obj/item/reagent_containers/food/snacks/burger/fish,
+/obj/item/food/burger/fish,
 /obj/machinery/door/firedoor/border_only,
 /obj/effect/turf_decal/corner/opaque/white/diagonal,
 /obj/structure/table/reinforced/titaniumglass,
@@ -4309,7 +4309,7 @@
 	dir = 4
 	},
 /obj/item/paper_bin/bundlenatural,
-/obj/item/stamp/head_of_personnel,
+/obj/item/stamp,
 /obj/item/pen/fountain,
 /obj/machinery/firealarm/directional/south,
 /turf/open/floor/wood,
@@ -4509,9 +4509,9 @@
 	dir = 1
 	},
 /obj/structure/closet/wall/directional/west,
-/obj/item/reagent_containers/food/snacks/grown/moonflower,
-/obj/item/reagent_containers/food/snacks/grown/moonflower,
-/obj/item/reagent_containers/food/snacks/grown/moonflower,
+/obj/item/food/grown/moonflower,
+/obj/item/food/grown/moonflower,
+/obj/item/food/grown/moonflower,
 /obj/item/storage/fancy/candle_box{
 	pixel_x = 12
 	},
@@ -5518,7 +5518,7 @@
 /area/ship/hallway/aft)
 "GN" = (
 /obj/structure/bed,
-/obj/item/bedsheet/dorms,
+/obj/effect/spawner/random/bedsheet,
 /obj/effect/turf_decal/siding/wood{
 	dir = 4
 	},
@@ -6983,7 +6983,7 @@
 /area/ship/hallway/port)
 "QI" = (
 /obj/structure/bed,
-/obj/item/bedsheet/dorms,
+/obj/effect/spawner/random/bedsheet,
 /obj/effect/turf_decal/siding/wood{
 	dir = 6
 	},
@@ -8208,7 +8208,7 @@
 	pixel_x = 5;
 	pixel_y = 9
 	},
-/obj/item/reagent_containers/food/snacks/egg{
+/obj/item/food/egg{
 	pixel_x = -8;
 	pixel_y = 4
 	},
