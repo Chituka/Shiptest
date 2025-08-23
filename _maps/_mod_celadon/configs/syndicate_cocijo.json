@@ -1,8 +1,8 @@
 {
 	"$schema": "https://raw.githubusercontent.com/shiptest-ss13/Shiptest/master/_maps/ship_config_schema.json",
 	"map_name": "Cocijo-class Capital Mech Carrier",
-	"map_short_name": "Cocijo",
-	"description": "Placeholder Desc",
+	"map_short_name": "Cocijo-class",
+	"description": "A somewhat small ship relative to other capitals, with a limited ability to operate almost any task. Cocijo class resembles syndicate union in the face of a common enemy by having a representative of each faction. While it may be a source of internal conflicts, the crew as a whole becomes very versatile to operate. Due to quite unusual equipment restrictions ship’s primary role is to serve as a quick to respond support vessel.",
 	"map_path": "_maps/_mod_celadon/shuttles/syndicate/syndicate_cocijo.dmm",
 	"sensor_range": 6,
 	"enabled" : true,
@@ -13,8 +13,8 @@
 	"tags": [
 		"Инженерный",
 		"Боевой",
-		"Сервис",
-		"Медицинский"
+		"Медицинский",
+		"Сервис"
 	],
 	"namelists": [
 		"GORLEX",
@@ -32,29 +32,33 @@
 			"officer": true,
 			"slots": 1
 		},
-		"Medic": {
+		"Cybersun Medical Officer": {
 			"outfit": "/datum/outfit/job/syndicate/paramedic/twink",
 			"slots": 2
 		},
-		"Engineer": {
+		"GEC Engineer": {
+			"outfit": "/datum/outfit/job/syndicate/engineer/twink",
+			"slots": 2
+		},
+		"GEC Atmospheric Technician": {
 			"outfit": "/datum/outfit/job/syndicate/engineer/twink",
 			"slots": 2
 		},
 		"Operative": {
 			"outfit": "/datum/outfit/job/syndicate/security/twink",
-			"slots": 5
+			"slots": 4
 		},
-		"Bartender": {
+		"Mech Pilot": {
+			"outfit": "/datum/outfit/job/syndicate/security/twink",
+			"slots": 2
+		},
+		"SUNS Academic": {
 			"outfit": "/datum/outfit/job/syndicate/bartender/twink",
 			"slots": 1
 		},
-		"Miner": {
+		"SUNS student": {
 			"outfit": "/datum/outfit/job/syndicate/miner/twink",
 			"slots": 2
-		},
-		"Junior Agent": {
-			"outfit": "/datum/outfit/job/syndicate/assistant",
-			"slots": 3
 		}
 	}
 }
