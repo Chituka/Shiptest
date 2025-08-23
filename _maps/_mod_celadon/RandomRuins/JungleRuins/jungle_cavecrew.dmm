@@ -2118,7 +2118,7 @@
 	pixel_x = 8;
 	pixel_y = 2
 	},
-/obj/item/reagent_containers/food/snacks/candyheart{
+/obj/item/food/candyheart{
 	pixel_x = 1;
 	pixel_y = -1
 	},
@@ -2474,7 +2474,7 @@
 	},
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/blood,
-/obj/item/reagent_containers/food/snacks/grown/berries/poison{
+/obj/item/food/grown/berries/poison{
 	pixel_x = -9;
 	pixel_y = -1
 	},

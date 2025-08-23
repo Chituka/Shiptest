@@ -2,6 +2,7 @@
 
 /datum/outfit/job/syndicate
 	name = "Syndicate - Base Outfit"
+	faction = FACTION_PLAYER_SYNDICATE
 
 	uniform = /obj/item/clothing/under/color/black
 	box = /obj/item/storage/box/survival
@@ -13,12 +14,6 @@
 	satchel = /obj/item/storage/backpack/satchel/sec
 	duffelbag = /obj/item/storage/backpack/duffelbag/syndie
 	courierbag = /obj/item/storage/backpack/messenger/sec
-
-/datum/outfit/job/syndicate/post_equip(mob/living/carbon/human/H, visualsOnly)
-	. = ..()
-	if(visualsOnly)
-		return
-	H.faction |= list(FACTION_PLAYER_SYNDICATE)
 
 //generates a codename and assigns syndicate access, used in the twinkleshine.
 /datum/outfit/job/syndicate/proc/assign_codename(mob/living/carbon/human/H)
@@ -57,6 +52,7 @@
 
 /datum/outfit/job/syndicate/assistant/ngr
 	name = "Syndicate - Initiate (New Gorlex Republic)"
+	faction = FACTION_NGR
 	id_assignment = "Initiate"
 
 	head = /obj/item/clothing/head/ngr
@@ -250,7 +246,6 @@
 	job_icon = "botanist"
 
 	suit = /obj/item/clothing/suit/apron
-	alt_suit = /obj/item/clothing/suit/apron/overalls
 	gloves  =/obj/item/clothing/gloves/botanic_leather
 	suit_store = /obj/item/plant_analyzer
 
@@ -329,6 +324,7 @@
 
 /datum/outfit/job/syndicate/captain/ngr
 	name = "Syndicate - Captain (New Gorlex Republic)"
+	faction = FACTION_NGR
 
 	uniform = /obj/item/clothing/under/syndicate/ngr/officer
 	head = /obj/item/clothing/head/ngr/peaked
@@ -448,6 +444,7 @@
 
 /datum/outfit/job/syndicate/ce/ngr
 	name = "Syndicate - Foreman (New Gorlex Republic)"
+	faction = FACTION_NGR
 
 	head = /obj/item/clothing/head/hardhat/ngr/foreman
 	ears = /obj/item/radio/headset/syndicate/alt
@@ -530,6 +527,7 @@
 
 /datum/outfit/job/syndicate/head_of_personnel/ngr
 	name = "Syndicate - Ensign (NGR)"
+	faction = FACTION_NGR
 	id_assignment = "Ensign"
 
 	ears = /obj/item/radio/headset/syndicate
@@ -601,6 +599,7 @@
 
 /datum/outfit/job/syndicate/hos/ngr
 	name = "Syndicate - Lieutenant (New Gorlex Republic)"
+	faction = FACTION_NGR
 	id_assignment = "Lieutenant"
 
 	uniform = /obj/item/clothing/under/syndicate/ngr/officer
@@ -733,6 +732,7 @@
 
 /datum/outfit/job/syndicate/doctor/ngr
 	name = "Syndicate - Medical Doctor (New Gorlex Republic)"
+	faction = FACTION_NGR
 
 	uniform = /obj/item/clothing/under/syndicate/ngr
 	head = /obj/item/clothing/head/ngr/surgical
@@ -941,6 +941,7 @@
 
 /datum/outfit/job/syndicate/security/ngr
 	name = "Syndicate - Operative (New Gorlex Republic)"
+	faction = FACTION_NGR
 	id_assignment = "Operative"
 	job_icon = "securityofficer"
 
@@ -1044,6 +1045,7 @@
 
 /datum/outfit/job/syndicate/miner/ngr
 	name = "Syndicate - Wrecker (New Gorlex Republic)"
+	faction = FACTION_NGR
 	id_assignment = "Wrecker"
 
 	head = /obj/item/clothing/head/hardhat/ngr
@@ -1153,6 +1155,7 @@
 
 /datum/outfit/job/syndicate/engineer/ngr
 	name = "Syndicate - Mechanic (New Gorlex Republic)"
+	faction = FACTION_NGR
 	id_assignment = "Mechanic"
 
 	head = /obj/item/clothing/head/hardhat/ngr

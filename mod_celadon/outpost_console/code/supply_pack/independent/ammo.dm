@@ -1,5 +1,5 @@
 /datum/supply_pack/faction/independent/ammo
-	group = "Bulk Ammunition"
+	category = "Bulk Ammunition"
 	crate_type = /obj/structure/closet/crate/secure/gear
 	crate_name = "ammo crate"
 
@@ -131,7 +131,7 @@ MARK: 10x22
 
 // /datum/supply_pack/faction/independent/ammo/ammoc10mmrubber_ammo_box
 // 	name = "10x22mm Rubber Ammo Box Crate"
-// 	desc = "Contains a 36-round 10mm box loaded with less-than-lethal rubber rounds."
+// 	desc = "Contains a 36-round 10x22mm box loaded with less-than-lethal rubber rounds."
 // 	contains = list(/obj/item/storage/box/ammo/c10mm_rubber)
 // 	cost = 210
 
@@ -340,19 +340,19 @@ MARK: 5.56x45
 */
 
 // /datum/supply_pack/faction/independent/ammo/box556_box
-// 	name = "5.56mm Ammo Box Crate"
+// 	name = "5.56x45mm Ammo Box Crate"
 // 	desc = "A box of standard 5.56x45mm ammo."
 // 	contains = list(/obj/item/storage/box/ammo/a556_box)
 // 	cost = 500
 
 // /datum/supply_pack/faction/independent/ammo/box556/a856_box
-// 	name = "5.56mm EP Ammo Box Crate"
+// 	name = "5.56x45mm EP Ammo Box Crate"
 // 	desc = "A box of enhanced performance 5.56x45mm ammo."
 // 	contains = list(/obj/item/storage/box/ammo/a556_box/a856)
 // 	cost = 650
 
 /*
-MARK: 7.62
+MARK: 7.62x40
 */
 
 /datum/supply_pack/faction/independent/ammo/ammoa762_ammo_box
@@ -405,10 +405,6 @@ MARK: .300
 	contains = list(/obj/item/storage/box/ammo/a300/trac)
 	cost = 250 //TTD 310
 
-/*
-MARK: .308
-*/
-
 /datum/supply_pack/faction/independent/ammo/a308_box
 	name = ".308 Ammo Box Crate"
 	desc = "Contains a 40-round .308 box."
@@ -424,29 +420,29 @@ MARK: .308
 /datum/supply_pack/faction/independent/ammo/a308_sp_box
 	name = ".308 SP Ammo Box Crate"
 	desc = "Contains a 40-round .308 box loaded with soft point ammo, great against unarmored targets."
-	contains = list(/obj/item/storage/box/ammo/a308/a308_sp)
+	contains = list(/obj/item/storage/box/ammo/a308/hp)
 	cost = 800
 
 // /datum/supply_pack/faction/independent/ammo/a308_ap_box
 // 	name = ".308 AP Ammo Box Crate"
 // 	desc = "Contains a 40-round .308 box loaded with armor piercing ammo."
-// 	contains = list(/obj/item/storage/box/ammo/a308/a308_ap)
+// 	contains = list(/obj/item/storage/box/ammo/a308/ap)
 // 	cost = 1300
 
 /*
 MARK: 7.5x64
 */
 
-/datum/supply_pack/faction/independent/ammo/a75clip_box
-	name = "7.5x64mm Ammo Box Crate"
-	desc = "Contains a twenty-round 7.5x64mm ammo box for various sniper rifles such as the CM-F90 and the Boomslang series."
-	contains = list(/obj/item/storage/box/ammo/a75clip)
+/datum/supply_pack/faction/independent/ammo/a65clip_box
+	name = "6.5x57mm Ammo Box Crate"
+	desc = "Contains a twenty-round 6.5x57mm ammo box for various sniper rifles such as the CM-F90 and the Boomslang series."
+	contains = list(/obj/item/storage/box/ammo/a65clip)
 	cost = 400
 
 /datum/supply_pack/faction/independent/ammo/ammoa65clip_trackers
 	name = "6.5x57mm Tracker Shell Crate"
 	desc = "Contains a 10-round 6.5x57mm tracker box for various sniper rifles such as the CM-F90 and the Boomslang series."
-	contains = list(/obj/item/storage/box/ammo/a75clip/trac)
+	contains = list(/obj/item/storage/box/ammo/a65clip/trac)
 	cost = 300
 
 /*

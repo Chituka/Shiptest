@@ -29,6 +29,7 @@ GLOBAL_PROTECT(admin_verbs_default)
 	/client/proc/revokebunkerbypass,
 	/client/proc/requests,
 	/client/proc/fax_panel, /*send a paper to fax*/
+	/client/proc/show_all_verbs, // [CELADON-ADD] - ADMIN-PANEL - Black Reality
 	)
 GLOBAL_LIST_INIT(admin_verbs_admin, world.AVerbsAdmin())
 GLOBAL_PROTECT(admin_verbs_admin)
@@ -116,6 +117,7 @@ GLOBAL_LIST_INIT(admin_verbs_fun, list(
 	/client/proc/toggle_random_events,
 	/client/proc/set_ooc,
 	/client/proc/reset_ooc,
+	/client/proc/force_event,
 	/client/proc/admin_change_sec_level,
 	/client/proc/toggle_nuke,
 	/client/proc/run_weather,
@@ -216,6 +218,7 @@ GLOBAL_PROTECT(admin_verbs_debug)
 	/client/proc/toggle_AI_interact, /*toggle admin ability to interact with machines as an AI*/
 	/client/proc/toggle_cdn,
 	/datum/admins/proc/delete_all_missions,
+	/client/proc/cmd_admin_toggle_fov,
 	)
 GLOBAL_LIST_INIT(admin_verbs_possess, list(/proc/possess, /proc/release))
 GLOBAL_PROTECT(admin_verbs_possess)
@@ -386,6 +389,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 			return FALSE
 		if(!ghost.can_reenter_corpse)
 			log_admin("[key_name(usr)] re-entered corpse")
+			log_celadon_admin("ADMIN: [key_name(usr)] re-entered corpse") // [CELADON-ADD] - logging admin actions.
 			message_admins("[key_name_admin(usr)] re-entered corpse")
 		ghost.can_reenter_corpse = 1 //force re-entering even when otherwise not possible
 		ghost.reenter_corpse()
@@ -396,6 +400,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	else
 		//ghostize
 		log_admin("[key_name(usr)] admin ghosted.")
+		log_celadon_admin("ADMIN: [key_name(usr)] admin ghosted.") // [CELADON-ADD] - logging admin actions.
 		message_admins("[key_name_admin(usr)] admin ghosted.")
 		var/mob/body = mob
 		body.ghostize(1)
@@ -550,6 +555,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 			explosion(epicenter, devastation_range, heavy_impact_range, light_impact_range, flash_range, TRUE, TRUE)
 	message_admins("[ADMIN_LOOKUPFLW(usr)] creating an admin explosion at [epicenter.loc].")
 	log_admin("[key_name(usr)] created an admin explosion at [epicenter.loc].")
+	log_celadon_admin("ADMIN: [key_name(usr)] created an admin explosion at [epicenter.loc].") // [CELADON-ADD] - logging admin actions.
 	BLACKBOX_LOG_ADMIN_VERB("Drop Bomb")
 
 /client/proc/drop_dynex_bomb()
@@ -563,6 +569,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 		dyn_explosion(epicenter, ex_power)
 		message_admins("[ADMIN_LOOKUPFLW(usr)] creating an admin explosion at [epicenter.loc].")
 		log_admin("[key_name(usr)] created an admin explosion at [epicenter.loc].")
+		log_celadon_admin("ADMIN: [key_name(usr)] created an admin explosion at [epicenter.loc].") // [CELADON-ADD] - logging admin actions.
 		BLACKBOX_LOG_ADMIN_VERB("Drop Dynamic Bomb")
 
 /client/proc/get_dynex_range()
@@ -783,3 +790,86 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 
 	src << link("?debug=profile&type=sendmaps&window=test")
 #endif
+
+/client/proc/admin_2fa_verify()
+	set name = "Verify Admin"
+	set category = "Admin"
+
+	var/datum/admins/admin = GLOB.admin_datums[ckey]
+	admin?.associate(src)
+
+// [CELADON-ADD] - ADMIN-PANEL - Black Reality
+/client/proc/show_all_verbs()
+	set category = "Admin"
+	set name = "Admin Panel 📋"
+
+	if(!holder)
+		return
+
+	admin_menu = new(usr)
+	admin_menu.ui_interact(usr)
+
+/datum/admin_menu
+	var/client/holder
+	var/compact_mode = FALSE
+
+/datum/admin_menu/New(user)
+	if (istype(user, /client))
+		var/client/user_client = user
+		holder = user_client
+	else
+		var/mob/user_mob = user
+		holder = user_mob.client
+
+/datum/admin_menu/ui_state(mob/user)
+	return GLOB.admin_state
+
+/datum/admin_menu/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "AdminVerbs")
+		ui.open()
+
+/datum/admin_menu/ui_data(mob/user)
+	var/list/data = list()
+	data["compactMode"] = compact_mode
+	return data
+
+/datum/admin_menu/ui_static_data(mob/user)
+	var/list/temp_data = list()
+	for(var/procpath/cur_verb as anything in holder.verbs)
+		if(!cur_verb.category)
+			continue
+		if(!temp_data[cur_verb.category])
+			temp_data[cur_verb.category] = list()
+		temp_data[cur_verb.category] += list(list("verb" = "[cur_verb]", "name" = cur_verb.name, "desc" = cur_verb.desc))
+
+	var/list/tgui_data = list()
+	for(var/category in temp_data)
+		var/list/cat = list(
+			"name" = category,
+			"items" = temp_data[category])
+		tgui_data["categories"] += list(cat)
+
+	LAZYADDASSOCLIST(tgui_data, "categories", list("name" = "История", "items" = reverseList(holder.last_verbs_used)))
+	return tgui_data
+
+/datum/admin_menu/ui_act(action, params)
+	. = ..()
+	if(.)
+		return
+
+	switch(action)
+		if("compact_toggle")
+			compact_mode = !compact_mode
+			return TRUE
+
+	if(!check_rights(R_ADMIN) || action != "run")
+		return
+
+	INVOKE_ASYNC(holder, text2path(params["verb"]))
+
+	LAZYADD(holder.last_verbs_used, list(list("verb" = params["verb"], "name" = params["name"], "desc" = params["desc"])))
+
+	SStgui.close_uis(usr)
+// [/CELADON-ADD]

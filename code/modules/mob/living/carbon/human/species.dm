@@ -59,7 +59,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	///If your race uses a non standard bloodtype (A+, O-, AB-, etc). For example, lizards have L type blood.
 	var/exotic_bloodtype = ""
 	///What the species drops when gibbed by a gibber machine.
-	var/meat = /obj/item/reagent_containers/food/snacks/meat/slab/human
+	var/meat = /obj/item/food/meat/slab/human
 	///What skin the species drops when gibbed by a gibber machine.
 	var/skinned_type
 	///Bitfield for food types that the species likes, giving them a mood boost. Lizards like meat, for example.
@@ -486,7 +486,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		C.setToxLoss(0, TRUE, TRUE)
 
 	if(TRAIT_NOMETABOLISM in inherent_traits)
-		C.reagents.end_metabolization(C, keep_liverless = TRUE)
+		C.end_metabolization(C, keep_liverless = TRUE)
 
 	if(TRAIT_GENELESS in inherent_traits)
 		C.dna.remove_all_mutations() // Radiation immune mobs can't get mutations normally
@@ -722,7 +722,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 						sclera_overlay = mutable_appearance('icons/mob/species/kepori/kepori_eyes.dmi', eyes.sclera_icon_state, -BODYPARTS_LAYER)
 					// [CELADON-ADD] - CELADON_LANIUS
 					else if(islanius(H))
-						eye_overlay = mutable_appearance('mod_celadon/_storge_icons/icons/lanius/lanius_organs.dmi', eyes.eye_icon_state, -BODYPARTS_LAYER)
+						eye_overlay = mutable_appearance('mod_celadon/_storge_icons/icons/species/lanius/lanius_organs.dmi', eyes.eye_icon_state, -BODYPARTS_LAYER)
 					// [/CELADON-ADD]
 					else
 						eye_overlay = mutable_appearance(species_eye_path || 'icons/mob/human_face.dmi', eyes.eye_icon_state, -BODYPARTS_LAYER)
@@ -914,7 +914,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			bodyparts_to_add -= "tajara_facial_hairs"
 
 	if("tajara_ears_markings" in mutant_bodyparts)
-		if(!H.dna.features["tajara_ears_markings"] || H.dna.features["tajara_ears_markings"] == "None" || H.head && (H.head.flags_inv & HIDEFACE) || (H.wear_mask && (H.wear_mask.flags_inv & HIDEFACE)) || !HD) // || HD.status == BODYTYPE_ROBOTIC
+		if(!H.dna.features["tajara_ears_markings"] || H.dna.features["tajara_ears_markings"] == "None" || H.head && (H.head.flags_inv & HIDEEARS) || (H.wear_mask && (H.wear_mask.flags_inv & HIDEEARS)) || !HD) // || HD.status == BODYTYPE_ROBOTIC
 			bodyparts_to_add -= "tajara_ears_markings"
 
 	if("tajara_head_markings" in mutant_bodyparts)
@@ -934,7 +934,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			bodyparts_to_add -= "tajara_hairs"
 
 	if("tajara_ears" in mutant_bodyparts)
-		if(!H.dna.features["tajara_ears"] || H.dna.features["tajara_ears"] == "None" || (H.head && (H.head.flags_inv & HIDEHAIR)))
+		if(!H.dna.features["tajara_ears"] || H.dna.features["tajara_ears"] == "None" || (H.head && (H.head.flags_inv & HIDEEARS)))
 			bodyparts_to_add -= "tajara_ears"
 
 	if("tajara_tail" in mutant_bodyparts)
@@ -957,7 +957,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			bodyparts_to_add -= "riol_facial_hairs"
 
 	if("riol_ears_markings" in mutant_bodyparts)
-		if(!H.dna.features["riol_ears_markings"] || H.dna.features["riol_ears_markings"] == "None" || H.head && (H.head.flags_inv & HIDEFACE) || (H.wear_mask && (H.wear_mask.flags_inv & HIDEFACE)) || !HD) // || HD.status == BODYTYPE_ROBOTIC
+		if(!H.dna.features["riol_ears_markings"] || H.dna.features["riol_ears_markings"] == "None" || H.head && (H.head.flags_inv & HIDEEARS) || (H.wear_mask && (H.wear_mask.flags_inv & HIDEEARS)) || !HD) // || HD.status == BODYTYPE_ROBOTIC
 			bodyparts_to_add -= "riol_ears_markings"
 
 	if("riol_head_markings" in mutant_bodyparts)
@@ -989,11 +989,11 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			bodyparts_to_add -= "riol_hairs"
 
 	if("riol_tail" in mutant_bodyparts)
-		if(!H.dna.features["riol_tail"] || H.dna.features["riol_tail"] == "None" || H.wear_suit && (H.wear_suit.flags_inv & HIDEJUMPSUIT))
+		if(!H.dna.features["riol_tail"] || H.dna.features["riol_tail"] == "None" || (H.wear_suit && (H.wear_suit.flags_inv & HIDETAIL)))
 			bodyparts_to_add -= "riol_tail"
 
 	if("riol_ears" in mutant_bodyparts)
-		if(!H.dna.features["riol_ears"] || H.dna.features["riol_ears"] == "None" || (H.head && (H.head.flags_inv & HIDEHAIR)))
+		if(!H.dna.features["riol_ears"] || H.dna.features["riol_ears"] == "None" || (H.head && (H.head.flags_inv & HIDEEARS)))
 			bodyparts_to_add -= "riol_ears"
 	// [/CELADON-ADD]
 
@@ -1750,6 +1750,16 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	else
 
 		var/atk_verb = user.dna.species.attack_verb
+		// [CELADON-ADD] CELADON_BITE_FERAL
+		var/attack_verb_bonus = 0 //Ну а хуле
+		var/sanity_level_mood = 2
+		SEND_SIGNAL(user, COMSIG_REQUEST_SANITY_LEVEL, &sanity_level_mood)
+		//Копирывание логики укусов
+		var/starving_cat_bonus = user.nutrition <= NUTRITION_LEVEL_HUNGRY ? 10 : 1
+		var/crazy_feral_cat = clamp((starving_cat_bonus * sanity_level_mood), 0, 100)
+		if(prob(crazy_feral_cat))
+			atk_verb = ATTACK_EFFECT_BITE
+		// [/CELADON-ADD] CELADON_BITE_FERAL
 		if(target.body_position == LYING_DOWN)
 			atk_verb = ATTACK_EFFECT_KICK
 
@@ -1760,11 +1770,22 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 				user.do_attack_animation(target, ATTACK_EFFECT_CLAW)
 			if(ATTACK_EFFECT_SMASH)
 				user.do_attack_animation(target, ATTACK_EFFECT_SMASH)
+			// [CELADON-ADD] CELADON_BITE_FERAL
+			if(ATTACK_EFFECT_BITE)
+				if(user.is_mouth_covered()) //Намордник
+					user.balloon_alert(user, "рот заблокирован!")
+					return FALSE
+
+				user.do_attack_animation(target, ATTACK_EFFECT_BITE)
+				attack_verb_bonus = 3
+			// [/CELADON-ADD]
 			else
 				user.do_attack_animation(target, ATTACK_EFFECT_PUNCH)
 
-		var/damage = rand(user.dna.species.punchdamagelow, user.dna.species.punchdamagehigh)
-
+		// [CELADON-EDIT] CELADON_BITE_FERAL
+		//var/damage = rand(user.dna.species.punchdamagelow, user.dna.species.punchdamagehigh) // CELADON-EDIT - ORIGINAL
+		var/damage = rand(user.dna.species.punchdamagelow + attack_verb_bonus, user.dna.species.punchdamagehigh + attack_verb_bonus)
+		// [/CELADON-EDIT]
 		var/obj/item/bodypart/affecting = target.get_bodypart(ran_zone(user.zone_selected))
 
 		var/miss_chance = 100//calculate the odds that a punch misses entirely. considers stamina and brute damage of the puncher. punches miss by default to prevent weird cases
@@ -1804,7 +1825,12 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			target.apply_damage(damage, user.dna.species.attack_type, affecting, armor_block)
 			target.apply_damage(damage*1.5, STAMINA, affecting, armor_block)
 			log_combat(user, target, "punched")
-
+		// [CELADON-ADD] CELADON_BITE_FERAL
+		if(user != target && (target.mob_biotypes & MOB_ORGANIC) && (atk_verb == ATTACK_EFFECT_BITE))
+			var/datum/reagents/tasty_meal = new()
+			tasty_meal.add_reagent(/datum/reagent/consumable/nutriment/protein, round(damage/3, 1))
+			tasty_meal.trans_to(user, tasty_meal.total_volume, transfered_by = user, method = INGEST)
+		// [/CELADON-ADD]
 		if((target.stat != DEAD) && damage >= user.dna.species.punchstunthreshold)
 			target.visible_message(span_danger("[user] knocks [target] down!"), \
 							span_userdanger("You're knocked down by [user]!"), span_hear("You hear aggressive shuffling followed by a loud thud!"), COMBAT_MESSAGE_RANGE, user)

@@ -17,9 +17,9 @@
 	new /obj/item/stack/cable_coil(src)
 
 /obj/item/gun_maint_kit
-	icon = 'mod_celadon/_storge_icons/icons/items/items_and_weapons.dmi'
-	lefthand_file = 'mod_celadon/_storge_icons/icons/items/mob/inhands/tools_lefthand.dmi'
-	righthand_file = 'mod_celadon/_storge_icons/icons/items/mob/inhands/tools_righthand.dmi'
+	icon = 'mod_celadon/_storge_icons/icons/items/weapons/items_and_weapons.dmi'
+	lefthand_file = 'mod_celadon/_storge_icons/icons/items/misc/in_hands/tools_lefthand.dmi'
+	righthand_file = 'mod_celadon/_storge_icons/icons/items/misc/in_hands/tools_righthand.dmi'
 	icon_state = "repair_kit"
 	wear_reduction = 100
 	uses = 5
@@ -60,3 +60,14 @@
 	fixable.adjust_wear(-wear_reduction)
 	user.visible_message(span_notice("[user] finishes cleaning [fixable]!"), span_notice("You finish cleaning [fixable], [fixable.gun_wear < wear_reduction ? "and it's in pretty good condition" : "though it would benefit from another cycle"]."))
 	uses--
+
+/obj/item/areaeditor/shuttle/disposable
+	name = "Shuttle Expansion Disposable Permit"
+	desc = "A disposable set of documents used to expand flyable shuttles."
+	icon = 'mod_celadon/_storge_icons/icons/items/misc/permit.dmi'
+	icon_state = "permit"
+
+/obj/item/areaeditor/shuttle/proc/check_disposable(mob/creator)
+	spawn(1)
+	del src
+	creator.update_appearance()

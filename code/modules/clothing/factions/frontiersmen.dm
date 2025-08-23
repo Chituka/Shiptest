@@ -7,7 +7,6 @@
 	desc = "Fatigues worn by members of the Frontiersmen pirate fleet. Its poor-quality linen is very uncomfortable to move around in."
 	icon_state = "frontier"
 	item_state = "frontier"
-	can_adjust = FALSE
 	icon = 'icons/obj/clothing/faction/frontiersmen/uniforms.dmi'
 	mob_overlay_icon = 'icons/mob/clothing/faction/frontiersmen/uniforms.dmi'
 	vox_override_icon = 'icons/mob/clothing/faction/frontiersmen/vox.dmi'
@@ -291,6 +290,10 @@
 		new /obj/item/reagent_containers/glass/beaker/large/napalm(src)
 	new /obj/item/grenade/frag(src)
 
+/obj/item/storage/belt/security/military/frontiersmen/wasp_ammo/PopulateContents()
+	for(var/i in 1 to 4)
+		new /obj/item/stock_parts/cell/gun(src)
+	new /obj/item/grenade/frag(src)
 
 /obj/item/storage/belt/medical/webbing/frontiersmen
 	name = "leather medical bandolier"
