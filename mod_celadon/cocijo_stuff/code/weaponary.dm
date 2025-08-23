@@ -22,7 +22,7 @@
 	desc = ""
 	icon = 'mod_celadon/_storge_icons/icons/guns/ammo_bullets.dmi'
 	icon_state = "a127-brass"
-	var/icon_off = "cigoff"
+	var/icon_off = "cigaroff"
 	caliber = "12.7mm"
 	projectile_type = /obj/projectile/bullet/a12mm
 	stack_size = 6
@@ -101,6 +101,18 @@
 	STR.max_items = 6
 	STR.set_holdable(list(/obj/item/ammo_casing/a12mm))
 
+/obj/item/storage/fancy/cigarettes/AltClick(mob/living/carbon/user)
+	if(!istype(user) || !user.canUseTopic(src, BE_CLOSE, ismonkey(user)))
+		return
+	var/obj/item/ammo_casing/a12mm/W = locate(/obj/item/ammo_casing/a12mm) in contents
+	if(W && contents.len > 0)
+		SEND_SIGNAL(src, COMSIG_TRY_STORAGE_TAKE, W, user)
+		user.put_in_hands(W)
+		contents -= W
+		to_chat(user, span_notice("You take \a [W] out of the pack."))
+	else
+		to_chat(user, span_notice("There are no [contents_tag]s left in the pack."))
+
 /obj/item/storage/fancy/cigarettes/cigars/a12mm/update_overlays()
 	. = ..()
 	if(!is_open)
@@ -110,6 +122,7 @@
 		var/mutable_appearance/bullet_overlay = mutable_appearance('mod_celadon/_storge_icons/icons/guns/ammo_bullets.dmi', "[bullets.icon_off]_[bullet_position]")
 		. += bullet_overlay
 		bullet_position++
+
 
 /obj/item/gun/ballistic/revolver/fdl
 	name = "\improper FDL-12 revolver"

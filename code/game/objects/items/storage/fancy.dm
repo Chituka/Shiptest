@@ -249,6 +249,9 @@
 			inserted_overlay.icon_state = "zippo_in"
 		else if(candy)
 			inserted_overlay.icon_state = "candy"
+		//[CELADON FIX] Фикс отображение сигарет в коробке для патронов ФДЛ-12
+		else if(istype(C,/obj/item/ammo_casing/a12mm))
+		//[CELADON FIX]
 		else
 			inserted_overlay.icon_state = "cigarette"
 

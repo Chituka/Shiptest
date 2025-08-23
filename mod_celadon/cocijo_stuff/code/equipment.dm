@@ -10,7 +10,7 @@
 		The main difference, however, lies in GEC's latest technology: atmospheric field. This system is supplemented by small power repeaters that drain energy from nearby devices. \n\
 		Moreover, it takes absolute nothing to start even if all charge has been drained: Small microfiber vibration generators placed in elbows generate energy with each user's movement by bending the fibers.\n\
 		As a little tip for all the captains, GEC has included limited chameleon capabilities into the suit, increasing its 'diplomatic powers'"
-	armor = list("melee" = 55, "bullet" = 35, "laser" = 50,"energy" = 40, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 100)
+	armor = list("melee" = 55, "bullet" = 40, "laser" = 50,"energy" = 40, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 100)
 	icon = 'mod_celadon/_storge_icons/icons/obj/cocijo_stuff/diplomatic_suit.dmi'
 	mob_overlay_icon = 'mod_celadon/_storge_icons/icons/items/clothing/hard_suit/overlay/diplomatic_suit.dmi'
 	icon_state = "Carapace"
@@ -29,7 +29,7 @@
 /obj/item/clothing/head/helmet/space/beret/syndicate
 	name = "Admiral's special"
 	desc = "asdasd"
-	armor = list("melee" = 50, "bullet" = 30, "laser" = 45,"energy" = 40, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 100) //Небольшой бонус тем, кто стреляет в голову
+	armor = list("melee" = 50, "bullet" = 45, "laser" = 45,"energy" = 40, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 100) //Небольшой бонус тем, кто стреляет в голову
 	icon = 'mod_celadon/_storge_icons/icons/obj/cocijo_stuff/diplomatic_head.dmi' //переделать путь всем этим иконкам потом
 	mob_overlay_icon = 'mod_celadon/_storge_icons/icons/items/clothing/hard_suit/overlay/diplomatic_head.dmi'
 	icon_state = "syndie_beret"
