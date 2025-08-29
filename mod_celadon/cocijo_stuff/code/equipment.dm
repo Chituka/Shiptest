@@ -1,3 +1,7 @@
+/obj/item/dna_probe
+	desc = "Can be used to take chemical and genetic samples of pretty much anything.\n\
+	It's not capable to take a proper data sample from a deceased creature!"
+
 // *********************
 // ***  ДИПЛОМАТИК  ***
 // *********************

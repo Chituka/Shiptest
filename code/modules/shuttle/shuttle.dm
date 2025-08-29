@@ -3,6 +3,11 @@
 #define DOCKING_PORT_HIGHLIGHT
 #endif
 
+//[CELADON-ADD] Конкретно тут добавляю новые дефайны для проверок на шип-ту-шип стыковки к Капиталам
+#define SHUTTLE_CAPITAL_WALL "Required landing zone has walls inside"
+#define SHUTTLE_CAPITAL_SUB_EXTERIOR "One of our docking ports has shuttle docked outside"
+//[CELADON-ADD]
+
 //NORTH default dir
 /obj/docking_port
 	desc = "Where the ships dock and undock. Ask ruinyard about this."

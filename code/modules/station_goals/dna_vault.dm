@@ -95,6 +95,11 @@
 	if(isanimal(target) || is_type_in_typecache(target,non_simple_animals))
 		if(isanimal(target))
 			var/mob/living/simple_animal/A = target
+			//[CELADON-EDIT] Убираю возможность брать данные с мертвых животных и людей
+			if(A.stat == DEAD)
+				to_chat(user, span_alert("Need data from live specimen!"))
+				return
+			//[CELADON-EDIT]
 			if(!A.healable)//simple approximation of being animal not a robot or similar
 				to_chat(user, span_alert("No compatible DNA detected."))
 				return
@@ -107,6 +112,11 @@
 	//humans
 	if(ishuman(target))
 		var/mob/living/carbon/human/H = target
+		//[CELADON-EDIT] Убираю возможность брать данные с мертвых животных и людей
+		if(H.stat == DEAD)
+			to_chat(user, span_alert("Need data from live specimen!"))
+			return
+		//[CELADON-EDIT]
 		if(dna[H.dna.uni_identity])
 			to_chat(user, span_notice("Humanoid data already present in local storage."))
 			return
@@ -153,12 +163,22 @@
 		F.parent = src
 		fillers += F
 
+	//[CELADON-REMOVE] Убираю автогенерацию кол-ва штук для ДНК ваулта, ставлю фиксированные значения для лучшего баланса
+	/*
 	if(SSticker.mode)
 		for(var/datum/station_goal/dna_vault/G in SSticker.mode.station_goals)
 			animals_max = G.animal_count
 			plants_max = G.plant_count
 			dna_max = G.human_count
 			break
+	*/
+	//[/CELADON-REMOVE]
+
+	//[CELADON-ADD] Добавляю фиксированные значения для ДНК ваулта
+	animals_max = 25 //Возможно придется твикать, пока так
+	plants_max = 8
+	dna_max = 20
+	//[/CELADON-ADD]
 	. = ..()
 
 /obj/machinery/dna_vault/Destroy()
