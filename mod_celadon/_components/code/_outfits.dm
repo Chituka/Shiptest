@@ -87,6 +87,7 @@
 	mask = /obj/item/clothing/mask/gas/syndicate/voicechanger
 	suit = null
 	belt = null
+	backpack_contents = list(/obj/item/card/id/suns/secret/white)
 	implants = list(/obj/item/implant/krav_maga)
 
 /datum/outfit/job/syndicate/captain/cocijo/post_equip(mob/living/carbon/human/H)
@@ -95,6 +96,7 @@
 
 /datum/outfit/job/syndicate/head_of_personnel/suns/cocijo
 	name = "Syndicate - Academic Staff (SUNS, Cocijo)"
+	backpack_contents = list(/obj/item/card/id/suns/secret/white, /obj/item/card/id/suns/secret/black)
 
 /datum/outfit/job/syndicate/head_of_personnel/suns/cocijo/post_equip(mob/living/carbon/human/H)
 	. = ..()

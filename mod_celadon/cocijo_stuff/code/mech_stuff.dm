@@ -31,7 +31,7 @@
 /obj/item/mecha_ammo/heavy_slug
 	name = "Heavy Slug ammo"
 	desc = "A box of ferromagnetic heavy slugs for use with exosuit weapons. They are really heavy."
-	icon = '/mod_celadon/_storge_icons/icons/items/weapons/ammo/mecha_ammo.dmi'
+	icon = 'mod_celadon/_storge_icons/icons/items/weapons/ammo/mecha_ammo.dmi'
 	icon_state = "heavy_slug"
 	rounds = 12
 	ammo_type = "heavy_slug"
@@ -92,7 +92,7 @@
 	name = "Super-Heavy Slug container"
 	desc = "This is a container for a super-heavy slug container. This one feels really heavy."
 	w_class = WEIGHT_CLASS_NORMAL
-	icon = '/mod_celadon/_storge_icons/icons/items/weapons/ammo/mecha_ammo.dmi'
+	icon = 'mod_celadon/_storge_icons/icons/items/weapons/ammo/mecha_ammo.dmi'
 	icon_state = "super_heavy_slug"
 	rounds = 1
 	direct_load = TRUE
