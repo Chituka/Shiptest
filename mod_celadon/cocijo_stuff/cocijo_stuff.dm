@@ -1,6 +1,9 @@
 /// name - название модпака. Используется для поиска других модпаков в init.
 /// desc - описание для модпака. Может использоваться для списка глаголов модпака в качестве описания.
 /// author - автор(ы) этого модпака.
+#define SHUTTLE_CAPITAL_WALL "Required landing zone has walls inside"
+#define SHUTTLE_CAPITAL_SUB_EXTERIOR "One of our docking ports has shuttle docked outside"
+
 
 /datum/modpack/cocijo_stuff
 	name = "ОСМЫСЛЕННОЕ_ПОНЯТНОЕ_НАЗВАНИЕ"

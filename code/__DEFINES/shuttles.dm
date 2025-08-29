@@ -35,8 +35,6 @@
 #define SHUTTLE_TARGET_MOBILEDOCK_FORBIDS_DOCKING "target's mobile docking port is docked forbidding docking"
 #define SHUTTLE_PORT_IS_ADJUSTING "port is in the middle of adjusting another ship to land"
 
-#define SHUTTLE_CAPITAL_WALL "Required area has walls inside"
-#define SHUTTLE_CAPITAL_SUB_EXTERIOR "One of our docking ports has shuttle docked"
 
 
 //Launching Shuttles to CentCom
