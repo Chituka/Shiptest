@@ -47,21 +47,3 @@
 	icon_state = "tile_suns_darkplain"
 	color = "grey"
 	turf_type = /turf/open/floor/suns/dark/plain/darker
-
-/obj/structure/powerline
-	name = "Powerline"
-	desc = "A huge bundle of double insulated cabling."
-	icon = 'mod_celadon/_storge_icons/icons/powerline.dmi'
-	icon_state = "cablerelay"
-	plane = FLOOR_PLANE
-	layer = WIRE_LAYER
-
-/obj/structure/powerline/broken1
-	icon_state = "cablerelay-broken-cable"
-
-/obj/structure/powerline/broken2
-	icon_state = "cablerelay-broken"
-
-/obj/structure/powerline/Initialize(mapload)
-	. = ..()
-	AddElement(/datum/element/undertile, TRAIT_T_RAY_VISIBLE)

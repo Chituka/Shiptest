@@ -282,6 +282,9 @@
 /obj/machinery/gravity_generator/main/proc/set_state(new_state)
 	charging_state = POWER_IDLE
 	on = new_state
+	// [CELADON-FIX] - CELADON_COCIJO - ПР с Косихо
+	setting = new_state
+	// [/CELADON-FIX]
 	if(on)
 		set_active_power()
 	else

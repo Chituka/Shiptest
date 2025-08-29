@@ -658,24 +658,38 @@
 
 	if(istype(S, /obj/docking_port/stationary/transit))
 		return SHUTTLE_CAN_DOCK
+//
+	if(!(istype(S,/obj/docking_port/stationary/capital)))
+		if(tow_dwidth > S.dwidth)
+			return SHUTTLE_DWIDTH_TOO_LARGE
 
-	if(tow_dwidth > S.dwidth)
-		return SHUTTLE_DWIDTH_TOO_LARGE
+		if(tow_rwidth > S.width-S.dwidth)
+			return SHUTTLE_WIDTH_TOO_LARGE
 
-	if(tow_rwidth > S.width-S.dwidth)
-		return SHUTTLE_WIDTH_TOO_LARGE
+		if(tow_dheight > S.dheight)
+			return SHUTTLE_DHEIGHT_TOO_LARGE
 
-	if(tow_dheight > S.dheight)
-		return SHUTTLE_DHEIGHT_TOO_LARGE
-
-	if(tow_rheight > S.height-S.dheight)
-		return SHUTTLE_HEIGHT_TOO_LARGE
-
+		if(tow_rheight > S.height-S.dheight)
+			return SHUTTLE_HEIGHT_TOO_LARGE
+//
 	for(var/obj/docking_port/stationary/current_port as anything in docking_points)
 		//if any of our docks has disable_on_owner_ship_dock set, has something docked to us, and we aren't going to a transit zone or an adjustable dock(usually planetary), don't land
 		if(current_port.disable_on_owner_ship_dock && current_port.docked && (!istype(S, /obj/docking_port/stationary/transit) || !S.adjust_dock_for_landing))
 			return SHUTTLE_OUR_MOBILEDOCK_FORBIDS_DOCKING
-
+//
+	//Проверка на то, что корабль, к которому принадлежит искомый док, пристыкован к капиталу.
+	if(istype(S.owner_ship.docked, /obj/docking_port/stationary/capital))
+		//Проверка на то, что тот корабль, который стыкается к данному порту, не носит ещё один корабль снаружи корабля.
+		for(var/obj/docking_port/stationary/current_port as anything in docking_points)
+			//Проверка на то, что у нас корабль имеет суб снаружи.
+			if(current_port.docked && ((tow_rwidth != (width-dwidth)) || (tow_rheight != (height-dheight))))
+				return SHUTTLE_CAPITAL_SUB_EXTERIOR
+		//Проверка на то, что тот корабль, который стыкуется к данному порту, не ломает никакие стенки.
+		for(var/turf/closed/wall/wallturf as anything in return_ordered_turfs(S.x, S.y, S.z, S.dir))
+			if(!istype(wallturf))
+				continue
+			return SHUTTLE_CAPITAL_WALL
+//
 	//if the docking port has disable_on_owner_ship_dock set and the target ship is docked to something, don't land. very much don't land.
 	if(S.disable_on_owner_ship_dock && S.owner_ship.docked)
 		return SHUTTLE_TARGET_MOBILEDOCK_FORBIDS_DOCKING

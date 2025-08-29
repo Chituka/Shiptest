@@ -8,6 +8,8 @@
 	"enabled" : true,
 	"limit": 1,
 	"space_spawn": true,
+	"tranist_x_offset": -35,
+    "tranist_y_offset": -18,
 	"faction": "/datum/faction/syndicate",
 	"prefix": "ASSV",
 	"tags": [
@@ -23,41 +25,47 @@
 	],
 	"job_slots": {
 		"Flotilla Admiral": {
-			"outfit": "/datum/outfit/job/syndicate/captain/twink",
+			"outfit": "/datum/outfit/job/syndicate/captain/cocijo",
 			"officer": true,
 			"slots": 1
 		},
 		"Lieutenant": {
-			"outfit": "/datum/outfit/job/syndicate/hos/twink",
+			"outfit": "/datum/outfit/job/syndicate/hos/ngr",
 			"officer": true,
 			"slots": 1
 		},
 		"Cybersun Medical Officer": {
-			"outfit": "/datum/outfit/job/syndicate/paramedic/twink",
+			"outfit": "/datum/outfit/job/syndicate/doctor/cybersun",
 			"slots": 2
 		},
+		"GEC Chief Engineer": {
+			"outfit": "/datum/outfit/job/syndicate/ce/gec",
+			"officer": true,
+			"slots": 1
+		},
 		"GEC Engineer": {
-			"outfit": "/datum/outfit/job/syndicate/engineer/twink",
+			"outfit": "/datum/outfit/job/syndicate/engineer/gec",
 			"slots": 2
 		},
 		"GEC Atmospheric Technician": {
-			"outfit": "/datum/outfit/job/syndicate/engineer/twink",
+			"outfit": "/datum/outfit/job/syndicate/engineer/gec",
 			"slots": 2
 		},
-		"Operative": {
-			"outfit": "/datum/outfit/job/syndicate/security/twink",
+		"Gorlex Operative": {
+			"outfit": "/datum/outfit/job/syndicate/security",
 			"slots": 4
 		},
-		"Mech Pilot": {
-			"outfit": "/datum/outfit/job/syndicate/security/twink",
+		"Gorlex Mech Pilot": {
+			"outfit": "/datum/outfit/job/syndicate/security/ngr/pilot",
 			"slots": 2
 		},
-		"SUNS Academic": {
-			"outfit": "/datum/outfit/job/syndicate/bartender/twink",
+		"SUNS academic": {
+			"outfit": "/datum/outfit/job/syndicate/head_of_personnel/suns/cocijo",
+			"officer": true,
 			"slots": 1
 		},
 		"SUNS student": {
-			"outfit": "/datum/outfit/job/syndicate/miner/twink",
+			"outfit": "/datum/outfit/job/syndicate/assistant/suns/complete/cocijo",
 			"slots": 2
 		}
 	}

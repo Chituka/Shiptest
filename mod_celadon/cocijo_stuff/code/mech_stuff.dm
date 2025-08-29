@@ -1,7 +1,8 @@
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/slugthrower
 	name = "\improper GEC \"Ballista\" Exosuit Slug Thrower"
 	desc = "A weapon for combat exosuits. Shoots heavy slugs at high-speed."
-	icon_state = "mecha_carbine"
+	icon = 'mod_celadon/_storge_icons/icons/items/weapons/mecha_equipment.dmi'
+	icon_state = "mecha_slugthrower"
 	energy_drain = 500
 	equip_cooldown = 20
 	projectile = /obj/projectile/bullet/heavy_slug
@@ -30,25 +31,26 @@
 /obj/item/mecha_ammo/heavy_slug
 	name = "Heavy Slug ammo"
 	desc = "A box of ferromagnetic heavy slugs for use with exosuit weapons. They are really heavy."
-	icon_state = "incendiary"
+	icon = '/mod_celadon/_storge_icons/icons/items/weapons/ammo/mecha_ammo.dmi'
+	icon_state = "heavy_slug"
 	rounds = 12
 	ammo_type = "heavy_slug"
 
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/slugthrower_shoulder
 	name = "\improper GEC \"Trebuchet\" ESMSSSHSL"
 	desc = "Exosuit Shoulder-Mounted Single-Shot Super-Heavy Slug Launcher... That's way too many words for you to proccess, but it is certainly a weapon for combat exosuits and it shoots super-heavy slugs at extremely low speed."
-	icon = 'mod_celadon/_storge_icons/icons/landsknecht.dmi' // заменить
-	icon_state = "test"
+	icon = 'mod_celadon/_storge_icons/icons/items/weapons/mecha_equipment.dmi'
+	icon_state = "mecha_slugthrower_shoulder"
 	energy_drain = 500
 	equip_cooldown = 20
 	projectile = /obj/projectile/bullet/heavy_slug/super
-	fire_sound = 'sound/weapons/gun/sniper/shot.ogg'
+	fire_sound = 'mod_celadon/_storge_sounds/sound/gun/trebuchet_shot.ogg'
 	projectiles = 1
-	projectiles_cache = 6
-	projectiles_cache_max = 12
+	projectiles_cache = 0
+	projectiles_cache_max = 0
 	disabledreload = TRUE
 	harmful = TRUE
-	ammo_type = "heavy_slug"
+	ammo_type = "super_heavy_slug"
 	eject_casings = FALSE
 	var/icon/slughthrower_shoulder_overlay
 
@@ -78,10 +80,25 @@
 
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/slugthrower_shoulder/attach(obj/mecha/M as obj)
 	..()
-	slughthrower_shoulder_overlay = new(src.icon, icon_state = "test")
+	slughthrower_shoulder_overlay = new(src.icon, icon_state = "mecha_slugthrower_shoulder")
 	M.add_overlay(slughthrower_shoulder_overlay)
 
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/slugthrower_shoulder/detach()
 	chassis.cut_overlay(slughthrower_shoulder_overlay)
 	STOP_PROCESSING(SSobj, src)
 	..()
+
+/obj/item/mecha_ammo/super_heavy_slug
+	name = "Super-Heavy Slug container"
+	desc = "This is a container for a super-heavy slug container. This one feels really heavy."
+	w_class = WEIGHT_CLASS_NORMAL
+	icon = '/mod_celadon/_storge_icons/icons/items/weapons/ammo/mecha_ammo.dmi'
+	icon_state = "super_heavy_slug"
+	rounds = 1
+	direct_load = TRUE
+	load_audio = 'sound/weapons/gun/general/load_shell.ogg'
+	ammo_type = "super_heavy_slug"
+
+/obj/item/mecha_ammo/super_heavy_slug/update_ammo_name()
+	if(!rounds)
+		qdel(src)

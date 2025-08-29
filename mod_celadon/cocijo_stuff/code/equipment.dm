@@ -5,7 +5,7 @@
 
 
 /obj/item/clothing/suit/armor/vest/capcarapace/syndicate/diplomatic
-	name = "Capital Admiral's carapace"
+	name = "Flotilla Admiral's advanced carapace"
 	desc = "Experimental carapace given to the highest status syndicate members. This model features better protection compared to it's predecessor. \n\
 		The main difference, however, lies in GEC's latest technology: atmospheric field. This system is supplemented by small power repeaters that drain energy from nearby devices. \n\
 		Moreover, it takes absolute nothing to start even if all charge has been drained: Small microfiber vibration generators placed in elbows generate energy with each user's movement by bending the fibers.\n\
@@ -27,10 +27,13 @@
 	unique_reskin_changes_inhand = TRUE
 
 /obj/item/clothing/head/helmet/space/beret/syndicate
-	name = "Admiral's special"
-	desc = "asdasd"
+	name = "Flotilla Admiral's advanced beret"
+	desc = "Experimental beret given to the highest status syndicate members. This model features better protection compared to it's predecessor. \n\
+		The main difference, however, lies in GEC's latest technology: atmospheric field. This system is supplemented by small power repeaters that drain energy from nearby devices. \n\
+		Moreover, it takes absolute nothing to start even if all charge has been drained: Small vibration generators located at eyelids generate energy with each user's winks.\n\
+		As a little tip for all the captains, GEC has included limited chameleon capabilities into the suit, increasing its 'diplomatic powers'"
 	armor = list("melee" = 50, "bullet" = 45, "laser" = 45,"energy" = 40, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 100) //Небольшой бонус тем, кто стреляет в голову
-	icon = 'mod_celadon/_storge_icons/icons/obj/cocijo_stuff/diplomatic_head.dmi' //переделать путь всем этим иконкам потом
+	icon = 'mod_celadon/_storge_icons/icons/obj/cocijo_stuff/diplomatic_head.dmi'
 	mob_overlay_icon = 'mod_celadon/_storge_icons/icons/items/clothing/hard_suit/overlay/diplomatic_head.dmi'
 	icon_state = "syndie_beret"
 	item_state = "hosformal"
