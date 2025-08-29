@@ -32,7 +32,6 @@
 	var/used_cell = null
 
 /obj/structure/mecha_wreckage/landsknecht/attackby(obj/item/stack/I, mob/user, params)
-	. = ..()
 	if(istype(I, /obj/item/stack/sheet/plasteel))
 		if(!req_plast)
 			to_chat(user, span_danger("I already fixed everything I could with plasteel!"))
