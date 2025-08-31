@@ -181,6 +181,6 @@
 	return posturfs
 
 /proc/get_teleport_turf(turf/current, turf/destination, precision = 0, restrain_vlevel = TRUE)
-	var/list/turfs = get_teleport_turfs(current, destination, precision)
+	var/list/turfs = get_teleport_turfs(current, destination, precision, restrain_vlevel)
 	if (length(turfs))
 		return pick(turfs)
