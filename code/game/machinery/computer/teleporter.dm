@@ -158,7 +158,9 @@
 	else
 		var/list/S = power_station.linked_stations
 		for(var/obj/machinery/teleport/station/R in S)
-			if(is_eligible(R) && R.teleporter_hub)
+			//[CELADON-EDIT] Убирает возможность телепортироваться между З-левелами по маякам
+			if(is_eligible(R, TRUE) && R.teleporter_hub)
+			//[/CELADON-EDIT]
 				var/area/A = get_area(R)
 				L[avoid_assoc_duplicate_keys(A.name, areaindex)] = R
 		if(!L.len)
