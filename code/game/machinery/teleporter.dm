@@ -73,6 +73,14 @@
 		com.target = null
 		visible_message(span_alert("Cannot authenticate locked on coordinates. Please reinstate coordinate matrix."))
 		return
+	//[CELADON-EDIT] Убирает возможность телепортироваться между З-левелами по маякам
+	if (com.regime_set == "Teleporter" && com.target.get_virtual_level() != src.get_virtual_level())
+		com.target = null
+		power_station.engaged = FALSE
+		src.update_icon_state()
+		to_chat(M, span_alert("Cannot authenticate locked on coordinates. Please reinstate coordinate matrix and ensure the signale from target lock is strong enough."))
+		return
+	//[/CELADON-EDIT]
 	if (ismovable(M))
 		if(do_teleport(M, com.target, channel = TELEPORT_CHANNEL_BLUESPACE, restrain_vlevel = FALSE))
 			use_power(5000)
