@@ -33,3 +33,27 @@
 	stun_projectile_sound = 'sound/weapons/gun/laser/heavy_laser.ogg'
 	lethal_projectile = /obj/projectile/beam/hitscan/kalix
 	lethal_projectile_sound = 'sound/weapons/gun/laser/heavy_laser.ogg'
+
+/obj/machinery/power/grounding_rod/wall
+	name = "wall-mounted grounding rod"
+	desc = "Keep an area from being fried from Edison's Bane. This one is walled and it looks pitful."
+	icon = 'mod_celadon/_storge_icons/icons/obj/cocijo_stuff/tesla_coil.dmi'
+	density = 0
+
+/obj/machinery/power/grounding_rod/wall/directional
+
+/obj/machinery/power/grounding_rod/wall/directional/north
+	dir = 2
+	pixel_y = 32
+
+/obj/machinery/power/grounding_rod/wall/directional/south
+	dir = 1
+	pixel_y = -32
+
+/obj/machinery/power/grounding_rod/wall/directional/east
+	dir = 8
+	pixel_x = -32
+
+/obj/machinery/power/grounding_rod/wall/directional/west
+	dir = 4
+	pixel_x = 32

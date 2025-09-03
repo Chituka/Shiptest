@@ -1,5 +1,7 @@
 /obj/mecha/combat/landsknecht
-	desc = "A light security exosuit manufactured by Cybersun Biodynamics. The basic version of the 500 Series combat exosuits, the 501p can overload its leg actuators to further enhance mobility."
+	desc = "A light combat exosuit manufactured by Cybersun Biodynamics for Syndicate and modified by GEC for simplified maintenance and repair after destruction. \n\
+			Leg actuators are modified for faster movement and dashes, however latter may lead to exo failure. \n\
+			Lightweight, streamlined, yet still unique."
 	name = "\improper 502p heavily modified Exosuit"
 	icon = 'mod_celadon/_storge_icons/icons/landsknecht.dmi'
 	icon_state = "landsknecht"
@@ -9,27 +11,20 @@
 	deflect_chance = 5
 	armor = list("melee" = 15, "bullet" = 10, "laser" = 10, "energy" = 15, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 100)
 	max_temperature = 25000
-	leg_overload_coeff = 80
+	//leg_overload_coeff = 80
 	infra_luminosity = 6
 	force = 25
 	wreckage = /obj/structure/mecha_wreckage/landsknecht
 	internal_damage_threshold = 35
 	max_equip = 3
 	base_step_energy_drain = 6 //Немного меньше, чем у гигакса из-за всех облегчений брони
-
-/obj/mecha/combat/landsknecht/Initialize(obj/item/stock_parts/cell/C)
-	. = ..()
-	add_cell(C)
+	var/datum/action/innate/mecha/mech_charge_mode/landsknecht/l_charge_action = new
 
 /obj/structure/mecha_wreckage/landsknecht
 	name = "Landsknecht wreckage"
 	desc = "Remains of some unfortunate mecha. Although, this one looks like it can still be repaired."
 	icon = 'mod_celadon/_storge_icons/icons/landsknecht.dmi'
 	icon_state = "landsknecht-broken"
-	// var/req_plast = TRUE
-	// var/req_cables = TRUE
-	// var/req_cell = TRUE
-	// var/used_cell = null
 	var/list/req_comps = list(/obj/item/stack/sheet/plasteel = 20,
 	/obj/item/stack/cable_coil = 20,
 	)
@@ -69,3 +64,28 @@
 	. = ..()
 	if(!strafe && !occupant.client.keys_held["Alt"])
 		mechstep(direction) //agile mechs get to move and turn in the same step
+
+/datum/action/innate/mecha/mech_charge_mode/landsknecht
+	name = "Charge"
+	button_icon_state = "mech_overload_off"
+
+/datum/action/innate/mecha/mech_charge_mode/landsknecht/Activate()
+	if(!owner || !chassis || chassis.occupant != owner)
+		return
+	if(chassis.charge_ready && !chassis.charging)
+		chassis.log_message("Charged. Legs are overclocked out of safe conditions.", LOG_MECHA, color="red")
+		chassis.take_damage(5, BURN, 0, 1)
+		chassis.start_charge()
+		chassis.charge_ready = FALSE
+		addtimer(VARSET_CALLBACK(chassis, charge_ready, TRUE), chassis.charge_cooldown)
+	else
+		chassis.occupant_message(span_warning("The leg actuators are still recharging!"))
+
+/obj/mecha/combat/landsknecht/GrantActions(mob/living/user, human_occupant = 0)
+	..()
+	overload_action.Remove(user)
+	l_charge_action.Grant(user,src)
+
+/obj/mecha/combat/landsknecht/RemoveActions(mob/living/user, human_occupant)
+	. = ..()
+	l_charge_action.Remove(user)

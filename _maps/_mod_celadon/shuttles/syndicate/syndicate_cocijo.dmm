@@ -731,11 +731,9 @@
 /turf/template_noop,
 /area/template_noop)
 "bU" = (
-/obj/machinery/power/grounding_rod{
-	anchored = 1
-	},
-/turf/closed/wall/r_wall/syndicate/nodiagonal,
-/area/ship/crew/dorm/dormtwo)
+/obj/machinery/power/grounding_rod/wall/directional/east,
+/turf/open/floor/engine/hull/reinforced,
+/area/ship/external/dark)
 "bY" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -894,10 +892,7 @@
 /turf/open/floor/plasteel/tech/grid,
 /area/ship/engineering/atmospherics)
 "cI" = (
-/obj/machinery/power/grounding_rod{
-	anchored = 1;
-	pixel_y = -11
-	},
+/obj/machinery/power/grounding_rod/wall,
 /turf/closed/wall/r_wall/syndicate/nodiagonal,
 /area/ship/crew/dorm)
 "cM" = (
@@ -1021,7 +1016,10 @@
 /turf/open/floor/plasteel/dark,
 /area/ship/general/command_crew/ce)
 "de" = (
-/obj/machinery/camera/autoname,
+/obj/machinery/camera/autoname{
+	pixel_x = 11;
+	pixel_y = 0
+	},
 /turf/open/floor/engine/hull/reinforced,
 /area/ship/crew/dorm)
 "df" = (
@@ -2493,9 +2491,8 @@
 /turf/open/floor/engine/hull/reinforced,
 /area/ship/bridge)
 "hl" = (
-/obj/machinery/power/grounding_rod{
-	anchored = 1;
-	pixel_y = 11
+/obj/machinery/power/grounding_rod/wall{
+	dir = 1
 	},
 /turf/closed/wall/r_wall/syndicate/nodiagonal,
 /area/ship/hangar)
@@ -2597,7 +2594,7 @@
 	pixel_x = 9;
 	pixel_y = -3
 	},
-/obj/structure/crate_shelf/built,
+/obj/structure/crate_shelf,
 /turf/open/floor/pod/dark,
 /area/ship/cargo)
 "hQ" = (
@@ -3081,13 +3078,6 @@
 	},
 /turf/open/floor/wood,
 /area/ship/crew/canteen)
-"iN" = (
-/obj/machinery/power/grounding_rod{
-	anchored = 1;
-	pixel_y = -11
-	},
-/turf/closed/wall/r_wall/syndicate/nodiagonal,
-/area/ship/bridge)
 "iO" = (
 /obj/effect/turf_decal/trimline/opaque/syndiered/line{
 	dir = 9
@@ -3821,6 +3811,7 @@
 	id = "cocijo_armoury";
 	name = "Armoury Shutters"
 	},
+/obj/effect/decal/cleanable/xenoblood/xtracks,
 /turf/open/floor/plasteel/tech,
 /area/ship/security/armory)
 "lk" = (
@@ -4231,13 +4222,6 @@
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/ship/hallway/aft)
-"mx" = (
-/obj/machinery/power/grounding_rod{
-	anchored = 1;
-	pixel_y = -11
-	},
-/turf/closed/wall/r_wall/syndicate,
-/area/ship/bridge)
 "my" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/structure/railing{
@@ -4276,12 +4260,12 @@
 /obj/effect/turf_decal/box,
 /obj/effect/turf_decal/industrial/warning,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/closet/crate,
 /obj/item/storage/box/emptysandbags,
 /obj/item/storage/box/emptysandbags,
 /obj/item/storage/box/emptysandbags,
 /obj/item/storage/box/emptysandbags,
-/obj/structure/crate_shelf/built,
+/obj/structure/crate_shelf,
+/obj/structure/closet/crate/engineering,
 /turf/open/floor/pod/dark,
 /area/ship/cargo)
 "mE" = (
@@ -5109,10 +5093,7 @@
 /turf/open/floor/pod/dark,
 /area/ship/hangar)
 "pj" = (
-/obj/machinery/power/grounding_rod{
-	anchored = 1;
-	pixel_y = -11
-	},
+/obj/machinery/power/grounding_rod/wall,
 /turf/closed/wall/r_wall/syndicate/nodiagonal,
 /area/ship/crew/dorm/dormtwo)
 "pk" = (
@@ -5394,15 +5375,6 @@
 	color = "#B4696A"
 	},
 /obj/structure/rack,
-/obj/item/quickdeploy/barricade,
-/obj/item/quickdeploy/barricade,
-/obj/item/quickdeploy/barricade,
-/obj/item/quickdeploy/barricade,
-/obj/item/quickdeploy/barricade,
-/obj/item/quickdeploy/barricade,
-/obj/item/quickdeploy/barricade,
-/obj/item/quickdeploy/barricade,
-/obj/item/storage/backpack/duffelbag/syndie,
 /obj/machinery/button/door{
 	name = "Armoury Blast Doors Control";
 	id = "cocijo_armoury";
@@ -5958,6 +5930,12 @@
 /obj/effect/turf_decal/siding/thinplating/dark{
 	dir = 8
 	},
+/obj/effect/decal/cleanable/xenoblood/xtracks,
+/obj/effect/decal/cleanable/vomit/old{
+	pixel_x = 8;
+	pixel_y = 4;
+	icon_state = "vomit_2-old"
+	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/ship/security/armory)
 "rW" = (
@@ -6160,11 +6138,9 @@
 /turf/open/floor/mineral/plastitanium,
 /area/ship/hallway/fore)
 "sJ" = (
-/obj/machinery/power/grounding_rod{
-	anchored = 1
-	},
-/turf/closed/wall/r_wall/syndicate/nodiagonal,
-/area/ship/hangar)
+/obj/machinery/power/grounding_rod/wall/directional/north,
+/turf/open/floor/engine/hull/reinforced,
+/area/ship/external/dark)
 "sL" = (
 /obj/structure/closet/secure_closet/freezer/meat/open,
 /obj/item/food/meat/slab/goliath,
@@ -6227,6 +6203,7 @@
 	},
 /obj/structure/reagent_dispensers/fueltank,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/crate/large,
 /turf/open/floor/pod/light,
 /area/ship/cargo)
 "sU" = (
@@ -6739,7 +6716,7 @@
 /obj/effect/turf_decal/industrial/warning,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/crate_shelf/built,
+/obj/structure/crate_shelf,
 /turf/open/floor/pod/dark,
 /area/ship/cargo)
 "ux" = (
@@ -8307,13 +8284,11 @@
 /area/ship/engineering)
 "zm" = (
 /obj/machinery/camera/autoname{
-	dir = 10
+	dir = 10;
+	pixel_x = 12;
+	pixel_y = -4
 	},
-/obj/machinery/power/grounding_rod{
-	anchored = 1;
-	density = 0;
-	name = "grounded grounding rod"
-	},
+/obj/machinery/power/grounding_rod/wall/directional/south,
 /turf/open/floor/engine/hull/reinforced,
 /area/ship/general/command_crew/ce)
 "zo" = (
@@ -9842,12 +9817,9 @@
 /turf/open/floor/plasteel/dark,
 /area/ship/medical)
 "DS" = (
-/obj/machinery/power/grounding_rod{
-	anchored = 1;
-	pixel_y = 11
-	},
-/turf/closed/wall/r_wall/syndicate,
-/area/ship/bridge)
+/obj/machinery/power/grounding_rod/wall/directional/south,
+/turf/open/floor/engine/hull/reinforced,
+/area/ship/external/dark)
 "DV" = (
 /obj/machinery/door/poddoor{
 	id = "cocijo_massdriver1_b"
@@ -11007,12 +10979,11 @@
 	},
 /area/ship/crew/dorm/dormtwo)
 "Hb" = (
-/obj/machinery/power/grounding_rod{
-	anchored = 1;
-	pixel_y = -11
+/obj/machinery/power/grounding_rod/wall{
+	dir = 4
 	},
 /turf/closed/wall/r_wall/syndicate/nodiagonal,
-/area/ship/general/command_crew/hos)
+/area/ship/engineering/electrical)
 "Hd" = (
 /obj/machinery/atmospherics/pipe/simple/orange/visible,
 /turf/open/floor/engine/airless,
@@ -11132,12 +11103,14 @@
 /turf/open/floor/plating,
 /area/ship/engineering)
 "Hs" = (
-/obj/machinery/power/grounding_rod{
-	anchored = 1;
-	pixel_y = 11
+/obj/effect/decal/fakelattice{
+	icon_state = "catwalk";
+	icon = 'icons/obj/smooth_structures/more_catwalk.dmi';
+	layer = 2.455
 	},
-/turf/closed/wall/r_wall/syndicate/nodiagonal,
-/area/ship/bridge)
+/obj/machinery/power/grounding_rod/wall/directional/south,
+/turf/open/floor/engine/hull/reinforced,
+/area/ship/crew/dorm/captain)
 "Hu" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
@@ -11334,6 +11307,7 @@
 	icon = 'icons/obj/smooth_structures/more_catwalk.dmi';
 	layer = 2.455
 	},
+/obj/machinery/power/grounding_rod/wall/directional/north,
 /turf/open/floor/engine/hull/reinforced,
 /area/ship/external/dark)
 "Ik" = (
@@ -11802,12 +11776,11 @@
 /turf/open/floor/plasteel/telecomms_floor,
 /area/ship/engineering)
 "Jm" = (
-/obj/machinery/camera/autoname,
-/obj/machinery/power/grounding_rod{
-	anchored = 1;
-	density = 0;
-	name = "grounded grounding rod"
+/obj/machinery/camera/autoname{
+	pixel_x = 11;
+	pixel_y = 10
 	},
+/obj/machinery/power/grounding_rod/wall/directional/north,
 /turf/open/floor/engine/hull/reinforced,
 /area/ship/engineering/engines/starboard)
 "Jo" = (
@@ -12147,6 +12120,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/crate/large,
 /turf/open/floor/pod/light,
 /area/ship/cargo)
 "JU" = (
@@ -12587,7 +12561,6 @@
 /obj/effect/spawner/random/food_or_drink/ration,
 /obj/effect/spawner/random/food_or_drink/ration,
 /obj/effect/spawner/random/food_or_drink/ration,
-/obj/structure/crate_shelf/built,
 /obj/item/reagent_containers/food/drinks/waterbottle/large{
 	pixel_x = 8
 	},
@@ -12618,6 +12591,7 @@
 /obj/item/reagent_containers/food/drinks/waterbottle/large{
 	pixel_x = 8
 	},
+/obj/structure/crate_shelf,
 /turf/open/floor/pod/dark,
 /area/ship/cargo)
 "Lj" = (
@@ -12639,13 +12613,11 @@
 /turf/open/floor/plating/airless,
 /area/ship/external/dark)
 "Ln" = (
-/obj/effect/turf_decal/siding/thinplating/dark,
-/obj/effect/turf_decal/spline/fancy/opaque/syndiered,
-/obj/effect/turf_decal/corner/opaque/syndiered/half{
-	dir = 1
+/obj/docking_port/stationary/capital{
+	dir = 2
 	},
-/turf/open/floor/plasteel/mono/dark/darker,
-/area/template_noop)
+/turf/open/floor/engine/hull/reinforced,
+/area/ship/external/dark)
 "Lq" = (
 /obj/effect/turf_decal/trimline/transparent/bar/filled/line{
 	dir = 1
@@ -13197,6 +13169,7 @@
 	dir = 8;
 	layer = 2.040
 	},
+/obj/effect/decal/cleanable/xenoblood/xtracks,
 /turf/open/floor/mineral/plastitanium/red,
 /area/ship/security/weapons_control)
 "MM" = (
@@ -13259,6 +13232,7 @@
 /obj/effect/turf_decal/spline/fancy/opaque/black{
 	dir = 4
 	},
+/obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plasteel/telecomms_floor,
 /area/ship/engineering/atmospherics)
 "MZ" = (
@@ -13858,6 +13832,10 @@
 	dir = 8
 	},
 /obj/effect/turf_decal/corner_techfloor_grid,
+/obj/effect/decal/cleanable/vomit/old{
+	pixel_x = 8;
+	pixel_y = 4
+	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/ship/security/weapons_control)
 "OS" = (
@@ -14034,7 +14012,9 @@
 /area/ship/hallway/aft)
 "Pu" = (
 /obj/machinery/camera/autoname{
-	dir = 10
+	dir = 10;
+	pixel_x = 13;
+	pixel_y = -1
 	},
 /turf/open/floor/engine/hull/reinforced,
 /area/ship/hangar)
@@ -14195,6 +14175,16 @@
 /area/ship/hallway/aft)
 "PY" = (
 /obj/effect/decal/cleanable/oil/streak,
+/obj/item/storage/barricade,
+/obj/item/storage/barricade,
+/obj/item/storage/barricade,
+/obj/item/storage/barricade,
+/obj/item/storage/barricade,
+/obj/item/storage/barricade,
+/obj/item/storage/barricade,
+/obj/item/storage/barricade,
+/obj/effect/mapping_helpers/crate_shelve,
+/obj/structure/closet/crate/secure/weapon,
 /turf/open/floor/pod/light,
 /area/ship/cargo)
 "PZ" = (
@@ -14389,11 +14379,11 @@
 /obj/item/stack/wrapping_paper,
 /obj/structure/closet/crate,
 /obj/effect/decal/cleanable/wrapping,
-/obj/structure/crate_shelf/built,
 /obj/effect/turf_decal/corner_steel_grid{
 	dir = 10
 	},
 /obj/effect/turf_decal/industrial/warning,
+/obj/structure/crate_shelf,
 /turf/open/floor/pod/dark,
 /area/ship/cargo)
 "QL" = (
@@ -15029,6 +15019,11 @@
 	},
 /obj/structure/cable{
 	icon_state = "0-4"
+	},
+/obj/effect/decal/cleanable/vomit/old{
+	pixel_x = 8;
+	pixel_y = 4;
+	icon_state = "vomit_4-old"
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/ship/security/armory)
@@ -15705,14 +15700,6 @@
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/ship/bridge)
-"UZ" = (
-/obj/machinery/power/grounding_rod{
-	anchored = 1;
-	pixel_x = 1;
-	pixel_y = 21
-	},
-/turf/open/floor/engine/hull/reinforced,
-/area/ship/external/dark)
 "Vb" = (
 /obj/effect/turf_decal/trimline/transparent/syndiered/warning{
 	dir = 9
@@ -16278,6 +16265,7 @@
 	icon = 'icons/obj/smooth_structures/more_catwalk.dmi';
 	layer = 2.455
 	},
+/obj/machinery/power/grounding_rod/wall/directional/north,
 /turf/open/floor/engine/hull/reinforced,
 /area/ship/general/command_crew/hos)
 "Wv" = (
@@ -16874,6 +16862,7 @@
 	icon = 'icons/obj/smooth_structures/more_catwalk.dmi';
 	layer = 2.455
 	},
+/obj/machinery/power/grounding_rod/wall/directional/south,
 /turf/open/floor/engine/hull/reinforced,
 /area/ship/external/dark)
 "Yl" = (
@@ -16943,7 +16932,7 @@
 	pixel_x = 6;
 	pixel_y = 5;
 	name = "README - notice to the captain";
-	default_raw_text = "<h1><font size=4>Dear Admiral,</h1><hr align=left color=black width=50%></font> <font size=2> Congratulations on being chosen to lead one of our top-of-the-line Twinkleshine Battle Cruisers. Your leadership and efforts have been hereby noted, and your name will share space with the titles of many other great Syndicate officers.<br><br> This vessel is staffed with workers from every branch of the Syndicate. Please take the time to familiarize yourself with the ship's features and crew, and make sure to maintain positive relationships with your crew.</font><hr align=left color=black width=50%><br><br><br><font color=5B0113>check under your bed";
+	default_raw_text = "<h1><font size=4>Dear Admiral,</h1><hr align=left color=black width=50%></font> <font size=2> Congratulations on being chosen to lead one of our capital ships, Cocijo-class Capital Exo-Carrier. Your leadership and efforts have been hereby noted, and your name will share space with the titles of many other great Syndicate officers.<br><br> This vessel is staffed with workers from every branch of the Syndicate. Please take the time to familiarize yourself with the ship's features and crew, and make sure to maintain positive relationships with your crew.</font><hr align=left color=black width=50%><br><br><br><font color=5B0113>check under your bed";
 	desc = "This sheet of paper looks old and dusty.";
 	color = "#3f010d"
 	},
@@ -17410,13 +17399,6 @@
 /obj/machinery/atmospherics/components/binary/valve,
 /turf/open/floor/engine,
 /area/ship/engineering/electrical)
-"ZU" = (
-/obj/machinery/power/grounding_rod{
-	anchored = 1;
-	pixel_y = 11
-	},
-/turf/closed/wall/r_wall/syndicate/nodiagonal,
-/area/ship/crew/dorm/captain)
 "ZW" = (
 /obj/machinery/atmospherics/pipe/simple/orange/visible,
 /obj/structure/grille,
@@ -17449,17 +17431,17 @@ bT
 Tr
 dG
 bT
-bd
+mZ
 oO
-bP
+Hb
 aW
 mZ
 bd
 mZ
 oO
-bP
+Hb
 aW
-bd
+mZ
 bT
 dG
 df
@@ -17527,7 +17509,7 @@ az
 az
 pW
 az
-mZ
+DS
 Qc
 ab
 Wd
@@ -17537,7 +17519,7 @@ Lt
 ke
 hR
 bP
-mZ
+sJ
 kP
 Ft
 kP
@@ -18680,7 +18662,7 @@ VL
 Ms
 VL
 Xx
-mZ
+Ln
 bT
 "}
 (33,1,1) = {"
@@ -19118,7 +19100,7 @@ bT
 bT
 bT
 mZ
-Ts
+DS
 mM
 mM
 mM
@@ -19144,7 +19126,7 @@ Pl
 MS
 MQ
 eD
-Ts
+sJ
 mZ
 bT
 bT
@@ -19233,7 +19215,7 @@ bT
 bT
 bT
 bT
-Ts
+DS
 Vt
 JX
 rd
@@ -19263,7 +19245,7 @@ Hz
 FO
 eD
 dg
-Ts
+sJ
 bT
 bT
 bT
@@ -19460,7 +19442,7 @@ gH
 DE
 OW
 qr
-UZ
+mZ
 bT
 "}
 (53,1,1) = {"
@@ -19771,8 +19753,8 @@ HI
 hB
 On
 hU
-pj
-mZ
+HI
+sJ
 mZ
 "}
 (61,1,1) = {"
@@ -19849,8 +19831,8 @@ HI
 HI
 HI
 Wh
-pj
-mZ
+HI
+sJ
 mZ
 "}
 (63,1,1) = {"
@@ -19936,7 +19918,7 @@ bT
 mZ
 in
 mZ
-sJ
+in
 IY
 IY
 vY
@@ -19964,7 +19946,7 @@ Gk
 NX
 IY
 IY
-bU
+HI
 mZ
 HI
 mZ
@@ -19975,7 +19957,7 @@ bT
 bT
 in
 mZ
-mZ
+bU
 lp
 pU
 LN
@@ -20003,7 +19985,7 @@ Jy
 Ws
 yA
 Hi
-mZ
+bU
 mZ
 HI
 bT
@@ -20174,8 +20156,8 @@ bT
 bT
 sw
 sw
-sw
-ZU
+Hs
+dH
 dH
 dH
 ue
@@ -20193,12 +20175,12 @@ Tb
 Bv
 kU
 kU
-Hb
+kU
 Wt
 Qy
 Qy
 bT
-Ln
+bT
 bT
 bT
 bT
@@ -20331,7 +20313,7 @@ bT
 bT
 bT
 Yk
-ZU
+dH
 dH
 Wh
 IY
@@ -20349,7 +20331,7 @@ DA
 IY
 qx
 kU
-Hb
+kU
 Ie
 bT
 bT
@@ -20413,8 +20395,8 @@ zi
 dH
 zi
 bT
-mZ
 DS
+DA
 DN
 at
 qa
@@ -20422,8 +20404,8 @@ ru
 VD
 Vf
 DN
-mx
-mZ
+DA
+sJ
 bT
 fI
 kU
@@ -20531,15 +20513,15 @@ bT
 dH
 bT
 bT
-mZ
-Hs
+DS
+DN
 HK
 Ck
 KX
 wa
 zw
-iN
-mZ
+DN
+sJ
 bT
 bT
 kU

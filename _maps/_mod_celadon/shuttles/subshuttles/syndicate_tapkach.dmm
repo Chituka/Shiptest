@@ -1,9 +1,5 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aW" = (
-/obj/effect/turf_decal/trimline/opaque/solgovgold/arrow_cw,
-/obj/effect/turf_decal/trimline/opaque/solgovgold/warning{
-	dir = 4
-	},
 /obj/docking_port/mobile{
 	dir = 4;
 	name = "Tapok";
@@ -19,7 +15,17 @@
 /obj/machinery/atmospherics/components/unary/outlet_injector/on/layer4{
 	dir = 4
 	},
-/turf/open/floor/plasteel/tech/grid,
+/obj/effect/turf_decal/trimline/opaque/solgovgold/warning{
+	dir = 8
+	},
+/obj/effect/turf_decal/industrial/fire{
+	dir = 4;
+	color = "#730622"
+	},
+/obj/effect/turf_decal/industrial/caution/red{
+	dir = 8
+	},
+/turf/open/floor/plasteel/tech/grid/airless,
 /area/ship/bridge)
 "de" = (
 /obj/effect/turf_decal/industrial/warning{
@@ -75,6 +81,17 @@
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/ship/bridge)
+"dH" = (
+/obj/effect/turf_decal/trimline/opaque/solgovgold/warning{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/opaque/syndiered/arrow_cw,
+/obj/effect/turf_decal/industrial/fire{
+	dir = 4;
+	color = "#730622"
+	},
+/turf/open/floor/plasteel/tech/grid/airless,
+/area/ship/bridge)
 "ej" = (
 /obj/machinery/power/shuttle/engine/fueled/plasma{
 	dir = 4
@@ -100,6 +117,17 @@
 	pixel_x = -23
 	},
 /turf/open/floor/mineral/plastitanium,
+/area/ship/bridge)
+"gh" = (
+/obj/effect/turf_decal/industrial/fire/corner{
+	color = "#730622"
+	},
+/obj/effect/turf_decal/trimline/opaque/solgovgold/warning{
+	dir = 9
+	},
+/turf/open/floor/mineral/plastitanium{
+	initial_gas_mix = "TEMP=2.7"
+	},
 /area/ship/bridge)
 "ht" = (
 /obj/structure/fans/tiny/invisible,
@@ -131,7 +159,7 @@
 	pixel_x = -19;
 	pixel_y = 13
 	},
-/turf/open/floor/mineral/plastitanium,
+/turf/open/floor/plasteel/tech,
 /area/ship/bridge)
 "ij" = (
 /obj/structure/catwalk,
@@ -161,6 +189,12 @@
 	},
 /obj/structure/chair/comfy/shuttle,
 /obj/machinery/atmospherics/pipe/simple/purple/hidden,
+/obj/effect/turf_decal/trimline/transparent/vired/arrow_cw{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/transparent/vired/arrow_ccw{
+	dir = 8
+	},
 /turf/open/floor/plasteel/mono/dark,
 /area/ship/bridge)
 "kt" = (
@@ -238,10 +272,13 @@
 	icon_state = "1-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/purple/hidden,
+/obj/effect/turf_decal/corner_steel_grid{
+	dir = 10
+	},
 /obj/effect/turf_decal/siding/thinplating/dark{
 	dir = 6
 	},
-/turf/open/floor/mineral/plastitanium,
+/turf/open/floor/plasteel/tech,
 /area/ship/bridge)
 "tb" = (
 /obj/structure/catwalk/over/plated_catwalk/dark,
@@ -263,7 +300,16 @@
 /turf/open/floor/plating,
 /area/ship/bridge)
 "uk" = (
-/turf/open/floor/mineral/plastitanium,
+/obj/effect/turf_decal/industrial/fire/corner{
+	dir = 4;
+	color = "#730622"
+	},
+/obj/effect/turf_decal/trimline/opaque/solgovgold/warning{
+	dir = 10
+	},
+/turf/open/floor/mineral/plastitanium{
+	initial_gas_mix = "TEMP=2.7"
+	},
 /area/ship/bridge)
 "uZ" = (
 /obj/structure/window/reinforced{
@@ -307,11 +353,24 @@
 	},
 /turf/open/floor/plasteel/tech,
 /area/ship/bridge)
+"wi" = (
+/obj/structure/marker_beacon{
+	picked_color = "Burgundy"
+	},
+/turf/open/floor/engine/hull/reinforced,
+/area/ship/bridge)
 "xq" = (
 /obj/effect/turf_decal/trimline/opaque/solgovgold/warning{
-	dir = 4
+	dir = 8
 	},
-/turf/open/floor/plasteel/tech/grid,
+/obj/effect/turf_decal/trimline/opaque/syndiered/arrow_ccw{
+	dir = 1
+	},
+/obj/effect/turf_decal/industrial/fire{
+	dir = 4;
+	color = "#730622"
+	},
+/turf/open/floor/plasteel/tech/grid/airless,
 /area/ship/bridge)
 "yi" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2,
@@ -324,6 +383,12 @@
 /obj/machinery/atmospherics/components/binary/pump/on/layer4{
 	dir = 8
 	},
+/obj/effect/turf_decal/trimline/opaque/syndiered/line,
+/obj/effect/turf_decal/industrial/fire{
+	dir = 2;
+	color = "#730622"
+	},
+/obj/effect/turf_decal/siding/thinplating/dark,
 /turf/open/floor/plasteel/tech/grid,
 /area/ship/bridge)
 "zb" = (
@@ -408,12 +473,32 @@
 /obj/item/clothing/mask/gas/syndicate,
 /obj/item/tank/internals/emergency_oxygen/double,
 /obj/effect/turf_decal/trimline/opaque/syndiered/arrow_ccw,
+/obj/effect/turf_decal/trimline/opaque/syndiered/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/industrial/fire{
+	dir = 1;
+	color = "#730622"
+	},
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 1
+	},
 /turf/open/floor/plasteel/tech/grid,
 /area/ship/bridge)
 "Bj" = (
 /obj/machinery/atmospherics/pipe/simple/purple/hidden,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /obj/effect/turf_decal/trimline/opaque/syndiered/arrow_ccw,
+/obj/effect/turf_decal/trimline/opaque/syndiered/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/industrial/fire{
+	dir = 1;
+	color = "#730622"
+	},
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 1
+	},
 /turf/open/floor/plasteel/tech/grid,
 /area/ship/bridge)
 "CG" = (
@@ -424,6 +509,12 @@
 	color = "#730622"
 	},
 /obj/machinery/atmospherics/pipe/simple/purple/hidden,
+/obj/effect/turf_decal/trimline/transparent/vired/arrow_ccw{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/transparent/vired/arrow_cw{
+	dir = 8
+	},
 /turf/open/floor/plasteel/mono/dark,
 /area/ship/bridge)
 "Du" = (
@@ -439,8 +530,8 @@
 	dir = 4
 	},
 /obj/machinery/door/poddoor{
-	id = "pepegasandwich";
-	name = "Airseal Blast Door"
+	id = "cocijo_subshuttle_engine";
+	name = "Engine Blast Door"
 	},
 /turf/open/floor/plating,
 /area/ship/bridge)
@@ -513,8 +604,8 @@
 	pixel_x = -7
 	},
 /obj/machinery/atmospherics/components/unary/portables_connector,
-/obj/machinery/portable_atmospherics/canister,
 /obj/machinery/light/directional/east,
+/obj/machinery/portable_atmospherics/canister/toxins,
 /turf/open/floor/plasteel/mono/dark,
 /area/ship/bridge)
 "FK" = (
@@ -579,7 +670,8 @@
 /obj/machinery/atmospherics/pipe/simple/purple/hidden,
 /obj/effect/turf_decal/industrial/outline/red,
 /obj/machinery/teleport/hub,
-/turf/open/floor/plasteel/mono/dark,
+/obj/structure/catwalk/over/plated_catwalk/dark,
+/turf/open/floor/plasteel/telecomms_floor,
 /area/ship/bridge)
 "MW" = (
 /obj/effect/turf_decal/corner/opaque/syndiered,
@@ -619,6 +711,16 @@
 "PP" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/effect/turf_decal/trimline/opaque/syndiered/arrow_ccw,
+/obj/effect/turf_decal/trimline/opaque/syndiered/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/industrial/fire{
+	dir = 1;
+	color = "#730622"
+	},
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 1
+	},
 /turf/open/floor/plasteel/tech/grid,
 /area/ship/bridge)
 "Ql" = (
@@ -654,6 +756,15 @@
 /obj/effect/turf_decal/siding/thinplating/dark{
 	color = "#730622"
 	},
+/obj/effect/turf_decal/trimline/opaque/syndiered/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/transparent/vired/arrow_ccw{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/transparent/vired/arrow_cw{
+	dir = 8
+	},
 /turf/open/floor/plasteel/mono/dark,
 /area/ship/bridge)
 "Sm" = (
@@ -669,6 +780,9 @@
 /obj/structure/window/plasma/reinforced{
 	dir = 1
 	},
+/obj/effect/turf_decal/borderfloorwhite/corner{
+	dir = 8
+	},
 /turf/open/floor/plasteel/tech,
 /area/ship/bridge)
 "Tn" = (
@@ -677,6 +791,15 @@
 /obj/effect/turf_decal/siding/thinplating/dark{
 	color = "#730622";
 	dir = 1
+	},
+/obj/effect/turf_decal/trimline/opaque/syndiered/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/transparent/vired/arrow_cw{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/transparent/vired/arrow_ccw{
+	dir = 8
 	},
 /turf/open/floor/plasteel/mono/dark,
 /area/ship/bridge)
@@ -696,6 +819,12 @@
 	dir = 1
 	},
 /obj/machinery/light/directional/east,
+/obj/effect/turf_decal/trimline/transparent/vired/arrow_ccw{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/transparent/vired/arrow_cw{
+	dir = 8
+	},
 /turf/open/floor/plasteel/mono/dark,
 /area/ship/bridge)
 "Wr" = (
@@ -749,6 +878,12 @@
 /obj/effect/turf_decal/trimline/opaque/syndiered/arrow_ccw{
 	dir = 1
 	},
+/obj/effect/turf_decal/trimline/opaque/syndiered/line,
+/obj/effect/turf_decal/industrial/fire{
+	dir = 2;
+	color = "#730622"
+	},
+/obj/effect/turf_decal/siding/thinplating/dark,
 /turf/open/floor/plasteel/tech/grid,
 /area/ship/bridge)
 "YO" = (
@@ -771,6 +906,19 @@
 	},
 /turf/open/floor/plasteel/tech,
 /area/ship/bridge)
+"Za" = (
+/obj/effect/turf_decal/trimline/opaque/solgovgold/warning{
+	dir = 8
+	},
+/obj/effect/turf_decal/industrial/fire{
+	dir = 4;
+	color = "#730622"
+	},
+/obj/effect/turf_decal/industrial/caution/red{
+	dir = 8
+	},
+/turf/open/floor/plasteel/tech/grid/airless,
+/area/ship/bridge)
 "Zu" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
 	dir = 8
@@ -785,6 +933,12 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4,
+/obj/effect/turf_decal/trimline/opaque/syndiered/line,
+/obj/effect/turf_decal/industrial/fire{
+	dir = 2;
+	color = "#730622"
+	},
+/obj/effect/turf_decal/siding/thinplating/dark,
 /turf/open/floor/plasteel/tech/grid,
 /area/ship/bridge)
 "ZZ" = (
@@ -806,12 +960,12 @@
 /area/ship/bridge)
 
 (1,1,1) = {"
-QD
-uk
+wi
+gh
 xq
-xq
+Za
 aW
-xq
+dH
 uk
 QD
 "}

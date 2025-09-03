@@ -128,7 +128,10 @@
 	name = "\improper FDL-12 revolver"
 	desc = "Also known as Fer-de-Lance, this revolver is a highly experimental technology, firing 12.5mm rounds at unimaginable velocity."
 	icon = 'mod_celadon/_storge_icons/icons/items/weapons/cocijo_guns.dmi'
+	lefthand_file = 'mod_celadon/_storge_icons/icons/items/weapons/in_hands/fdl_lefthand.dmi'
+	righthand_file = 'mod_celadon/_storge_icons/icons/items/weapons/in_hands/fdl_righthand.dmi'
 	icon_state = "fdl12"
+	item_state = "fdl"
 	fire_sound = 'mod_celadon/_storge_sounds/sound/gun/fdl12_shot.ogg'
 	manufacturer = MANUFACTURER_INTEQ
 	safety_wording = "safety"
