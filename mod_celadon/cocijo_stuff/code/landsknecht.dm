@@ -26,61 +26,42 @@
 	desc = "Remains of some unfortunate mecha. Although, this one looks like it can still be repaired."
 	icon = 'mod_celadon/_storge_icons/icons/landsknecht.dmi'
 	icon_state = "landsknecht-broken"
-	var/req_plast = TRUE
-	var/req_cables = TRUE
-	var/req_cell = TRUE
-	var/used_cell = null
+	// var/req_plast = TRUE
+	// var/req_cables = TRUE
+	// var/req_cell = TRUE
+	// var/used_cell = null
+	var/list/req_comps = list(/obj/item/stack/sheet/plasteel = 20,
+	/obj/item/stack/cable_coil = 20,
+	)
+	var/list/req_stock_parts = list(/obj/item/stock_parts/capacitor,
+	/obj/item/stock_parts/scanning_module,
+	/obj/item/stock_parts/cell)
 
-/obj/structure/mecha_wreckage/landsknecht/attackby(obj/item/stack/I, mob/user, params)
-	if(istype(I, /obj/item/stack/sheet/plasteel))
-		if(!req_plast)
-			to_chat(user, span_danger("I already fixed everything I could with plasteel!"))
+
+/obj/structure/mecha_wreckage/landsknecht/attackby(obj/item/I, mob/user, params)
+	for(var/type in req_comps)
+		if(istype(I,type))
+			if(I.use_tool(src, user, 30, volume=50, amount = req_comps[type]))
+				req_comps.Remove(I.type)
+				return
+			to_chat(user, span_warning("I need at least [req_comps[type]] pieces!"))
 			return
 
-		if(I.amount >= 20)
-			I.use_tool(src, user, 30, volume=50, amount=20)
-			req_plast = FALSE
-			to_chat(user, span_danger("Trying to patch this scrap up..."))
+	for(var/type1 in req_stock_parts)
+		if(istype(I, type1))
+			I.forceMove(src)
+			req_stock_parts.Remove(type1)
 			return
 
-		to_chat(user, span_danger("I need at least 20 plasteel sheets!"))
-		return
-
-
-	if(istype(I, /obj/item/stack/cable_coil))
-		if(!req_cables)
-			to_chat(user, span_danger("I already did all the wiring!"))
-			return
-
-		if(I.amount >= 20)
-			to_chat(user, span_danger("Doing my best at wiring this mess..."))
-			I.use_tool(src, user, 30, volume=50, amount=20)
-			req_cables = FALSE
-			return
-
-		to_chat(user, span_danger("I need at least 20 cable pieces!"))
-		return
-
-
-	if(istype(I, /obj/item/stock_parts/cell))
-		if(!req_cell)
-			to_chat(user, span_danger("Cell is already installed!"))
-			return
-		to_chat(user, span_danger("Where the hell do I install the cell..."))
-		I.use_tool(src, user, 30, volume=50, amount=1)
-		used_cell = I
-		req_cell = FALSE
-		qdel(I)
-		return
-	if(istype(I, /obj/item/screwdriver))
-		return
-	else
-		to_chat(user, span_danger("It doesn't belong here!"))
-		return
 
 /obj/structure/mecha_wreckage/landsknecht/screwdriver_act(mob/living/user, obj/item/I)
-	if(!req_plast && !req_cables && !req_cell)
-		new /obj/mecha/combat/landsknecht(loc, used_cell)
+	if(length(req_comps) == 0)
+		var/obj/mecha/M = new /obj/mecha/combat/landsknecht(loc)
+		QDEL_NULL(M.cell)
+		QDEL_NULL(M.scanmod)
+		QDEL_NULL(M.capacitor)
+		M.CheckParts(contents)
+		SSblackbox.record_feedback("tally", "mechas_created", 1, M.name)
 		qdel(src)
 	. = ..()
 
