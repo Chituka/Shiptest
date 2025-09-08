@@ -100,5 +100,5 @@
 	ammo_type = "super_heavy_slug"
 
 /obj/item/mecha_ammo/super_heavy_slug/update_ammo_name()
-	if(!rounds)
+	if(rounds < 1)
 		qdel(src)

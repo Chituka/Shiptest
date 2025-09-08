@@ -11,6 +11,26 @@
 /obj/machinery/door/airlock/suns/locked
 	req_access_txt = "511"
 	req_ship_access = FALSE
+	autoclose = FALSE
+
+/obj/machinery/door/airlock/suns/locked/attackby(obj/item/I, mob/user, params)
+	if(istype(I,/obj/item/card/id/suns/secret))
+		if(check_access(I))
+			playsound(src,'mod_celadon/_storge_sounds/sound/effects/right_short.ogg',100)
+			if(do_after(user,20,src))
+				try_to_activate_door(user)
+		else
+			playsound(src,'mod_celadon/_storge_sounds/sound/effects/wrong_short.ogg',100)
+			do_after(user,20,src)
+
+//Специально удаляю любое взаимодействие, чтобы дверь реагировала только на ключ-карты
+/obj/machinery/door/airlock/suns/locked/Bumped(atom/movable/AM)
+
+/obj/machinery/door/airlock/suns/locked/attack_hand(mob/user)
+	add_fingerprint(user)
+
+/obj/machinery/door/airlock/suns/locked/bumpopen(mob/living/user)
+	add_fingerprint(user)
 
 /obj/machinery/door/airlock/suns/locked/white
 	icon = 'mod_celadon/_storge_icons/icons/obj/cocijo_stuff/suns_airlock_white.dmi'
