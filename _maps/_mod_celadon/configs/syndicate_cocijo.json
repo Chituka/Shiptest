@@ -47,7 +47,7 @@
 			"outfit": "/datum/outfit/job/syndicate/engineer/gec",
 			"slots": 2
 		},
-		"GEC Atmospheric Technician": {
+		"GEC Field Engineer": {
 			"outfit": "/datum/outfit/job/syndicate/engineer/gec",
 			"slots": 2
 		},

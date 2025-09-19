@@ -159,6 +159,9 @@
 	pixel_x = -19;
 	pixel_y = 13
 	},
+/obj/effect/turf_decal/siding/black{
+	dir = 1
+	},
 /turf/open/floor/plasteel/tech,
 /area/ship/bridge)
 "ij" = (
@@ -274,6 +277,9 @@
 /obj/machinery/atmospherics/pipe/simple/purple/hidden,
 /obj/effect/turf_decal/corner_steel_grid{
 	dir = 10
+	},
+/obj/effect/turf_decal/siding/black{
+	dir = 1
 	},
 /obj/effect/turf_decal/siding/thinplating/dark{
 	dir = 6
@@ -437,15 +443,9 @@
 /turf/open/floor/plasteel/tech,
 /area/ship/bridge)
 "zW" = (
-/obj/effect/turf_decal/siding/thinplating/dark{
-	dir = 4
-	},
 /obj/machinery/atmospherics/pipe/simple/purple/hidden,
 /obj/structure/cable{
 	icon_state = "2-8"
-	},
-/obj/effect/turf_decal/siding/thinplating/dark{
-	dir = 8
 	},
 /obj/effect/turf_decal/siding/thinplating/dark{
 	color = "#730622";
@@ -454,6 +454,13 @@
 /obj/machinery/power/ship_gravity,
 /obj/structure/cable{
 	icon_state = "0-2"
+	},
+/obj/effect/turf_decal/siding/thinplating/dark,
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 4
 	},
 /turf/open/floor/plasteel/tech/grid,
 /area/ship/bridge)
