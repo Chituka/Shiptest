@@ -16,23 +16,45 @@
 	. = ..()
 	AddElement(/datum/element/undertile, TRAIT_T_RAY_VISIBLE)
 
-/obj/machinery/porta_turret/syndicate/no_access/energy/heavy/capital
+/obj/machinery/porta_turret/ship/syndicate/capital
 	name = "Main Laser Subsidiary Turret"
 	desc = "Heavy assault turret, that was designed to take down space ships. Yet this one is in disarray and now it is used for anti-infantry."
 	icon = 'mod_celadon/_storage_icons/icons/turret_96x96.dmi'
 	icon_state = "standard"
 	base_icon_state = "standard"
 	active_power_usage = 15000
+	stun_projectile = /obj/projectile/bullet/p50/soporific
+	stun_projectile_sound = 'sound/weapons/gun/laser/heavy_laser.ogg'
+	lethal_projectile = /obj/projectile/beam/hitscan/laser/capital
+	lethal_projectile_sound = 'sound/weapons/gun/laser/e40_las.ogg'
 	scan_range = 18
-	shot_delay = 0.5
+	shot_delay = 10
+	burst_delay = 0.5
+	burst_size = 4
+	spread = 20
+	reaction_time = 30
+	max_integrity = 350
+	integrity_failure = 0.6
 	pixel_y = -32
 	pixel_x = -32
-	bound_y = -32
-	bound_x = -32
-	stun_projectile = /obj/projectile/beam/hitscan/kalix
-	stun_projectile_sound = 'sound/weapons/gun/laser/heavy_laser.ogg'
-	lethal_projectile = /obj/projectile/beam/hitscan/kalix
-	lethal_projectile_sound = 'sound/weapons/gun/laser/heavy_laser.ogg'
+
+/obj/projectile/beam/hitscan/laser/capital
+	name = "beam"
+	damage = 40
+	armour_penetration = 100 // you are fighting against anti-ship weapon, what did you expect
+	range = 30
+	tracer_type = /obj/effect/projectile/tracer/laser/capital
+	hitscan_light_intensity = 5
+	hitscan_light_range = 1
+	hitscan_light_color_override = LIGHT_COLOR_LAVENDER
+	muzzle_type = /obj/effect/projectile/muzzle/heavy_laser
+	muzzle_flash_intensity = 4
+	muzzle_flash_range = 1
+	muzzle_flash_color_override = LIGHT_COLOR_LAVENDER
+	impact_type = /obj/effect/temp_visual/explosion/fast
+	impact_light_intensity = 10
+	impact_light_range = 3
+	light_color = LIGHT_COLOR_LAVENDER
 
 /obj/machinery/power/grounding_rod/wall
 	name = "wall-mounted grounding rod"

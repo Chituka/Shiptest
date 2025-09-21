@@ -1724,8 +1724,8 @@
 	},
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/item/gun/ballistic/revolver/fdl,
-/obj/item/storage/box/ammo/a12mm,
-/obj/item/storage/box/ammo/a12mm,
+/obj/item/storage/box/ammo/a127mm,
+/obj/item/storage/box/ammo/a127mm,
 /obj/item/stamp/syndicate,
 /obj/item/stamp/syndicate/captain,
 /turf/open/floor/wood/mahogany,
@@ -5176,7 +5176,12 @@
 /turf/open/floor/plasteel/tech,
 /area/ship/engineering/atmospherics)
 "oK" = (
-/obj/docking_port/stationary/capital,
+/obj/docking_port/stationary{
+	dheight = 1;
+	height = 40;
+	width = 160;
+	dwidth = 54
+	},
 /turf/open/floor/engine/hull/reinforced,
 /area/ship/external/dark)
 "oL" = (
@@ -5293,7 +5298,7 @@
 	icon = 'icons/obj/smooth_structures/more_catwalk.dmi';
 	layer = 2.455
 	},
-/obj/machinery/porta_turret/syndicate/no_access/energy/heavy/capital{
+/obj/machinery/porta_turret/ship/syndicate/capital{
 	dir = 4;
 	id = "cocijo_main_caliber";
 	faction = list("playerSyndicate","turret")
@@ -7208,7 +7213,7 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/ship/security/weapons_control)
 "ve" = (
-/obj/machinery/porta_turret/syndicate/no_access/energy/heavy{
+/obj/machinery/porta_turret/ship/syndicate/ballistic/heavy{
 	faction = list("playerSyndicate","turret");
 	lethal_projectile = /obj/projectile/beam/hitscan/kalix;
 	lethal_projectile_sound = 'sound/weapons/gun/laser/heavy_laser.ogg';
@@ -7229,7 +7234,7 @@
 	icon = 'icons/obj/smooth_structures/more_catwalk.dmi';
 	layer = 2.455
 	},
-/obj/machinery/porta_turret/syndicate/no_access/energy/heavy/capital{
+/obj/machinery/porta_turret/ship/syndicate/capital{
 	dir = 4;
 	id = "cocijo_main_caliber";
 	faction = list("playerSyndicate","turret")
@@ -10141,7 +10146,7 @@
 /turf/open/floor/carpet/red,
 /area/ship/crew/dorm)
 "DG" = (
-/obj/machinery/porta_turret/syndicate/no_access/energy/heavy{
+/obj/machinery/porta_turret/ship/syndicate/ballistic/heavy{
 	faction = list("playerSyndicate","turret");
 	lethal_projectile = /obj/projectile/beam/hitscan/kalix;
 	lethal_projectile_sound = 'sound/weapons/gun/laser/heavy_laser.ogg';
@@ -11500,7 +11505,7 @@
 /turf/closed/wall/r_wall/syndicate/nodiagonal,
 /area/ship/engineering/engines/starboard)
 "Hm" = (
-/obj/machinery/porta_turret/syndicate/no_access/energy/heavy{
+/obj/machinery/porta_turret/ship/syndicate/ballistic/heavy{
 	faction = list("playerSyndicate","turret");
 	lethal_projectile = /obj/projectile/beam/hitscan/kalix;
 	lethal_projectile_sound = 'sound/weapons/gun/laser/heavy_laser.ogg';
@@ -16550,7 +16555,7 @@
 	},
 /area/ship/hallway/aft)
 "VN" = (
-/obj/machinery/porta_turret/syndicate/no_access/energy/heavy{
+/obj/machinery/porta_turret/ship/syndicate/ballistic/heavy{
 	faction = list("playerSyndicate","turret");
 	lethal_projectile = /obj/projectile/beam/hitscan/kalix;
 	lethal_projectile_sound = 'sound/weapons/gun/laser/heavy_laser.ogg';
