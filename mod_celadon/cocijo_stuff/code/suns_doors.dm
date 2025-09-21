@@ -74,8 +74,3 @@
 	var/static/items_inside = list(
 		/obj/item/card/id/suns/secret/white = 2)
 	generate_items_inside(items_inside,src)
-/*
-/obj/item/storage/box/ids/PopulateContents()
-	for(var/i in 1 to 7)
-		new /obj/item/card/id(src)
-*/
