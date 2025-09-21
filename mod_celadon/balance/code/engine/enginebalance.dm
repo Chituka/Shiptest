@@ -34,8 +34,9 @@
 /obj/machinery/power/shuttle/engine/electric/huge
 	name = "huge thruster"
 	desc = "A A thruster that uses insane amount of energy to expel super-accelerated charged particles to generate thrust."
+	max_integrity = 600
 	circuit = /obj/item/circuitboard/machine/shuttle/engine/electric/huge
-	icon = 'mod_celadon/_storge_icons/icons/3x3.dmi'
+	icon = 'mod_celadon/_storage_icons/icons/structures/3x3.dmi'
 	icon_state = "huge_engine"
 	icon_state_off = "huge_engine"
 	icon_state_closed = "huge_engine"

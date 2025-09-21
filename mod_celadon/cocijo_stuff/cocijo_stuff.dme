@@ -7,6 +7,7 @@
 #include "code/landsknecht.dm"
 #include "code/mech_stuff.dm"
 #include "code/misc.dm"
+#include "code/mod_modules.dm"
 #include "code/suns_doors.dm"
 #include "code/weaponary.dm"
 #include "code/turfs.dm"

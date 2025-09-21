@@ -20,7 +20,7 @@
 /obj/item/ammo_casing/a12mm
 	name = "12.7x55mm bullet casing"
 	desc = ""
-	icon = 'mod_celadon/_storge_icons/icons/guns/ammo_bullets.dmi'
+	icon = 'mod_celadon/_storage_icons/icons/guns/ammo_bullets.dmi'
 	icon_state = "a127-brass"
 	var/icon_off = "cigaroff"
 	caliber = "12.7mm"
@@ -31,7 +31,8 @@
 	name = "12.7x55mm bullet casing"
 	desc = ""
 	icon_state = "a127-brass-ap"
-	mob_overlay_icon = "a127-brass-ap"
+	mob_overlay_icon = 'mod_celadon/_storage_icons/icons/guns/ammo_bullets.dmi'
+	mob_overlay_state = "a127-brass-ap"
 	caliber = "12.7mm"
 	projectile_type = /obj/projectile/bullet/a12mm/ap
 	stack_size = 6
@@ -46,7 +47,7 @@
 	stack_size = 6
 
 /obj/item/ammo_box/magazine/ammo_stack/prefilled/a12mm
-	icon = 'mod_celadon/_storge_icons/icons/guns/ammo_bullets.dmi'
+	icon = 'mod_celadon/_storage_icons/icons/guns/ammo_bullets.dmi'
 	icon_state = "a127-brass"
 	ammo_type = /obj/item/ammo_casing/a12mm
 	max_ammo = 6
@@ -68,7 +69,7 @@
 /obj/item/storage/box/ammo/a12mm
 	name = "box of 12.7x55mm ammo"
 	desc = "A box of standard 12.7x55mm ammo."
-	icon = 'mod_celadon/_storge_icons/icons/guns/ammo_boxes.dmi'
+	icon = 'mod_celadon/_storage_icons/icons/guns/ammo_boxes.dmi'
 	icon_state = "a127mmbox"
 
 /obj/item/storage/box/ammo/a12mm/PopulateContents()
@@ -119,7 +120,7 @@
 		return
 	var/bullet_position = 1 //generate sprites for cigars in the box
 	for(var/obj/item/ammo_casing/a12mm/bullets in contents)
-		var/mutable_appearance/bullet_overlay = mutable_appearance('mod_celadon/_storge_icons/icons/guns/ammo_bullets.dmi', "[bullets.icon_off]_[bullet_position]")
+		var/mutable_appearance/bullet_overlay = mutable_appearance('mod_celadon/_storage_icons/icons/guns/ammo_bullets.dmi', "[bullets.icon_off]_[bullet_position]")
 		. += bullet_overlay
 		bullet_position++
 
@@ -127,12 +128,12 @@
 /obj/item/gun/ballistic/revolver/fdl
 	name = "\improper FDL-12 revolver"
 	desc = "Also known as Fer-de-Lance, this revolver is a highly experimental technology, firing 12.5mm rounds at unimaginable velocity."
-	icon = 'mod_celadon/_storge_icons/icons/items/weapons/cocijo_guns.dmi'
-	lefthand_file = 'mod_celadon/_storge_icons/icons/items/weapons/in_hands/fdl_lefthand.dmi'
-	righthand_file = 'mod_celadon/_storge_icons/icons/items/weapons/in_hands/fdl_righthand.dmi'
+	icon = 'mod_celadon/_storage_icons/icons/items/weapons/cocijo_guns.dmi'
+	lefthand_file = 'mod_celadon/_storage_icons/icons/items/weapons/in_hands/fdl_lefthand.dmi'
+	righthand_file = 'mod_celadon/_storage_icons/icons/items/weapons/in_hands/fdl_righthand.dmi'
 	icon_state = "fdl12"
 	item_state = "fdl"
-	fire_sound = 'mod_celadon/_storge_sounds/sound/gun/fdl12_shot.ogg'
+	fire_sound = 'mod_celadon/_storage_sounds/sound/gun/fdl12_shot.ogg'
 	manufacturer = MANUFACTURER_INTEQ
 	safety_wording = "safety"
 	spread = 0
@@ -151,6 +152,6 @@
 	AddComponent(/datum/component/ammo_hud/revolver)
 
 /obj/item/gun/ballistic/revolver/fdl/process_fire(atom/target, mob/living/user, message, params, zone_override, bonus_spread)
-	playsound(loc, 'mod_celadon/_storge_sounds/sound/gun/fdl12_charge.ogg', 100)
+	playsound(loc, 'mod_celadon/_storage_sounds/sound/gun/fdl12_charge.ogg', 100)
 	if(do_after(user, 1 SECONDS, timed_action_flags = IGNORE_USER_LOC_CHANGE | IGNORE_TARGET_LOC_CHANGE))
 		. = ..()

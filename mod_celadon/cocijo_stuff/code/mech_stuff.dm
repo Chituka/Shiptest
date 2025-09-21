@@ -1,7 +1,7 @@
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/slugthrower
 	name = "\improper GEC \"Ballista\" Exosuit Slug Thrower"
 	desc = "A weapon for combat exosuits. Shoots heavy slugs at high-speed."
-	icon = 'mod_celadon/_storge_icons/icons/items/weapons/mecha_equipment.dmi'
+	icon = 'mod_celadon/_storage_icons/icons/items/weapons/mecha_equipment.dmi'
 	icon_state = "mecha_slugthrower"
 	energy_drain = 500
 	equip_cooldown = 20
@@ -31,7 +31,7 @@
 /obj/item/mecha_ammo/heavy_slug
 	name = "Heavy Slug ammo"
 	desc = "A box of ferromagnetic heavy slugs for use with exosuit weapons. They are really heavy."
-	icon = 'mod_celadon/_storge_icons/icons/items/weapons/ammo/mecha_ammo.dmi'
+	icon = 'mod_celadon/_storage_icons/icons/items/weapons/ammo/mecha_ammo.dmi'
 	icon_state = "heavy_slug"
 	rounds = 12
 	ammo_type = "heavy_slug"
@@ -39,12 +39,12 @@
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/slugthrower_shoulder
 	name = "\improper GEC \"Trebuchet\" ESMSSSHSL"
 	desc = "Exosuit Shoulder-Mounted Single-Shot Super-Heavy Slug Launcher... That's way too many words for you to proccess, but it is certainly a weapon for combat exosuits and it shoots super-heavy slugs at extremely low speed."
-	icon = 'mod_celadon/_storge_icons/icons/items/weapons/mecha_equipment.dmi'
+	icon = 'mod_celadon/_storage_icons/icons/items/weapons/mecha_equipment.dmi'
 	icon_state = "mecha_slugthrower_shoulder"
 	energy_drain = 500
 	equip_cooldown = 20
 	projectile = /obj/projectile/bullet/heavy_slug/super
-	fire_sound = 'mod_celadon/_storge_sounds/sound/gun/trebuchet_shot.ogg'
+	fire_sound = 'mod_celadon/_storage_sounds/sound/gun/trebuchet_shot.ogg'
 	projectiles = 1
 	projectiles_cache = 0
 	projectiles_cache_max = 0
@@ -92,7 +92,7 @@
 	name = "Super-Heavy Slug container"
 	desc = "This is a container for a super-heavy slug container. This one feels really heavy."
 	w_class = WEIGHT_CLASS_NORMAL
-	icon = 'mod_celadon/_storge_icons/icons/items/weapons/ammo/mecha_ammo.dmi'
+	icon = 'mod_celadon/_storage_icons/icons/items/weapons/ammo/mecha_ammo.dmi'
 	icon_state = "super_heavy_slug"
 	rounds = 1
 	direct_load = TRUE

@@ -1,7 +1,7 @@
 /obj/structure/powerline
 	name = "Powerline"
 	desc = "A huge bundle of double insulated cabling."
-	icon = 'mod_celadon/_storge_icons/icons/powerline.dmi'
+	icon = 'mod_celadon/_storage_icons/icons/powerline.dmi'
 	icon_state = "cablerelay"
 	plane = FLOOR_PLANE
 	layer = WIRE_LAYER
@@ -19,7 +19,7 @@
 /obj/machinery/porta_turret/syndicate/no_access/energy/heavy/capital
 	name = "Main Laser Subsidiary Turret"
 	desc = "Heavy assault turret, that was designed to take down space ships. Yet this one is in disarray and now it is used for anti-infantry."
-	icon = 'mod_celadon/_storge_icons/icons/turret_96x96.dmi'
+	icon = 'mod_celadon/_storage_icons/icons/turret_96x96.dmi'
 	icon_state = "standard"
 	base_icon_state = "standard"
 	active_power_usage = 15000
@@ -37,7 +37,7 @@
 /obj/machinery/power/grounding_rod/wall
 	name = "wall-mounted grounding rod"
 	desc = "Keep an area from being fried from Edison's Bane. This one is walled and it looks pitful."
-	icon = 'mod_celadon/_storge_icons/icons/obj/cocijo_stuff/tesla_coil.dmi'
+	icon = 'mod_celadon/_storage_icons/icons/obj/cocijo_stuff/tesla_coil.dmi'
 	density = 0
 
 /obj/machinery/power/grounding_rod/wall/directional

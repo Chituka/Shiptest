@@ -666,7 +666,7 @@
 			return SHUTTLE_OUR_MOBILEDOCK_FORBIDS_DOCKING
 //
 	//Проверка на то, что корабль, к которому принадлежит искомый док, пристыкован к капиталу, или корабль стыкуется к кораблю.
-	if(istype(S.owner_ship.docked, /obj/docking_port/stationary/capital) || istype(S, /obj/docking_port/stationary/capital))
+	if(istype(S.owner_ship?.docked, /obj/docking_port/stationary/capital) || istype(S, /obj/docking_port/stationary/capital))
 		//Проверка на то, что тот корабль, который стыкуется к данному порту, не ломает никакие стенки.
 		for(var/turf/closed/wall/wallturf as anything in return_ordered_turfs(S.x, S.y, S.z, S.dir))
 			if(istype(wallturf))

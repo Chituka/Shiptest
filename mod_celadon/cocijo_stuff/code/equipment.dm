@@ -15,8 +15,8 @@
 		Moreover, it takes absolute nothing to start even if all charge has been drained: Small microfiber vibration generators placed in elbows generate energy with each user's movement by bending the fibers.\n\
 		As a little tip for all the captains, GEC has included limited chameleon capabilities into the suit, increasing its 'diplomatic powers'"
 	armor = list("melee" = 55, "bullet" = 40, "laser" = 50,"energy" = 40, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 100)
-	icon = 'mod_celadon/_storge_icons/icons/obj/cocijo_stuff/diplomatic_suit.dmi'
-	mob_overlay_icon = 'mod_celadon/_storge_icons/icons/items/clothing/hard_suit/overlay/diplomatic_suit.dmi'
+	icon = 'mod_celadon/_storage_icons/icons/obj/cocijo_stuff/diplomatic_suit.dmi'
+	mob_overlay_icon = 'mod_celadon/_storage_icons/icons/items/clothing/hard_suit/overlay/diplomatic_suit.dmi'
 	icon_state = "Carapace"
 	item_state = "Carapace"
 	clothing_flags = STOPSPRESSUREDAMAGE
@@ -37,8 +37,8 @@
 		Moreover, it takes absolute nothing to start even if all charge has been drained: Small vibration generators located at eyelids generate energy with each user's winks.\n\
 		As a little tip for all the captains, GEC has included limited chameleon capabilities into the suit, increasing its 'diplomatic powers'"
 	armor = list("melee" = 50, "bullet" = 45, "laser" = 45,"energy" = 40, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 100) //Небольшой бонус тем, кто стреляет в голову
-	icon = 'mod_celadon/_storge_icons/icons/obj/cocijo_stuff/diplomatic_head.dmi'
-	mob_overlay_icon = 'mod_celadon/_storge_icons/icons/items/clothing/hard_suit/overlay/diplomatic_head.dmi'
+	icon = 'mod_celadon/_storage_icons/icons/obj/cocijo_stuff/diplomatic_head.dmi'
+	mob_overlay_icon = 'mod_celadon/_storage_icons/icons/items/clothing/hard_suit/overlay/diplomatic_head.dmi'
 	icon_state = "syndie_beret"
 	item_state = "hosformal"
 	clothing_flags = STOPSPRESSUREDAMAGE

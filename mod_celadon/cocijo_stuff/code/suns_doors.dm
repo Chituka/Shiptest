@@ -16,11 +16,11 @@
 /obj/machinery/door/airlock/suns/locked/attackby(obj/item/I, mob/user, params)
 	if(istype(I,/obj/item/card/id/suns/secret))
 		if(check_access(I))
-			playsound(src,'mod_celadon/_storge_sounds/sound/effects/right_short.ogg',100)
+			playsound(src,'mod_celadon/_storage_sounds/sound/effects/right_short.ogg',100)
 			if(do_after(user,20,src))
 				try_to_activate_door(user)
 		else
-			playsound(src,'mod_celadon/_storge_sounds/sound/effects/wrong_short.ogg',100)
+			playsound(src,'mod_celadon/_storage_sounds/sound/effects/wrong_short.ogg',100)
 			do_after(user,20,src)
 
 //Специально удаляю любое взаимодействие, чтобы дверь реагировала только на ключ-карты
@@ -33,12 +33,12 @@
 	add_fingerprint(user)
 
 /obj/machinery/door/airlock/suns/locked/white
-	icon = 'mod_celadon/_storge_icons/icons/obj/cocijo_stuff/suns_airlock_white.dmi'
+	icon = 'mod_celadon/_storage_icons/icons/obj/cocijo_stuff/suns_airlock_white.dmi'
 	assemblytype = /obj/structure/door_assembly/door_assembly_sec
 	req_access_txt = "512"
 
 /obj/machinery/door/airlock/suns/locked/black
-	icon = 'mod_celadon/_storge_icons/icons/obj/cocijo_stuff/suns_airlock_black.dmi'
+	icon = 'mod_celadon/_storage_icons/icons/obj/cocijo_stuff/suns_airlock_black.dmi'
 	assemblytype = /obj/structure/door_assembly/door_assembly_com
 	req_access_txt = "513"
 
@@ -46,7 +46,7 @@
 	name = "SUNS access card"
 	desc = "A keycard to open some of SUNS' mysterious doors."
 	access = list(SUNS_GENERAL_ACCESS)
-	icon = 'mod_celadon/_storge_icons/icons/obj/cocijo_stuff/keycards.dmi'
+	icon = 'mod_celadon/_storage_icons/icons/obj/cocijo_stuff/keycards.dmi'
 	registered_age = "512"
 
 /obj/item/card/id/suns/secret/update_label()
@@ -64,3 +64,18 @@
 	icon_state = "black"
 	access = list(SUNS_BLACK_ACCESS)
 
+/obj/item/storage/box/suns/white
+	name = "white SUNS access card box"
+	desc = "A box of standard 12.7x55mm ammo."
+	icon = 'mod_celadon/_storage_icons/icons/guns/ammo_boxes.dmi'
+	icon_state = "a127mmbox"
+
+/obj/item/storage/box/suns/white/PopulateContents()
+	var/static/items_inside = list(
+		/obj/item/card/id/suns/secret/white = 2)
+	generate_items_inside(items_inside,src)
+/*
+/obj/item/storage/box/ids/PopulateContents()
+	for(var/i in 1 to 7)
+		new /obj/item/card/id(src)
+*/

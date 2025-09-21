@@ -3,7 +3,7 @@
 			Leg actuators are modified for faster movement and dashes, however, latter may lead to exo failure. \n\
 			Lightweight, streamlined, yet still unique."
 	name = "\improper 502p heavily modified Exosuit"
-	icon = 'mod_celadon/_storge_icons/icons/landsknecht.dmi'
+	icon = 'mod_celadon/_storage_icons/icons/landsknecht.dmi'
 	icon_state = "landsknecht"
 	step_in = 2
 	dir_in = 1
@@ -142,7 +142,7 @@
 /obj/structure/mecha_wreckage/landsknecht
 	name = "Landsknecht wreckage"
 	desc = "Remains of some unfortunate mecha. Although, this one looks like it can still be repaired."
-	icon = 'mod_celadon/_storge_icons/icons/landsknecht.dmi'
+	icon = 'mod_celadon/_storage_icons/icons/landsknecht.dmi'
 	icon_state = "landsknecht-broken"
 	var/list/req_comps = list(/obj/item/stack/sheet/plasteel = 20,
 	/obj/item/stack/cable_coil = 20,
