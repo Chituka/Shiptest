@@ -59,7 +59,7 @@
 	desc = ""
 	icon_state = "a127-brass"
 	bullet_skin = "ap"
-	mob_overlay_icon = 'mod_celadon/_storage_icons/icons/ammo_bullets.dmi'
+	//mob_overlay_icon = 'mod_celadon/_storage_icons/icons/ammo_bullets.dmi'
 	mob_overlay_state = null
 	caliber = "12.7mm"
 	projectile_type = /obj/projectile/bullet/a127mm/ap
@@ -82,11 +82,11 @@
 
 /obj/item/ammo_casing/a127mm/ap/fire_casing(atom/target, mob/living/user, params, distro, quiet, zone_override, spread, atom/fired_from, misfire)
 	var/time_difference = (world.time - lit_time) / 10 //So we get seconds and not ticks
-	if (time_difference > 600) // if it was lit for more than 10 mins
+	if (BB && time_difference > 600) // if it was lit for more than 10 mins
 		explosion(src, 0, 0, 2, 0, flame_range = 1)
 		BB = null
 		return
-	if (time_difference > 60) // if it was lit for more than a minute
+	if (BB && time_difference > 60) // if it was lit for more than a minute
 		BB = new /obj/projectile/bullet/a127mm/ap/buffed
 	. = ..()
 
