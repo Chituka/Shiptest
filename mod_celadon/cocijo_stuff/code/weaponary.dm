@@ -1,3 +1,9 @@
+/obj/item/ammo_box/magazine/internal/cylinder/a127mm
+	name = "revolver cylinder"
+	ammo_type = /obj/item/ammo_casing/a127mm
+	caliber = "12.7mm"
+	max_ammo = 6
+
 /obj/projectile/bullet/a127mm
 	name ="12.7x55mm bullet"
 	desc = "USE A WEEL GUN"
@@ -11,6 +17,20 @@
 	damage = 50
 	armour_penetration = 60
 
+/obj/projectile/bullet/a127mm/ap/buffed
+	name ="12.7x55mm bullet"
+	desc = "USE A WEEL GUN"
+	damage = 50
+	armour_penetration = 60
+	speed = 0.8
+
+/obj/projectile/bullet/a127mm/ap/buffed/Move(atom/newloc, direct, glide_size_override)
+	. = ..()
+	var/turf/location = get_turf(src)
+	if(location)
+		new /obj/effect/hotspot(location)
+		location.hotspot_expose(700, 50, 1)
+
 /obj/projectile/bullet/a127mm/alum
 	name ="12.7x55mm bullet"
 	desc = "USE A WEEL GUN"
@@ -22,21 +42,9 @@
 	desc = ""
 	icon = 'mod_celadon/_storage_icons/icons/guns/ammo_bullets.dmi'
 	icon_state = "a127-brass"
-	var/icon_off = "cigaroff"
 	caliber = "12.7mm"
 	projectile_type = /obj/projectile/bullet/a127mm
 	stack_size = 6
-
-/obj/item/ammo_casing/a127mm/ap
-	name = "12.7x55mm bullet casing"
-	desc = ""
-	bullet_skin = "ap"
-	mob_overlay_icon = 'mod_celadon/_storage_icons/icons/guns/ammo_bullets.dmi'
-	mob_overlay_state = "a127-brass-ap"
-	caliber = "12.7mm"
-	projectile_type = /obj/projectile/bullet/a127mm/ap
-	stack_size = 6
-	slot_flags = ITEM_SLOT_MASK
 
 /obj/item/ammo_casing/a127mm/alum
 	name = "12.7x55mm aluminium bullet casing"
@@ -46,47 +54,64 @@
 	projectile_type = /obj/projectile/bullet/a127mm/alum
 	stack_size = 6
 
-/obj/item/ammo_box/magazine/ammo_stack/prefilled/a127mm
-	icon = 'mod_celadon/_storage_icons/icons/guns/ammo_bullets.dmi'
-	//icon_state = "a127-brass"
-	ammo_type = /obj/item/ammo_casing/a127mm
-	max_ammo = 6
+/obj/item/ammo_casing/a127mm/ap
+	name = "12.7x55mm bullet casing"
+	desc = ""
+	icon_state = "a127-brass"
+	bullet_skin = "ap"
+	mob_overlay_icon = 'mod_celadon/_storage_icons/icons/ammo_bullets.dmi'
+	mob_overlay_state = null
+	caliber = "12.7mm"
+	projectile_type = /obj/projectile/bullet/a127mm/ap
+	stack_size = 6
+	slot_flags = ITEM_SLOT_MASK
+	var/lit = FALSE
+	var/lit_time = 0
+	var/icon_on = "cigon"  //Note - these are in masks.dmi not in cigarette.dmi
+	var/icon_off = "cigoff"
+
+/obj/item/ammo_casing/a127mm/ap/attackby(obj/item/attacking_item, mob/living/user)
+	if(!lit)
+		var/lighting_text = attacking_item.ignition_effect(src, user)
+		if(lighting_text)
+			light(lighting_text)
+			lit_time = world.time
+			//mob_overlay_state = "pelvis"
+	else
+		return ..()
+
+/obj/item/ammo_casing/a127mm/ap/fire_casing(atom/target, mob/living/user, params, distro, quiet, zone_override, spread, atom/fired_from, misfire)
+	var/time_difference = (world.time - lit_time) / 10 //So we get seconds and not ticks
+	if (time_difference > 600) // if it was lit for more than 10 mins
+		explosion(src, 0, 0, 2, 0, flame_range = 1)
+		BB = null
+		return
+	if (time_difference > 60) // if it was lit for more than a minute
+		BB = new /obj/projectile/bullet/a127mm/ap/buffed
+	. = ..()
+
+/obj/item/ammo_casing/a127mm/ap/proc/light(flavor_text = null)
+	if(lit)
+		return
+	if(!(flags_1 & INITIALIZED_1))
+		icon_state = icon_on
+		item_state = icon_on
+		return
+
+	lit = TRUE
+	name = "lit [name]"
+	attack_verb = list("burnt", "singed")
+	hitsound = 'sound/items/welder.ogg'
+	damtype = "fire"
+	force = 4
+
+	if(flavor_text)
+		var/turf/T = get_turf(src)
+		T.visible_message(flavor_text)
 
 /obj/item/ammo_box/magazine/ammo_stack/prefilled/a127mm/ap
 	//icon_state = "a127-brass-ap"
 	ammo_type = /obj/item/ammo_casing/a127mm/ap
-
-/obj/item/ammo_box/magazine/ammo_stack/prefilled/a127mm/alum
-	//icon_state = "a127-brass-alum"
-	ammo_type = /obj/item/ammo_casing/a127mm/alum
-
-/obj/item/ammo_box/magazine/internal/cylinder/a127mm
-	name = "revolver cylinder"
-	ammo_type = /obj/item/ammo_casing/a127mm
-	caliber = "12.7mm"
-	max_ammo = 6
-
-/obj/item/storage/box/ammo/a127mm
-	name = "box of 12.7x55mm ammo"
-	desc = "A box of standard 12.7x55mm ammo."
-	icon = 'mod_celadon/_storage_icons/icons/guns/ammo_boxes.dmi'
-	icon_state = "a127mmbox"
-
-/obj/item/storage/box/ammo/a127mm/PopulateContents()
-	var/static/items_inside = list(
-		/obj/item/ammo_box/magazine/ammo_stack/prefilled/a127mm = 2)
-	generate_items_inside(items_inside,src)
-
-/obj/item/storage/box/ammo/a127mm/alum
-	name = "box of 12.7x55mm HP ammo"
-	desc = "A steel box of 12.7x55mm HP ammo. Box seems to be quite cheeap..."
-	icon = 'icons/obj/ammunition/ammo_boxes.dmi'
-	icon_state = "generic-ammo"
-
-/obj/item/storage/box/ammo/a127mm/alum/PopulateContents()
-	var/static/items_inside = list(
-		/obj/item/ammo_box/magazine/ammo_stack/prefilled/a127mm/alum = 4)
-	generate_items_inside(items_inside,src)
 
 /obj/item/storage/fancy/cigarettes/cigars/a127mm
 	name = "12.7x55mm AP ammo case"
@@ -119,10 +144,42 @@
 	if(!is_open)
 		return
 	var/bullet_position = 1 //generate sprites for cigars in the box
-	for(var/obj/item/ammo_casing/a127mm/bullets in contents)
+	for(var/obj/item/ammo_casing/a127mm/ap/bullets in contents)
 		var/mutable_appearance/bullet_overlay = mutable_appearance('mod_celadon/_storage_icons/icons/guns/ammo_bullets.dmi', "[bullets.icon_off]_[bullet_position]")
 		. += bullet_overlay
 		bullet_position++
+
+/obj/item/ammo_box/magazine/ammo_stack/prefilled/a127mm
+	icon = 'mod_celadon/_storage_icons/icons/guns/ammo_bullets.dmi'
+	//icon_state = "a127-brass"
+	ammo_type = /obj/item/ammo_casing/a127mm
+	max_ammo = 6
+
+/obj/item/ammo_box/magazine/ammo_stack/prefilled/a127mm/alum
+	//icon_state = "a127-brass-alum"
+	ammo_type = /obj/item/ammo_casing/a127mm/alum
+
+/obj/item/storage/box/ammo/a127mm
+	name = "box of 12.7x55mm ammo"
+	desc = "A box of standard 12.7x55mm ammo."
+	icon = 'mod_celadon/_storage_icons/icons/guns/ammo_boxes.dmi'
+	icon_state = "a127mmbox"
+
+/obj/item/storage/box/ammo/a127mm/PopulateContents()
+	var/static/items_inside = list(
+		/obj/item/ammo_box/magazine/ammo_stack/prefilled/a127mm = 2)
+	generate_items_inside(items_inside,src)
+
+/obj/item/storage/box/ammo/a127mm/alum
+	name = "box of 12.7x55mm HP ammo"
+	desc = "A steel box of 12.7x55mm HP ammo. Box seems to be quite cheeap..."
+	icon = 'icons/obj/ammunition/ammo_boxes.dmi'
+	icon_state = "generic-ammo"
+
+/obj/item/storage/box/ammo/a127mm/alum/PopulateContents()
+	var/static/items_inside = list(
+		/obj/item/ammo_box/magazine/ammo_stack/prefilled/a127mm/alum = 4)
+	generate_items_inside(items_inside,src)
 
 
 /obj/item/gun/ballistic/revolver/fdl
