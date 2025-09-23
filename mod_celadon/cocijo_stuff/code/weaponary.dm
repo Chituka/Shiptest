@@ -39,8 +39,8 @@
 
 /obj/item/ammo_casing/a127mm
 	name = "12.7x55mm bullet casing"
-	desc = ""
-	icon = 'mod_celadon/_storage_icons/icons/guns/ammo_bullets.dmi'
+	desc = "AMR stands for Anti-materiel revolver."
+	icon = 'mod_celadon/_storage_icons/icons/items/weapons/ammo/ammo_bullets.dmi'
 	icon_state = "a127-brass"
 	caliber = "12.7mm"
 	projectile_type = /obj/projectile/bullet/a127mm
@@ -48,18 +48,18 @@
 
 /obj/item/ammo_casing/a127mm/alum
 	name = "12.7x55mm aluminium bullet casing"
-	desc = ""
+	desc = "A fine thing for making criminally large holes inside your enemy... If they don't have armour."
 	bullet_skin = "alum"
 	caliber = "12.7mm"
 	projectile_type = /obj/projectile/bullet/a127mm/alum
 	stack_size = 6
 
 /obj/item/ammo_casing/a127mm/ap
-	name = "12.7x55mm bullet casing"
-	desc = ""
+	name = "12.7x55mm armor penetrating bullet casing"
+	desc = "A exceptionally rare bullet for exceptionally thick armour. For incriminating their personal space and existence, of course."
 	icon_state = "a127-brass"
 	bullet_skin = "ap"
-	//mob_overlay_icon = 'mod_celadon/_storage_icons/icons/ammo_bullets.dmi'
+	mob_overlay_icon = 'mod_celadon/_storage_icons/icons/items/clothing/mask/overlay/a127mm.dmi'
 	mob_overlay_state = null
 	caliber = "12.7mm"
 	projectile_type = /obj/projectile/bullet/a127mm/ap
@@ -67,7 +67,7 @@
 	slot_flags = ITEM_SLOT_MASK
 	var/lit = FALSE
 	var/lit_time = 0
-	var/icon_on = "cigon"  //Note - these are in masks.dmi not in cigarette.dmi
+	var/icon_on = "a127-brass-apon"  //Note - these are in masks.dmi not in cigarette.dmi
 	var/icon_off = "cigoff"
 
 /obj/item/ammo_casing/a127mm/ap/attackby(obj/item/attacking_item, mob/living/user)
@@ -95,7 +95,6 @@
 		return
 	if(!(flags_1 & INITIALIZED_1))
 		icon_state = icon_on
-		item_state = icon_on
 		return
 
 	lit = TRUE
@@ -145,12 +144,12 @@
 		return
 	var/bullet_position = 1 //generate sprites for cigars in the box
 	for(var/obj/item/ammo_casing/a127mm/ap/bullets in contents)
-		var/mutable_appearance/bullet_overlay = mutable_appearance('mod_celadon/_storage_icons/icons/guns/ammo_bullets.dmi', "[bullets.icon_off]_[bullet_position]")
+		var/mutable_appearance/bullet_overlay = mutable_appearance('mod_celadon/_storage_icons/icons/items/weapons/ammo/ammo_bullets.dmi', "[bullets.icon_off]_[bullet_position]")
 		. += bullet_overlay
 		bullet_position++
 
 /obj/item/ammo_box/magazine/ammo_stack/prefilled/a127mm
-	icon = 'mod_celadon/_storage_icons/icons/guns/ammo_bullets.dmi'
+	icon = 'mod_celadon/_storage_icons/icons/items/weapons/ammo/ammo_bullets.dmi'
 	//icon_state = "a127-brass"
 	ammo_type = /obj/item/ammo_casing/a127mm
 	max_ammo = 6
@@ -162,7 +161,7 @@
 /obj/item/storage/box/ammo/a127mm
 	name = "box of 12.7x55mm ammo"
 	desc = "A box of standard 12.7x55mm ammo."
-	icon = 'mod_celadon/_storage_icons/icons/guns/ammo_boxes.dmi'
+	icon = 'mod_celadon/_storage_icons/icons/items/weapons/ammo/ammo_boxes.dmi'
 	icon_state = "a127mmbox"
 
 /obj/item/storage/box/ammo/a127mm/PopulateContents()

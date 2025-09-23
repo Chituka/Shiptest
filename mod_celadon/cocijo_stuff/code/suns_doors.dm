@@ -66,9 +66,7 @@
 
 /obj/item/storage/box/suns/white
 	name = "white SUNS access card box"
-	desc = "A box of standard 12.7x55mm ammo."
-	icon = 'mod_celadon/_storage_icons/icons/guns/ammo_boxes.dmi'
-	icon_state = "a127mmbox"
+	desc = "Has so many empty IDs. Wow, so cool."
 
 /obj/item/storage/box/suns/white/PopulateContents()
 	var/static/items_inside = list(
