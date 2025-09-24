@@ -57,7 +57,6 @@
 /obj/item/ammo_casing/a127mm/ap
 	name = "12.7x55mm armor penetrating bullet casing"
 	desc = "A exceptionally rare bullet for exceptionally thick armour. For incriminating their personal space and existence, of course."
-	icon_state = "a127-brass"
 	bullet_skin = "ap"
 	mob_overlay_icon = 'mod_celadon/_storage_icons/icons/items/clothing/mask/overlay/a127mm.dmi'
 	mob_overlay_state = null
@@ -67,8 +66,9 @@
 	slot_flags = ITEM_SLOT_MASK
 	var/lit = FALSE
 	var/lit_time = 0
-	var/icon_on = "a127-brass-apon"  //Note - these are in masks.dmi not in cigarette.dmi
-	var/icon_off = "cigoff"
+	var/lit_bullet_skin = "apon"
+	//var/icon_on = "a127-brass-apon"  //Note - these are in masks.dmi not in cigarette.dmi
+	var/icon_off = "cigaroff"
 
 /obj/item/ammo_casing/a127mm/ap/attackby(obj/item/attacking_item, mob/living/user)
 	if(!lit)
@@ -76,7 +76,6 @@
 		if(lighting_text)
 			light(lighting_text)
 			lit_time = world.time
-			//mob_overlay_state = "pelvis"
 	else
 		return ..()
 
@@ -93,10 +92,8 @@
 /obj/item/ammo_casing/a127mm/ap/proc/light(flavor_text = null)
 	if(lit)
 		return
-	if(!(flags_1 & INITIALIZED_1))
-		icon_state = icon_on
-		return
-
+	bullet_skin = lit_bullet_skin
+	icon_state = icon_state+bullet_skin
 	lit = TRUE
 	name = "lit [name]"
 	attack_verb = list("burnt", "singed")
@@ -109,7 +106,6 @@
 		T.visible_message(flavor_text)
 
 /obj/item/ammo_box/magazine/ammo_stack/prefilled/a127mm/ap
-	//icon_state = "a127-brass-ap"
 	ammo_type = /obj/item/ammo_casing/a127mm/ap
 
 /obj/item/storage/fancy/cigarettes/cigars/a127mm
