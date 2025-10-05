@@ -41,7 +41,7 @@
 	icon_state_off = "huge_engine"
 	icon_state_closed = "huge_engine"
 	icon_state_open = "huge_engine"
-	thrust = 300 //they wouldn't never get its power without t4 components
+	thrust = 300 //it would never get its thrust without t4 components
 	power_per_burn = 2400000
 	pixel_y = -32
 	pixel_x = -32
