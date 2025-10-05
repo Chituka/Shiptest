@@ -228,3 +228,79 @@
 	..()
 	explosion(target, -1, -1, 1, 2, adminlog = FALSE)
 	return BULLET_ACT_HIT
+
+
+///////////////
+/// ПУЛЕМЕТ ///
+///////////////
+
+/obj/machinery/deployable_turret/cocijo
+	name = "Testname"
+	desc = "Testdesc"
+	var/message_cooldown = 10
+	var/rapid_turn_cooldown = 5
+	control_type = /obj/item/gun_control/cocijo
+	firesound = 'sound/weapons/gun/hmg/hmg.ogg'
+
+/obj/machinery/deployable_turret/cocijo/checkfire(atom/targeted_atom, mob/user)
+	target = targeted_atom
+	if(target == user || target == get_turf(src))
+		return
+	target_turf = get_turf(target)
+	fire_helper(user)
+
+/obj/machinery/deployable_turret/user_buckle_mob(mob/living/M, mob/user, check_loc = TRUE)
+	if(user.incapacitated() || !istype(user))
+		return
+	M.forceMove(get_turf(src))
+	. = ..()
+	if(!.)
+		return
+	for(var/V in M.held_items)
+		var/obj/item/I = V
+		if(istype(I))
+			if(M.dropItemToGround(I))
+				var/TC = new control_type(src) //саси
+				M.put_in_hands(TC)
+		else //Entries in the list should only ever be items or null, so if it's not an item, we can assume it's an empty hand
+			var/TC = new control_type(src) //саси
+			M.put_in_hands(TC)
+	M.pixel_y = 14
+	layer = ABOVE_MOB_LAYER
+	setDir(SOUTH)
+	playsound(src,'sound/mecha/mechmove01.ogg', 50, TRUE)
+	if(M.client)
+		M.client.view_size.setTo(view_range)
+	START_PROCESSING(SSfastprocess, src)
+
+/obj/machinery/deployable_turret/cocijo/relaymove(mob/living/user, direction)
+	if(user.incapacitated())
+		return
+	if(direction == user.dir)
+		return
+	var/list/disallowed_dirs = list(turn(user.dir,180), turn(user.dir,135),turn(user.dir,225))
+	if (direction in disallowed_dirs)
+		if(message_cooldown <= world.time)
+			message_cooldown = world.time + 10
+			to_chat(user,span_alert("I can't rotate the gun so violently!"))
+		return
+	if(rapid_turn_cooldown > world.time)
+		if(message_cooldown <= world.time)
+			message_cooldown = world.time + 10
+			to_chat(user,span_alert("I need to catch my breath!"))
+		return
+	if (direction == turn(user.dir,90) || direction == turn(user.dir,-90))
+		rapid_turn_cooldown = world.time + 10
+	direction_track(user,get_edge_target_turf(src,direction))
+
+/obj/item/gun_control/cocijo
+	name = "TestName"
+	desc = "TestDesc"
+
+/obj/item/gun_control/cocijo/afterattack(atom/targeted_atom, mob/user, flag, params)
+	var/list/allowed_dirs = list(user.dir, turn(user.dir, 45), turn(user.dir, -45))
+	var/obj/machinery/deployable_turret/E = user.buckled
+	var/modifiers = params2list(params)
+	if(get_dir(user, targeted_atom) in allowed_dirs)
+		E.calculated_projectile_vars = calculate_projectile_angle_and_pixel_offsets(user, modifiers)
+		E.checkfire(targeted_atom, user)
