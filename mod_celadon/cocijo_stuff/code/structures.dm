@@ -17,13 +17,13 @@
 	AddElement(/datum/element/undertile, TRAIT_T_RAY_VISIBLE)
 
 /obj/machinery/porta_turret/ship/syndicate/capital
-	name = "Main Laser Subsidiary Turret"
+	name = "Coherator-class Super-Heavy Laser Turret"
 	desc = "Heavy assault turret, that was designed to take down space ships. Yet this one is in disarray and now it is used for anti-infantry."
 	icon = 'mod_celadon/_storage_icons/icons/turret_96x96.dmi'
 	icon_state = "standard"
 	base_icon_state = "standard"
 	active_power_usage = 15000
-	stun_projectile = /obj/projectile/bullet/p50/soporific
+	stun_projectile = /obj/projectile/beam/hitscan/disabler/heavy
 	stun_projectile_sound = 'sound/weapons/gun/laser/heavy_laser.ogg'
 	lethal_projectile = /obj/projectile/beam/hitscan/laser/capital
 	lethal_projectile_sound = 'sound/weapons/gun/laser/e40_las.ogg'
@@ -32,7 +32,7 @@
 	burst_delay = 0.5
 	burst_size = 4
 	spread = 20
-	reaction_time = 30
+	reaction_time = 25
 	max_integrity = 350
 	integrity_failure = 0.6
 	pixel_y = -32

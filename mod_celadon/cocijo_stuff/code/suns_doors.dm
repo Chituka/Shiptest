@@ -66,9 +66,18 @@
 
 /obj/item/storage/box/suns/white
 	name = "white SUNS access card box"
-	desc = "Has so many empty IDs. Wow, so cool."
+	desc = "So many labcards, and they're all mine... No one will cheat on my watch!"
 
 /obj/item/storage/box/suns/white/PopulateContents()
 	var/static/items_inside = list(
 		/obj/item/card/id/suns/secret/white = 4)
+	generate_items_inside(items_inside,src)
+
+/obj/item/storage/box/suns/black
+	name = "black SUNS access card box"
+	desc = "It has so many black cards. Wish I had marked rooms like this..."
+
+/obj/item/storage/box/suns/black/PopulateContents()
+	var/static/items_inside = list(
+		/obj/item/card/id/suns/secret/white = 3)
 	generate_items_inside(items_inside,src)
