@@ -79,5 +79,5 @@
 
 /obj/item/storage/box/suns/black/PopulateContents()
 	var/static/items_inside = list(
-		/obj/item/card/id/suns/secret/white = 3)
+		/obj/item/card/id/suns/secret/black = 3)
 	generate_items_inside(items_inside,src)

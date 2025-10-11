@@ -183,9 +183,6 @@
 /turf/open/floor/plasteel/tech,
 /area/ship/engineering/engines/starboard)
 "aq" = (
-/obj/machinery/modular_computer/console/preset/command{
-	dir = 8
-	},
 /obj/effect/turf_decal/spline/fancy/opaque/syndiered{
 	dir = 6
 	},
@@ -444,6 +441,9 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
+/obj/machinery/computer/telecomms/monitor{
+	network = "synd_commnet"
+	},
 /turf/open/floor/mineral/plastitanium,
 /area/ship/bridge)
 "aZ" = (
@@ -528,13 +528,18 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/obj/structure/railing,
 /obj/effect/turf_decal/siding/thinplating/dark,
 /obj/effect/turf_decal/trimline/transparent/syndiered/warning,
-/obj/machinery/rnd/server,
-/obj/machinery/light/directional/north,
 /obj/effect/turf_decal/corner_steel_grid{
 	dir = 5
+	},
+/obj/effect/turf_decal/corner_techfloor_grid{
+	dir = 4;
+	layer = 2.0391
+	},
+/obj/effect/turf_decal/techfloor/corner{
+	dir = 4;
+	layer = 2.0391
 	},
 /turf/open/floor/plasteel/tech,
 /area/ship/engineering)
@@ -886,8 +891,7 @@
 /obj/effect/turf_decal/industrial/outline/red,
 /obj/machinery/camera/autoname{
 	dir = 4;
-	pixel_x = -7;
-	status = 0
+	pixel_x = -7
 	},
 /turf/open/floor/pod/dark,
 /area/ship/storage/eva)
@@ -1018,15 +1022,13 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4{
 	dir = 1
 	},
-/obj/machinery/computer/rdconsole{
-	dir = 1;
-	icon_state = "laptop";
-	icon_keyboard = "laptop_key";
-	pixel_x = 0;
-	pixel_y = 6
-	},
 /obj/effect/turf_decal/corner_steel_grid{
 	dir = 6
+	},
+/obj/item/flamethrower/full/tank,
+/obj/item/flamethrower/full/tank{
+	pixel_x = 4;
+	pixel_y = -4
 	},
 /turf/open/floor/plasteel/tech,
 /area/ship/general/engineering/engineering_1)
@@ -1213,6 +1215,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 10
 	},
+/obj/item/storage/pouch/squad,
 /turf/open/floor/mineral/plastitanium/red,
 /area/ship/security)
 "dm" = (
@@ -1736,7 +1739,6 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/effect/turf_decal/trimline/opaque/red/filled/warning,
 /turf/open/floor/mineral/plastitanium,
 /area/ship/hallway/fore)
 "eI" = (
@@ -1788,6 +1790,7 @@
 	pixel_y = 0
 	},
 /obj/item/storage/guncase/pistol/asp,
+/obj/item/storage/pouch/ammo,
 /turf/open/floor/mineral/plastitanium/red,
 /area/ship/security)
 "eK" = (
@@ -1833,6 +1836,7 @@
 /obj/item/stamp/syndicate,
 /obj/item/stamp/syndicate/captain,
 /obj/item/codespeak_manual,
+/obj/item/storage/pouch/squad,
 /turf/open/floor/wood/mahogany,
 /area/ship/crew/dorm/captain)
 "eL" = (
@@ -1861,7 +1865,8 @@
 	},
 /obj/item/storage/guncase/pistol/viper{
 	pixel_x = -5;
-	pixel_y = -3
+	pixel_y = -3;
+	gun_type = /obj/item/gun/ballistic/revolver/viper
 	},
 /turf/open/floor/marble/black{
 	name = "blood-red marble";
@@ -2031,6 +2036,36 @@
 	},
 /turf/open/floor/plasteel/tech,
 /area/ship/engineering/engines/starboard)
+"fk" = (
+/obj/effect/turf_decal/corner_steel_grid{
+	dir = 10
+	},
+/obj/effect/turf_decal/techfloor/hole,
+/obj/effect/turf_decal/techfloor/hole/right{
+	dir = 2
+	},
+/obj/effect/turf_decal/siding/black{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/black{
+	dir = 8
+	},
+/obj/effect/turf_decal/techfloor{
+	dir = 1
+	},
+/obj/structure/neon_spline/red/corner{
+	dir = 1
+	},
+/obj/structure/neon_spline/red/corner{
+	dir = 4
+	},
+/obj/machinery/telecomms/broadcaster/preset_right{
+	network = "synd_commnet";
+	pixel_y = 15;
+	color = "#D59998"
+	},
+/turf/open/floor/circuit/red/anim,
+/area/ship/bridge)
 "fl" = (
 /obj/structure/chair/comfy/red/directional/south,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
@@ -3072,6 +3107,10 @@
 	name = "field engineers's locker";
 	req_access = list(10)
 	},
+/obj/item/storage/bag/construction,
+/obj/effect/turf_decal/corner_steel_grid{
+	dir = 6
+	},
 /turf/open/floor/plasteel/tech,
 /area/ship/general/engineering/engineering_1)
 "il" = (
@@ -3355,6 +3394,9 @@
 	pixel_y = 12
 	},
 /obj/item/gps,
+/obj/item/spacecash/bundle/c1000,
+/obj/item/spacecash/bundle/c1000,
+/obj/item/spacecash/bundle/c1000,
 /turf/open/floor/wood/mahogany,
 /area/ship/crew/dorm/captain)
 "iL" = (
@@ -3511,6 +3553,16 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
 /turf/open/floor/wood/walnut,
 /area/ship/crew/canteen)
+"jc" = (
+/obj/machinery/rnd/server,
+/obj/effect/turf_decal/siding/thinplating/dark/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/corner_steel_grid/full{
+	dir = 4
+	},
+/turf/open/floor/plasteel/tech,
+/area/ship/general/engineering/engineering_1)
 "je" = (
 /obj/structure/chair/comfy/shuttle{
 	dir = 4;
@@ -4438,6 +4490,7 @@
 	dir = 2
 	},
 /obj/item/storage/guncase/pistol/asp,
+/obj/item/storage/pouch/ammo,
 /turf/open/floor/mineral/plastitanium/red,
 /area/ship/security)
 "lM" = (
@@ -4556,6 +4609,7 @@
 	},
 /obj/machinery/light/directional/north,
 /obj/item/folder/documents/syndicate/cybersun/biodynamics,
+/obj/item/storage/pouch/medical,
 /turf/open/floor/plasteel/dark,
 /area/ship/medical)
 "ml" = (
@@ -4626,6 +4680,21 @@
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/ship/hallway/aft)
+"mv" = (
+/obj/effect/turf_decal/spline/fancy/transparent/syndiered,
+/obj/effect/turf_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning{
+	dir = 1
+	},
+/obj/effect/turf_decal/techfloor{
+	dir = 8
+	},
+/obj/machinery/door/poddoor/shutters{
+	id = "cocijo_grav";
+	name = "radiation protection shutters"
+	},
+/turf/open/floor/plasteel/mono/dark,
+/area/ship/engineering)
 "my" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/structure/railing{
@@ -4859,6 +4928,28 @@
 	color = "red"
 	},
 /area/ship/general/command_crew/hos)
+"nd" = (
+/obj/machinery/telecomms/server/presets/syndicate{
+	network = "synd_commnet";
+	freq_listening = list(1213,1459,1353)
+	},
+/obj/effect/turf_decal/techfloor{
+	dir = 9
+	},
+/obj/effect/turf_decal/techfloor/corner,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/item/paper{
+	name = "concealed note";
+	icon_state = "scrap";
+	color = "#505050";
+	desc = "This note is crumpled and torn.";
+	default_raw_text = "Who the fuck thought that it is a good idea to place server HERE. I'M GOING TO KILL THEM ALL, I HATE THESE SOUNDS!";
+	layer = 2.89;
+	pixel_y = 12;
+	pixel_x = -11
+	},
+/turf/open/floor/circuit/red/anim,
+/area/ship/general/command_crew/hos)
 "nf" = (
 /obj/machinery/atmospherics/components/binary/dp_vent_pump/high_volume/on/layer4{
 	dir = 1
@@ -5058,8 +5149,9 @@
 	dir = 4;
 	id = "cocijo_sm_shutters";
 	name = "Supermatter Shutters Control";
-	pixel_x = -24;
-	req_access = list(10)
+	pixel_x = -20;
+	req_access = list(10);
+	pixel_y = 8
 	},
 /obj/effect/turf_decal/radiation,
 /turf/open/floor/engine,
@@ -5242,15 +5334,33 @@
 	},
 /turf/open/floor/plasteel/mono/dark,
 /area/ship/crew/hydroponics)
+"nS" = (
+/obj/effect/turf_decal/spline/fancy/transparent/syndiered,
+/obj/effect/turf_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning{
+	dir = 1
+	},
+/obj/effect/turf_decal/techfloor{
+	dir = 4
+	},
+/obj/machinery/door/poddoor/shutters{
+	id = "cocijo_grav";
+	name = "radiation protection shutters"
+	},
+/obj/structure/railing/corner,
+/turf/open/floor/plasteel/mono/dark,
+/area/ship/engineering)
 "nT" = (
 /obj/structure/table/reinforced,
-/obj/item/flamethrower/full,
-/obj/item/flamethrower/full{
-	pixel_y = -4;
-	pixel_x = 4
-	},
 /obj/effect/turf_decal/corner_steel_grid{
 	dir = 6
+	},
+/obj/machinery/computer/rdconsole{
+	dir = 1;
+	icon_state = "laptop";
+	icon_keyboard = "laptop_key";
+	pixel_x = 0;
+	pixel_y = 6
 	},
 /turf/open/floor/plasteel/tech,
 /area/ship/general/engineering/engineering_1)
@@ -5539,6 +5649,10 @@
 /obj/effect/turf_decal/techfloor{
 	dir = 10
 	},
+/obj/effect/turf_decal/techfloor/corner{
+	dir = 8;
+	layer = 2.0391
+	},
 /turf/open/floor/plasteel/telecomms_floor,
 /area/ship/engineering)
 "oO" = (
@@ -5752,6 +5866,9 @@
 /obj/effect/turf_decal/techfloor{
 	dir = 6
 	},
+/obj/effect/turf_decal/techfloor/corner{
+	layer = 2.0391
+	},
 /turf/open/floor/plasteel/telecomms_floor,
 /area/ship/engineering)
 "pG" = (
@@ -5845,6 +5962,13 @@
 /obj/machinery/light/floor,
 /turf/open/floor/plating/airless,
 /area/ship/engineering/engines/port)
+"pX" = (
+/obj/item/storage/guncase/pistol/viper{
+	pixel_x = -5;
+	pixel_y = -3
+	},
+/turf/closed/wall/r_wall/syndicate/nodiagonal,
+/area/ship/bridge)
 "pY" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4,
 /obj/structure/cable{
@@ -6123,6 +6247,18 @@
 /obj/item/attachment/gun/riot,
 /obj/item/attachment/gun/riot,
 /obj/item/attachment/gun/riot,
+/obj/item/storage/pouch/grenade{
+	pixel_x = 5;
+	pixel_y = -5
+	},
+/obj/item/storage/pouch/grenade{
+	pixel_x = -4;
+	pixel_y = -8
+	},
+/obj/item/storage/pouch/grenade{
+	pixel_x = -10;
+	pixel_y = -11
+	},
 /turf/open/floor/mineral/plastitanium,
 /area/ship/security/armory)
 "qw" = (
@@ -6375,6 +6511,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/machinery/airalarm/directional/west,
 /turf/open/floor/plating,
 /area/ship/engineering)
 "rf" = (
@@ -6646,7 +6783,6 @@
 	},
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/machinery/portable_atmospherics/canister/air,
 /obj/machinery/button/door{
 	name = "Engine Cover Control";
 	id = "cocijo_preheater_starboard";
@@ -7095,6 +7231,7 @@
 /obj/structure/extinguisher_cabinet/directional/north{
 	pixel_x = 6
 	},
+/obj/machinery/meter,
 /turf/open/floor/plasteel/tech/grid,
 /area/ship/engineering/atmospherics)
 "tz" = (
@@ -7896,7 +8033,7 @@
 /obj/structure/window/plasma/reinforced/plastitanium,
 /obj/structure/grille,
 /obj/machinery/door/poddoor/shutters{
-	id = "cocijo_exterior_pb"
+	id = "cocijo_exterior_pb_eva"
 	},
 /turf/open/floor/plating,
 /area/ship/storage/eva)
@@ -8294,6 +8431,11 @@
 /obj/effect/turf_decal/techfloor,
 /obj/effect/turf_decal/spline/fancy/opaque/syndiered,
 /obj/machinery/recharger,
+/obj/item/storage/guncase/pistol/viper{
+	pixel_x = -5;
+	pixel_y = -3;
+	gun_type = /obj/item/gun/ballistic/revolver/viper
+	},
 /turf/open/floor/plasteel/tech/grid,
 /area/ship/bridge)
 "wO" = (
@@ -8863,7 +9005,7 @@
 	},
 /obj/machinery/button/door{
 	name = "starboard window button";
-	id = "cocijo_exterior";
+	id = "cocijo_exterior_sb";
 	pixel_y = -22;
 	req_access = list(12);
 	dir = 1;
@@ -9243,14 +9385,20 @@
 	anchored = 1
 	},
 /obj/structure/catwalk/over/plated_catwalk/dark,
-/obj/machinery/shieldgen{
-	anchored = 1;
-	req_access = list(150);
-	layer = 3.1
-	},
 /obj/structure/railing{
 	color = "#808080";
 	dir = 9
+	},
+/obj/machinery/telecomms/bus/preset_three{
+	network = "synd_commnet";
+	freq_listening = list(1213,1353,1459);
+	layer = 3.1;
+	pixel_x = 4;
+	pixel_y = -3;
+	color = "grey"
+	},
+/obj/structure/neon_spline/red/corner{
+	light_power = 0.5
 	},
 /turf/open/floor/plasteel/elevatorshaft{
 	color = "#808080"
@@ -9922,6 +10070,7 @@
 /obj/item/storage/box/ammo/a357,
 /obj/item/storage/box/ammo/a357,
 /obj/item/codespeak_manual,
+/obj/item/storage/pouch/squad,
 /turf/open/floor/marble/black{
 	name = "blood-red marble";
 	color = "red"
@@ -10232,6 +10381,11 @@
 	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer2{
 	dir = 4
+	},
+/obj/machinery/camera/autoname{
+	dir = 4;
+	pixel_x = -7;
+	pixel_y = 5
 	},
 /turf/open/floor/plasteel/dark,
 /area/ship/security)
@@ -10984,13 +11138,6 @@
 /obj/effect/turf_decal/spline/fancy/opaque/syndiered{
 	dir = 1
 	},
-/obj/machinery/turretid/ship{
-	pixel_y = 24;
-	pixel_x = -5;
-	id = "cocijo_turret_grid";
-	req_access = null;
-	req_access_txt = "150"
-	},
 /turf/open/floor/plasteel/tech/grid,
 /area/ship/bridge)
 "Em" = (
@@ -11019,14 +11166,13 @@
 /turf/open/floor/mineral/plastitanium,
 /area/ship/bridge)
 "Eq" = (
-/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2{
-	dir = 1
+/obj/item/storage/guncase/pistol/viper{
+	pixel_x = -5;
+	pixel_y = -3;
+	gun_type = /obj/item/gun/ballistic/revolver/viper
 	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
-	dir = 8
-	},
-/turf/open/floor/pod/light,
-/area/ship/cargo)
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
+/area/ship/general/command_crew/hos)
 "Ev" = (
 /obj/machinery/atmospherics/components/unary/portables_connector/visible{
 	dir = 4
@@ -11417,6 +11563,7 @@
 /obj/effect/turf_decal/industrial/warning{
 	dir = 8
 	},
+/obj/machinery/meter,
 /turf/open/floor/engine,
 /area/ship/engineering/electrical)
 "EV" = (
@@ -11598,6 +11745,30 @@
 /obj/machinery/airalarm/directional/west,
 /turf/open/floor/plasteel/dark,
 /area/ship/medical/psych)
+"FF" = (
+/obj/effect/turf_decal/corner_steel_grid{
+	dir = 5
+	},
+/obj/effect/turf_decal/techfloor/hole/right{
+	dir = 1
+	},
+/obj/effect/turf_decal/techfloor/hole{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/black{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/black{
+	dir = 4
+	},
+/obj/effect/turf_decal/techfloor,
+/obj/structure/neon_spline/green/corner,
+/obj/structure/neon_spline/green/corner{
+	dir = 8
+	},
+/obj/machinery/telecomms/receiver/preset_right,
+/turf/open/floor/circuit/green/anim,
+/area/ship/bridge)
 "FI" = (
 /obj/effect/turf_decal/trimline/transparent/bar/filled/line{
 	dir = 1
@@ -11794,7 +11965,9 @@
 /obj/machinery/teambuilder,
 /obj/machinery/shieldgen{
 	anchored = 1;
-	req_access = list(150)
+	req_access = list(150);
+	shield_range = 8;
+	active_power_usage = 40000
 	},
 /obj/effect/turf_decal/techfloor{
 	dir = 4
@@ -11946,6 +12119,10 @@
 /obj/item/tank/internals/emergency_oxygen/engi,
 /obj/item/extinguisher/advanced,
 /obj/item/storage/pouch/engi,
+/obj/item/storage/bag/construction,
+/obj/effect/turf_decal/corner_steel_grid{
+	dir = 6
+	},
 /turf/open/floor/plasteel/tech,
 /area/ship/general/engineering/engineering_1)
 "GJ" = (
@@ -12325,10 +12502,6 @@
 	dir = 10
 	},
 /obj/structure/catwalk/over/plated_catwalk/dark,
-/obj/machinery/shieldgen{
-	anchored = 1;
-	req_access = list(150)
-	},
 /obj/structure{
 	desc = "A huge bundle of double insulated cabling which seems to run up into the ceiling.";
 	icon = 'icons/obj/power.dmi';
@@ -12337,25 +12510,36 @@
 	pixel_x = -10;
 	anchored = 1
 	},
+/obj/machinery/telecomms/processor/preset_three{
+	network = "synd_commnet";
+	pixel_x = 3;
+	pixel_y = 7;
+	color = "grey"
+	},
+/obj/structure/neon_spline/red/corner{
+	light_power = 0.5;
+	dir = 1
+	},
 /turf/open/floor/plasteel/elevatorshaft{
 	color = "#808080"
 	},
 /area/ship/bridge)
 "HL" = (
-/obj/machinery/door/airlock/grunge{
-	req_access = list(10);
-	name = "Gravity Control Room"
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
-/obj/machinery/door/firedoor/border_only{
+/obj/effect/turf_decal/spline/fancy/transparent/syndiered,
+/obj/effect/turf_decal/industrial/warning,
+/obj/effect/turf_decal/industrial/warning{
 	dir = 1
 	},
-/obj/machinery/door/firedoor/border_only,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/open/floor/plasteel/tech,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4,
+/obj/machinery/door/poddoor/shutters{
+	id = "cocijo_grav";
+	name = "radiation protection shutters"
+	},
+/turf/open/floor/plasteel/mono/dark,
 /area/ship/engineering)
 "HM" = (
 /obj/effect/turf_decal/industrial/loading,
@@ -12527,6 +12711,10 @@
 	icon_state = "tac";
 	name = "field engineers's locker";
 	req_access = list(10)
+	},
+/obj/item/storage/bag/construction,
+/obj/effect/turf_decal/corner_steel_grid{
+	dir = 6
 	},
 /turf/open/floor/plasteel/tech,
 /area/ship/general/engineering/engineering_1)
@@ -12970,12 +13158,15 @@
 /turf/open/floor/wood,
 /area/ship/crew/canteen)
 "Ju" = (
-/obj/machinery/computer/helm{
-	dir = 8
-	},
 /obj/effect/turf_decal/spline/fancy/opaque/syndiered,
 /obj/effect/turf_decal/techfloor{
 	dir = 4
+	},
+/obj/machinery/modular_computer/console/preset/command{
+	dir = 8
+	},
+/obj/structure/neon_spline/red/corner{
+	light_power = 0.5
 	},
 /turf/open/floor/circuit/red/anim,
 /area/ship/bridge)
@@ -13028,6 +13219,10 @@
 	},
 /obj/effect/turf_decal/techfloor{
 	dir = 4
+	},
+/obj/structure/neon_spline/red/corner{
+	light_power = 0.5;
+	dir = 1
 	},
 /turf/open/floor/circuit/red/anim,
 /area/ship/bridge)
@@ -13860,6 +14055,9 @@
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/visible/layer2,
 /obj/item/radio/intercom/directional/south,
+/obj/machinery/meter{
+	target_layer = 2
+	},
 /turf/open/floor/plasteel/tech,
 /area/ship/engineering/atmospherics)
 "Lz" = (
@@ -14518,6 +14716,7 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/siding/thinplating/dark,
+/obj/machinery/meter,
 /turf/open/floor/plasteel/tech/grid,
 /area/ship/engineering/atmospherics)
 "Ni" = (
@@ -14530,6 +14729,7 @@
 /obj/effect/turf_decal/industrial/traffic{
 	dir = 1
 	},
+/obj/machinery/meter,
 /turf/open/floor/engine,
 /area/ship/engineering/electrical)
 "Nm" = (
@@ -14613,7 +14813,7 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/machinery/button/door{
 	name = "portside window button";
-	id = "cocijo_exterior";
+	id = "cocijo_exterior_pb_eva";
 	pixel_y = 22;
 	req_access = list(12)
 	},
@@ -15238,6 +15438,7 @@
 	},
 /obj/machinery/light/directional/west,
 /obj/item/areaeditor/shuttle,
+/obj/item/storage/bag/construction,
 /turf/open/floor/plasteel/dark,
 /area/ship/general/command_crew/ce)
 "Pc" = (
@@ -16354,6 +16555,11 @@
 	dir = 8
 	},
 /obj/item/storage/guncase/pistol/asp,
+/obj/item/storage/pouch/ammo,
+/obj/machinery/camera/autoname{
+	dir = 8;
+	pixel_x = 7
+	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/ship/security)
 "Su" = (
@@ -16934,17 +17140,13 @@
 /obj/effect/turf_decal/spline/fancy/opaque/syndiered{
 	dir = 1
 	},
-/obj/item/spacecash/bundle/c1000{
-	pixel_x = 2;
-	pixel_y = 8
-	},
-/obj/item/spacecash/bundle/c1000{
+/obj/machinery/turretid/ship{
+	pixel_y = 17;
 	pixel_x = -1;
-	pixel_y = 10
-	},
-/obj/item/spacecash/bundle/c1000{
-	pixel_x = -5;
-	pixel_y = 12
+	id = "cocijo_turret_grid";
+	req_access = null;
+	req_access_txt = "150";
+	layer = 2.92
 	},
 /turf/open/floor/plasteel/tech/grid,
 /area/ship/bridge)
@@ -17665,6 +17867,7 @@
 	},
 /obj/machinery/light/directional/west,
 /obj/item/storage/guncase/pistol/asp,
+/obj/item/storage/pouch/ammo,
 /turf/open/floor/mineral/plastitanium/red,
 /area/ship/security)
 "Wc" = (
@@ -17771,7 +17974,7 @@
 	},
 /obj/machinery/button/door{
 	name = "portside window button";
-	id = "cocijo_exterior";
+	id = "cocijo_exterior_pb";
 	pixel_y = 24;
 	req_access = list(12);
 	pixel_x = -13
@@ -18066,10 +18269,24 @@
 "WX" = (
 /obj/effect/turf_decal/trimline/transparent/syndiered/warning,
 /obj/effect/turf_decal/siding/thinplating/dark,
-/obj/machinery/airalarm/directional/north,
-/obj/structure/closet/firecloset/wall/directional/west,
 /obj/effect/turf_decal/corner_steel_grid{
 	dir = 5
+	},
+/obj/effect/turf_decal/corner_techfloor_grid{
+	dir = 1;
+	layer = 2.0391
+	},
+/obj/effect/turf_decal/techfloor/corner{
+	dir = 1;
+	layer = 2.0391
+	},
+/obj/machinery/button/door{
+	dir = 4;
+	id = "cocijo_grav";
+	name = "gravity generator shutters control";
+	pixel_x = -19;
+	req_access = list(10);
+	pixel_y = 7
 	},
 /turf/open/floor/plasteel/tech,
 /area/ship/engineering)
@@ -18501,6 +18718,7 @@
 	},
 /obj/effect/turf_decal/corner/opaque/white/half,
 /obj/effect/turf_decal/siding/white,
+/obj/item/storage/pouch,
 /turf/open/floor/plasteel/mono,
 /area/ship/crew/canteen/kitchen)
 "Yn" = (
@@ -18906,7 +19124,6 @@
 /obj/item/clothing/under/syndicate/medic,
 /obj/item/clothing/head/helmet/medical,
 /obj/item/clothing/suit/armor/vest/trauma,
-/obj/item/antag_spawner/nuke_ops/borg_tele/medical/unlocked,
 /obj/item/storage/belt/medical,
 /obj/item/storage/belt/medical/webbing,
 /obj/item/clothing/gloves/color/latex/nitrile/evil,
@@ -18923,6 +19140,7 @@
 /obj/machinery/firealarm/directional/north{
 	pixel_x = -7
 	},
+/obj/item/storage/pouch/medical,
 /turf/open/floor/plasteel/dark,
 /area/ship/medical)
 "Zr" = (
@@ -19778,7 +19996,7 @@ PZ
 mV
 dO
 oN
-EQ
+mv
 WX
 Yj
 re
@@ -19827,7 +20045,7 @@ Iu
 ik
 GG
 GG
-DY
+jc
 DY
 PC
 bT
@@ -19843,7 +20061,7 @@ bT
 bT
 bT
 bT
-bT
+ew
 PZ
 PZ
 cF
@@ -19856,7 +20074,7 @@ PZ
 Ew
 ay
 pD
-EQ
+nS
 bh
 sn
 aB
@@ -19867,7 +20085,7 @@ hy
 hy
 DY
 DY
-bT
+PC
 bT
 bT
 bT
@@ -19883,7 +20101,7 @@ bT
 bT
 bT
 bT
-mZ
+PZ
 PZ
 Dy
 JK
@@ -19905,7 +20123,7 @@ nV
 cW
 sw
 EQ
-mZ
+EQ
 bT
 bT
 bT
@@ -21259,7 +21477,7 @@ aa
 TM
 WV
 Rj
-Eq
+jK
 cA
 TB
 qJ
@@ -22002,10 +22220,10 @@ ut
 kE
 Og
 qu
-rv
+Eq
 xF
 eL
-kU
+nd
 kU
 kU
 kU
@@ -22121,7 +22339,7 @@ KN
 zH
 JD
 MM
-DN
+pX
 DA
 IY
 qx
@@ -22153,13 +22371,13 @@ Qw
 gj
 mZ
 Xj
-DN
+fk
 El
 pG
 fa
 nE
 os
-DN
+FF
 vW
 mZ
 gj

@@ -70,7 +70,8 @@
 // [/CELADON-ADD]
 		log_message("[mob_container] moved out.", LOG_MECHA)
 		L << browse(null, "window=exosuit")
-		L.throw_at(get_edge_target_turf(src, turn(dir,180)), 3, 5)
+		if(atom_integrity <= 0)
+			L.throw_at(get_edge_target_turf(src, turn(dir,180)), 3, 5)
 		if(istype(mob_container, /obj/item/mmi))
 			var/obj/item/mmi/mmi = mob_container
 			if(mmi.brainmob)

@@ -669,12 +669,13 @@
 	if(istype(S.owner_ship?.docked, /obj/docking_port/stationary/capital) || istype(S, /obj/docking_port/stationary/capital))
 		//Проверка на то, что тот корабль, который стыкуется к данному порту, не ломает никакие стенки.
 		for(var/turf/closed/wall/wallturf as anything in return_ordered_turfs(S.x, S.y, S.z, S.dir))
-			if(istype(wallturf))
-				return SHUTTLE_CAPITAL_WALL
+			if(!istype(wallturf))
+				continue
+			return SHUTTLE_TOUCHES_EDGE
 	//Проверка на то, что тот корабль, который стыкается к данному порту, не носит ещё один корабль снаружи корабля.
 		for(var/obj/docking_port/stationary/current_port as anything in docking_points)
 			//Проверка на то, что у нас корабль имеет суб снаружи.
-			if(current_port.docked && ((bounds[3] != width) || (bounds[4] != height)))
+			if(current_port.docked && (tow_dheight != S.dheight)) //((bounds[3] != width) || (bounds[4] != height))
 				return SHUTTLE_CAPITAL_SUB_EXTERIOR
 //
 	//if the docking port has disable_on_owner_ship_dock set and the target ship is docked to something, don't land. very much don't land.
