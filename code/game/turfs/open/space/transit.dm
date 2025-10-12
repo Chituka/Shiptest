@@ -28,8 +28,13 @@
 
 /turf/open/space/transit/Entered(atom/movable/AM, atom/OldLoc)
 	. = ..()
-	if(!locate(/obj/structure/lattice) in src)
+	// [CELADON-CHANGE] - MODPACK_CELADON_COCIJO_STUFF
+	//if((!locate(/obj/structure/lattice) in src))
+	//	AM.throw_atom_into_space()
+	var/datum/map_zone/mapzone = AM.get_map_zone()
+	if((!locate(/obj/structure/lattice) in src) && !(mapzone?.has_active_gg))
 		AM.throw_atom_into_space()
+	// [/CELADON-CHANGE]
 
 /atom/proc/throw_atom_into_space()
 	if(flags_1 & INITIALIZED_1)

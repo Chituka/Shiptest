@@ -13,6 +13,7 @@
 	//Content variables
 	/// List of all gravity generators inside of the sub levels of this map zone
 	var/list/gravity_generators = list()
+	var/has_active_gg = FALSE // [CELADON-ADD] - MODPACK_CELADON_COCIJO_STUFF
 
 /datum/map_zone/proc/get_virtual_level_id(vlevel_id)
 	var/datum/virtual_level/found_vlevel

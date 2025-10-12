@@ -12,5 +12,6 @@
 #include "code/weaponary.dm"
 #include "code/turfs.dm"
 #include "code/structures.dm"
+#include "code/gravity_generator.dm"
 
 #endif
