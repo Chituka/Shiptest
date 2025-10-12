@@ -150,6 +150,34 @@ SUBSYSTEM_DEF(shuttle)
 		if(WEST)
 			transit_path = /turf/open/space/transit/west
 
+	// [CELADON-ADD] - MODPACK_CELADON_COCIJO_STUFF
+	// По большей части это тупо фреймворк для кораблей побольше (оно просто будет добавлять дополнительное место для доков).
+	// Я НЕ ТЕСТИЛ, ПРИ КАКИХ РАЗМЕРАХ ОНО НАЧНЕТ УБИВАТЬ ВИРТУАЛКИ...
+	// Вперёд-назад, я думаю, никто не будет делать.
+	// здесь мы проверяем, достигла ли одна из сторон транзита максимальных размеров
+	if(M.is_capital)
+		var/list/union_coords_c = M.return_union_coords(M, 0, 0, dock_dir) //без .get_all_towed_shuttle()
+
+		var/transit_width_c = SHUTTLE_TRANSIT_BORDER
+		var/transit_height_c = SHUTTLE_TRANSIT_BORDER
+
+		transit_width_c += union_coords_c[3] - union_coords_c[1] + 1
+		transit_height_c += union_coords_c[4] - union_coords_c[2] + 1
+		// размер корабля, который может садиться 56x40.
+		// 127 - 40 - 40 = 37 свободных турфов в ширину для капитального корабля, что маловато...
+		// Тогда нам потребуется дополнительные 40 клеток в высоту, минимум, если мы хотим их стыковать по бокам.
+		// Тот, кто захочет носом - мазохист.
+		//здесь работаем тупо, смотрим желаемую дирекцию, оттуда получаем куда нам надо расширять.
+		switch(dock_dir)
+			if(NORTH, SOUTH)
+				transit_height = transit_height_c + 40*2+10 // 10 понадобится для того, чтобы offset_y, offset_x удобней ставить.
+				transit_width = 1.5*transit_width
+			if(EAST, WEST)
+				transit_width = transit_width_c + 40*2+10 // 10 понадобится для того, чтобы offset_y, offset_x удобней ставить.
+				transit_height = 1.5*transit_height
+	// [/CELADON-ADD]
+
+	transit_path = /turf/open/space/transit
 	var/transit_name = "Transit Map Zone"
 	var/datum/map_zone/mapzone = SSmapping.create_map_zone(transit_name)
 	var/datum/virtual_level/vlevel = SSmapping.create_virtual_level(

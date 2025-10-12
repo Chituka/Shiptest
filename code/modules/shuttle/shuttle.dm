@@ -3,7 +3,7 @@
 #define DOCKING_PORT_HIGHLIGHT
 #endif
 
-//[CELADON-ADD] Конкретно тут добавляю новые дефайны для проверок на шип-ту-шип стыковки к Капиталам
+//[CELADON-ADD] - MODPACK_CELADON_COCIJO_STUFF Конкретно тут добавляю новые дефайны для проверок на шип-ту-шип стыковки к Капиталам
 #define SHUTTLE_CAPITAL_WALL "Required landing zone has walls inside"
 #define SHUTTLE_CAPITAL_SUB_EXTERIOR "One of our docking ports has shuttle docked outside"
 //[CELADON-ADD]
@@ -401,10 +401,10 @@
 	if(!QDELETED(reserved_mapzone))
 		QDEL_NULL(reserved_mapzone)
 	return ..()
-
+// [CELADON-ADD] - MODPACK_CELADON_COCIJO_STUFF
 /obj/docking_port/stationary/capital
 	name = "capital dock"
-
+// [/CELADON-ADD]
 /obj/docking_port/mobile
 	name = "shuttle"
 	icon_state = "mobile"
@@ -493,6 +493,7 @@
 
 	/// The amount of turfs the shuttle is made up of (closed and open, doesn't include lattices)
 	var/turf_count = 0
+	var/is_capital = FALSE // [CELADON-ADD] - MODPACK_CELADON_COCIJO_STUFF //ниче-ниче, мы же миллионеры, ещё конфликтов купим
 
 /obj/docking_port/mobile/proc/register()
 	SSshuttle.mobile += src
@@ -646,8 +647,8 @@
 
 	if(istype(S, /obj/docking_port/stationary/transit))
 		return SHUTTLE_CAN_DOCK
-//
-	if(!(istype(S,/obj/docking_port/stationary/capital)))
+
+	if(!(istype(S,/obj/docking_port/stationary/capital))) // [CELADON-ADD] - MODPACK_CELADON_COCIJO_STUFF
 		if(tow_dwidth > S.dwidth)
 			return SHUTTLE_DWIDTH_TOO_LARGE
 
@@ -659,25 +660,26 @@
 
 		if(tow_rheight > S.height-S.dheight)
 			return SHUTTLE_HEIGHT_TOO_LARGE
-//
+
 	for(var/obj/docking_port/stationary/current_port as anything in docking_points)
 		//if any of our docks has disable_on_owner_ship_dock set, has something docked to us, and we aren't going to a transit zone or an adjustable dock(usually planetary), don't land
 		if(current_port.disable_on_owner_ship_dock && current_port.docked && (!istype(S, /obj/docking_port/stationary/transit) || !S.adjust_dock_for_landing))
 			return SHUTTLE_OUR_MOBILEDOCK_FORBIDS_DOCKING
-//
+	//[CELADON-ADD] - MODPACK_CELADON_COCIJO_STUFF
 	//Проверка на то, что корабль, к которому принадлежит искомый док, пристыкован к капиталу, или корабль стыкуется к кораблю.
 	if(istype(S.owner_ship?.docked, /obj/docking_port/stationary/capital) || istype(S, /obj/docking_port/stationary/capital))
-		//Проверка на то, что тот корабль, который стыкуется к данному порту, не ломает никакие стенки.
-		for(var/turf/closed/wall/wallturf as anything in return_ordered_turfs(S.x, S.y, S.z, S.dir))
-			if(!istype(wallturf))
-				continue
-			return SHUTTLE_TOUCHES_EDGE
 	//Проверка на то, что тот корабль, который стыкается к данному порту, не носит ещё один корабль снаружи корабля.
 		for(var/obj/docking_port/stationary/current_port as anything in docking_points)
 			//Проверка на то, что у нас корабль имеет суб снаружи.
 			if(current_port.docked && (tow_dheight != S.dheight)) //((bounds[3] != width) || (bounds[4] != height))
 				return SHUTTLE_CAPITAL_SUB_EXTERIOR
-//
+			//Проверка на то, что тот корабль, который стыкуется к данному порту, не ломает никакие стенки.
+			if(S.dheight != 1) //оптимизация ыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыыхыыуыйыыыыыыыыыыыыыыыыыыыыыыыы
+				for(var/turf/closed/wall/wallturf as anything in return_ordered_turfs(S.x, S.y, S.z, S.dir))
+					if(!istype(wallturf))
+						continue
+					return SHUTTLE_CAPITAL_WALL
+	//[/CELADON-ADD]
 	//if the docking port has disable_on_owner_ship_dock set and the target ship is docked to something, don't land. very much don't land.
 	if(S.disable_on_owner_ship_dock && S.owner_ship.docked)
 		return SHUTTLE_TARGET_MOBILEDOCK_FORBIDS_DOCKING
