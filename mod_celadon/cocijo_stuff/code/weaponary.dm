@@ -22,7 +22,14 @@
 	desc = "USE A WEEL GUN"
 	damage = 50
 	armour_penetration = 60
-	speed = 0.8
+	range = 50
+	hitscan = TRUE
+	light_system = 0
+	light_range = 0
+	muzzle_type = /obj/effect/projectile/muzzle/stun
+	//tracer_type = /obj/effect/projectile/tracer/legion
+	tracer_type = /obj/effect/projectile/tracer/stun
+	impact_type = /obj/effect/projectile/impact/stun
 
 /obj/projectile/bullet/a127mm/ap/buffed/Move(atom/newloc, direct, glide_size_override)
 	. = ..()
@@ -30,6 +37,14 @@
 	if(location)
 		new /obj/effect/hotspot(location)
 		location.hotspot_expose(700, 50, 1)
+
+/obj/projectile/bullet/a127mm/ap/buffed/on_hit(atom/target, blocked = FALSE)
+	..()
+	var/turf/location = get_turf(target)
+	if(location)
+		new /obj/effect/hotspot(location)
+		location.hotspot_expose(700, 50, 1)
+	return BULLET_ACT_HIT
 
 /obj/projectile/bullet/a127mm/alum
 	name ="12.7x55mm bullet"
@@ -67,25 +82,24 @@
 	var/lit = FALSE
 	var/lit_time = 0
 	var/lit_bullet_skin = "apon"
-	//var/icon_on = "a127-brass-apon"  //Note - these are in masks.dmi not in cigarette.dmi
 	var/icon_off = "cigaroff"
 
-/obj/item/ammo_casing/a127mm/ap/attackby(obj/item/attacking_item, mob/living/user)
+/obj/item/ammo_casing/a127mm/ap/attackby(obj/item/attacking_item, mob/user, params)
 	if(!lit)
 		var/lighting_text = attacking_item.ignition_effect(src, user)
 		if(lighting_text)
 			light(lighting_text)
 			lit_time = world.time
-	else
-		return ..()
+	. = ..()
 
 /obj/item/ammo_casing/a127mm/ap/fire_casing(atom/target, mob/living/user, params, distro, quiet, zone_override, spread, atom/fired_from, misfire)
 	var/time_difference = (world.time - lit_time) / 10 //So we get seconds and not ticks
-	if (BB && time_difference > 600) // if it was lit for more than 10 mins
+	if (BB && lit && (time_difference > 600)) // if it was lit for more than 10 mins
 		explosion(src, 0, 0, 2, 0, flame_range = 1)
 		BB = null
 		return
-	if (BB && time_difference > 60) // if it was lit for more than a minute
+	if (BB && lit && (time_difference > 60)) // if it was lit for more than a minute
+		qdel(BB)
 		BB = new /obj/projectile/bullet/a127mm/ap/buffed
 	. = ..()
 
@@ -93,7 +107,7 @@
 	if(lit)
 		return
 	bullet_skin = lit_bullet_skin
-	icon_state = icon_state+bullet_skin
+	update_icon_state()
 	lit = TRUE
 	name = "lit [name]"
 	attack_verb = list("burnt", "singed")
