@@ -15,3 +15,10 @@
 		power_station.engaged = FALSE
 		return FALSE
 	return TRUE
+
+// Встроенная канистра мехов сломана - нету спрайта, на пкм не отображается и с ней ноль взаимодействия
+// Мне слишком лень чинить, извините, поэтому так
+/obj/structure/mecha_wreckage/crowbar_act(mob/living/user, obj/item/I)
+	crowbar_salvage.Remove(/obj/machinery/portable_atmospherics/canister/air)
+	. = ..()
+

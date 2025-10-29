@@ -151,7 +151,25 @@
 	var/list/req_stock_parts = list(/obj/item/stock_parts/capacitor,
 	/obj/item/stock_parts/scanning_module,
 	/obj/item/stock_parts/cell)
+	wires_removed = TRUE
+	var/battery_removed = FALSE
 
+/obj/structure/mecha_wreckage/landsknecht/examine(mob/user)
+	. = ..()
+	var/obj/item/I
+	if(req_comps.len)
+		for(var/type in req_comps)
+			I = type
+			. += span_notice("I still need [req_comps[type]] [I.name] to finish its repairs!")
+
+	if(!battery_removed && contents.len && istype(contents[1],/obj/item/stock_parts/cell))
+		. += span_warning("There is also a damaged cell inside, and it's possible to change it to reduce risk of power grid failure.")
+	if(req_stock_parts.len)
+		var/S = "It looks like I could also fit a "
+		for(var/type in req_stock_parts)
+			I = type
+			S += "[I.name], "
+		. += span_notice(S+"although it's not necessary for repairs.")
 
 /obj/structure/mecha_wreckage/landsknecht/attackby(obj/item/I, mob/user, params)
 	for(var/type in req_comps)
@@ -178,6 +196,17 @@
 	to_chat(user,span_warning("It doesn't seem to fit in there!"))
 	return
 
+/obj/structure/mecha_wreckage/landsknecht/wirecutter_act(mob/living/user, obj/item/I)
+	. = ..()
+	battery_removed = TRUE
+
+/obj/structure/mecha_wreckage/landsknecht/wirecutter_act(mob/living/user, obj/item/I)
+	crowbar_salvage.Remove(/obj/item/stack/cable_coil)
+	. = ..()
+
+/obj/structure/mecha_wreckage/landsknecht/welder_act(mob/living/user, obj/item/I)
+	welder_salvage.Remove(/obj/item/stack/sheet/plasteel)
+	. = ..()
 
 /obj/structure/mecha_wreckage/landsknecht/screwdriver_act(mob/living/user, obj/item/I)
 	if(!(req_comps.len))

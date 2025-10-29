@@ -83,6 +83,11 @@
 	. = TRUE
 	if(crowbar_salvage.len)
 		var/obj/S = pick(crowbar_salvage)
+		//[CELADON-ADD] -MODPACK_CELADON_COCIJO_STUFF- Вырезает НАХУЙ вырезание канистры из меха, т.к. та не имеет спрайта, не появляется на ПКМ, но каким-то грейпфрутом имеет коллизию. Наслаждайтесь комментом в 200 символов
+		if(istype(S,/obj/machinery/portable_atmospherics/canister))
+			crowbar_salvage -= S
+			S = pick(crowbar_salvage)
+		//[/CELADON-ADD]
 		S.forceMove(user.drop_location())
 		user.visible_message(span_notice("[user] pries [S] from [src]."), span_notice("You pry [S] from [src]."))
 		crowbar_salvage -= S

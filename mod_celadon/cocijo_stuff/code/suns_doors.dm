@@ -16,11 +16,11 @@
 /obj/machinery/door/airlock/suns/locked/attackby(obj/item/I, mob/user, params)
 	if(istype(I,/obj/item/card/id/suns/secret))
 		if(check_access(I))
-			playsound(src,'mod_celadon/_storage_sounds/sound/effects/right_short.ogg',100)
+			playsound(src,'mod_celadon/_storage_sounds/sound/effects/right_short.ogg',100, channel = 512)
 			if(do_after(user,20,src))
 				try_to_activate_door(user)
 		else
-			playsound(src,'mod_celadon/_storage_sounds/sound/effects/wrong_short.ogg',100)
+			playsound(src,'mod_celadon/_storage_sounds/sound/effects/wrong_short.ogg',100, channel = 513)
 			do_after(user,20,src)
 
 //Специально удаляю любое взаимодействие, чтобы дверь реагировала только на ключ-карты

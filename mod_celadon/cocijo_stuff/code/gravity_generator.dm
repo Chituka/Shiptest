@@ -121,10 +121,10 @@
 		var/obj/machinery/gravity_generator/main/GG = I
 		if(GG.on == 1)
 			active = TRUE
-	if(active)
-		mapzone.has_active_gg = active
-	else
-		mapzone.has_active_gg = active
+	// if(active)
+	// 	mapzone.has_active_gg = active
+	// else
+	// 	mapzone.has_active_gg = active
 	//- РЕАЛИЗАЦИЯ НА УРОВНЕ РЕШЕНИЯ ЗАДАЧ ПО ПРОГРАММИРОВАНИЮ НА ПИТОНЕ ЗА 10 КЛАСС
 
 // Charge/Discharge and turn on/off gravity when you reach 0/100 percent.
