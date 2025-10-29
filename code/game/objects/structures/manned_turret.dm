@@ -16,6 +16,10 @@
 	var/cooldown = 0
 	/// The projectile that the turret fires
 	var/projectile_type = /obj/projectile/bullet/manned_turret
+	//[CELADON-ADD]
+	///Type of gun control to give to the user
+	var/control_type = /obj/item/gun_control
+	///[/CELADON-ADD]
 	/// Delay between shots in a burst
 	var/rate_of_fire = 1
 	/// Number of shots fired from one click
@@ -73,29 +77,29 @@
 	. = ..()
 	STOP_PROCESSING(SSfastprocess, src)
 
-/obj/machinery/deployable_turret/user_buckle_mob(mob/living/M, mob/user, check_loc = TRUE)
-	if(user.incapacitated() || !istype(user))
-		return
-	M.forceMove(get_turf(src))
-	. = ..()
-	if(!.)
-		return
-	for(var/V in M.held_items)
-		var/obj/item/I = V
-		if(istype(I))
-			if(M.dropItemToGround(I))
-				var/obj/item/gun_control/TC = new(src)
-				M.put_in_hands(TC)
-		else //Entries in the list should only ever be items or null, so if it's not an item, we can assume it's an empty hand
-			var/obj/item/gun_control/TC = new(src)
-			M.put_in_hands(TC)
-	M.pixel_y = 14
-	layer = ABOVE_MOB_LAYER
-	setDir(SOUTH)
-	playsound(src,'sound/mecha/mechmove01.ogg', 50, TRUE)
-	if(M.client)
-		M.client.view_size.setTo(view_range)
-	START_PROCESSING(SSfastprocess, src)
+// /obj/machinery/deployable_turret/user_buckle_mob(mob/living/M, mob/user, check_loc = TRUE)
+// 	if(user.incapacitated() || !istype(user))
+// 		return
+// 	M.forceMove(get_turf(src))
+// 	. = ..()
+// 	if(!.)
+// 		return
+// 	for(var/V in M.held_items)
+// 		var/obj/item/I = V
+// 		if(istype(I))
+// 			if(M.dropItemToGround(I))
+// 				var/obj/item/gun_control/TC = new(src)
+// 				M.put_in_hands(TC)
+// 		else //Entries in the list should only ever be items or null, so if it's not an item, we can assume it's an empty hand
+// 			var/obj/item/gun_control/TC = new(src)
+// 			M.put_in_hands(TC)
+// 	M.pixel_y = 14
+// 	layer = ABOVE_MOB_LAYER
+// 	setDir(SOUTH)
+// 	playsound(src,'sound/mecha/mechmove01.ogg', 50, TRUE)
+// 	if(M.client)
+// 		M.client.view_size.setTo(view_range)
+// 	START_PROCESSING(SSfastprocess, src)
 
 /obj/machinery/deployable_turret/process(seconds_per_tick)
 	if (!update_positioning())
@@ -110,8 +114,10 @@
 	var/client/controlling_client = controller.client
 	if(controlling_client)
 		var/modifiers = params2list(controlling_client.mouseParams)
-		var/atom/target_atom = controlling_client.mouseObject
-		var/turf/target_turf = get_turf(target_atom)
+		// [CELADON-DELETE] -- CELADON_FIXES -- фиксим рантайм при выстреле/повороте
+		//var/atom/target_atom = controlling_client.mouseObject
+		//var/turf/target_turf = get_turf(target_atom)
+		// [/CELADON-DELETE]
 		if(istype(target_turf)) //They're hovering over something in the map.
 			direction_track(controller, target_turf)
 			calculated_projectile_vars = calculate_projectile_angle_and_pixel_offsets(controller, target_turf, modifiers)
