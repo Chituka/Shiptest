@@ -114,8 +114,10 @@
 	var/client/controlling_client = controller.client
 	if(controlling_client)
 		var/modifiers = params2list(controlling_client.mouseParams)
-		var/atom/target_atom = controlling_client.mouseObject
-		var/turf/target_turf = get_turf(target_atom)
+		// [CELADON-DELETE] -- CELADON_FIXES -- фиксим рантайм при выстреле/повороте
+		//var/atom/target_atom = controlling_client.mouseObject
+		//var/turf/target_turf = get_turf(target_atom)
+		// [/CELADON-DELETE]
 		if(istype(target_turf)) //They're hovering over something in the map.
 			direction_track(controller, target_turf)
 			calculated_projectile_vars = calculate_projectile_angle_and_pixel_offsets(controller, target_turf, modifiers)

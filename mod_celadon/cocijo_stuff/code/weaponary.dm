@@ -234,6 +234,32 @@
 /// ПУЛЕМЕТ ///
 ///////////////
 
+
+///Used to chamber a new round and eject the old one. Also returns True of False
+/obj/machinery/deployable_turret/cocijo/proc/chamber_round(keep_bullet = FALSE)
+	if (chambered || !magazine)
+		if (bolt_type == BOLT_TYPE_OPEN)
+			chambered = null
+		return FALSE
+	if (magazine.ammo_count())
+		chambered = magazine.get_round(keep_bullet || bolt_type == BOLT_TYPE_NO_BOLT)
+		if (bolt_type != BOLT_TYPE_OPEN)
+			chambered.forceMove(src)
+	return TRUE
+
+/obj/item/ammo_box/magazine/turret
+	name = "'Писятник'"
+	max_ammo = 50
+	w_class = WEIGHT_CLASS_BULKY
+	ammo_type = /obj/item/ammo_casing/p50
+	caliber = ".50 BMG"
+
+
+/obj/item/ammo_box/magazine/turret/small
+	name = "'Десятник'"
+	max_ammo = 10
+	w_class = WEIGHT_CLASS_NORMAL
+
 /obj/machinery/deployable_turret/cocijo
 	name = "Testname"
 	desc = "Testdesc"
@@ -242,12 +268,116 @@
 	control_type = /obj/item/gun_control/cocijo
 	firesound = 'sound/weapons/gun/hmg/hmg.ogg'
 
+	var/datum/map_zone/mapzone // used for far_sound, so we don't search in GLOB every single shot
+	var/obj/item/ammo_box/magazine/magazine
+	var/list/allowed_magazines = list(/obj/item/ammo_box/magazine/turret, /obj/item/ammo_box/magazine/turret/small)
+	var/obj/item/ammo_casing/chambered
+	var/magazine_wording = "Magazine"
+	var/bolt_type = BOLT_TYPE_STANDARD
+	var/cover_open = FALSE
+
+/obj/machinery/deployable_turret/cocijo/interact(mob/user, special_state)
+	. = ..()
+	to_chat(user, span_notice("I rack the gun."))
+	if(chamber_round())
+		chambered.on_eject(user)
+
+/obj/machinery/deployable_turret/cocijo/AltClick(mob/user)
+	. = ..()
+	//playsound() сделать какой-нибудь звук
+	if(!user.incapacitated())
+		cover_open = !cover_open
+		to_chat(user, span_danger("I [cover_open ? "open" : "close"] the cover."))
+
+/obj/machinery/deployable_turret/cocijo/MouseDrop(mob/over_user)
+	. = ..()
+	if(!over_user.incapacitated())
+		if(!cover_open)
+			to_chat(over_user, span_danger("I need to open cover first!"))
+			return
+		over_user.put_in_hands(magazine)
+		magazine = null
+		if(bolt_type == BOLT_TYPE_OPEN)
+			chambered = null
+
+/obj/machinery/deployable_turret/cocijo/attackby(obj/item/A, mob/user, params)
+	if(..())
+		return FALSE
+
+	if(istype(A, /obj/item/ammo_casing/p50) && cover_open && bolt_type == BOLT_TYPE_STANDARD  && !chambered)
+		chambered = A
+		A.forceMove(src)
+		to_chat(user, span_danger("Like a pro, I load the bullet directly into the [src]'s chamber."))
+
+	if(istype(A, /obj/item/gun_control))
+		to_chat(user, span_notice("I rack the gun."))
+		chamber_round()
+
+	if(istype(A, /obj/item/ammo_box/magazine))
+		var/obj/item/ammo_box/magazine/AM = A
+		if (!magazine)
+			insert_magazine(user, AM)
+		else
+			to_chat(user, span_notice("There's already a [magazine_wording] in \the [src]."))
+			return
+
+/obj/machinery/deployable_turret/cocijo/proc/insert_magazine(mob/user, obj/item/ammo_box/magazine/inserted_mag, display_message = TRUE)
+	if(!(inserted_mag.type in allowed_magazines))
+		to_chat(user, span_warning("\The [inserted_mag] doesn't seem to fit into \the [src]..."))
+		return FALSE
+	if(!cover_open)
+		to_chat(user, span_warning("I need to open it's cover first!"))
+		return FALSE
+	if(user.transferItemToLoc(inserted_mag, src))
+		magazine = inserted_mag
+		if (display_message)
+			to_chat(user, span_notice("You load a new [magazine_wording] into \the [src]."))
+		// if (magazine.ammo_count())
+		// 	playsound(src, load_sound, load_sound_volume, load_sound_vary)
+		// else
+		// 	playsound(src, load_empty_sound, load_sound_volume, load_sound_vary)
+		if (bolt_type == BOLT_TYPE_OPEN /*&& !bolt_locked*/)
+			chamber_round(TRUE)
+		update_appearance()
+		SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD)
+		return TRUE
+	else
+		to_chat(user, span_warning("You cannot seem to get \the [src] out of your hands!"))
+		return FALSE
+
+
+/obj/machinery/deployable_turret/cocijo/Initialize(mapload, apply_default_parts)
+	var/turf/T = get_turf(src)
+	mapzone = T.get_map_zone()
+	. = ..()
+
 /obj/machinery/deployable_turret/cocijo/checkfire(atom/targeted_atom, mob/user)
 	target = targeted_atom
 	if(target == user || target == get_turf(src))
 		return
 	target_turf = get_turf(target)
 	fire_helper(user)
+
+/obj/machinery/deployable_turret/cocijo/fire_helper(mob/user)
+	if(user.incapacitated() || !(user in buckled_mobs))
+		return FALSE
+	//update_positioning() //REFRESH MOUSE TRACKING!!
+	var/turf/targets_from = get_turf(src)
+	if(QDELETED(target))
+		target = target_turf
+	if(!chambered)
+		playsound(src, 'sound/weapons/gun/general/dry_fire.ogg', 30, TRUE)
+		balloon_alert(user,"Click!")
+		return FALSE
+	if(cover_open)
+		to_chat(user, span_userdanger("The cover is [prob(10) ? "fucking" : ""] open!"))
+		return FALSE
+	if(!chambered.fire_casing(target, user, fired_from = targets_from)) //Тут же и стреляем
+		return FALSE
+	chambered.on_eject(user)
+	chambered = null
+	chamber_round()
+	return TRUE
 
 /obj/machinery/deployable_turret/user_buckle_mob(mob/living/M, mob/user, check_loc = TRUE)
 	if(user.incapacitated() || !istype(user))
@@ -292,6 +422,27 @@
 	if (direction == turn(user.dir,90) || direction == turn(user.dir,-90))
 		rapid_turn_cooldown = world.time + 10
 	direction_track(user,get_edge_target_turf(src,direction))
+
+/obj/machinery/deployable_turret/cocijo/buckle_mob(mob/living/M, force, check_loc)
+	. = ..()
+	playsound(src, 'mod_celadon/_storage_sounds/sound/gun/kord/getting_on.ogg',100, FALSE)
+
+/obj/machinery/deployable_turret/cocijo/checkfire(atom/targeted_atom, mob/user)
+	target = targeted_atom
+	if(target == user || target == get_turf(src))
+		return
+	target_turf = get_turf(target)
+	if(fire_helper(user))
+		for(var/MN in mapzone.get_client_mobs())
+			var/mob/M = MN
+			var/turf/T = get_turf(src)
+			//playsound(src,'mod_celadon/_storage_sounds/sound/gun/kord/single_close_loud.ogg', 100, FALSE, falloff_exponent = 6, channel = 1)
+			if(can_see(M,src,10))
+				M.playsound_local(T, 'mod_celadon/_storage_sounds/sound/gun/kord/single_close_loud.ogg', 100, FALSE, falloff_exponent = 6, channel = 1, max_distance = 100)
+			if (get_dist(src, get_turf(M)) > 15)
+				M.playsound_local(T, 'mod_celadon/_storage_sounds/sound/gun/kord/single_mid_stereo.ogg', 90, FALSE, /*falloff_exponent = 1*/, max_distance = 100)
+			if (get_dist(src, get_turf(M)) > 30)
+				M.playsound_local(T, 'mod_celadon/_storage_sounds/sound/gun/kord/single_far_stereo.ogg', 60, FALSE, falloff_exponent = 1, max_distance = 100)
 
 /obj/item/gun_control/cocijo
 	name = "TestName"
