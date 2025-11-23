@@ -79,6 +79,12 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
+/obj/machinery/button/door{
+	dir = 4;
+	id = "cocijo_subshuttle_engine";
+	name = "Двигательные задвижки";
+	pixel_x = -23
+	},
 /turf/open/floor/mineral/plastitanium,
 /area/ship/bridge)
 "dH" = (
@@ -96,7 +102,7 @@
 /obj/machinery/power/shuttle/engine/fueled/plasma{
 	dir = 4
 	},
-/turf/open/floor/plating,
+/turf/open/floor/engine/hull/reinforced,
 /area/ship/bridge)
 "fR" = (
 /obj/machinery/power/terminal{
@@ -110,11 +116,11 @@
 	},
 /obj/item/stack/cable_coil/red,
 /obj/item/storage/toolbox/mechanical/old,
-/obj/machinery/button/door{
-	dir = 4;
-	id = "cocijo_subshuttle_engine";
-	name = "Двигательные задвижки";
-	pixel_x = -23
+/obj/structure/closet/secure_closet/wall{
+	icon_state = "generic_wall";
+	name = "equipment locker";
+	dir = 8;
+	pixel_x = -28
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/ship/bridge)
@@ -146,7 +152,8 @@
 	name = "Engine Access";
 	req_access_txt = "150"
 	},
-/turf/open/floor/plating/ship,
+/obj/effect/turf_decal/industrial/warning/fulltile,
+/turf/open/floor/engine/hull/reinforced/interior,
 /area/ship/bridge)
 "hW" = (
 /obj/effect/turf_decal/borderfloorwhite,
@@ -169,6 +176,7 @@
 /obj/structure/marker_beacon{
 	picked_color = "Burgundy"
 	},
+/obj/effect/turf_decal/trimline/opaque/syndiered,
 /turf/open/floor/plasteel/tech/grid,
 /area/ship/bridge)
 "it" = (
@@ -201,22 +209,21 @@
 /turf/open/floor/plasteel/mono/dark,
 /area/ship/bridge)
 "kt" = (
-/obj/structure/catwalk/over/plated_catwalk/dark,
 /obj/structure/window/plasma/reinforced{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2{
-	dir = 8
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 1;
+	layer = 2.0391
 	},
-/turf/open/floor/plating,
+/turf/open/floor/mineral/plastitanium,
 /area/ship/bridge)
 "kK" = (
 /obj/structure/catwalk,
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/porta_turret/ship/syndicate/ballistic/heavy{
 	dir = 5;
-	id = "cocijo_subshuttle_grid";
-	lethal_projectile = /obj/projectile/bullet/mm712x82
+	id = "cocijo_subshuttle_grid"
 	},
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/ship/bridge)
@@ -238,7 +245,7 @@
 	},
 /obj/effect/turf_decal/industrial/outline/red,
 /obj/machinery/computer/teleporter{
-	dir = 1
+	dir = 8
 	},
 /turf/open/floor/plasteel/tech,
 /area/ship/bridge)
@@ -257,7 +264,6 @@
 	color = "#730622";
 	dir = 1
 	},
-/obj/machinery/airalarm/directional/west,
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
@@ -278,14 +284,12 @@
 /obj/effect/turf_decal/corner_steel_grid{
 	dir = 10
 	},
-/obj/effect/turf_decal/siding/black{
-	dir = 1
-	},
-/obj/effect/turf_decal/siding/thinplating/dark{
-	dir = 6
-	},
 /obj/effect/turf_decal/borderfloorwhite/corner{
 	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer2,
+/obj/effect/turf_decal/siding/black{
+	dir = 5
 	},
 /turf/open/floor/plasteel/tech,
 /area/ship/bridge)
@@ -340,13 +344,13 @@
 	name = "Engine Access";
 	req_access_txt = "150"
 	},
-/turf/open/floor/plating,
+/obj/effect/turf_decal/industrial/warning/fulltile,
+/turf/open/floor/engine/hull/reinforced/interior,
 /area/ship/bridge)
 "vq" = (
 /obj/machinery/porta_turret/ship/syndicate/ballistic/heavy{
 	dir = 6;
-	id = "cocijo_subshuttle_grid";
-	lethal_projectile = /obj/projectile/bullet/mm712x82
+	id = "cocijo_subshuttle_grid"
 	},
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/ship/bridge)
@@ -361,12 +365,14 @@
 	pixel_x = 8;
 	layer = 3.21
 	},
-/turf/open/floor/plasteel/tech,
+/turf/open/floor/plasteel/telecomms_floor,
 /area/ship/bridge)
 "wi" = (
 /obj/structure/marker_beacon{
 	picked_color = "Burgundy"
 	},
+/obj/effect/turf_decal/trimline/opaque/syndiered,
+/obj/structure/catwalk,
 /turf/open/floor/engine/hull/reinforced,
 /area/ship/bridge)
 "xq" = (
@@ -419,14 +425,9 @@
 "zn" = (
 /obj/machinery/turretid/ship{
 	dir = 8;
-	pixel_x = 4;
+	pixel_x = -1;
 	id = "cocijo_subshuttle_grid";
 	pixel_y = 4
-	},
-/obj/machinery/newscaster/directional/west{
-	pixel_y = 29;
-	pixel_x = 9;
-	dir = 1
 	},
 /obj/machinery/button/door{
 	id = "iron_maiden_bridge";
@@ -444,6 +445,7 @@
 	dir = 8
 	},
 /obj/structure/table/reinforced,
+/obj/machinery/airalarm/directional/north,
 /turf/open/floor/plasteel/tech,
 /area/ship/bridge)
 "zW" = (
@@ -494,6 +496,13 @@
 /obj/effect/turf_decal/siding/thinplating/dark{
 	dir = 1
 	},
+/obj/item/oxygen_candle{
+	pixel_x = -10;
+	pixel_y = 5
+	},
+/obj/item/oxygen_candle{
+	pixel_x = -10
+	},
 /turf/open/floor/plasteel/tech/grid,
 /area/ship/bridge)
 "Bj" = (
@@ -531,8 +540,7 @@
 "Du" = (
 /obj/machinery/porta_turret/ship/syndicate/ballistic/heavy{
 	dir = 10;
-	id = "cocijo_subshuttle_grid";
-	lethal_projectile = /obj/projectile/bullet/mm712x82
+	id = "cocijo_subshuttle_grid"
 	},
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/ship/bridge)
@@ -544,13 +552,12 @@
 	id = "cocijo_subshuttle_engine";
 	name = "Engine Blast Door"
 	},
-/turf/open/floor/plating,
+/turf/open/floor/engine/hull/reinforced,
 /area/ship/bridge)
 "Es" = (
 /obj/machinery/porta_turret/ship/syndicate/ballistic/heavy{
 	dir = 9;
-	id = "cocijo_subshuttle_grid";
-	lethal_projectile = /obj/projectile/bullet/mm712x82
+	id = "cocijo_subshuttle_grid"
 	},
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/ship/bridge)
@@ -574,14 +581,8 @@
 /turf/open/floor/plasteel/tech/grid,
 /area/ship/bridge)
 "Ez" = (
-/obj/effect/turf_decal/corner/opaque/syndiered,
-/obj/effect/turf_decal/corner/opaque/bar{
-	dir = 4
-	},
-/obj/structure/chair/comfy/shuttle{
-	dir = 8;
-	pixel_x = 7
-	},
+/obj/machinery/teleport/station,
+/obj/structure/catwalk/over/plated_catwalk/dark,
 /turf/open/floor/plasteel/tech,
 /area/ship/bridge)
 "EE" = (
@@ -601,13 +602,9 @@
 /obj/machinery/atmospherics/pipe/simple/purple/hidden{
 	dir = 10
 	},
-/turf/open/floor/plasteel/mono/dark,
+/turf/open/floor/engine/hull/reinforced/interior,
 /area/ship/bridge)
 "FC" = (
-/obj/effect/turf_decal/siding/thinplating/dark{
-	color = "#730622";
-	dir = 1
-	},
 /obj/structure/extinguisher_cabinet/directional/north{
 	pixel_x = 6
 	},
@@ -617,6 +614,16 @@
 /obj/machinery/atmospherics/components/unary/portables_connector,
 /obj/machinery/light/directional/east,
 /obj/machinery/portable_atmospherics/canister/toxins,
+/obj/effect/turf_decal/box/red{
+	color = "#d40000"
+	},
+/obj/effect/turf_decal/siding/thinplating/dark{
+	color = "#730622";
+	dir = 1
+	},
+/obj/structure/window/plasma/reinforced{
+	dir = 8
+	},
 /turf/open/floor/plasteel/mono/dark,
 /area/ship/bridge)
 "FK" = (
@@ -659,38 +666,50 @@
 /turf/open/floor/plasteel/tech/grid,
 /area/ship/bridge)
 "JU" = (
-/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2,
 /obj/machinery/atmospherics/pipe/manifold/purple/hidden{
 	dir = 4
 	},
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/obj/effect/turf_decal/siding/thinplating/dark{
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer4{
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer2{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/thinplating/dark/corner{
 	dir = 4
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/ship/bridge)
 "KH" = (
-/obj/effect/turf_decal/siding/thinplating/dark{
-	color = "#730622"
+/obj/effect/turf_decal/corner/opaque/bar{
+	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/simple/purple/hidden,
+/obj/machinery/portable_atmospherics/canister/air,
+/obj/machinery/atmospherics/components/unary/portables_connector/layer2{
+	dir = 1;
+	name = "Air connector port"
+	},
+/obj/effect/turf_decal/siding/black{
+	dir = 4
+	},
+/obj/effect/turf_decal/corner/opaque/syndiered{
+	layer = 2.039
+	},
 /obj/effect/turf_decal/industrial/outline/red,
-/obj/machinery/teleport/hub,
-/obj/structure/catwalk/over/plated_catwalk/dark,
-/turf/open/floor/plasteel/telecomms_floor,
+/turf/open/floor/plasteel/tech,
 /area/ship/bridge)
 "MW" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
+	},
 /obj/effect/turf_decal/corner/opaque/syndiered,
 /obj/effect/turf_decal/corner/opaque/bar{
 	dir = 8
 	},
-/obj/machinery/teleport/station,
-/turf/open/floor/plasteel/mono/dark,
+/turf/open/floor/plasteel/tech,
 /area/ship/bridge)
 "OM" = (
 /obj/machinery/door/airlock/security/glass{
@@ -735,14 +754,17 @@
 /turf/open/floor/plasteel/tech/grid,
 /area/ship/bridge)
 "Ql" = (
-/obj/structure/catwalk/over/plated_catwalk/dark,
-/turf/open/floor/plating,
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 1
+	},
+/turf/open/floor/plasteel/tech,
 /area/ship/bridge)
 "QD" = (
 /obj/structure/marker_beacon{
 	picked_color = "Burgundy"
 	},
 /obj/structure/catwalk,
+/obj/effect/turf_decal/trimline/opaque/syndiered,
 /turf/open/floor/engine/hull/reinforced,
 /area/ship/bridge)
 "QF" = (
@@ -764,50 +786,58 @@
 /obj/structure/chair/comfy/shuttle{
 	dir = 1
 	},
-/obj/effect/turf_decal/siding/thinplating/dark{
-	color = "#730622"
-	},
-/obj/effect/turf_decal/trimline/opaque/syndiered/corner{
-	dir = 8
-	},
 /obj/effect/turf_decal/trimline/transparent/vired/arrow_ccw{
 	dir = 4
 	},
 /obj/effect/turf_decal/trimline/transparent/vired/arrow_cw{
 	dir = 8
+	},
+/obj/effect/turf_decal/spline/fancy/opaque/black{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/opaque/syndiered/corner{
+	dir = 8;
+	layer = 2.039
+	},
+/obj/effect/turf_decal/siding/thinplating/dark{
+	color = "#730622"
 	},
 /turf/open/floor/plasteel/mono/dark,
 /area/ship/bridge)
 "Sm" = (
-/obj/effect/turf_decal/corner/opaque/bar{
-	dir = 4
+/obj/effect/turf_decal/siding/thinplating/dark{
+	color = "#730622"
 	},
-/obj/effect/turf_decal/corner/opaque/syndiered,
-/obj/machinery/atmospherics/components/unary/portables_connector/layer2{
-	dir = 8;
-	name = "Air connector port"
-	},
-/obj/machinery/portable_atmospherics/canister/air,
+/obj/effect/turf_decal/industrial/outline/red,
+/obj/machinery/teleport/hub,
+/obj/structure/catwalk/over/plated_catwalk/dark,
 /obj/structure/window/plasma/reinforced{
 	dir = 1
 	},
-/turf/open/floor/plasteel/tech,
+/turf/open/floor/plasteel/telecomms_floor,
 /area/ship/bridge)
 "Tn" = (
 /obj/structure/chair/comfy/shuttle,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer2,
-/obj/effect/turf_decal/siding/thinplating/dark{
-	color = "#730622";
-	dir = 1
-	},
-/obj/effect/turf_decal/trimline/opaque/syndiered/corner{
-	dir = 1
-	},
 /obj/effect/turf_decal/trimline/transparent/vired/arrow_cw{
 	dir = 4
 	},
 /obj/effect/turf_decal/trimline/transparent/vired/arrow_ccw{
 	dir = 8
+	},
+/obj/effect/turf_decal/spline/fancy/opaque/black{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/opaque/syndiered/corner{
+	dir = 1;
+	layer = 2.039
+	},
+/obj/effect/turf_decal/siding/thinplating/dark{
+	color = "#730622";
+	dir = 1
+	},
+/obj/machinery/computer/helm/viewscreen/directional/north{
+	pixel_x = 15
 	},
 /turf/open/floor/plasteel/mono/dark,
 /area/ship/bridge)
@@ -846,7 +876,7 @@
 	pixel_x = 8;
 	layer = 3.21
 	},
-/turf/open/floor/plasteel/tech,
+/turf/open/floor/plasteel/telecomms_floor,
 /area/ship/bridge)
 "WM" = (
 /obj/structure/table/optable,
@@ -905,13 +935,22 @@
 	dir = 1
 	},
 /obj/item/radio/intercom/directional/north{
-	pixel_y = 2;
-	pixel_x = 0
+	pixel_y = -2;
+	pixel_x = -9
 	},
 /obj/structure/table/reinforced,
 /obj/item/radio/intercom/wideband/directional/north{
-	pixel_x = 0;
-	pixel_y = 12
+	pixel_x = -9;
+	pixel_y = 8
+	},
+/obj/machinery/newscaster/directional/west{
+	pixel_y = 29;
+	pixel_x = -11;
+	dir = 1
+	},
+/obj/machinery/jukebox/boombox{
+	pixel_x = 2;
+	pixel_y = 6
 	},
 /turf/open/floor/plasteel/tech,
 /area/ship/bridge)
@@ -965,7 +1004,7 @@
 /obj/machinery/atmospherics/pipe/simple/purple/hidden{
 	dir = 9
 	},
-/turf/open/floor/plasteel/mono/dark,
+/turf/open/floor/engine/hull/reinforced/interior,
 /area/ship/bridge)
 
 (1,1,1) = {"

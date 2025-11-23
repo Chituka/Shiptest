@@ -5,6 +5,7 @@
 	icon_state = "cablerelay"
 	plane = FLOOR_PLANE
 	layer = WIRE_LAYER
+	anchored = 1
 
 /obj/structure/powerline/broken1
 	icon_state = "cablerelay-broken-cable"
@@ -18,11 +19,12 @@
 
 /obj/machinery/porta_turret/ship/syndicate/capital
 	name = "Coherator-class Super-Heavy Laser Turret"
-	desc = "Heavy assault turret, that was designed to take down space ships. Yet this one is in disarray and now it is used for anti-infantry."
+	desc = "Heavy assault turret, that was designed to take down spaceships. Yet this one is in disarray and now it is used for anti-infantry purposes."
 	icon = 'mod_celadon/_storage_icons/icons/turret_96x96.dmi'
 	icon_state = "standard"
 	base_icon_state = "standard"
-	active_power_usage = 15000
+	reqpower = 10000 // за каждый выстрел, коих у турели 4, т.е. за залп сеть нагружается на 40 киловатт в нелетале и 80 кВатт в летале
+	active_power_usage = 15000 // не работает бтв
 	stun_projectile = /obj/projectile/beam/hitscan/disabler/heavy
 	stun_projectile_sound = 'sound/weapons/gun/laser/heavy_laser.ogg'
 	lethal_projectile = /obj/projectile/beam/hitscan/laser/capital
@@ -32,9 +34,12 @@
 	burst_delay = 0.5
 	burst_size = 4
 	spread = 20
-	reaction_time = 25
+	reaction_time = 30 // 3 секунды перед выстрелом, есть время убежать или попытаться нанести 140 урона турели, что спокойно возможно
+
 	max_integrity = 350
 	integrity_failure = 0.6
+	armor = list("melee" = 50, "bullet" = 50, "laser" = 50, "energy" = 50, "bomb" = 70, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 90)
+
 	pixel_y = -32
 	pixel_x = -32
 

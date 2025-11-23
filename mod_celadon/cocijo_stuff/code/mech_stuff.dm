@@ -1,6 +1,8 @@
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/slugthrower
-	name = "\improper GEC \"Ballista\" Exosuit Slug Thrower"
-	desc = "A weapon for combat exosuits. Shoots heavy slugs at high-speed."
+	name = "GEC \"Ballista\" Exosuit Slug Thrower"
+	desc = "A weapon for combat exosuits. It is a hybrid electromagnetic weapon that shoots heavy slugs at high-speed. \n\
+		Being a combination of powder and gauss, it uses magnetic cumulation generator, that charges capacitors for this gun from each detonation of combustible component inside the 'semi-regular' casing. \n\
+		Basically, a down-sized version Trebuchet."
 	icon = 'mod_celadon/_storage_icons/icons/items/weapons/mecha_equipment.dmi'
 	icon_state = "mecha_slugthrower"
 	energy_drain = 500
@@ -37,8 +39,10 @@
 	ammo_type = "heavy_slug"
 
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/slugthrower_shoulder
-	name = "\improper GEC \"Trebuchet\" ESMSSSHSL"
-	desc = "Exosuit Shoulder-Mounted Single-Shot Super-Heavy Slug Launcher... That's way too many words for you to proccess, but it is certainly a weapon for combat exosuits and it shoots super-heavy slugs at extremely low speed."
+	name = "GEC \"Trebuchet\" ESMSSSHSL"
+	desc = "Exosuit Shoulder-Mounted Single-Shot Super-Heavy Slug Launcher... That's way too many words for you to proccess, but it is certainly a weapon for combat exosuits. \n\
+		It is a hybrid of hybrid electromagnetic weapon that shoots super-heavy slugs at extremely low speed. \n\
+		Being a combination of powder, railgun and gauss, it uses magnetic cumulation generator, that charges capacitors for this gauss-rail monstriocity from each detonation of combustible component inside the canister."
 	icon = 'mod_celadon/_storage_icons/icons/items/weapons/mecha_equipment.dmi'
 	icon_state = "mecha_slugthrower_shoulder"
 	energy_drain = 500
@@ -90,7 +94,7 @@
 
 /obj/item/mecha_ammo/super_heavy_slug
 	name = "Super-Heavy Slug container"
-	desc = "This is a container for a super-heavy slug container. This one feels really heavy."
+	desc = "This is a container for a super-heavy slug, designed for magnetic cumulation generator, retaining high durability for protecting externals from explosive compound inside even if it explodes... Always when it explodes. This one feels really heavy."
 	w_class = WEIGHT_CLASS_NORMAL
 	icon = 'mod_celadon/_storage_icons/icons/items/weapons/ammo/mecha_ammo.dmi'
 	icon_state = "super_heavy_slug"
@@ -100,5 +104,5 @@
 	ammo_type = "super_heavy_slug"
 
 /obj/item/mecha_ammo/super_heavy_slug/update_ammo_name()
-	if(!rounds)
+	if(rounds == 0)
 		qdel(src)

@@ -243,3 +243,12 @@
 		/obj/item/chisel)
 	crate_type = /obj/structure/closet/crate/privatecrate
 	crate_name = "private art crate"
+
+/*
+	MARK: DNA PROBE
+*/
+/datum/supply_pack/faction/independent/tools/dna_probe
+	name = "DNA sampler"
+	desc = "Содержит в себе необходимый инструмент для сбора генетических образцов в DNA Vault."
+	contains = list(/obj/item/dna_probe)
+	cost = 250

@@ -13,5 +13,6 @@
 #include "code/turfs.dm"
 #include "code/structures.dm"
 #include "code/gravity_generator.dm"
+#include "code/mounted.dm"
 
 #endif

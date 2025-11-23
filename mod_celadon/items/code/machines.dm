@@ -12,3 +12,13 @@
 	component_parts += new /obj/item/stock_parts/micro_laser/quadultra(null)
 	component_parts += new /obj/item/stock_parts/micro_laser/quadultra(null)
 	RefreshParts()
+
+/obj/machinery/atmospherics/components/unary/thermomachine/freezer/tier2/Initialize()
+	. = ..()
+	component_parts = list()
+	component_parts += new /obj/item/stack/sheet/glass(null)
+	component_parts += new /obj/item/stock_parts/matter_bin/adv(null)
+	component_parts += new /obj/item/stock_parts/matter_bin/adv(null)
+	component_parts += new /obj/item/stock_parts/micro_laser(null)
+	component_parts += new /obj/item/stock_parts/micro_laser(null)
+	RefreshParts()

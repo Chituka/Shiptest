@@ -193,7 +193,7 @@
 
 /obj/item/gun/ballistic/revolver/fdl
 	name = "\improper FDL-12 revolver"
-	desc = "Also known as Fer-de-Lance, this revolver is a highly experimental technology, firing 12.5mm rounds at unimaginable velocity."
+	desc = "Also known as Fer-de-Lance, this revolver is a highly experimental technology made by combined efforts of the GEC and Scarborough Arms, firing 12.7x55mm rounds at unimaginable velocity."
 	icon = 'mod_celadon/_storage_icons/icons/items/weapons/cocijo_guns.dmi'
 	lefthand_file = 'mod_celadon/_storage_icons/icons/items/weapons/in_hands/fdl_lefthand.dmi'
 	righthand_file = 'mod_celadon/_storage_icons/icons/items/weapons/in_hands/fdl_righthand.dmi'
@@ -212,6 +212,15 @@
 	allowed_ammo_types = list(
 	/obj/item/ammo_box/magazine/internal/cylinder/a127mm,
 	)
+
+/obj/item/gun/ballistic/revolver/fdl/examine_more(mob/user)
+	. = ..()
+	. += span_warning("This piece of techonology is a culmination of GEC ingenuity and perseverance, being a combination of regular chemical weapon, gauss and railgun technologies and, especially, magnetic cumulation generator. \n\
+						This majesty of innovation is a complex weaponry, miniaturized after several attempts which are mech weapons. \n\
+						The first stage: the chemical component is activated and explodes, initiating movement and, crucially, generating a powerful current pulse by magnetic cumulation generator in chamber REQUIRED for railgun component of gun for the next stage. \n\
+						The second stage: the magnetic current generated from previous stage is used for charging rails, which imparts colossal acceleration to projectile. \n\
+						The third stage: coil component stabilizes the shot and increases the accuracy, spinning the projectile and correcting the trajectory. \n\
+						All these stages lead to incredible velocity and power for gradual disassembly of even mechs. Yet the complexity and requirement for this fascination lead to incredible pricey bullets and recoil.")
 
 /obj/item/gun/ballistic/revolver/fdl/ComponentInitialize()
 	. = ..()
@@ -242,10 +251,155 @@
 ///////////////
 /// ПУЛЕМЕТ ///
 ///////////////
+/obj/item/gun
+	var/recoil_mounted = 1 // I'M SORRY
+	var/spread_mounted = 1
 
+/obj/item/gun/ballistic/automatic/hmg/superheavy
+	name = "Super-Heavy Machinegun"
+	desc = "Sexy."
+	bad_type = /obj/item/gun/ballistic/automatic/hmg
+	w_class = WEIGHT_CLASS_HUGE
+	slot_flags = 0
+	weapon_weight = WEAPON_VERY_HEAVY
+	burst_size = 1
+	actions_types = list(/datum/action/item_action/deploy_bipod)
+	drag_slowdown = 3 // CARRY THIS, YOU B-
+	fire_delay = 0.2 SECONDS
+
+	gun_firemodes = list(FIREMODE_FULLAUTO)
+	default_firemode = FIREMODE_FULLAUTO
+
+	wield_slowdown = HMG_SLOWDOWN
+
+	spread = 12
+	spread_unwielded = 35
+	recoil = 10 //it's firing 12X XXX XXXXXXXxXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+	recoil_unwielded = 60 // spine-breaking feature next
+	recoil_mounted = 2
+	spread_mounted = 2
+
+	gunslinger_recoil_bonus = 2
+	gunslinger_spread_bonus = 20
+
+	///does this have a bipod?
+	has_bipod = FALSE
+	///is the bipod deployed?
+	bipod_deployed = FALSE
+	///how long do we need to deploy the bipod?
+	deploy_time = 0.5 SECONDS
+
+	///does this have a cover?
+	var/has_cover = FALSE
+	///is the cover opened? Yeah, we reuse it here, but.. why not
+	sealed_magazine = TRUE
+	var/cover_sound = 'sound/weapons/gun/l6/l6_door.ogg'
+	var/cover_sound_volume = 80
+
+	///we add these two values to recoi/spread when we have the bipod deployed
+	deploy_recoil_bonus = -1
+	deploy_spread_bonus = -5
+
+	deployable_on_structures = list(
+	/obj/structure/table,
+	/obj/structure/barricade,
+	/obj/structure/bed,
+	/obj/structure/chair,
+	/obj/structure/railing,
+	/obj/structure/flippedtable
+	)
+	wear_minor_threshold = 300
+	wear_major_threshold = 900
+	wear_maximum = 1500
+
+/obj/item/gun/ballistic/automatic/hmg/superheavy/update_overlays()
+	. = ..()
+	if(has_cover)
+		. += "[icon_state]_[sealed_magazine ? "closed" : "open"]"
+
+/obj/item/gun/ballistic/automatic/hmg/superheavy/echis
+	name = "SHMG \"Echis\""
+	desc = "Super-Heavy Machinegun \"Echis\". The beast of the beast"
+	icon = 'mod_celadon/_storage_icons/icons/items/weapons/mounted_machinegun.dmi'
+	lefthand_file = 'icons/obj/guns/manufacturer/inteq/lefthand.dmi'
+	righthand_file = 'icons/obj/guns/manufacturer/inteq/righthand.dmi'
+	mob_overlay_icon = 'icons/obj/guns/manufacturer/inteq/onmob.dmi'
+
+	icon_state = "kord"
+	item_state = "kord"
+
+	manufacturer = MANUFACTURER_SCARBOROUGH
+
+	show_magazine_on_sprite = TRUE
+	show_magazine_on_sprite_ammo = TRUE
+	mag_display_ammo = TRUE
+	has_cover = TRUE
+
+	fire_sound = 'sound/weapons/gun/hmg/hmg.ogg'
+	rack_sound = 'mod_celadon/_storage_sounds/sound/gun/kord/temp_kord_cocked.ogg'
+	rack_sound_volume = 80
+	load_sound = 'mod_celadon/_storage_sounds/sound/gun/kord/temp_kord_reload.ogg'
+	eject_sound = 'mod_celadon/_storage_sounds/sound/gun/kord/temp_kord_unload.ogg'
+
+	gun_firemodes = list(FIREMODE_FULLAUTO)
+	default_firemode = FIREMODE_FULLAUTO
+
+	fire_delay = 0.2 SECONDS
+
+	unique_mag_sprites_for_variants = TRUE
+
+	slot_flags = ITEM_SLOT_BACK
+	bolt_type = BOLT_TYPE_STANDARD
+	tac_reloads = FALSE
+
+	wield_slowdown = HMG_SLOWDOWN
+
+	default_ammo_type = /obj/item/ammo_box/magazine/turret
+	allowed_ammo_types = list(
+		/obj/item/ammo_box/magazine/turret,
+		/obj/item/ammo_box/magazine/turret/small
+	)
+
+	spread = 12
+	spread_unwielded = 35
+	recoil = 10
+	recoil_unwielded = 60
+
+/obj/item/gun/ballistic/automatic/hmg/superheavy/attackby(obj/item/A, mob/user, params)
+	if(istype(A, /obj/item/ammo_box/magazine))
+		if(has_cover && sealed_magazine)
+			to_chat(user, span_notice("Cover is closed! Open it to change the magazine!"))
+			return
+	. = ..()
+
+/obj/item/gun/ballistic/automatic/hmg/superheavy/AltClick(mob/user)
+	. = ..()
+	if(!user.incapacitated())
+		playsound(src, cover_sound, cover_sound_volume, TRUE)
+		sealed_magazine = !sealed_magazine
+		update_appearance()
+		// icon_state = "[initial(icon_state)]_[sealed_magazine ? "closed" : "open"]"
+		to_chat(user, span_danger("I [sealed_magazine ? "close" : "open"] the cover."))
+
+/obj/item/gun/ballistic/automatic/hmg/superheavy/process_fire(atom/target, mob/living/user, message, params, zone_override, bonus_spread)
+	if(has_cover)
+		if(!sealed_magazine)
+			to_chat(user, span_userdanger("The cover is [prob(10) ? "fucking" : ""] open!"))
+			return
+	. = ..()
 
 ///Used to chamber a new round and eject the old one. Also returns True of False
 /obj/machinery/deployable_turret/cocijo/proc/chamber_round(keep_bullet = FALSE)
+	if (chambered || !magazine)
+		return
+	if (magazine.ammo_count())
+		if(doesnt_keep_bullet)
+			chambered = magazine.get_round(FALSE)
+		else
+			chambered = magazine.get_round(keep_bullet || bolt_type == BOLT_TYPE_NO_BOLT)
+		if (bolt_type != BOLT_TYPE_OPEN)
+			chambered.forceMove(src)
+/*
 	if (chambered || !magazine)
 		if (bolt_type == BOLT_TYPE_OPEN)
 			chambered = null
@@ -255,27 +409,48 @@
 		if (bolt_type != BOLT_TYPE_OPEN)
 			chambered.forceMove(src)
 	return TRUE
-
+*/
 /obj/item/ammo_box/magazine/turret
 	name = "'Писятник'"
+	icon = 'mod_celadon/_storage_icons/icons/items/weapons/ammo/machinegun.dmi'
+	base_icon_state = "kord_mag"
+	icon_state = "kord_mag-1"
 	max_ammo = 50
-	w_class = WEIGHT_CLASS_BULKY
 	ammo_type = /obj/item/ammo_casing/p50
 	caliber = ".50 BMG"
+	w_class = WEIGHT_CLASS_BULKY
+	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
+/obj/item/ammo_box/magazine/turret/update_icon_state()
+	. = ..()
+	icon_state = "[base_icon_state]-[!!ammo_count()]"
 
 /obj/item/ammo_box/magazine/turret/small
 	name = "'Десятник'"
+	icon = 'mod_celadon/_storage_icons/icons/items/weapons/ammo/machinegun.dmi'
+	icon_state = "kord"
 	max_ammo = 10
 	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/machinery/deployable_turret/cocijo
-	name = "Testname"
+	name = "HMG \"Echis\""
 	desc = "Testdesc"
+	icon = 'mod_celadon/_storage_icons/icons/items/weapons/mounted_machinegun.dmi'
+	icon_state = "kord_deployed"
 	var/message_cooldown = 10
 	var/rapid_turn_cooldown = 5
 	control_type = /obj/item/gun_control/cocijo
 	firesound = 'sound/weapons/gun/hmg/hmg.ogg'
+// переделать спрайтики так, чтобы у нас было стейт с открытой крышкой и с закрытой. Магазин это единственное, что будет модульно.
+// таким образом нам нужно реализовать добавление спрайта магазина (с пулями и без)
+// что я хочу. Это сначала сделать механ того, что пулемет полностью отдельно, вытаскивание пушки тоже полностью отдельно.
+// Т.е. сейчас. Есть пулемет как структура.
+	var/rack_sound = 'mod_celadon/_storage_sounds/sound/gun/kord/temp_kord_cocked.ogg'
+	var/rack_sound_volume = 60
+	var/rack_sound_vary = TRUE
+	var/reload_sound = 'mod_celadon/_storage_sounds/sound/gun/kord/temp_kord_reload.ogg'
+	var/unload_sound = 'mod_celadon/_storage_sounds/sound/gun/kord/temp_kord_unload.ogg'
+	var/cover_sound = 'sound/weapons/gun/l6/l6_door.ogg'
 
 	var/datum/map_zone/mapzone // used for far_sound, so we don't search in GLOB every single shot
 	var/obj/item/ammo_box/magazine/magazine
@@ -284,17 +459,22 @@
 	var/magazine_wording = "Magazine"
 	var/bolt_type = BOLT_TYPE_STANDARD
 	var/cover_open = FALSE
+	/// Doesn't ever keep ammo when loading a new round into the chamber. Mainly for BOLT_TYPE_NO_BOLT guns.
+	var/doesnt_keep_bullet = FALSE
 
 /obj/machinery/deployable_turret/cocijo/interact(mob/user, special_state)
 	. = ..()
-	to_chat(user, span_notice("I rack the gun."))
 	if(chamber_round())
-		chambered.on_eject(user)
+		playsound(src, rack_sound, rack_sound_volume, rack_sound_vary)
+		to_chat(user, span_notice("I rack the gun."))
+		chambered.on_eject(src)
+	else
+		to_chat(user, span_notice("I try to rack the gun, but it's already racked."))
 
 /obj/machinery/deployable_turret/cocijo/AltClick(mob/user)
 	. = ..()
-	//playsound() сделать какой-нибудь звук
 	if(!user.incapacitated())
+		playsound(src, cover_sound, rack_sound_volume, TRUE) // сделать какой-нибудь звук
 		cover_open = !cover_open
 		to_chat(user, span_danger("I [cover_open ? "open" : "close"] the cover."))
 
@@ -304,6 +484,8 @@
 		if(!cover_open)
 			to_chat(over_user, span_danger("I need to open cover first!"))
 			return
+		playsound(src, unload_sound, rack_sound_volume, TRUE)
+		magazine.update_ammo_count()
 		over_user.put_in_hands(magazine)
 		magazine = null
 		if(bolt_type == BOLT_TYPE_OPEN)
@@ -319,6 +501,7 @@
 		to_chat(user, span_danger("Like a pro, I load the bullet directly into the [src]'s chamber."))
 
 	if(istype(A, /obj/item/gun_control))
+		playsound(src, rack_sound, rack_sound_volume, rack_sound_vary)
 		to_chat(user, span_notice("I rack the gun."))
 		chamber_round()
 
@@ -338,6 +521,7 @@
 		to_chat(user, span_warning("I need to open it's cover first!"))
 		return FALSE
 	if(user.transferItemToLoc(inserted_mag, src))
+		playsound(src, reload_sound, rack_sound_volume, TRUE)
 		magazine = inserted_mag
 		if (display_message)
 			to_chat(user, span_notice("You load a new [magazine_wording] into \the [src]."))
@@ -359,14 +543,14 @@
 	var/turf/T = get_turf(src)
 	mapzone = T.get_map_zone()
 	. = ..()
-
+/*
 /obj/machinery/deployable_turret/cocijo/checkfire(atom/targeted_atom, mob/user)
 	target = targeted_atom
 	if(target == user || target == get_turf(src))
 		return
 	target_turf = get_turf(target)
 	fire_helper(user)
-
+*/
 /obj/machinery/deployable_turret/cocijo/fire_helper(mob/user)
 	if(user.incapacitated() || !(user in buckled_mobs))
 		return FALSE
@@ -404,9 +588,12 @@
 		else //Entries in the list should only ever be items or null, so if it's not an item, we can assume it's an empty hand
 			var/TC = new control_type(src) //саси
 			M.put_in_hands(TC)
-	M.pixel_y = 14
+	// M.pixel_y = 14
+	M.setDir(dir)
+	update_pixels(M)
+	//direction_track(M)
 	layer = ABOVE_MOB_LAYER
-	setDir(SOUTH)
+	//setDir(SOUTH)
 	playsound(src,'sound/mecha/mechmove01.ogg', 50, TRUE)
 	if(M.client)
 		M.client.view_size.setTo(view_range)
@@ -464,3 +651,28 @@
 	if(get_dir(user, targeted_atom) in allowed_dirs)
 		E.calculated_projectile_vars = calculate_projectile_angle_and_pixel_offsets(user, modifiers)
 		E.checkfire(targeted_atom, user)
+
+///Updates the pixel offset of user so it looks like their manning the gun from behind
+/obj/machinery/deployable_turret/proc/update_pixels(mob/user, mounting = TRUE) // mounting = TRUE пока на время
+	if(!mounting)
+		//animate(user, pixel_x=user_old_x, pixel_y=user_old_y, 4, 1)
+		return
+	var/diff_x = 0
+	var/diff_y = 0
+	// на время
+	var/user_old_x = 0
+	var/user_old_y = 0
+	switch(dir)
+		if(NORTH)
+			diff_y = -16 + user_old_y
+			diff_x = 0
+		if(SOUTH)
+			diff_y = 16 + user_old_y
+			diff_x = 0
+		if(EAST)
+			diff_x = -16 + user_old_x
+			diff_y = 0
+		if(WEST)
+			diff_x = 16 + user_old_x
+			diff_y = 0
+	//animate(user, pixel_x=diff_x, pixel_y=diff_y, 0.4 SECONDS)

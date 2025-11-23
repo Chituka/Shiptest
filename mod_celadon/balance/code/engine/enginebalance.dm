@@ -41,7 +41,7 @@
 	icon_state_off = "huge_engine"
 	icon_state_closed = "huge_engine"
 	icon_state_open = "huge_engine"
-	thrust = 300 //it would never get its thrust without t4 components
+	thrust = 300 //it would never get its thrust even with t4 components
 	power_per_burn = 2400000
 	pixel_y = -32
 	pixel_x = -32
@@ -56,7 +56,7 @@
 /obj/machinery/power/smes/shuttle/massive
 	name = "massive precharger"
 	desc = "A high-capacity, high transfer superconducting magnetic energy storage unit specially made for use with shuttle engines."
-	input_level = 200000
+	input_level = 100000
 	input_level_max = 200000
 	output_level = 200000
 	input_level_max = 400000

@@ -62,7 +62,7 @@
 
 /datum/mod_theme/atmospheric/gec
 	name = "Modified Atmospheric"
-	desc = "Heavily-modified Atmospheric Modsuit made by Nakamura Engineering and changed by GEC. This modification DOES NOT require a tremendous amount of energy to operate." //Заменить
+	desc = "Heavily-modified Atmospheric Modsuit made by Nakamura Engineering and changed by GEC." //Заменить
 	default_skin = "gec"
 	armor = list("melee" = 40, "bullet" = 20, "laser" = 30, "energy" = 25, "bomb" = 90, "bio" = 100, "rad" = 90,"fire" = 100, "acid" = 100)
 	atom_flags = PREVENT_CONTENTS_EXPLOSION_1

@@ -6,12 +6,11 @@
 	on = 0
 	setting = 0
 	charge_count = 0
-	charging_state = 2
+	charging_state = 0
 
 /obj/machinery/gravity_generator/main/station/deactivated/Initialize()
 	. = ..()
-	setup_parts()
-	update_list()
+	middle.cut_overlays()
 
 /obj/machinery/gravity_generator/main/Destroy() // If we somehow get deleted, remove all of our other parts.
 	investigate_log("was destroyed!", INVESTIGATE_GRAVITY)
@@ -46,6 +45,8 @@
 // Set the state of the gravity.
 /obj/machinery/gravity_generator/main/set_state(new_state)
 	charging_state = POWER_IDLE
+	if (new_state == on) // Фикс того, что он решает изводить тревогами при переключении лампочек...
+		return
 	on = new_state
 	change_setting(new_state)
 	if(on)
@@ -90,7 +91,7 @@
 
 			if(on)
 				to_chat(M,span_danger("Gravity seems to be restored. Hyperspace is safe for now."))
-				M.playsound_local(T, null, 100, 1, 0.5, S = end_sound)
+				M.playsound_local(T, null, 100, 1, 0.5,distance_multiplier = 0, S = end_sound)
 			else
 				to_chat(M,span_danger("Gravity has been turned off. Hyperspace is dangerous!"))
 
@@ -105,7 +106,7 @@
 			continue
 		if(M.client)
 			shake_camera(M, 5, 1)
-			M.playsound_local(T, null, 10, 1, 0.5, S = alert_sound)
+			M.playsound_local(T, null, 10, 1, 0.5, distance_multiplier = 0, S = alert_sound)
 			if((charge_count == 10) && (charging_state == POWER_UP))
 				M.playsound_local(M, heart_beat_sound, 40, 0, channel = CHANNEL_HEARTBEAT, use_reverb = FALSE)
 			if((charge_count == 90) && (charging_state == POWER_DOWN))
@@ -116,16 +117,12 @@
 				to_chat(M,span_danger("I feel that gravity is slowly fading away. I should move away from the hyperspace!"))
 
 /obj/machinery/gravity_generator/main/proc/set_mapzone_list()
-	var/active = FALSE
 	for (var/I in mapzone.gravity_generators)
 		var/obj/machinery/gravity_generator/main/GG = I
 		if(GG.on == 1)
-			active = TRUE
-	// if(active)
-	// 	mapzone.has_active_gg = active
-	// else
-	// 	mapzone.has_active_gg = active
-	//- РЕАЛИЗАЦИЯ НА УРОВНЕ РЕШЕНИЯ ЗАДАЧ ПО ПРОГРАММИРОВАНИЮ НА ПИТОНЕ ЗА 10 КЛАСС
+			mapzone.has_active_gg = TRUE
+			return
+	mapzone.has_active_gg = FALSE
 
 // Charge/Discharge and turn on/off gravity when you reach 0/100 percent.
 // Also emit radiation and handle the overlays.
@@ -140,6 +137,8 @@
 		else
 			if(charging_state == POWER_UP)
 				charge_count += 2
+				if(charge_count>100)
+					charge_count = 100
 			else if(charging_state == POWER_DOWN)
 				charge_count -= 0.5
 

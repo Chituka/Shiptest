@@ -63,3 +63,45 @@
 	contains = list(
 		/obj/item/mecha_parts/mecha_equipment/conversion_kit/dark_gygax
 	)
+
+/*
+weapons
+*/
+
+/datum/supply_pack/faction/syndicate/mech/weapon
+	name = "Exosuit weapons crate"
+	crate_type = /obj/structure/closet/crate/secure/weapon
+	crate_name = "exosuit weapon crate"
+
+/datum/supply_pack/faction/syndicate/mech/gun/mecha_slugthrower
+	name = "GEC \"Ballista\" Exosuit Slug Thrower"
+	desc = "A experimental semi-impovised weapon for combat exosuits. Slowly shoots heavy slugs at high speed, consuming a lot of energy. Deals incredible amount of damage every shot. Requires heavy slugs to fire."
+	contains = list(/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/slugthrower)
+	cost = 1750
+
+/datum/supply_pack/faction/syndicate/mech/gun/mecha_slugthrower_shoulder
+	name = "GEC \"Trebuchet\" ESMSSSHSL"
+	desc = "A experimental semi-impovised weapon for combat exosuits. Shoots only one super-heavy slug at extremely low speed, consuming A LOT OF energy. Needs to be reloaded after each shot. Only one shot. Only one kill. Seems fine."
+	contains = list(/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/slugthrower_shoulder)
+	cost = 1200
+
+/*
+ammo
+*/
+
+/datum/supply_pack/faction/syndicate/mech/ammo
+	name = "Exosuit ammo crate"
+	crate_type = /obj/structure/closet/crate/secure/gear
+	crate_name = "exosuit ammo crate"
+
+/datum/supply_pack/faction/syndicate/mech/ammo/heavy_slug
+	name = "Heavy Slug ammo"
+	desc = "A box of ferromagnetic heavy slugs for use with GEC \"Ballista\" Slug Thrower. Contains 24 rounds."
+	contains = list(/obj/item/mecha_ammo/heavy_slug)
+	cost = 250
+
+/datum/supply_pack/faction/syndicate/mech/ammo/super_heavy_slug
+	name = "Super-Heavy Slug container"
+	desc = "A high-tech container with incredible large projectile for GEC \"Trebuchet\" ESMSSSHSL."
+	contains = list(/obj/item/mecha_ammo/super_heavy_slug)
+	cost = 100
