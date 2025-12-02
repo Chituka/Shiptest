@@ -148,6 +148,10 @@
 	if((user == occupant) && user.canUseTopic(src))
 		toggle_strafe()
 
+/obj/mecha/ShiftClick/(mob/living/user)
+	if((user == occupant) && user.canUseTopic(src))
+		toggle_strafe()
+
 /obj/mecha/proc/toggle_strafe()
 	strafe = !strafe
 
