@@ -32,8 +32,9 @@
 	power_per_burn = 250000
 
 /obj/machinery/power/shuttle/engine/electric/huge
-	name = "huge thruster"
-	desc = "A A thruster that uses insane amount of energy to expel super-accelerated charged particles to generate thrust."
+	name = "\"Excelsior\" marching plasma ion thruster"
+	desc = "\"Excelsior\"-type marching plasma ion thruster that uses insane amount of energy to expel super-accelerated charged particles to generate thrust."
+	atom_integrity = 600
 	max_integrity = 600
 	circuit = /obj/item/circuitboard/machine/shuttle/engine/electric/huge
 	icon = 'mod_celadon/_storage_icons/icons/structures/3x3.dmi'
@@ -49,6 +50,7 @@
 	bound_x = -32
 	bound_height = 96
 	bound_width = 96
+
 /obj/machinery/power/shuttle/engine/electric/huge/default_deconstruction_crowbar(obj/item/crowbar/C)
 	//you can't crowbar it
 	return FALSE

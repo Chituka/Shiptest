@@ -21,6 +21,7 @@
 	item_state = "Carapace"
 	clothing_flags = STOPSPRESSUREDAMAGE
 	resistance_flags = FIRE_PROOF | ACID_PROOF
+	obj_flags = INFINITE_RESKIN
 
 	unique_reskin = list(\
 		"2nd Battlegroup" = "2nd_Battlegroup", // /obj/item/clothing/suit/armor/ngr/captain
@@ -42,6 +43,7 @@
 	icon_state = "syndie_beret"
 	item_state = "hosformal"
 	clothing_flags = STOPSPRESSUREDAMAGE
+	obj_flags = INFINITE_RESKIN
 	strip_delay = 0
 
 	unique_reskin = list(\

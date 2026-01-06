@@ -217,3 +217,42 @@
 /datum/outfit/job/cel/syndicate/assistant/twink/post_equip(mob/living/carbon/human/H)
 	. = ..()
 	assign_codename(H)
+
+
+
+// MARK: Cocijo
+
+/datum/outfit/job/cel/syndicate/captain/cocijo
+	name = "Flotilla Admiral (Cocijo)"
+	id_assignment = "Flotilla Admiral"
+
+	uniform = /obj/item/clothing/under/syndicate/coldres
+	head = null
+	gloves = /obj/item/clothing/gloves/combat/insul
+	shoes = /obj/item/clothing/shoes/combat/swat
+	ears = /obj/item/radio/headset/syndicate/alt/captain
+	mask = /obj/item/clothing/mask/gas/syndicate/voicechanger
+	suit = null
+	belt = null
+	backpack_contents = list(/obj/item/card/id/suns/secret/white)
+	implants = list(/obj/item/implant/krav_maga)
+
+/datum/outfit/job/cel/syndicate/captain/cocijo/post_equip(mob/living/carbon/human/H)
+	. = ..()
+	assign_codename(H)
+
+/datum/outfit/job/cel/syndicate/head_of_personnel/suns/cocijo
+	name = "Syndicate - Academic Staff (SUNS, Cocijo)"
+	backpack_contents = list(/obj/item/card/id/suns/secret/white, /obj/item/card/id/suns/secret/black)
+
+/datum/outfit/job/cel/syndicate/head_of_personnel/suns/cocijo/post_equip(mob/living/carbon/human/H)
+	. = ..()
+	assign_general_access(H)
+	assign_medical_access(H) // LET THE WAR BEGIN! :3
+
+/datum/outfit/job/cel/syndicate/assistant/suns/complete/cocijo
+	name = "Syndicate - Graduate (SUNS, Cocijo)"
+
+/datum/outfit/job/cel/syndicate/assistant/suns/complete/cocijo/post_equip(mob/living/carbon/human/H)
+	. = ..()
+	assign_general_access(H)

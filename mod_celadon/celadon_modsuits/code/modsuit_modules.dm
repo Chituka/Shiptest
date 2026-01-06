@@ -42,3 +42,14 @@
 	light_icon.appearance_flags = RESET_COLOR
 	light_icon.color = light_color
 	. += light_icon
+
+/obj/item/mod/module/flamethrower/on_select_use(atom/target)
+	. = ..()
+	if(!.)
+		return
+	var/obj/projectile/flame = new /obj/projectile/flamethrower(mod.wearer.loc)
+	flame.preparePixelProjectile(target, mod.wearer)
+	flame.firer = mod.wearer
+	playsound(src, 'sound/items/modsuit/flamethrower.ogg', 75, TRUE)
+	INVOKE_ASYNC(flame, TYPE_PROC_REF(/obj/projectile, fire))
+	drain_power(use_power_cost)

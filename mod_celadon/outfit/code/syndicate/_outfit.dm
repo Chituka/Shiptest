@@ -13,6 +13,16 @@
 	duffelbag = /obj/item/storage/backpack/duffelbag/syndie
 	courierbag = /obj/item/storage/backpack/messenger/sec
 
+/datum/outfit/job/cel/syndicate/proc/assign_medical_access(mob/living/carbon/human/H)
+	var/obj/item/card/id/I = H.get_idcard()
+	if(I)
+		I.access |= list(ACCESS_CHEMISTRY,ACCESS_MEDICAL,ACCESS_SURGERY)
+
+/datum/outfit/job/cel/syndicate/proc/assign_general_access(mob/living/carbon/human/H)
+	var/obj/item/card/id/I = H.get_idcard()
+	if(I)
+		I.access |= list(ACCESS_RESEARCH,ACCESS_HYDROPONICS,ACCESS_KITCHEN)
+
 //generates a codename and assigns syndicate access, used in the twinkleshine.
 /datum/outfit/job/cel/syndicate/proc/assign_codename(mob/living/carbon/human/H)
 	var/obj/item/card/id/I = H.get_idcard()

@@ -514,10 +514,10 @@ MARK: .50 BMG
 MARK: 12.7mm
 */
 
-/datum/supply_pack/faction/syndicate/ammo/a127mm
+/datum/supply_pack/faction/syndicate/ammo/a127_55mm
 	name = "box of 12.7x55mm ammo"
 	desc = "Contains a box with 12 rounds of 12.7x55mm. High damage, \"medium\" penetration. Typically used by FDL-12."
-	contains = list(/obj/item/storage/box/ammo/a127mm)
+	contains = list(/obj/item/storage/box/ammo/a127_55mm)
 	cost = 500
 
 /*

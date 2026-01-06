@@ -46,6 +46,9 @@
 	id = "pepegasandwich";
 	name = "Cargo Shutter"
 	},
+/obj/structure/cable{
+	icon_state = "0-2"
+	},
 /turf/open/floor/plasteel/tech/grid,
 /area/ship/bridge)
 "du" = (
@@ -73,6 +76,9 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer4{
 	dir = 8
 	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
 /turf/open/floor/plasteel/tech/grid,
 /area/ship/bridge)
 "dE" = (
@@ -84,6 +90,9 @@
 	id = "cocijo_subshuttle_engine";
 	name = "Двигательные задвижки";
 	pixel_x = -23
+	},
+/obj/structure/cable{
+	icon_state = "4-10"
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/ship/bridge)
@@ -503,6 +512,9 @@
 /obj/item/oxygen_candle{
 	pixel_x = -10
 	},
+/obj/structure/cable{
+	icon_state = "6-8"
+	},
 /turf/open/floor/plasteel/tech/grid,
 /area/ship/bridge)
 "Bj" = (
@@ -518,6 +530,9 @@
 	},
 /obj/effect/turf_decal/siding/thinplating/dark{
 	dir = 1
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
 /turf/open/floor/plasteel/tech/grid,
 /area/ship/bridge)
@@ -578,6 +593,7 @@
 	id = "pepegasandwich";
 	name = "Cargo Shutter"
 	},
+/obj/structure/cable,
 /turf/open/floor/plasteel/tech/grid,
 /area/ship/bridge)
 "Ez" = (
@@ -645,6 +661,9 @@
 	dir = 6
 	},
 /obj/machinery/holopad/emergency/command,
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
 /turf/open/floor/mineral/plastitanium,
 /area/ship/bridge)
 "Jn" = (
@@ -662,6 +681,12 @@
 	dir = 4;
 	id = "pepegasandwich";
 	name = "Cargo Shutter"
+	},
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/obj/structure/cable{
+	icon_state = "1-4"
 	},
 /turf/open/floor/plasteel/tech/grid,
 /area/ship/bridge)
@@ -736,6 +761,9 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
+/obj/structure/cable{
+	icon_state = "5-9"
+	},
 /turf/open/floor/plasteel/mono/dark,
 /area/ship/bridge)
 "PP" = (
@@ -750,6 +778,9 @@
 	},
 /obj/effect/turf_decal/siding/thinplating/dark{
 	dir = 1
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
 /turf/open/floor/plasteel/tech/grid,
 /area/ship/bridge)

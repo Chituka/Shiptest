@@ -131,9 +131,24 @@
 	if(p_shield)
 		phys_defence.Grant(user, src)
 
+/obj/mecha/RemoveActions(mob/living/user, human_occupant)
+	if(human_occupant)
+		eject_action.Remove(user)
+	internals_action.Remove(user)
+	cycle_action.Remove(user)
+	lights_action.Remove(user)
+	stats_action.Remove(user)
+	strafing_action.Remove(user)
+	if(zoom_action)
+		zoom_action.Remove(user)
+		user.client.view_size.zoomIn()
+	if(p_shield)
+		phys_defence.Remove(user)
+
 /obj/mecha/bullet_act(obj/projectile/Proj)
 	if(p_shield && p_shield.is_deployed && dir_check(Proj))
 		p_shield.bullet_act(Proj)
+		return
 	else
 		if(!enclosed && occupant && !silicon_pilot && !Proj.force_hit && (Proj.def_zone == BODY_ZONE_HEAD || Proj.def_zone == BODY_ZONE_CHEST)) //allows bullets to hit the pilot of open-canopy mechs
 			occupant.bullet_act(Proj) //If the sides are open, the occupant can be hit
@@ -143,17 +158,9 @@
 
 /obj/mecha/proc/dir_check(atom/target)
 	var/list/allowed_dirs = list(src.dir, turn(src.dir,45),turn(src.dir,-45))
-	if(p_shield && (get_dir(get_turf(src),get_turf(target)) in allowed_dirs))
+	if((get_dir(src,target) in allowed_dirs))
 		return TRUE
 	return FALSE
-
-/obj/mecha/bullet_act(obj/projectile/source)
-	if(p_shield && p_shield.is_deployed && dir_check(source))
-		if(shield_hit_sound)
-			playsound(src,shield_hit_sound,100,TRUE)
-		p_shield.bullet_act(source)
-	else
-		. = ..()
 
 /obj/item/mecha_parts/mecha_equipment/phys_shield
 	name = "Mecha Shield Module"

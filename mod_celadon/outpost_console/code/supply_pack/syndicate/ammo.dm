@@ -303,21 +303,21 @@ MARK: Ferro Lances
 /*
 MARK: 12.7mm
 */
-/datum/supply_pack/faction/syndicate/ammo/a127mm
+/datum/supply_pack/faction/syndicate/ammo/a127_55mm
 	name = "box of 12.7x55mm ammo"
 	desc = "Contains a box with 12 rounds of 12.7x55mm. High damage, \"medium\" penetration. Typically used by FDL-12."
-	contains = list(/obj/item/storage/box/ammo/a127mm)
+	contains = list(/obj/item/storage/box/ammo/a127_55mm)
 	cost = 500
 
-/datum/supply_pack/faction/syndicate/ammo/a127mm_ap
+/datum/supply_pack/faction/syndicate/ammo/a127_55mm_ap
 	name = "Luxurious case of 12.7x55mm AP ammo"
 	desc = "Contains a box with 6 rounds of 12.7x55mm AP. Pretty high damage, incredible penetration, that is on par with 50 BMG sniper rifles. Typically used by FDL-12."
-	contains = list(/obj/item/storage/fancy/cigarettes/cigars/a127mm)
+	contains = list(/obj/item/storage/fancy/cigarettes/cigars/a127_55mm)
 	cost = 500
 
-/datum/supply_pack/faction/syndicate/ammo/a127mm_alum
+/datum/supply_pack/faction/syndicate/ammo/a127_55mm_alum
 	name = "box of 12.7x55mm HP ammo"
 	desc = "Contains a box with 24 rounds of 12.7x55mm HP. Incredibly damage, \"low\" penetration. Typically used by FDL-12."
-	contains = list(/obj/item/storage/box/ammo/a127mm/alum)
+	contains = list(/obj/item/storage/box/ammo/a127_55mm/alum)
 	cost = 500
 

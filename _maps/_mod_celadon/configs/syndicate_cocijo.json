@@ -27,47 +27,47 @@
 	],
 	"job_slots": {
 		"Flotilla Admiral": {
-			"outfit": "/datum/outfit/job/syndicate/captain/cocijo",
+			"outfit": "/datum/outfit/job/cel/syndicate/captain/cocijo",
 			"officer": true,
 			"slots": 1
 		},
 		"Lieutenant": {
-			"outfit": "/datum/outfit/job/syndicate/hos/ngr",
+			"outfit": "/datum/outfit/job/cel/syndicate/hos/gorlex/lieutenant",
 			"officer": true,
 			"slots": 1
 		},
 		"Cybersun Medical Officer": {
-			"outfit": "/datum/outfit/job/syndicate/doctor/cybersun",
+			"outfit": "/datum/outfit/job/cel/syndicate/doctor/cybersun",
 			"slots": 2
 		},
 		"GEC Chief Engineer": {
-			"outfit": "/datum/outfit/job/syndicate/ce/gec",
+			"outfit": "/datum/outfit/job/cel/syndicate/ce/gec",
 			"officer": true,
 			"slots": 1
 		},
 		"GEC Engineer": {
-			"outfit": "/datum/outfit/job/syndicate/engineer/gec",
+			"outfit": "/datum/outfit/job/cel/syndicate/engineer/gec",
 			"slots": 2
 		},
 		"GEC Field Engineer": {
-			"outfit": "/datum/outfit/job/syndicate/engineer/gec",
+			"outfit": "/datum/outfit/job/cel/syndicate/atmos/gec",
 			"slots": 2
 		},
 		"Gorlex Operative": {
-			"outfit": "/datum/outfit/job/syndicate/security",
+			"outfit": "/datum/outfit/job/cel/syndicate/security/gorlex",
 			"slots": 4
 		},
 		"Gorlex Mech Pilot": {
-			"outfit": "/datum/outfit/job/syndicate/security/ngr/pilot",
+			"outfit": "/datum/outfit/job/cel/syndicate/security/gorlex/pilot",
 			"slots": 2
 		},
 		"SUNS academic": {
-			"outfit": "/datum/outfit/job/syndicate/head_of_personnel/suns/cocijo",
+			"outfit": "/datum/outfit/job/cel/syndicate/head_of_personnel/suns/cocijo",
 			"officer": true,
 			"slots": 1
 		},
 		"SUNS student": {
-			"outfit": "/datum/outfit/job/syndicate/assistant/suns/complete/cocijo",
+			"outfit": "/datum/outfit/job/cel/syndicate/assistant/suns/complete/cocijo",
 			"slots": 2
 		}
 	}
