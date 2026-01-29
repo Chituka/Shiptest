@@ -156,11 +156,63 @@
 		log_message("Hit by projectile. Type: [Proj.name]([Proj.flag]).", LOG_MECHA, color="red")
 		. = ..()
 
-/obj/mecha/proc/dir_check(atom/target)
-	var/list/allowed_dirs = list(src.dir, turn(src.dir,45),turn(src.dir,-45))
-	if((get_dir(src,target) in allowed_dirs))
-		return TRUE
-	return FALSE
+/obj/mecha/welder_act(mob/living/user, obj/item/W)
+	. = ..()
+	if(user.a_intent == INTENT_HARM)
+		return
+	. = TRUE
+	if(internal_damage & MECHA_INT_TANK_BREACH)
+		if(!W.use_tool(src, user, 0, volume=50, amount=1))
+			return
+		clearInternalDamage(MECHA_INT_TANK_BREACH)
+		to_chat(user, span_notice("You repair the damaged gas tank."))
+		return
+
+	if(p_shield)
+		if(p_shield.is_deployed)
+			if(p_shield.atom_integrity < p_shield.max_integrity)
+				if(do_after(user, 20, target= src))
+					W.use_tool(src, user, 0, 1, 50)
+					user.visible_message(span_notice("[user] repairs some damage to [p_shield.name]."), span_notice("You repair some damage to [p_shield.name]."))
+					p_shield.atom_integrity += min(p_shield.repair_amount, p_shield.max_integrity-p_shield.atom_integrity)
+					return
+			else
+				to_chat(user,span_danger("Shield's fully repaired. If I want to repait the mecha itself, I need to collapse it's giant shield!"))
+		else
+			to_chat(user,span_danger("If I want to repair the shield, I need to deploy it first!"))
+
+	while(atom_integrity < max_integrity)
+		if(!do_after(user, 20, target= src))
+			return
+		if(!W.use_tool(src, user, 0, volume=50, amount=1))
+			return
+		user.visible_message(span_notice("[user] repairs some damage to [name]."), span_notice("You repair some damage to [src]."))
+		atom_integrity += min(10 * repair_multiplier, max_integrity-atom_integrity)
+		if(atom_integrity == max_integrity)
+			to_chat(user, span_notice("It looks to be fully repaired now."))
+			return
+	to_chat(user, span_warning("The [name] is at full integrity!"))
+
+
+
+/obj/mecha/proc/dir_check(turf/aloc, skip_defence = FALSE)
+	if (!p_shield)
+		return FALSE
+	. = FALSE
+	switch(dir)
+		if (1)
+			if(abs(x - aloc.x) <= (y - aloc.y) * -2)
+				. = TRUE
+		if (2)
+			if(abs(x - aloc.x) <= (y - aloc.y) * 2)
+				. = TRUE
+		if (4)
+			if(abs(y - aloc.y) <= (x - aloc.x) * -2)
+				. = TRUE
+		if (8)
+			if(abs(y - aloc.y) <= (x - aloc.x) * 2)
+				. = TRUE
+	return
 
 /obj/item/mecha_parts/mecha_equipment/phys_shield
 	name = "Mecha Shield Module"
@@ -171,6 +223,7 @@
 	atom_integrity = 100
 	var/is_deployed = FALSE
 	var/icon/shield_overlay
+	var/repair_amount = 20 //How much integrity we restore with each repair
 
 /obj/item/mecha_parts/mecha_equipment/phys_shield/Initialize()
 	. = ..()
@@ -182,10 +235,19 @@
 	UnregisterSignal(src, COMSIG_MECHA_PHYS_DEF_ACTIVATE)
 	return ..()
 
+/obj/item/mecha_parts/mecha_equipment/phys_shield/atom_destruction(damage_flag)
+	SHOULD_CALL_PARENT(FALSE)
+	playsound(loc, 'sound/effects/sparks1.ogg', 35)
+	if(isliving(loc))
+		loc.balloon_alert(loc, "Shield's down!")
+	atom_integrity = 1
+	is_deployed = TRUE
+	relay(chassis)
+
 /obj/item/mecha_parts/mecha_equipment/phys_shield/proc/relay(obj/mecha/M)
 	SIGNAL_HANDLER
 
-	if(atom_integrity <= 0)
+	if(atom_integrity <= 1)
 		chassis.occupant_message(span_danger("Shield module has suffered critical damage. Manual repairs are required."))
 		is_deployed = FALSE //Just to be absolutely sure
 		return
@@ -194,10 +256,24 @@
 		chassis.occupant_message(span_notice("Shield's collapsed. Defensive capabilites lowered."))
 	else
 		shield_overlay = new(src.icon, icon_state = "repair_droid")
-		M.add_overlay(shield_overlay)
+		chassis.add_overlay(shield_overlay)
 		chassis.occupant_message(span_notice("Shield's deployed. Now blocking incoming attacks."))
 	is_deployed = !is_deployed
 	chassis.update_appearance(shield_overlay)
+
+/obj/item/mecha_parts/mecha_equipment/phys_shield/welder_act(mob/living/user, obj/item/W)
+	. = ..()
+	if(user.a_intent == INTENT_HARM)
+		return
+	. = TRUE
+	if(atom_integrity < max_integrity)
+		if(do_after(user, 20, target= src))
+			W.use_tool(src, user, 0, 1, 50)
+			atom_integrity += min(repair_amount*2, max_integrity-atom_integrity)
+			to_chat(user,span_italics("I repair ins and outs of the shield."))
+			return
+	else
+		to_chat(user,span_danger("It's fully repaired!"))
 
 /obj/item/mecha_parts/mecha_equipment/phys_shield/try_attach_part(mob/user, obj/mecha/M)
 	if(..())
@@ -205,12 +281,14 @@
 	else
 		. = ..()
 
-/obj/item/mecha_parts/mecha_equipment/phys_shield/detach(mob/living/user, obj/mecha/M)
-	M.phys_defence.Remove(user)
+/obj/item/mecha_parts/mecha_equipment/phys_shield/detach(atom/moveto=null, mob/user)
+	if(chassis.occupant)
+		chassis.phys_defence.Remove(chassis.occupant)
+	chassis.phys_defence.Remove(user)
 	chassis.cut_overlay(shield_overlay)
-	M.p_shield = null
+	chassis.p_shield = null
 	. = ..()
 
 /obj/item/mecha_parts/mecha_equipment/phys_shield/action(atom/target)
-	if(atom_integrity > 0)
+	if(!atom_integrity <= 1)
 		is_deployed = !is_deployed
